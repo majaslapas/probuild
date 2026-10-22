@@ -24,8 +24,7 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 .heading-style-h1{font-size:3.5rem}.heading-style-h2{font-size:3rem}.heading-style-h6{font-size:1.25rem;line-height:1.4}
 .text-size-large{font-size:1.25rem;line-height:1.5}.text-size-medium{font-size:1.125rem;line-height:1.6}.text-size-small{font-size:.875rem;line-height:1.5}
 .text-color-muted{color:var(--scheme-muted)}
-.text-style-tagline{display:inline-flex;align-items:center;gap:.625rem;font-family:'Martian Mono',monospace;font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
-.text-style-tagline::before{content:"";width:.5rem;height:.5rem;background:#F2600C;flex-shrink:0}
+.text-style-tagline{font-size:1.0625rem;font-weight:600;color:#F58F54}
 .button{display:inline-flex;align-items:center;justify-content:center;gap:.625rem;min-height:3rem;padding:0 1.5rem;border-radius:100px;border:1px solid #FFFFFF;background:#FFFFFF;color:#000000;font-family:inherit;font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
 .button:hover{background:#D8D8D8;border-color:#D8D8D8;color:#000000}
 .button.is-accent{background:#F2600C;border-color:#F2600C;color:#000000}
@@ -41,7 +40,8 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 .form_input::placeholder{color:#7F7F7F}
 textarea.form_input{padding:.875rem 1rem;min-height:8rem;resize:vertical}
 .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5rem}
-.rental-list_list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem 1.5rem}
+.rental-list_list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem 2rem}
+.rental-list_meta{font-size:.875rem;color:#D8D8D8;font-variant-numeric:tabular-nums}
 .rental-list_tab{min-height:2.75rem;padding:0 1.25rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#FFFFFF;font-family:inherit;font-size:.9375rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem}
 .rental-list_tab:hover{border-color:#FFFFFF}
 .rental-list_tab.is-active{background:#FFFFFF;border-color:#FFFFFF;color:#000000}
@@ -51,7 +51,7 @@ textarea.form_input{padding:.875rem 1rem;min-height:8rem;resize:vertical}
 .rental-list_item:hover .rental-list_image{transform:scale(1.04)}
 .rental-list_image{transition:transform .6s}
 .rental-list_cta{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.9375rem;color:#F58F54}
-@media (max-width:991px){.rental-list_list{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2{gap:3rem}}
+@media (max-width:991px){.grid-2{gap:3rem}}
 @media (max-width:767px){.heading-style-h1{font-size:2.5rem}.heading-style-h2{font-size:2.25rem}.text-size-large{font-size:1.125rem}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.grid-2,.rental-list_list{grid-template-columns:minmax(0,1fr)}}
 :root{color-scheme:dark}
 .heading-style-h1,.heading-style-h2{letter-spacing:-0.02em;text-wrap:balance}
@@ -80,10 +80,11 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #F260
 <div class="padding-section-large" style="padding-top: 6rem; display: flex; flex-direction: column; gap: 3.5rem">
 <div class="rental-list_header" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 2rem 4rem; align-items: end">
 <div style="display: flex; flex-direction: column; gap: 1.5rem">
-<h1 class="heading-style-h1">Tehnikas un instrumentu noma</h1>
+<span class="text-style-tagline">Tehnikas un instrumentu noma</span>
+<h1 class="heading-style-h1">Profesionāli. Atbildīgi. Uzticami.</h1>
 </div>
 <div style="display: flex; flex-direction: column; gap: 1rem">
-<p class="text-size-large text-color-muted">Nomājiet būvniecības tehniku un instrumentus tik ilgi, cik vajag. Izvēlieties vienību un nosūtiet pieprasījumu.</p>
+<p class="text-size-large text-color-muted">Uzticami nomas risinājumi ar profesionālu apkalpošanu, elastīgiem nosacījumiem un individuālu pieeju. Droša, ērta un pārdomāta sadarbība, uz kuru var paļauties.</p>
 <p class="text-size-small" style="color: #7F7F7F">Apmaksa lapā nav jāveic. Cenu un periodu saskaņosim pēc sazināšanās.</p>
 </div>
 </div>
@@ -99,6 +100,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #F260
 <div style="display: flex; flex-direction: column; gap: .5rem">
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 1rem"><h2 class="heading-style-h6">{{item.name}}</h2><span style="font-family: 'Martian Mono', monospace; font-size: .9375rem; white-space: nowrap">{{item.price}}</span></div>
 <p class="text-size-small text-color-muted">{{item.desc}}</p>
+<span class="rental-list_meta">{{item.meta}}</span>
 </div>
 <span class="rental-list_cta">Sūtīt pieprasījumu<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
 </a>
@@ -115,8 +117,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #F260
 <div class="padding-section-large">
 <div class="grid-2">
 <div style="display: flex; flex-direction: column; gap: 1.5rem">
-<h2 class="heading-style-h2">Neatradāt vajadzīgo?</h2>
-<p class="text-size-medium text-color-muted">Uzrakstiet, kāda tehnika vai instruments jums vajadzīgs un uz cik ilgu laiku. Atbildēsim, vai varam palīdzēt.</p>
+<h2 class="heading-style-h2">Piesakiet pakalpojumu jau šodien</h2>
+<p class="text-size-medium text-color-muted">Plānojat būvniecības darbus vai nepieciešama tehnika nomai? Aizpildiet pieteikumu, un sazināsimies.</p>
 </div>
 <form class="rental-contact_form" aria-label="Nomas pieprasījums" style="display: flex; flex-direction: column; gap: 1.25rem">
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem">
@@ -148,11 +150,10 @@ this.state = { cat: 'all' };
 }
 renderVals() {
 const all = [
-{ name: 'Traktors ar priekšējo kausu', cat: 'Tehnika', price: '[€]/diena', img: '/_blob/2e5b244c4dc865908f6dd25242cd511b', alt: 'Tehnika nomai būvlaukumā', desc: 'Zemes pārvietošanai, planēšanai un kravu iekraušanai.' },
-{ name: '[Tehnikas vienība]', cat: 'Tehnika', price: '[€]/diena', img: '/_blob/5ae8b024effcaa192c8835f28de91091', alt: 'Būvtehnika zemes darbos', desc: '[Apraksts, 2–5 teikumi]' },
-{ name: 'Armatūras siešanas instruments', cat: 'Instrumenti', price: '[€]/diena', img: '/_blob/fe5c41ae7be500f283b410e82b261de7', alt: 'Armatūras instrumenti', desc: 'Ātrai un vienmērīgai armatūras sasiešanai pamatu darbos.' },
-{ name: 'Armatūras lieces instruments', cat: 'Instrumenti', price: '[€]/diena', img: '/_blob/cea60e905110ba864a049044cf0fbdae', alt: 'Instrumenti uz darbnīcas sienas', desc: 'Armatūras stieņu liekšanai tieši objektā.' },
-{ name: '[Instruments]', cat: 'Instrumenti', price: '[€]/diena', img: '/_blob/8132e3c38da1e7c6fbea8369ebf5ff50', alt: 'Rokas instruments', desc: '[Apraksts, 2–5 teikumi]' }
+{ name: 'Ekskavators-iekrāvējs', cat: 'Tehnika', price: '55 €/h', img: '/_blob/2e5b244c4dc865908f6dd25242cd511b', alt: 'Ekskavators būvlaukumā', desc: 'NEW HOLLAND B115-4PS rakšanai, tranšejām, zemes pārvietošanai un iekraušanai.', meta: '82 kW · 4×4 · kopā ar operatoru' },
+{ name: 'Pašizgāzējs (B kategorija)', cat: 'Tehnika', price: '30 €/h', img: '/_blob/5ae8b024effcaa192c8835f28de91091', alt: 'Tehnika kravu pārvadāšanai objektā', desc: 'Renault Mascott 90 beramkravu, būvmateriālu un būvgružu pārvadāšanai.', meta: '+0,65 €/km · līdz 11 m³ · min. 2 h' },
+{ name: 'Grodu satvērējs', cat: 'Instrumenti', price: '25 €/diena', img: '/_blob/cea60e905110ba864a049044cf0fbdae', alt: 'Celšanas un montāžas instrumenti', desc: 'Betona grodu celšanai bez kaučuka pārklājuma.', meta: '3 t celtspēja · bez PVN' },
+{ name: 'Reģipša pacēlājs', cat: 'Instrumenti', price: '[€]/diena', img: '/_blob/c31cffac0f73d20e28c5c8c57534bbc3', alt: 'Iekšdarbi ar reģipsi', desc: '[Apraksts no klienta, 2–5 teikumi]', meta: '[Galvenie parametri]' }
 ];
 const cat = this.state.cat;
 const defs = [{ id: 'all', label: 'Visi' }, { id: 'Tehnika', label: 'Tehnika' }, { id: 'Instrumenti', label: 'Instrumenti' }];

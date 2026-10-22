@@ -2,7 +2,7 @@
 <html lang="lv">
 <head>
 <meta charset="utf-8">
-<title>ProBuildGroup: pakalpojumi</title>
+<title>ProBuildGroup: pakalpojumi un cenas</title>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -11,74 +11,84 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
 <style>
 body{margin:0;background:#000000;color:#FFFFFF;font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+:root{color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
 a{color:#FFFFFF}a:hover{color:#F58F54}
 img{display:block;max-width:100%}
 p,h1,h2,h3,h4,h5,h6,ul{margin:0}
-.color-scheme-1{background-color:#000000;color:#FFFFFF;--scheme-fg:#191919;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
-.color-scheme-2{background-color:#191919;color:#FFFFFF;--scheme-fg:#000000;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
-.color-scheme-3{background-color:#F2600C;color:#000000;--scheme-fg:#C14C09;--scheme-border:rgba(0,0,0,.25);--scheme-muted:#191919}
+p{text-wrap:pretty}
+.color-scheme-1{background-color:#000000;color:#FFFFFF;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
+.color-scheme-2{background-color:#191919;color:#FFFFFF;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
+.color-scheme-3{background-color:#F2600C;color:#000000;--scheme-border:rgba(0,0,0,.25);--scheme-muted:#191919}
 .padding-global{padding-left:5%;padding-right:5%}
 .container-large{width:100%;max-width:80rem;margin-left:auto;margin-right:auto}
 .padding-section-large{padding-top:7rem;padding-bottom:7rem}
-.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h4,.heading-style-h5,.heading-style-h6{font-family:'Martian Mono',ui-monospace,monospace;font-weight:500;letter-spacing:-0.01em;line-height:1.2}
+.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h4,.heading-style-h5,.heading-style-h6{font-family:'Martian Mono',ui-monospace,monospace;font-weight:500;line-height:1.2;text-wrap:balance}
+.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h4{letter-spacing:-0.02em}
 .heading-style-h1{font-size:3.5rem}.heading-style-h2{font-size:3rem}.heading-style-h3{font-size:2.5rem}.heading-style-h4{font-size:2rem;line-height:1.3}.heading-style-h5{font-size:1.5rem;line-height:1.4}.heading-style-h6{font-size:1.25rem;line-height:1.4}
 .text-size-large{font-size:1.25rem;line-height:1.5}.text-size-medium{font-size:1.125rem;line-height:1.6}.text-size-small{font-size:.875rem;line-height:1.5}
 .text-color-muted{color:var(--scheme-muted)}
-.text-style-tagline{display:inline-flex;align-items:center;gap:.625rem;font-family:'Martian Mono',monospace;font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
-.text-style-tagline::before{content:"";width:.5rem;height:.5rem;background:#F2600C;flex-shrink:0}
-.color-scheme-3 .text-style-tagline::before{background:#000000}
-.button{display:inline-flex;align-items:center;justify-content:center;gap:.625rem;min-height:3rem;padding:0 1.5rem;border-radius:100px;border:1px solid #FFFFFF;background:#FFFFFF;color:#000000;font-family:inherit;font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
+.text-style-tagline{font-size:1.0625rem;font-weight:600;color:#F58F54}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid #F2600C;outline-offset:3px}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:.625rem;min-height:3rem;padding:0 1.5rem;border-radius:100px;border:1px solid #FFFFFF;background:#FFFFFF;color:#000000;font-family:inherit;font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;touch-action:manipulation;transition:background-color .2s,border-color .2s,color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
 .button:hover{background:#D8D8D8;border-color:#D8D8D8;color:#000000}
 .button.is-accent{background:#F2600C;border-color:#F2600C;color:#000000}
 .button.is-accent:hover{background:#F58F54;border-color:#F58F54;color:#000000}
 .button.is-secondary{background:transparent;border-color:var(--scheme-border);color:inherit}
 .button.is-secondary:hover{border-color:currentColor;color:inherit}
-.button.is-dark{background:#000000;border-color:#000000;color:#FFFFFF}
-.button.is-dark:hover{background:#191919;border-color:#191919;color:#FFFFFF}
+.button.is-small{min-height:2.75rem;padding:0 1.125rem;font-size:.875rem}
+.button:active{transform:scale(.97)}
 .button-group{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
 .icon-arrow{width:1.125rem;height:1.125rem;flex-shrink:0}
-.tag{display:inline-flex;align-items:center;min-height:1.75rem;padding:0 .75rem;border-radius:100px;border:1px solid var(--scheme-border);font-size:.8125rem;line-height:1}
-.img-cover{width:100%;height:100%;object-fit:cover}
 .form_field{display:flex;flex-direction:column;gap:.5rem;font-size:.875rem;font-weight:600}
 .form_input{width:100%;min-height:3rem;padding:0 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#000000;color:#FFFFFF;font-family:inherit;font-size:1rem;font-weight:400}
-.form_input:focus{outline:2px solid #F2600C;outline-offset:1px;border-color:transparent}
 .form_input::placeholder{color:#7F7F7F}
 textarea.form_input{padding:.875rem 1rem;min-height:8rem;resize:vertical}
 .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5rem}
 .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
-.services-hero_component{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,28rem);gap:5rem;align-items:center}
-.calc_option{min-height:2.75rem;padding:0 1rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#FFFFFF;font-family:inherit;font-size:.875rem;font-weight:600;cursor:pointer;transition:border-color .2s,background-color .2s}
+.services-hero_component{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,30rem);gap:5rem;align-items:center}
+.calc_option{min-height:2.75rem;padding:0 1rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#FFFFFF;font-family:inherit;font-size:.875rem;font-weight:600;cursor:pointer;touch-action:manipulation;transition:background-color .2s,border-color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
 .calc_option:hover{border-color:#FFFFFF}
 .calc_option.is-active{background:#F2600C;border-color:#F2600C;color:#000000}
-.calc_step{width:2.75rem;height:2.75rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#FFFFFF;font-size:1.25rem;cursor:pointer}
+.calc_step{width:2.75rem;height:2.75rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#FFFFFF;font-size:1.25rem;cursor:pointer;touch-action:manipulation;transition:border-color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
 .calc_step:hover{border-color:#FFFFFF}
+.calc_option:active,.calc_step:active{transform:scale(.97)}
 .calc_range{width:100%;accent-color:#F2600C}
-.services-list_item{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:3rem;align-items:center;padding:2.5rem 0;border-top:1px solid rgba(255,255,255,.15)}
-.services-list_item.is-reversed .services-list_image-wrapper{order:2}
-.services-benefits_item{display:flex;flex-direction:column;gap:1rem;padding:2rem;border-radius:16px;background:#C14C09}
+.calc_total{font-variant-numeric:tabular-nums}
+.services-list_tab{min-height:2.75rem;padding:0 1.25rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#FFFFFF;font-family:inherit;font-size:.9375rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;touch-action:manipulation;transition:background-color .2s,border-color .2s,color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
+.services-list_tab:hover{border-color:#FFFFFF}
+.services-list_tab.is-active{background:#FFFFFF;border-color:#FFFFFF;color:#000000}
+.services-list_tab:active{transform:scale(.97)}
+.services-list_count{font-size:.8125rem;opacity:.6;font-variant-numeric:tabular-nums}
+.services-list_item{border-radius:16px;background:#191919;overflow:hidden;transition:background-color .2s}
+.services-list_item.is-open{background:#1F1F1F}
+.services-list_trigger{width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:1.5rem;align-items:center;padding:1.5rem 1.75rem;border:0;background:transparent;color:#FFFFFF;font-family:inherit;text-align:left;cursor:pointer;touch-action:manipulation}
+.services-list_trigger:hover .services-list_name{color:#F58F54}
+.services-list_name{font-family:'Martian Mono',monospace;font-weight:500;font-size:1.25rem;line-height:1.35;transition:color .2s}
+.services-list_from{font-family:'Martian Mono',monospace;font-size:.9375rem;color:#D8D8D8;white-space:nowrap;font-variant-numeric:tabular-nums}
+.services-list_chevron{display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:100px;background:#000000;color:#F2600C;transition:transform .25s cubic-bezier(.23,1,.32,1)}
+.services-list_item.is-open .services-list_chevron{transform:rotate(45deg)}
+.services-list_panel{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:3rem;padding:0 1.75rem 2rem}
+.services-list_prices{display:flex;flex-direction:column;border-radius:12px;background:#000000;overflow:hidden}
+.services-list_price{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.875rem 1.125rem;font-size:.9375rem}
+.services-list_price+.services-list_price{border-top:1px solid rgba(255,255,255,.1)}
+.services-list_price-value{font-family:'Martian Mono',monospace;white-space:nowrap;font-variant-numeric:tabular-nums}
+.services-list_includes{list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.services-list_includes li{position:relative;padding-left:1.5rem;line-height:1.5;color:#D8D8D8}
+.services-list_includes li::before{content:"";position:absolute;left:0;top:.55em;width:.5rem;height:.5rem;border-radius:2px;background:#F2600C}
+.services-benefits_item{display:flex;flex-direction:column;gap:1rem;padding:2rem;border-radius:16px;background:#C14C09;color:#FFFFFF}
 .home-reviews_card{display:flex;flex-direction:column;gap:1.5rem;padding:2rem;border-radius:16px;background:#191919}
-@media (max-width:991px){.services-hero_component{grid-template-columns:minmax(0,1fr);gap:3rem}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2{gap:3rem}}
-@media (max-width:767px){.heading-style-h1{font-size:2.5rem}.heading-style-h2{font-size:2.25rem}.heading-style-h3{font-size:2rem}.heading-style-h4{font-size:1.5rem}.text-size-large{font-size:1.125rem}.text-size-medium{font-size:1rem}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.grid-2,.grid-3,.services-list_item{grid-template-columns:minmax(0,1fr)}.services-list_item.is-reversed .services-list_image-wrapper{order:0}}
-:root{color-scheme:dark}
-.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h4{letter-spacing:-0.02em;text-wrap:balance}
-.heading-style-h5,.heading-style-h6{text-wrap:balance}
-p{text-wrap:pretty}
-.text-style-tagline{font-family:'Noto Sans',system-ui,sans-serif;font-size:1.0625rem;font-weight:600;letter-spacing:0;text-transform:none;color:#F58F54}
-.text-style-tagline::before{display:none}
-a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid #F2600C;outline-offset:3px}
-.button,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-.button{transition:background-color .2s,border-color .2s,color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
-.button:active,.calc_option:active,.calc_step:active{transform:scale(.97)}
-.calc_option,.calc_step{transition:background-color .2s,border-color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
-.services-calculator_result .heading-style-h3{font-variant-numeric:tabular-nums}
 #kalkulators,#pakalpojumi,#pieteikums{scroll-margin-top:2rem}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:no-preference){
 .services-hero_content>*,.services-calculator_component{animation:rise .8s cubic-bezier(.23,1,.32,1) both}
 .services-hero_content>*:nth-child(2){animation-delay:.08s}.services-hero_content>*:nth-child(3){animation-delay:.16s}.services-calculator_component{animation-delay:.24s}
-@supports (animation-timeline:view()){main section h2,main section [class*="_image-wrapper"],main section [class*="_item"]{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 35%}}
+.services-list_panel{animation:open .3s cubic-bezier(.23,1,.32,1) both}
+@supports (animation-timeline:view()){main section h2,main .services-benefits_item,main .home-reviews_card{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 35%}}
 }
+@media (max-width:991px){.services-hero_component{grid-template-columns:minmax(0,1fr);gap:3rem}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2{gap:3rem}.services-list_panel{grid-template-columns:minmax(0,1fr);gap:2rem}}
+@media (max-width:767px){.heading-style-h1{font-size:2.5rem}.heading-style-h2{font-size:2.25rem}.heading-style-h3{font-size:2rem}.text-size-large{font-size:1.125rem}.text-size-medium{font-size:1rem}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.grid-2,.grid-3{grid-template-columns:minmax(0,1fr)}.services-list_trigger{grid-template-columns:minmax(0,1fr) auto;padding:1.25rem}.services-list_from{grid-column:1;grid-row:2;font-size:.8125rem}.services-list_chevron{grid-row:1 / span 2;grid-column:2}.services-list_panel{padding:0 1.25rem 1.5rem}.services-list_name{font-size:1.0625rem}}
 </style>
 </helmet>
 <div class="page-wrapper">
@@ -88,43 +98,43 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 <header class="section_services-hero color-scheme-1">
 <div class="padding-global">
 <div class="container-large">
-<div class="padding-section-large" style="padding-top: 6rem">
+<div class="padding-section-large" style="padding-top: 6rem; padding-bottom: 5rem">
 <div class="services-hero_component">
 <div class="services-hero_content" style="display: flex; flex-direction: column; gap: 1.75rem">
 <span class="text-style-tagline">Ēku būvniecība no pamatiem līdz atslēgai</span>
 <h1 class="heading-style-h1">Pilna cikla būvniecības risinājumi</h1>
 <p class="text-size-large text-color-muted">Nodrošinām pilna cikla ēku būvniecību no pamatu izbūves līdz pilnībā pabeigtam objektam. Katru projektu īstenojam ar profesionālu pieeju, augstiem kvalitātes standartiem un rūpīgu uzmanību detaļām.</p>
-<div class="button-group"><a href="#pakalpojumi" class="button is-secondary">Visi pakalpojumi<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a></div>
+<div class="button-group"><a href="#pakalpojumi" class="button is-secondary">14 pakalpojumi un cenas<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"></path></svg></a></div>
 </div>
-<form id="kalkulators" class="services-calculator_component" aria-label="Būvniecības izmaksu kalkulators" style="display: flex; flex-direction: column; gap: 1.75rem; padding: 2rem; border-radius: 16px; background: #191919; border: 1px solid rgba(255,255,255,.12)">
+<form id="kalkulators" class="services-calculator_component" aria-label="Būvniecības izmaksu kalkulators" style="display: flex; flex-direction: column; gap: 1.75rem; padding: 2rem; border-radius: 16px; background: #191919">
 <div style="display: flex; flex-direction: column; gap: .5rem">
 <h2 class="heading-style-h5">Aprēķiniet izmaksas</h2>
 <p class="text-size-small text-color-muted">Izmantojiet mūsu būvniecības kalkulatoru, lai ātri un ērti aprēķinātu aptuvenās būvniecības izmaksas.</p>
 </div>
-<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .75rem">
-<legend style="font-size: .875rem; font-weight: 600; padding: 0; margin-bottom: .75rem">1. Darba veids</legend>
+<fieldset style="border: 0; margin: 0; padding: 0">
+<legend style="font-size: .875rem; font-weight: 600; padding: 0; margin-bottom: .75rem">Darba veids</legend>
 <div style="display: flex; flex-wrap: wrap; gap: .5rem">
-<sc-for list="{{services}}" as="svc" hint-placeholder-count="4">
-<button type="button" class="{{svc.cls}}" aria-pressed="{{svc.pressed}}" onClick="{{svc.pick}}">{{svc.label}}</button>
+<sc-for list="{{calc}}" as="c" hint-placeholder-count="6">
+<button type="button" class="{{c.cls}}" aria-pressed="{{c.pressed}}" onClick="{{c.pick}}">{{c.label}}</button>
 </sc-for>
 </div>
 </fieldset>
 <div style="display: flex; flex-direction: column; gap: .75rem">
-<label for="calc-area" style="font-size: .875rem; font-weight: 600">2. Platība</label>
+<label for="calc-area" style="font-size: .875rem; font-weight: 600">Platība</label>
 <div style="display: flex; align-items: center; gap: .75rem">
 <button type="button" class="calc_step" aria-label="Samazināt platību" onClick="{{dec}}">−</button>
-<div style="flex: 1; text-align: center; font-family: 'Martian Mono', monospace; font-size: 1.5rem">{{area}} m²</div>
+<div class="calc_total" style="flex: 1; text-align: center; font-family: 'Martian Mono', monospace; font-size: 1.5rem">{{area}} m²</div>
 <button type="button" class="calc_step" aria-label="Palielināt platību" onClick="{{inc}}">+</button>
 </div>
 <input id="calc-area" class="calc_range" type="range" min="10" max="400" step="10" value="{{area}}" onChange="{{setArea}}">
 </div>
-<div class="services-calculator_result" style="display: flex; flex-direction: column; gap: .375rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.15)">
-<span class="text-size-small text-color-muted">Aptuvenās izmaksas</span>
-<span class="heading-style-h3" style="color: #F58F54">{{total}}</span>
+<div class="services-calculator_result" aria-live="polite" style="display: flex; flex-direction: column; gap: .375rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.15)">
+<span class="text-size-small text-color-muted">Aptuvenās izmaksas, bez PVN</span>
+<span class="heading-style-h4 calc_total" style="color: #F58F54">{{total}}</span>
 <span class="text-size-small text-color-muted">{{rateNote}}</span>
 </div>
-<a href="#pieteikums" class="button is-accent">Pieprasīt tāmi<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-<p style="font-size: .75rem; line-height: 1.5; color: #7F7F7F">Aprēķins ir orientējošs. Precīzu cenu saskaņosim pēc objekta apskates.</p>
+<a href="#pieteikums" class="button is-accent">Pieprasīt precīzu tāmi<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<p style="font-size: .75rem; line-height: 1.5; color: #7F7F7F">Aprēķins ir orientējošs. Gala cenu nosakām pēc objekta apskates.</p>
 </form>
 </div>
 </div>
@@ -135,84 +145,54 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 <section id="pakalpojumi" class="section_services-list color-scheme-1">
 <div class="padding-global">
 <div class="container-large">
-<div class="padding-section-large" style="padding-top: 2rem; display: flex; flex-direction: column; gap: 3rem">
+<div class="padding-section-large" style="padding-top: 2rem; display: flex; flex-direction: column; gap: 2.5rem">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1.5rem">
-<h2 class="heading-style-h2">Pakalpojumi</h2>
-<p class="text-color-muted" style="max-width: 28rem">Viss par katru darbu vienuviet. Izvēlieties pakalpojumu un aprēķiniet izmaksas kalkulatorā.</p>
+<h2 class="heading-style-h2">Pakalpojumi un cenas</h2>
+<p class="text-color-muted" style="max-width: 30rem">Atveriet pakalpojumu, lai redzētu, kas ietilpst darbā un cenā. Cenas ir orientējošas, gala cenu nosakām individuāli.</p>
 </div>
-<div class="services-list_list">
-<article class="services-list_item">
-<div class="services-list_image-wrapper" style="aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden"><img src="/_blob/78cb2a9169d96624bb4a1e00200c8e00" alt="Strādnieki montē pamatu armatūru" class="img-cover"></div>
-<div class="services-list_content" style="display: flex; flex-direction: column; gap: 1.25rem">
-<div style="display: flex; flex-wrap: wrap; gap: .5rem; align-items: center"><span class="tag">Būvniecība</span><span class="tag">Pamati</span></div>
-<h3 class="heading-style-h4">Pamatu būvniecība</h3>
-<p class="text-color-muted" style="line-height: 1.7">Nodrošinām kvalitatīvu un ilgtspējīgu pamatu izbūvi privātmājām, komerciālām ēkām un citiem būvniecības objektiem. Darbi ietver teritorijas sagatavošanu, zemes darbus, veidņu montāžu, armatūras iestrādi, betonēšanu un pamatu hidroizolāciju atbilstoši projekta prasībām. Katru projektu sākam ar rūpīgu plānošanu un tehnisko risinājumu izvērtēšanu, lai nodrošinātu stabilu un drošu pamatu ēkas konstrukcijai.</p>
-<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.15)">
-<span style="font-family: 'Martian Mono', monospace; font-size: 1.125rem">no 180 €/m²</span>
-<a href="#kalkulators" class="button is-secondary">Aprēķināt</a>
+<div class="services-list_tabs" role="group" aria-label="Pakalpojumu grupas" style="display: flex; flex-wrap: wrap; gap: .75rem">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="4">
+<button type="button" class="{{t.cls}}" aria-pressed="{{t.pressed}}" onClick="{{t.pick}}">{{t.label}}<span class="services-list_count">{{t.count}}</span></button>
+</sc-for>
+</div>
+<div class="services-list_list" style="display: flex; flex-direction: column; gap: .75rem">
+<sc-for list="{{services}}" as="s" hint-placeholder-count="6">
+<article class="{{s.cls}}">
+<button type="button" class="services-list_trigger" aria-expanded="{{s.expanded}}" onClick="{{s.toggle}}">
+<span style="display: flex; flex-direction: column; gap: .375rem; min-width: 0">
+<span class="services-list_name">{{s.name}}</span>
+<span class="text-size-small text-color-muted">{{s.group}}</span>
+</span>
+<span class="services-list_from">{{s.from}}</span>
+<span class="services-list_chevron" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></span>
+</button>
+<sc-if value="{{s.open}}" hint-placeholder-val="{{false}}">
+<div class="services-list_panel">
+<div style="display: flex; flex-direction: column; gap: 1.25rem">
+<p class="text-size-medium" style="color: #D8D8D8">{{s.desc}}</p>
+<div style="display: flex; flex-direction: column; gap: .75rem">
+<h3 style="font-size: 1rem; font-weight: 600">Cenā iekļauts</h3>
+<ul class="services-list_includes">
+<sc-for list="{{s.includes}}" as="inc" hint-placeholder-count="3"><li>{{inc}}</li></sc-for>
+</ul>
+</div>
+<sc-if value="{{s.hasNote}}" hint-placeholder-val="{{true}}"><p class="text-size-small" style="color: #B2B2B2">{{s.note}}</p></sc-if>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1.25rem">
+<div class="services-list_prices">
+<sc-for list="{{s.prices}}" as="pr" hint-placeholder-count="3">
+<div class="services-list_price"><span class="text-color-muted">{{pr.label}}</span><span class="services-list_price-value">{{pr.value}}</span></div>
+</sc-for>
+</div>
+<div class="button-group">
+<a href="#pieteikums" class="button is-accent is-small">Pieprasīt cenu</a>
+<sc-if value="{{s.inCalc}}" hint-placeholder-val="{{true}}"><a href="#kalkulators" class="button is-secondary is-small">Uz kalkulatoru</a></sc-if>
 </div>
 </div>
+</div>
+</sc-if>
 </article>
-<article class="services-list_item is-reversed">
-<div class="services-list_image-wrapper" style="aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden"><img src="/_blob/3a843929b2857bf09e24625a07152429" alt="Koka karkasa ēkas montāža" class="img-cover"></div>
-<div class="services-list_content" style="display: flex; flex-direction: column; gap: 1.25rem">
-<div style="display: flex; flex-wrap: wrap; gap: .5rem; align-items: center"><span class="tag">Būvniecība</span><span class="tag">Koka karkass</span></div>
-<h3 class="heading-style-h4">Ēku būvniecība</h3>
-<p class="text-color-muted" style="line-height: 1.7">Būvējam privātmājas un saimniecības ēkas no pamatiem līdz atslēgai. Darbi ietver karkasa montāžu, siltināšanu, jumta izbūvi, logu un durvju uzstādīšanu. Strādājam pēc projekta un saskaņojam katru posmu ar klientu, lai rezultāts atbilst iecerei, budžetam un termiņiem.</p>
-<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.15)">
-<span style="font-family: 'Martian Mono', monospace; font-size: 1.125rem">no [cena] €/m²</span>
-<a href="#kalkulators" class="button is-secondary">Aprēķināt</a>
-</div>
-</div>
-</article>
-<article class="services-list_item">
-<div class="services-list_image-wrapper" style="aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden"><img src="/_blob/843c7df3cecf92d6d8b79c90343285e2" alt="Koka fasādes apdares montāža" class="img-cover"></div>
-<div class="services-list_content" style="display: flex; flex-direction: column; gap: 1.25rem">
-<div style="display: flex; flex-wrap: wrap; gap: .5rem; align-items: center"><span class="tag">Fasādes</span><span class="tag">Apdare</span></div>
-<h3 class="heading-style-h4">Fasādes un ārējā apdare</h3>
-<p class="text-color-muted" style="line-height: 1.7">Uzstādām koka fasādes: termokoku, dedzinātus dēļus, pusspundi un spundi. Palīdzam izvēlēties materiālu, sagatavojam pamatni un vēdināmo slāni, montējam apdari un apstrādājam virsmas, lai fasāde kalpotu ilgi.</p>
-<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.15)">
-<span style="font-family: 'Martian Mono', monospace; font-size: 1.125rem">no [cena] €/m²</span>
-<a href="#kalkulators" class="button is-secondary">Aprēķināt</a>
-</div>
-</div>
-</article>
-<article class="services-list_item is-reversed">
-<div class="services-list_image-wrapper" style="aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden"><img src="/_blob/31d9f8195dc4a9f94ec2d803f2957484" alt="Sienas siltināšana remonta laikā" class="img-cover"></div>
-<div class="services-list_content" style="display: flex; flex-direction: column; gap: 1.25rem">
-<div style="display: flex; flex-wrap: wrap; gap: .5rem; align-items: center"><span class="tag">Remonts</span><span class="tag">Iekšdarbi</span></div>
-<h3 class="heading-style-h4">Remonti un apdare</h3>
-<p class="text-color-muted" style="line-height: 1.7">Veicam telpu remontu un apdari: siltināšanu, sienu un griestu izlīdzināšanu, krāsošanu un grīdu ieklāšanu. Plānojam darbus tā, lai remonts noritētu raiti un telpas atkal būtu lietojamas pēc iespējas ātrāk.</p>
-<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.15)">
-<span style="font-family: 'Martian Mono', monospace; font-size: 1.125rem">no [cena] €/m²</span>
-<a href="#kalkulators" class="button is-secondary">Aprēķināt</a>
-</div>
-</div>
-</article>
-<article class="services-list_item">
-<div class="services-list_image-wrapper" style="aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden"><img src="/_blob/5ae8b024effcaa192c8835f28de91091" alt="Zemes darbi ar ekskavatoriem" class="img-cover"></div>
-<div class="services-list_content" style="display: flex; flex-direction: column; gap: 1.25rem">
-<div style="display: flex; flex-wrap: wrap; gap: .5rem; align-items: center"><span class="tag">Zemes darbi</span></div>
-<h3 class="heading-style-h4">Zemes darbi</h3>
-<p class="text-color-muted" style="line-height: 1.7">Sagatavojam teritoriju būvniecībai: rakšana, planēšana, būvbedres un tranšejas. Strādājam ar savu tehniku, tāpēc darbus varam sākt ātri un plānot elastīgi.</p>
-<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.15)">
-<span style="font-family: 'Martian Mono', monospace; font-size: 1.125rem">no [cena] €/m³</span>
-<a href="#kalkulators" class="button is-secondary">Aprēķināt</a>
-</div>
-</div>
-</article>
-<article class="services-list_item is-reversed">
-<div class="services-list_image-wrapper" style="aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden"><img src="/_blob/d3998de4f9684a6a13b121296ce1a05f" alt="Sienas krāsošana ar rulli" class="img-cover"></div>
-<div class="services-list_content" style="display: flex; flex-direction: column; gap: 1.25rem">
-<div style="display: flex; flex-wrap: wrap; gap: .5rem; align-items: center"><span class="tag">Apsaimniekošana</span><span class="tag">Servisa līgums</span></div>
-<h3 class="heading-style-h4">Apsaimniekošana</h3>
-<p class="text-color-muted" style="line-height: 1.7">Servisa līgums ēkas uzturēšanai: regulāra apsekošana, nelieli remonti un ātra reakcija, ja kas notiek. Līguma klientus apkalpojam rindā pirmos.</p>
-<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.15)">
-<span style="font-family: 'Martian Mono', monospace; font-size: 1.125rem">[cena] €/mēnesī</span>
-<a href="#pieteikums" class="button is-secondary">Pieteikties</a>
-</div>
-</div>
-</article>
+</sc-for>
 </div>
 </div>
 </div>
@@ -224,15 +204,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 <div class="container-large">
 <div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 2rem; align-items: end">
-<div style="display: flex; flex-direction: column; gap: 1.25rem">
 <h2 class="heading-style-h2">Kāpēc izvēlēties mūs</h2>
-</div>
 <p class="text-size-medium" style="color: #191919">Viens partneris visam būvniecības procesam, no zemes darbiem līdz pēdējai apdares detaļai.</p>
 </div>
 <div class="grid-3">
-<div class="services-benefits_item" style="color: #FFFFFF"><h3 class="heading-style-h6">Viss vienuviet</h3><p style="line-height: 1.6">Pamati, karkass, apdare un zemes darbi vienā līgumā. Jums nav jākoordinē vairāki darbuzņēmēji.</p></div>
-<div class="services-benefits_item" style="color: #FFFFFF"><h3 class="heading-style-h6">Skaidras cenas</h3><p style="line-height: 1.6">Aptuvenās izmaksas redzat jau kalkulatorā, galīgo cenu saskaņojam pirms darbu sākuma.</p></div>
-<div class="services-benefits_item" style="color: #FFFFFF"><h3 class="heading-style-h6">Sava tehnika</h3><p style="line-height: 1.6">Strādājam ar savu tehniku un instrumentiem, tāpēc nav jāgaida uz nomu vai apakšuzņēmējiem.</p></div>
+<div class="services-benefits_item"><h3 class="heading-style-h6">Viss vienuviet</h3><p style="line-height: 1.6">Pamati, jumts, fasāde, inženiertīkli un teritorija vienā līgumā. Jums nav jākoordinē vairāki darbuzņēmēji.</p></div>
+<div class="services-benefits_item"><h3 class="heading-style-h6">Skaidras cenas</h3><p style="line-height: 1.6">Orientējošās cenas redzat jau šeit, galīgo cenu saskaņojam pirms darbu sākuma.</p></div>
+<div class="services-benefits_item"><h3 class="heading-style-h6">Sava tehnika</h3><p style="line-height: 1.6">Strādājam ar savu ekskavatoru-iekrāvēju un pašizgāzēju, tāpēc darbus varam sākt ātri.</p></div>
 </div>
 </div>
 </div>
@@ -271,12 +249,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 </div>
 </div>
 <form class="services-contact_form" aria-label="Pieteikuma forma" style="display: flex; flex-direction: column; gap: 1.25rem">
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem">
-<label class="form_field">Vārds<input class="form_input" type="text" autocomplete="name"></label>
-<label class="form_field">Telefons<input class="form_input" type="tel" autocomplete="tel"></label>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.25rem">
+<label class="form_field">Vārds<input class="form_input" type="text" name="vards" autocomplete="name"></label>
+<label class="form_field">Telefons<input class="form_input" type="tel" name="telefons" autocomplete="tel"></label>
 </div>
-<label class="form_field">E-pasts<input class="form_input" type="email" autocomplete="email"></label>
-<label class="form_field">Pakalpojums<select class="form_input"><option>Pamatu būvniecība</option><option>Ēku būvniecība</option><option>Fasādes un ārējā apdare</option><option>Remonti un apdare</option><option>Zemes darbi</option><option>Apsaimniekošana</option></select></label>
+<label class="form_field">E-pasts<input class="form_input" type="email" name="epasts" autocomplete="email" spellcheck="false"></label>
+<label class="form_field">Pakalpojums<select class="form_input" name="pakalpojums">
+<sc-for list="{{allNames}}" as="n" hint-placeholder-count="14"><option>{{n}}</option></sc-for>
+</select></label>
 <label class="form_field">Ziņa<textarea class="form_input" name="zina" placeholder="Piem., Salaspils, 120 m², pavasaris…"></textarea></label>
 <button type="button" class="button is-accent" style="align-self: flex-start">Nosūtīt pieteikumu</button>
 </form>
@@ -290,36 +270,105 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 <dc-import name="SiteFooter" hint-size="100%,460px"></dc-import>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6000}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5200}}'>
 class Component extends DCLogic {
 constructor(props) {
 super(props);
-this.state = { svc: 0, area: 120 };
+this.state = { calc: 0, area: 120, group: 'Visi', open: 'pamati' };
 }
 renderVals() {
-const list = [
-{ label: 'Pamati', rate: 180, unit: '€/m²' },
-{ label: 'Ēkas būvniecība', rate: null },
-{ label: 'Fasādes', rate: null },
-{ label: 'Remonts', rate: null }
+const B = 'Būvniecība', R = 'Remonts un apdare', T = 'Teritorija un uzturēšana';
+const S = [
+{ id: 'pamati', group: B, name: 'Pamatu būvniecība', from: 'no 150 €/m²', inCalc: true,
+desc: 'Izbūvējam kvalitatīvus un ilgtspējīgus pamatus privātmājām, komerciālām ēkām un citiem objektiem. Darbu sākam ar plānošanu un tehnisko risinājumu izvērtēšanu, lai ēkai būtu stabils un drošs pamats gadiem ilgi.',
+prices: [['Cena atkarībā no projekta', '150–350+ €/m²']],
+includes: ['Zemes darbi un pamatnes sagatavošana', 'Smilts un šķembu slāņi ar blīvēšanu', 'Veidņi, armatūra un betonēšana', 'Hidroizolācija un pamatu siltināšana', 'Nepieciešamā tehnika un darbaspēks'], note: 'Cenas bez PVN.' },
+{ id: 'jumts', group: B, name: 'Jumta darbi', from: 'no 110 €/m²', inCalc: true,
+desc: 'Izbūvējam jaunus jumtus un remontējam esošos: konstrukcijas, spāres un latojums, segums, siltināšana, hidroizolācija un lietus ūdens noteksistēmas. Pirms darbiem izvērtējam jumta stāvokli un izvēlamies piemērotākos materiālus.',
+prices: [['Sākuma cena', '110 €/m²'], ['Vidējā plānošanas cena', '140 €/m²'], ['Sarežģītiem projektiem', 'no 180 €/m²']],
+includes: ['Nesošās konstrukcijas montāža', 'Spāru un latojuma izbūve', 'Apakšklāja ieklāšana', 'Jumta seguma montāža'], note: 'Cenas bez PVN. Demontāža un sastatnes, ja nepieciešamas, tiek aprēķinātas atsevišķi.' },
+{ id: 'fasade', group: B, name: 'Fasādes darbi', from: 'no 45 €/m²', inCalc: true,
+desc: 'Siltinām, apdarām un renovējam fasādes privātmājām, daudzdzīvokļu ēkām un komerciāliem objektiem. Uzlabojam ēkas energoefektivitāti, pasargājam konstrukcijas no laikapstākļiem un piešķiram mūsdienīgu izskatu.',
+prices: [['Sākuma cena', '45 €/m²'], ['Vidējā plānošanas cena', '60 €/m²'], ['Akmens vates sistēma, sarežģīti objekti', '70–90 €/m²']],
+includes: ['Fasādes virsmas sagatavošana', 'Siltumizolācijas plākšņu montāža', 'Armējošā slāņa izveide', 'Dekoratīvā apmetuma uzklāšana'], note: 'Cenas bez PVN. Materiāli nav iekļauti cenā.' },
+{ id: 'inzeniertikli', group: B, name: 'Inženiertīklu un komunikāciju izbūve', from: 'no 120 €/m²', inCalc: true,
+desc: 'Ierīkojam ūdensapgādi un kanalizāciju, apkures sistēmas, elektroinstalāciju, ventilāciju un ārējās komunikācijas. Strādājam pēc projekta, lai sistēmas būtu drošas, funkcionālas un kalpotu ilgtermiņā.',
+prices: [['Sākuma cena', '120 €/m²'], ['Vidējā plānošanas cena', '160 €/m²'], ['Sarežģītākiem projektiem', 'no 200 €/m²']],
+includes: ['Ūdensapgādes un kanalizācijas sistēmas', 'Apkures cauruļvadu montāža', 'Elektroinstalācijas izbūve', 'Ventilācijas pamata risinājumi', 'Montāžas darbi un standarta materiāli'], note: 'Cenas bez PVN. Neietver katlu, siltumsūkni, santehnikas aprīkojumu, gaismekļus un ārējo komunikāciju pieslēgumus.' },
+{ id: 'renovacija', group: B, name: 'Ēku renovācija un rekonstrukcija', from: 'no 450 €/m²', inCalc: true,
+desc: 'Atjaunojam, modernizējam un pārbūvējam ēkas: fasādes un jumti, siltināšana, iekštelpu pārbūve un konstrukciju remonts. Uzlabojam ēkas funkcionalitāti, energoefektivitāti un ilgmūžību.',
+prices: [['Sākuma cena', '450 €/m²'], ['Vidējā plānošanas cena', '650 €/m²'], ['Sarežģītām rekonstrukcijām', 'no 800 €/m²']],
+includes: ['Nepieciešamie demontāžas darbi', 'Sienu, grīdu un griestu atjaunošana', 'Iekšējās apdares darbi', 'Inženiertīklu un komunikāciju atjaunošana'], note: 'Cenas bez PVN. Atkarībā no ēkas stāvokļa var ietvert arī jumta un fasādes atjaunošanu. Gala cenu nosakām pēc objekta apsekošanas.' },
+{ id: 'remonts', group: R, name: 'Remonta un apdares darbi', from: 'no 280 €/m²', inCalc: true,
+desc: 'Remontējam dzīvokļus, privātmājas un komerctelpas: špaktelēšana un krāsošana, flīzēšana, grīdas segumi, reģipša konstrukcijas, vannas istabas un virtuves. Pirms darbiem izvērtējam objektu un saskaņojam darbu apjomu.',
+prices: [['Sākuma cena', '280 €/m²'], ['Vidējā plānošanas cena', '400 €/m²'], ['Sarežģītākiem projektiem', 'līdz 700+ €/m²']],
+includes: ['Telpu sagatavošana un demontāža', 'Sienu un griestu sagatavošana, špaktelēšana, krāsošana', 'Grīdas segumu ieklāšana', 'Citi pamata apdares darbi'], note: 'Gala cenu nosakām pēc objekta stāvokļa, darbu apjoma un izvēlētajiem materiāliem.' },
+{ id: 'demontaza', group: R, name: 'Demontāža un konstrukciju nojaukšana', from: 'no 10 €/m²', inCalc: false,
+desc: 'Nojaucam starpsienas, noņemam grīdas segumus, flīzes, griestus, durvis, logus un veco apdari pirms remonta vai renovācijas. Pēc vienošanās demontējam un utilizējam arī mēbeles un sadzīves tehniku.',
+prices: [['Nenesošās starpsienas, sākuma cena', '10 €/m²'], ['Vidējā plānošanas cena', '15 €/m²'], ['Lielākas sarežģītības', '20+ €/m²']],
+includes: ['Starpsienas konstrukcijas demontāža', 'Materiālu savākšana darba zonā'], note: 'Būvgružu iznešana, izvešana un utilizācija nav iekļauta (sk. būvgružu izvešanu).' },
+{ id: 'kokapstrade', group: R, name: 'Kokapstrāde', from: 'no 30 €/h', inCalc: false,
+desc: 'Izgatavojam koka detaļas un izstrādājumus pēc pasūtījuma: zāģēšana, ēvelēšana, frēzēšana un virsmas apstrāde. Materiālus, termiņus un izmaksas saskaņojam pirms darba.',
+prices: [['Individuālu koka detaļu izgatavošana', 'no 30 €/h']],
+includes: ['Darba vietas sagatavošana', 'Detaļu izgatavošana pēc saskaņotiem izmēriem', 'Nepieciešamā apstrāde', 'Kvalitātes pārbaude'], note: 'Materiāli un papildu apstrāde tiek aprēķināta atsevišķi.' },
+{ id: 'metalapstrade', group: R, name: 'Metālapstrāde', from: 'no 35 €/h', inCalc: false,
+desc: 'Izgatavojam metāla detaļas un konstrukcijas pēc izmēriem, skicēm vai rasējumiem: griešana, urbšana, slīpēšana, metināšana un montāža. Arī žogi, vārti, kāpnes un margas.',
+prices: [['Metālapstrādes pakalpojumi', 'no 35 €/h']],
+includes: ['Darba process', 'Detaļu apstrāde atbilstoši pasūtījumam'], note: 'Materiāli, papildu apstrāde un montāža tiek aprēķināta atsevišķi.' },
+{ id: 'apsaimniekosana', group: T, name: 'Ēku apsaimniekošana un uzturēšana', from: 'no 100 €/mēn.', inCalc: false,
+desc: 'Regulāras tehniskā stāvokļa pārbaudes, inženiersistēmu apkope, nelieli remonti un jumtu, fasāžu un konstrukciju uzturēšana. Problēmas pamanām laikus, lai novērstu bojājumus un neparedzētus izdevumus.',
+prices: [['Privātmājas regulārā uzturēšana', '100–250 €/mēn.'], ['Kompleksā apsaimniekošana', '180–350 €/mēn.'], ['Teritorijas sezonālā uzturēšana', '80–250 €/mēn.'], ['Tehniskā apskate (1 reize)', '80–200 €'], ['Profilaktiskā apkope (apmeklējums)', '50–120 €'], ['Nelieli remonta un apkopes darbi', '30–45 €/h']],
+includes: ['Plānotas tehniskā stāvokļa pārbaudes', 'Apkures, ventilācijas un ūdensapgādes kontrole', 'Jumta, fasādes un konstrukciju apskate', 'Profilaktiska apkope un ieteikumi remontiem'], note: 'Materiāli, rezerves daļas, lielāki remonti un ārkārtas izsaukumi tiek aprēķināti atsevišķi. Mēneša maksa atkarīga no mājas platības un pakalpojuma apjoma.' },
+{ id: 'drenaza', group: T, name: 'Drenāžas un meliorācijas darbi', from: 'no 25 €/m', inCalc: false,
+desc: 'Izbūvējam pamatu drenāžu, lietus ūdens novadīšanas sistēmas, drenāžas akas un meliorācijas sistēmas. Risinājumu izvēlamies pēc teritorijas reljefa un grunts, lai pasargātu ēkas pamatus no liekā mitruma.',
+prices: [['Drenāžas izbūve', 'no 25 €/m'], ['Pamatu drenāža', 'no 35 €/m'], ['Meliorācijas darbi', 'no 500 € / objekts']],
+includes: ['Drenāžas tranšejas sagatavošana', 'Drenāžas cauruļu ieklāšana', 'Ģeotekstils un filtrējošais šķembu slānis', 'Sistēmas pamatmontāža'], note: 'Cenas bez PVN. Materiāli nav iekļauti cenā.' },
+{ id: 'labiekartosana', group: T, name: 'Apzaļumošana un labiekārtošana', from: 'no 5 €/m²', inCalc: false,
+desc: 'Planējam teritoriju, ierīkojam zālienus, stādām kokus un krūmus, veidojam dobes, bruģējam un izbūvējam dārza celiņus. Radām sakoptu un viegli kopjamu vidi, kas ceļ īpašuma vērtību.',
+prices: [['Vienkārši apzaļumošanas darbi', 'no 5 €/m²'], ['Sagatavošana un zāliena ierīkošana', '10–20 €/m²'], ['Pilna labiekārtošana ar bruģi', 'no 45 €/m²']],
+includes: ['Augsnes sagatavošana', 'Virsmas izlīdzināšana', 'Zāliena sēšana'], note: 'Iekļautais attiecas uz zāliena ierīkošanu. Atkarībā no teritorijas iespējama melnzemes iestrāde un papildu sagatavošana.' },
+{ id: 'buvgruzi', group: T, name: 'Būvgružu izvešana un utilizācija', from: 'no 50 €', inCalc: false,
+desc: 'Savācam, iekraujam un izvedam būvgružus pēc remonta, demontāžas vai būvdarbiem. Pēc vajadzības šķirojam un nododam atbildīgai apsaimniekošanai, arī mēbeles un sadzīves tehniku.',
+prices: [['Būvgružu izvešana', 'no 50 € / izbraukums'], ['Būvgruži maisos', 'no 6 € / maiss'], ['Konteinera noma', 'no 250 € / konteiners']],
+includes: ['Atkritumu savākšana un iekraušana', 'Transportēšana', 'Nodošana pieņemšanas vietā'], note: 'Gala cena atkarīga no daudzuma, atkritumu veida, attāluma un utilizācijas izmaksām.' },
+{ id: 'koki', group: T, name: 'Koku zāģēšana un apauguma novākšana', from: 'no 5 €/m²', inCalc: false,
+desc: 'Zāģējam nevajadzīgus un bojātus kokus, izcērtam krūmus un attīrām aizaugušas teritorijas. Pēc vienošanās izvedam zarus un zaļos atkritumus, sagatavojot teritoriju būvniecībai.',
+prices: [['Apauguma novākšana', 'no 5 €/m²']],
+includes: ['Krūmu, sīkkoku un apauguma attīrīšana', 'Veģetācijas savākšana darba zonā'], note: 'Neietver lielu koku zāģēšanu, celmu izraušanu un zaļo atkritumu izvešanu.' }
 ];
-const { svc, area } = this.state;
-const cur = list[svc];
+const calcDefs = [
+{ label: 'Pamati', min: 150, max: 350, note: '150–350+ €/m² atkarībā no projekta' },
+{ label: 'Jumts', min: 110, max: 140, note: 'No 110 €/m², vidēji 140 €/m²' },
+{ label: 'Fasāde', min: 45, max: 60, note: 'No 45 €/m², vidēji 60 €/m², materiāli atsevišķi' },
+{ label: 'Inženiertīkli', min: 120, max: 160, note: 'No 120 €/m², vidēji 160 €/m²' },
+{ label: 'Remonts', min: 280, max: 400, note: 'No 280 €/m², vidēji 400 €/m²' },
+{ label: 'Renovācija', min: 450, max: 650, note: 'No 450 €/m², vidēji 650 €/m²' }
+];
+const { calc, area, group, open } = this.state;
+const cur = calcDefs[calc];
 const clamp = (v) => Math.max(10, Math.min(400, v));
-const fmt = (n) => n.toLocaleString('lv-LV').replace(/,/g, ' ');
+const fmt = (n) => new Intl.NumberFormat('lv-LV').format(n);
+const groups = ['Visi', B, R, T];
+const shown = group === 'Visi' ? S : S.filter((s) => s.group === group);
 return {
-services: list.map((s, i) => ({
-label: s.label,
-cls: i === svc ? 'calc_option is-active' : 'calc_option',
-pressed: i === svc ? 'true' : 'false',
-pick: () => this.setState({ svc: i })
-})),
+calc: calcDefs.map((c, i) => ({ label: c.label, cls: i === calc ? 'calc_option is-active' : 'calc_option', pressed: i === calc ? 'true' : 'false', pick: () => this.setState({ calc: i }) })),
 area,
-total: cur.rate ? 'no ' + fmt(cur.rate * area) + ' €' : '[cena no Excel]',
-rateNote: cur.rate ? 'Pēc likmes no ' + cur.rate + ' ' + cur.unit : 'Likme tiks pievienota pēc klienta kalkulatora tabulas',
+total: fmt(cur.min * area) + ' – ' + fmt(cur.max * area) + ' €',
+rateNote: cur.note,
 inc: () => this.setState({ area: clamp(area + 10) }),
 dec: () => this.setState({ area: clamp(area - 10) }),
-setArea: (e) => this.setState({ area: clamp(Number(e.target.value)) })
+setArea: (e) => this.setState({ area: clamp(Number(e.target.value)) }),
+tabs: groups.map((g) => ({ label: g, count: g === 'Visi' ? S.length : S.filter((s) => s.group === g).length, cls: g === group ? 'services-list_tab is-active' : 'services-list_tab', pressed: g === group ? 'true' : 'false', pick: () => this.setState({ group: g }) })),
+services: shown.map((s) => ({
+...s,
+open: s.id === open,
+expanded: s.id === open ? 'true' : 'false',
+cls: s.id === open ? 'services-list_item is-open' : 'services-list_item',
+prices: s.prices.map((p) => ({ label: p[0], value: p[1] })),
+hasNote: !!s.note,
+toggle: () => this.setState({ open: s.id === open ? null : s.id })
+})),
+allNames: S.map((s) => s.name)
 };
 }
 }

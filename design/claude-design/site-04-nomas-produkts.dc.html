@@ -2,7 +2,7 @@
 <html lang="lv">
 <head>
 <meta charset="utf-8">
-<title>ProBuildGroup: traktors ar priekšējo kausu, noma</title>
+<title>ProBuildGroup: ekskavatora-iekrāvēja noma</title>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -73,7 +73,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 <div class="padding-global">
 <div class="container-large">
 <div class="padding-section-large" style="padding-top: 3rem">
-<nav aria-label="Ceļš" class="text-size-small" style="display: flex; flex-wrap: wrap; gap: .5rem; color: #7F7F7F; margin-bottom: 2.5rem"><a href="site-03-noma.dc.html" style="color: #B2B2B2; text-decoration: none">Noma</a><span aria-hidden="true">/</span><a href="site-03-noma.dc.html" style="color: #B2B2B2; text-decoration: none">Tehnika</a><span aria-hidden="true">/</span><span style="color: #FFFFFF">Traktors ar priekšējo kausu</span></nav>
+<nav aria-label="Ceļš" class="text-size-small" style="display: flex; flex-wrap: wrap; gap: .5rem; color: #7F7F7F; margin-bottom: 2.5rem"><a href="site-03-noma.dc.html" style="color: #B2B2B2; text-decoration: none">Noma</a><span aria-hidden="true">/</span><a href="site-03-noma.dc.html" style="color: #B2B2B2; text-decoration: none">Tehnika</a><span aria-hidden="true">/</span><span style="color: #FFFFFF">Ekskavators-iekrāvējs</span></nav>
 <div class="rental-product_component">
 <div class="rental-product_gallery" style="display: flex; flex-direction: column; gap: 1rem">
 <div class="rental-product_main-image-wrapper" style="aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: #191919"><img src="{{mainImg}}" alt="{{mainAlt}}" class="rental-product_main-image img-cover"></div>
@@ -86,13 +86,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 <div class="rental-product_content" style="display: flex; flex-direction: column; gap: 1.75rem; position: sticky; top: 2rem">
 <div style="display: flex; flex-direction: column; gap: 1rem">
 <span class="tag" style="align-self: flex-start">Tehnika</span>
-<h1 class="heading-style-h2" style="font-size: 2.75rem">Traktors ar priekšējo kausu</h1>
-<p class="text-size-medium text-color-muted">Kompakts un jaudīgs palīgs zemes pārvietošanai, teritorijas planēšanai un materiālu iekraušanai. Piemērots privātmāju būvlaukumiem un saimniecībai.</p>
+<h1 class="heading-style-h2" style="font-size: 2.75rem">Universālais ekskavators-iekrāvējs</h1>
+<p class="text-size-medium text-color-muted">NEW HOLLAND B115-4PS ar 82 kW (111 ZS) dīzeļdzinēju un 4×4 piedziņu. Piemērots rakšanai, tranšeju veidošanai, zemes pārvietošanai un iekraušanai gan būvobjektos, gan teritoriju labiekārtošanā.</p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 2rem; padding: 1.25rem 0; border-top: 1px solid rgba(255,255,255,.15); border-bottom: 1px solid rgba(255,255,255,.15)">
-<div style="display: flex; flex-direction: column; gap: .25rem"><span class="text-size-small text-color-muted">Diena</span><span class="heading-style-h5">[€]</span></div>
-<div style="display: flex; flex-direction: column; gap: .25rem"><span class="text-size-small text-color-muted">Nedēļa</span><span class="heading-style-h5">[€]</span></div>
-<div style="display: flex; flex-direction: column; gap: .25rem"><span class="text-size-small text-color-muted">Depozīts</span><span class="heading-style-h5">[€]</span></div>
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 2.5rem; padding: 1.25rem 0; border-top: 1px solid rgba(255,255,255,.15); border-bottom: 1px solid rgba(255,255,255,.15)">
+<div style="display: flex; flex-direction: column; gap: .25rem"><span class="text-size-small text-color-muted">Cena</span><span class="heading-style-h4" style="color: #F58F54">55 €/h</span></div>
+<div style="display: flex; flex-direction: column; gap: .25rem; padding-bottom: .375rem"><span class="text-size-small text-color-muted">Iekļauts</span><span style="font-weight: 600">Operators</span></div>
+<div style="display: flex; flex-direction: column; gap: .25rem; padding-bottom: .375rem"><span class="text-size-small text-color-muted">Piedziņa</span><span style="font-weight: 600">4×4</span></div>
+<div style="display: flex; flex-direction: column; gap: .25rem; padding-bottom: .375rem"><span class="text-size-small text-color-muted">Rakšanas dziļums</span><span style="font-weight: 600">līdz ~5,6 m</span></div>
 </div>
 <form class="rental-product_form" aria-label="Nomas pieprasījums" style="display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; border-radius: 16px; background: #191919">
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem">
@@ -100,8 +101,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 <label class="form_field">Telefons<input class="form_input" type="tel" autocomplete="tel"></label>
 </div>
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem">
-<label class="form_field">No<input class="form_input" type="date"></label>
-<label class="form_field">Līdz<input class="form_input" type="date"></label>
+<label class="form_field">Datums<input class="form_input" type="date" name="datums"></label>
+<label class="form_field">Aptuvenais ilgums<input class="form_input" type="text" name="ilgums" inputmode="numeric" placeholder="Piem., 6 h…"></label>
 </div>
 <button type="button" class="button is-accent">Sūtīt pieprasījumu<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
 <p style="font-size: .75rem; color: #7F7F7F; line-height: 1.5">Apmaksa lapā nav jāveic. Pieejamību un cenu apstiprināsim pēc sazināšanās.</p>
@@ -110,19 +111,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 <details class="rental-product_accordion" open="">
 <summary>Specifikācija</summary>
 <div class="rental-product_spec">
-<span class="text-color-muted">Jauda</span><span>[kW]</span>
-<span class="text-color-muted">Kausa tilpums</span><span>[m³]</span>
-<span class="text-color-muted">Svars</span><span>[kg]</span>
-<span class="text-color-muted">Degviela</span><span>[dīzelis]</span>
+<span class="text-color-muted">Modelis</span><span>NEW HOLLAND B115-4PS</span>
+<span class="text-color-muted">Tehnikas veids</span><span>Ekskavators-iekrāvējs</span>
+<span class="text-color-muted">Dzinēja jauda</span><span>82 kW (111 ZS)</span>
+<span class="text-color-muted">Dzinējs</span><span>4 cil. turbodīzelis, 4,5 l</span>
+<span class="text-color-muted">Piedziņa</span><span>4×4</span>
+<span class="text-color-muted">Transmisija</span><span>Power Shuttle</span>
+<span class="text-color-muted">Darba masa</span><span>~9 500 kg</span>
+<span class="text-color-muted">Priekšējā kausa ietilpība</span><span>~1,15 m³</span>
+<span class="text-color-muted">Iekrāvēja celtspēja</span><span>līdz ~3 386 kg</span>
+<span class="text-color-muted">Ekskavatora celtspēja</span><span>~2 560 kg</span>
+<span class="text-color-muted">Ar teleskopisko strēli (izvilktu)</span><span>~1 500 kg</span>
+<span class="text-color-muted">Maks. rakšanas dziļums</span><span>līdz ~5,6 m</span>
 </div>
-</details>
-<details class="rental-product_accordion">
-<summary>Pielietojums</summary>
-<p class="text-color-muted" style="padding-bottom: 1.25rem; line-height: 1.6">Zemes pārvietošana, planēšana, sniega tīrīšana, materiālu iekraušana un pārvietošana objektā.</p>
-</details>
-<details class="rental-product_accordion">
-<summary>Nomas nosacījumi</summary>
-<p class="text-color-muted" style="padding-bottom: 1.25rem; line-height: 1.6">[Minimālais nomas laiks, piegāde, vadītāja apliecība, degvielas noteikumi]</p>
+<p class="text-size-small" style="color: #7F7F7F; padding-bottom: 1.25rem">Rakšanas dziļums un ātrums atkarīgi no komplektācijas.</p>
 </details>
 </div>
 </div>
