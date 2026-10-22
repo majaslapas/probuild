@@ -55,11 +55,29 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 .home-reviews_card{display:flex;flex-direction:column;gap:1.5rem;padding:2rem;border-radius:16px;background:#000000}
 @media (max-width:991px){.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2{gap:3rem}}
 @media (max-width:767px){.heading-style-h1{font-size:2.5rem}.heading-style-h2{font-size:2.25rem}.heading-style-h3{font-size:2rem}.heading-style-h5{font-size:1.25rem}.text-size-large{font-size:1.125rem}.text-size-medium{font-size:1rem}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.grid-2,.grid-3{grid-template-columns:minmax(0,1fr)}.home-hero_facts{display:none}}
+:root{color-scheme:dark}
+.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h4{letter-spacing:-0.02em;text-wrap:balance}
+.heading-style-h5,.heading-style-h6{text-wrap:balance}
+p{text-wrap:pretty}
+.text-style-tagline{font-family:'Noto Sans',system-ui,sans-serif;font-size:1.0625rem;font-weight:600;letter-spacing:0;text-transform:none;color:#F58F54}
+.text-style-tagline::before{display:none}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid #F2600C;outline-offset:3px}
+.button,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.button{transition:background-color .2s,border-color .2s,color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
+.button:active{transform:scale(.97)}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes settle{from{transform:scale(1.08)}to{transform:scale(1)}}
+@media (prefers-reduced-motion:no-preference){
+.home-hero_background-image{animation:settle 2.4s cubic-bezier(.23,1,.32,1) both}
+.home-hero_content>*{animation:rise .8s cubic-bezier(.23,1,.32,1) both}
+.home-hero_content>*:nth-child(2){animation-delay:.08s}.home-hero_content>*:nth-child(3){animation-delay:.16s}.home-hero_content>*:nth-child(4){animation-delay:.24s}
+@supports (animation-timeline:view()){main section h2,main section h3,main section figure,main section [class*="_image-wrapper"],main section [class*="_item"]{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 35%}}
+}
 </style>
 </helmet>
 <div class="page-wrapper">
 <dc-import name="SiteNavbar" current="sakums" hint-size="100%,88px"></dc-import>
-<main class="main-wrapper">
+<main id="saturs" class="main-wrapper">
 
 <header class="section_home-hero color-scheme-2" style="position: relative; overflow: hidden; background: #191919">
 <img src="/_blob/d6153579c9f20b8183947995f3c86697" alt="Meistars montē koka fasādes apdari" class="home-hero_background-image img-cover" style="position: absolute; inset: 0; object-position: 70% 30%">
@@ -69,7 +87,7 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 <div class="home-hero_component" style="min-height: 44rem; padding: 8rem 0 3rem; display: flex; flex-direction: column; justify-content: flex-end; gap: 5rem">
 <div class="home-hero_content" style="max-width: 46rem; display: flex; flex-direction: column; gap: 1.75rem">
 <span class="text-style-tagline">Būvniecības un remonta pakalpojumi</span>
-<h1 class="heading-style-h1" style="font-size: 4rem; line-height: 1.1">Profesionāli būvniecības risinājumi jūsu vajadzībām</h1>
+<h1 class="heading-style-h1" style="font-size: clamp(2.75rem, 5vw, 4.5rem); line-height: 1.05">Profesionāli būvniecības risinājumi jūsu vajadzībām</h1>
 <p class="text-size-large" style="color: #D8D8D8; max-width: 38rem">Īstenojam jūsu ieceres ar augstu kvalitāti, profesionālu pieeju un atbildību katrā būvniecības posmā. Radām ilgtspējīgus, pārdomātus un uzticamus risinājumus.</p>
 <div class="button-group" style="padding-top: .5rem">
 <a href="site-02-pakalpojumi.dc.html" class="button is-accent">Uzzināt vairāk<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
@@ -77,9 +95,9 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 </div>
 </div>
 <div class="home-hero_facts" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.25)">
-<div style="display: flex; flex-direction: column; gap: .25rem"><span style="font-family: 'Martian Mono', monospace; font-size: .75rem; color: #F58F54">01</span><span style="font-weight: 600">Būvniecība no pamatiem līdz atslēgai</span></div>
-<div style="display: flex; flex-direction: column; gap: .25rem"><span style="font-family: 'Martian Mono', monospace; font-size: .75rem; color: #F58F54">02</span><span style="font-weight: 600">Remonti, apdare, apsaimniekošana</span></div>
-<div style="display: flex; flex-direction: column; gap: .25rem"><span style="font-family: 'Martian Mono', monospace; font-size: .75rem; color: #F58F54">03</span><span style="font-weight: 600">Tehnikas un instrumentu noma</span></div>
+<div style="display: flex; flex-direction: column; gap: .25rem"><span style="font-weight: 600">Būvniecība no pamatiem līdz atslēgai</span></div>
+<div style="display: flex; flex-direction: column; gap: .25rem"><span style="font-weight: 600">Remonti, apdare, apsaimniekošana</span></div>
+<div style="display: flex; flex-direction: column; gap: .25rem"><span style="font-weight: 600">Tehnikas un instrumentu noma</span></div>
 </div>
 </div>
 </div>
@@ -92,7 +110,6 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 <div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
 <div class="home-services_header" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2rem">
 <div style="max-width: 44rem; display: flex; flex-direction: column; gap: 1.25rem">
-<span class="text-style-tagline">Pakalpojumi</span>
 <h2 class="heading-style-h2">Mūsu būvniecības pakalpojumi</h2>
 </div>
 <a href="site-02-pakalpojumi.dc.html" class="button is-secondary">Visi pakalpojumi<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
@@ -101,7 +118,6 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 <a href="site-02-pakalpojumi.dc.html" class="home-services_item">
 <div class="home-services_image-wrapper" style="aspect-ratio: 4 / 3; overflow: hidden"><img src="/_blob/3a843929b2857bf09e24625a07152429" alt="Koka karkasa ēkas būvniecība" class="home-services_image img-cover"></div>
 <div style="padding: 1.75rem; display: flex; flex-direction: column; gap: .75rem; flex: 1">
-<span style="font-family: 'Martian Mono', monospace; font-size: .75rem; color: #7F7F7F">01</span>
 <h3 class="heading-style-h5">Ēku būvniecība</h3>
 <p class="text-color-muted">No pamatiem līdz atslēgai.</p>
 <span class="home-services_link" style="margin-top: auto; padding-top: .75rem">Uzzināt vairāk<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
@@ -110,7 +126,6 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 <a href="site-02-pakalpojumi.dc.html" class="home-services_item">
 <div class="home-services_image-wrapper" style="aspect-ratio: 4 / 3; overflow: hidden"><img src="/_blob/430ec39b4c6023c9a01084d28a10b692" alt="Telpu renovācija procesā" class="home-services_image img-cover"></div>
 <div style="padding: 1.75rem; display: flex; flex-direction: column; gap: .75rem; flex: 1">
-<span style="font-family: 'Martian Mono', monospace; font-size: .75rem; color: #7F7F7F">02</span>
 <h3 class="heading-style-h5">Remonti un apdare</h3>
 <p class="text-color-muted">Apsaimniekošana un zemes darbi.</p>
 <span class="home-services_link" style="margin-top: auto; padding-top: .75rem">Uzzināt vairāk<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
@@ -119,7 +134,6 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 <a href="site-03-noma.dc.html" class="home-services_item">
 <div class="home-services_image-wrapper" style="aspect-ratio: 4 / 3; overflow: hidden"><img src="/_blob/2e5b244c4dc865908f6dd25242cd511b" alt="Ekskavators būvlaukumā" class="home-services_image img-cover"></div>
 <div style="padding: 1.75rem; display: flex; flex-direction: column; gap: .75rem; flex: 1">
-<span style="font-family: 'Martian Mono', monospace; font-size: .75rem; color: #7F7F7F">03</span>
 <h3 class="heading-style-h5">Tehnikas noma</h3>
 <p class="text-color-muted">Instrumentu un tehnikas noma.</p>
 <span class="home-services_link" style="margin-top: auto; padding-top: .75rem">Skatīt nomu<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
@@ -138,13 +152,12 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 <div class="home-about_component grid-2">
 <div class="home-about_image-wrapper" style="aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden"><img src="/_blob/2dfa1e0fad4aad44e625666462e1555b" alt="Meistars strādā pie loga montāžas" class="home-about_image img-cover"></div>
 <div class="home-about_content" style="display: flex; flex-direction: column; gap: 1.75rem">
-<span class="text-style-tagline">Par mums</span>
 <h2 class="heading-style-h2">Uzticams un stabils partneris būvniecībā</h2>
 <p class="text-size-medium" style="color: #191919">Esam uz kvalitāti un uzticamību orientēts būvniecības uzņēmums, kas palīdz īstenot klientu ieceres no idejas līdz gatavam rezultātam. Apvienojam profesionālu pieeju, rūpīgu plānošanu un atbildību katrā būvniecības posmā.</p>
 <ul class="home-about_list" style="list-style: none; padding: 0; display: flex; flex-direction: column; border-top: 1px solid rgba(0,0,0,.25)">
-<li style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,.25); font-weight: 600"><span style="font-family: 'Martian Mono', monospace; font-size: .75rem">01</span>Augsta darba kvalitāte</li>
-<li style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,.25); font-weight: 600"><span style="font-family: 'Martian Mono', monospace; font-size: .75rem">02</span>Profesionāla un atbildīga pieeja</li>
-<li style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,.25); font-weight: 600"><span style="font-family: 'Martian Mono', monospace; font-size: .75rem">03</span>Uzticamība katrā projektā</li>
+<li style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,.25); font-weight: 600">Augsta darba kvalitāte</li>
+<li style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,.25); font-weight: 600">Profesionāla un atbildīga pieeja</li>
+<li style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,.25); font-weight: 600">Uzticamība katrā projektā</li>
 </ul>
 <div class="button-group">
 <a href="site-07-par-mums.dc.html" class="button is-dark">Par mums</a>
@@ -163,7 +176,6 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 <div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2rem">
 <div style="max-width: 44rem; display: flex; flex-direction: column; gap: 1.25rem">
-<span class="text-style-tagline">Noma</span>
 <h2 class="heading-style-h2">Tehnika un instrumenti nomai</h2>
 <p class="text-size-medium text-color-muted">Nomājiet to, kas vajadzīgs tieši jūsu darbam. Cenu un periodu saskaņosim pēc pieprasījuma.</p>
 </div>
@@ -194,7 +206,6 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 <div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2rem">
 <div style="max-width: 40rem; display: flex; flex-direction: column; gap: 1.25rem">
-<span class="text-style-tagline">Atsauksmes</span>
 <h2 class="heading-style-h2">Ko saka mūsu klienti</h2>
 </div>
 <div class="home-reviews_rating" style="display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; border-radius: 16px; border: 1px solid rgba(255,255,255,.2)">

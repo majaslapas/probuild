@@ -39,11 +39,25 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 .portfolio-list_image{transition:transform .6s}
 .portfolio-list_arrow{display:flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);flex-shrink:0;transition:background-color .2s,color .2s,border-color .2s}
 @media (max-width:767px){.heading-style-h1{font-size:2.5rem}.text-size-large{font-size:1.125rem}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.portfolio-list_list{grid-template-columns:minmax(0,1fr)}}
+:root{color-scheme:dark}
+.heading-style-h1{letter-spacing:-0.02em;text-wrap:balance}
+.heading-style-h5{text-wrap:balance}
+p{text-wrap:pretty}
+a:focus-visible,button:focus-visible{outline:2px solid #F2600C;outline-offset:3px}
+button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.portfolio-list_filter{transition:background-color .2s,border-color .2s,color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
+.portfolio-list_filter:active{transform:scale(.97)}
+.portfolio-list_type{font-size:.875rem;font-weight:600;color:#F58F54}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+.portfolio-list_item{animation:rise .6s cubic-bezier(.23,1,.32,1) both}
+.portfolio-list_item:nth-child(2){animation-delay:.07s}.portfolio-list_item:nth-child(3){animation-delay:.14s}.portfolio-list_item:nth-child(4){animation-delay:.21s}
+}
 </style>
 </helmet>
 <div class="page-wrapper">
 <dc-import name="SiteNavbar" current="portfolio" hint-size="100%,88px"></dc-import>
-<main class="main-wrapper">
+<main id="saturs" class="main-wrapper">
 
 <section class="section_portfolio-list color-scheme-1">
 <div class="padding-global">
@@ -51,7 +65,6 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 <div class="padding-section-large" style="padding-top: 6rem; display: flex; flex-direction: column; gap: 3.5rem">
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 2rem 4rem; align-items: end">
 <div style="display: flex; flex-direction: column; gap: 1.5rem">
-<span class="text-style-tagline">Projekti</span>
 <h1 class="heading-style-h1">Pabeigtie projekti</h1>
 </div>
 <p class="text-size-large text-color-muted">Mūsu darbs runā pats par sevi. Apskatiet paveikto: ar platību, darbu veidiem un termiņiem.</p>
@@ -67,7 +80,7 @@ p,h1,h2,h3,h4,h5,h6,ul{margin:0}
 <div style="aspect-ratio: 3 / 2; border-radius: 16px; overflow: hidden; background: #191919"><img src="{{p.img}}" alt="{{p.alt}}" class="portfolio-list_image img-cover"></div>
 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem">
 <div style="display: flex; flex-direction: column; gap: .625rem">
-<span class="text-size-small" style="font-family: 'Martian Mono', monospace; color: #F58F54">{{p.type}}</span>
+<span class="portfolio-list_type">{{p.type}}</span>
 <h2 class="heading-style-h5">{{p.name}}</h2>
 <p class="text-color-muted" style="line-height: 1.6">{{p.desc}}</p>
 </div>

@@ -45,11 +45,25 @@ textarea.form_input{padding:.875rem 1rem;min-height:9rem;resize:vertical}
 .contact_chip input:focus-visible + span{outline:2px solid #F2600C;outline-offset:2px}
 @media (max-width:991px){.contact_component{grid-template-columns:minmax(0,1fr);gap:3rem}}
 @media (max-width:767px){.heading-style-h1{font-size:2.5rem}.text-size-large{font-size:1.125rem}.padding-section-large{padding-top:4rem;padding-bottom:4rem}}
+:root{color-scheme:dark}
+.heading-style-h1{letter-spacing:-0.02em;text-wrap:balance}
+p{text-wrap:pretty}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #F2600C;outline-offset:3px}
+.button,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.button{transition:background-color .2s,border-color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
+.button:active,.contact_chip:active span{transform:scale(.97)}
+.contact_chip span{transition:background-color .2s,border-color .2s,color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
+.contact_chip span:hover{border-color:#FFFFFF}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+.contact_content>*,.contact_form{animation:rise .8s cubic-bezier(.23,1,.32,1) both}
+.contact_content>*:nth-child(2){animation-delay:.08s}.contact_content>*:nth-child(3){animation-delay:.16s}.contact_form{animation-delay:.12s}
+}
 </style>
 </helmet>
 <div class="page-wrapper">
 <dc-import name="SiteNavbar" current="kontakti" hint-size="100%,88px"></dc-import>
-<main class="main-wrapper">
+<main id="saturs" class="main-wrapper">
 
 <section class="section_contact color-scheme-1">
 <div class="padding-global">
@@ -58,7 +72,6 @@ textarea.form_input{padding:.875rem 1rem;min-height:9rem;resize:vertical}
 <div class="contact_component">
 <div class="contact_content" style="display: flex; flex-direction: column; gap: 2.5rem">
 <div style="display: flex; flex-direction: column; gap: 1.5rem">
-<span class="text-style-tagline">Kontakti</span>
 <h1 class="heading-style-h1">Sazināsimies</h1>
 <p class="text-size-large text-color-muted">Zvaniet, rakstiet vai aizpildiet formu. Atbildēsim darba dienas laikā.</p>
 </div>
@@ -89,7 +102,7 @@ textarea.form_input{padding:.875rem 1rem;min-height:9rem;resize:vertical}
 <label class="form_field">Telefons<input class="form_input" type="tel" autocomplete="tel"></label>
 </div>
 <label class="form_field">E-pasts<input class="form_input" type="email" autocomplete="email"></label>
-<label class="form_field">Ziņa<textarea class="form_input" placeholder="Pastāstiet par savu ieceri"></textarea></label>
+<label class="form_field">Ziņa<textarea class="form_input" name="zina" placeholder="Pastāstiet par savu ieceri…"></textarea></label>
 <button type="button" class="button" style="align-self: flex-start">Nosūtīt<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
 </form>
 </div>

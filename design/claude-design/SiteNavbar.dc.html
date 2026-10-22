@@ -19,16 +19,22 @@ body{margin:0}
 .navbar_phone:hover{color:#F58F54}
 .navbar_button{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:2.75rem;padding:0 1.25rem;border-radius:100px;background:#F2600C;color:#000000;font-weight:600;font-size:.9375rem;text-decoration:none;transition:background-color .2s}
 .navbar_button:hover{background:#F58F54;color:#000000}
+.navbar_skip{position:absolute;left:1rem;top:-4rem;z-index:20;padding:.75rem 1rem;border-radius:12px;background:#F2600C;color:#000000;font-weight:600;text-decoration:none;transition:top .2s}
+.navbar_skip:focus{top:1rem;color:#000000}
+.navbar_component a:focus-visible{outline:2px solid #F2600C;outline-offset:3px}
+.navbar_button{touch-action:manipulation;transition:background-color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
+.navbar_button:active{transform:scale(.97)}
 @media (max-width:991px){.navbar_phone{display:none}}
 </style>
 </helmet>
 <nav class="navbar_component color-scheme-2" aria-label="Galvenā navigācija" style="position: relative; z-index: 10; background: #191919; color: #FFFFFF; font-family: 'Noto Sans', sans-serif; border-bottom: 1px solid rgba(255,255,255,.12)">
+<a href="#saturs" class="navbar_skip">Pāriet uz saturu</a>
 <div class="padding-global" style="padding-left: 5%; padding-right: 5%">
 <div class="navbar_container" style="max-width: 80rem; margin: 0 auto; min-height: 5.5rem; padding: .75rem 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 2rem">
 <a href="site-01-sakums.dc.html" class="navbar_logo-link" aria-label="ProBuildGroup sākumlapa" style="display: flex; align-items: center"><img src="/_blob/9d096e13f2c82c26cb7287f0427044d5" alt="ProBuildGroup" class="navbar_logo" style="width: 80px; height: 41px"></a>
 <div class="navbar_menu" style="display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 2rem">
 <sc-for list="{{links}}" as="link" hint-placeholder-count="5">
-<a href="{{link.href}}" class="{{link.cls}}">{{link.label}}</a>
+<a href="{{link.href}}" class="{{link.cls}}" aria-current="{{link.current}}">{{link.label}}</a>
 </sc-for>
 </div>
 <div class="navbar_actions" style="display: flex; align-items: center; gap: 1.5rem">
@@ -50,7 +56,7 @@ const items = [
 { id: 'portfolio', label: 'Projekti', href: 'site-05-portfolio.dc.html' },
 { id: 'par-mums', label: 'Par mums', href: 'site-07-par-mums.dc.html' }
 ];
-return { links: items.map((l) => ({ ...l, cls: l.id === current ? 'navbar_link is-current' : 'navbar_link' })) };
+return { links: items.map((l) => ({ ...l, cls: l.id === current ? 'navbar_link is-current' : 'navbar_link', current: l.id === current ? 'page' : undefined })) };
 }
 }
 </script>
