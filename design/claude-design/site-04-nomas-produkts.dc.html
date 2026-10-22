@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>ProBuildGroup: traktors ar priekšējo kausu, noma</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
+<style>
+body{margin:0;background:#000000;color:#FFFFFF;font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#FFFFFF}a:hover{color:#F58F54}
+img{display:block;max-width:100%}
+p,h1,h2,h3,h4,h5,h6,ul{margin:0}
+.color-scheme-1{background-color:#000000;color:#FFFFFF;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
+.padding-global{padding-left:5%;padding-right:5%}
+.container-large{width:100%;max-width:80rem;margin-left:auto;margin-right:auto}
+.padding-section-large{padding-top:7rem;padding-bottom:7rem}
+.heading-style-h2,.heading-style-h5{font-family:'Martian Mono',ui-monospace,monospace;font-weight:500;letter-spacing:-0.01em;line-height:1.2}
+.heading-style-h2{font-size:3rem}.heading-style-h5{font-size:1.5rem;line-height:1.4}
+.text-size-medium{font-size:1.125rem;line-height:1.6}.text-size-small{font-size:.875rem;line-height:1.5}
+.text-color-muted{color:var(--scheme-muted)}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:.625rem;min-height:3rem;padding:0 1.5rem;border-radius:100px;border:1px solid #FFFFFF;background:#FFFFFF;color:#000000;font-family:inherit;font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .2s,border-color .2s}
+.button.is-accent{background:#F2600C;border-color:#F2600C;color:#000000}
+.button.is-accent:hover{background:#F58F54;border-color:#F58F54;color:#000000}
+.icon-arrow{width:1.125rem;height:1.125rem;flex-shrink:0}
+.tag{display:inline-flex;align-items:center;min-height:1.75rem;padding:0 .75rem;border-radius:100px;border:1px solid var(--scheme-border);font-size:.8125rem;line-height:1}
+.img-cover{width:100%;height:100%;object-fit:cover}
+.form_field{display:flex;flex-direction:column;gap:.5rem;font-size:.875rem;font-weight:600}
+.form_input{width:100%;min-height:3rem;padding:0 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#000000;color:#FFFFFF;font-family:inherit;font-size:1rem;font-weight:400}
+.form_input:focus{outline:2px solid #F2600C;outline-offset:1px;border-color:transparent}
+.form_input::placeholder{color:#7F7F7F}
+.rental-product_component{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:4rem;align-items:start}
+.rental-product_thumb{padding:0;border:2px solid transparent;border-radius:12px;overflow:hidden;background:#191919;cursor:pointer;aspect-ratio:1 / 1;transition:border-color .2s}
+.rental-product_thumb:hover{border-color:rgba(255,255,255,.5)}
+.rental-product_thumb.is-active{border-color:#F2600C}
+.rental-product_accordion{border-bottom:1px solid rgba(255,255,255,.15)}
+.rental-product_accordion summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;min-height:3.5rem;cursor:pointer;font-family:'Martian Mono',monospace;font-weight:500;font-size:1rem}
+.rental-product_accordion summary::-webkit-details-marker{display:none}
+.rental-product_accordion summary::after{content:"+";font-size:1.5rem;color:#F2600C;line-height:1}
+.rental-product_accordion[open] summary::after{content:"−"}
+.rental-product_spec{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.625rem 1rem;padding-bottom:1.25rem;font-size:.9375rem}
+@media (max-width:991px){.rental-product_component{grid-template-columns:minmax(0,1fr);gap:3rem}}
+@media (max-width:767px){.heading-style-h2{font-size:2.25rem}.padding-section-large{padding-top:3rem;padding-bottom:4rem}}
+</style>
+</helmet>
+<div class="page-wrapper">
+<dc-import name="SiteNavbar" current="noma" hint-size="100%,88px"></dc-import>
+<main class="main-wrapper">
+
+<section class="section_rental-product color-scheme-1">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="padding-top: 3rem">
+<nav aria-label="Ceļš" class="text-size-small" style="display: flex; flex-wrap: wrap; gap: .5rem; color: #7F7F7F; margin-bottom: 2.5rem"><a href="site-03-noma.dc.html" style="color: #B2B2B2; text-decoration: none">Noma</a><span aria-hidden="true">/</span><a href="site-03-noma.dc.html" style="color: #B2B2B2; text-decoration: none">Tehnika</a><span aria-hidden="true">/</span><span style="color: #FFFFFF">Traktors ar priekšējo kausu</span></nav>
+<div class="rental-product_component">
+<div class="rental-product_gallery" style="display: flex; flex-direction: column; gap: 1rem">
+<div class="rental-product_main-image-wrapper" style="aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: #191919"><img src="{{mainImg}}" alt="{{mainAlt}}" class="rental-product_main-image img-cover"></div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem">
+<sc-for list="{{thumbs}}" as="t" hint-placeholder-count="4">
+<button type="button" class="{{t.cls}}" aria-label="{{t.label}}" onClick="{{t.pick}}"><img src="{{t.src}}" alt="" class="img-cover"></button>
+</sc-for>
+</div>
+</div>
+<div class="rental-product_content" style="display: flex; flex-direction: column; gap: 1.75rem; position: sticky; top: 2rem">
+<div style="display: flex; flex-direction: column; gap: 1rem">
+<span class="tag" style="align-self: flex-start">Tehnika</span>
+<h1 class="heading-style-h2" style="font-size: 2.75rem">Traktors ar priekšējo kausu</h1>
+<p class="text-size-medium text-color-muted">Kompakts un jaudīgs palīgs zemes pārvietošanai, teritorijas planēšanai un materiālu iekraušanai. Piemērots privātmāju būvlaukumiem un saimniecībai.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 2rem; padding: 1.25rem 0; border-top: 1px solid rgba(255,255,255,.15); border-bottom: 1px solid rgba(255,255,255,.15)">
+<div style="display: flex; flex-direction: column; gap: .25rem"><span class="text-size-small text-color-muted">Diena</span><span class="heading-style-h5">[€]</span></div>
+<div style="display: flex; flex-direction: column; gap: .25rem"><span class="text-size-small text-color-muted">Nedēļa</span><span class="heading-style-h5">[€]</span></div>
+<div style="display: flex; flex-direction: column; gap: .25rem"><span class="text-size-small text-color-muted">Depozīts</span><span class="heading-style-h5">[€]</span></div>
+</div>
+<form class="rental-product_form" aria-label="Nomas pieprasījums" style="display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; border-radius: 16px; background: #191919">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem">
+<label class="form_field">Vārds<input class="form_input" type="text" autocomplete="name"></label>
+<label class="form_field">Telefons<input class="form_input" type="tel" autocomplete="tel"></label>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem">
+<label class="form_field">No<input class="form_input" type="date"></label>
+<label class="form_field">Līdz<input class="form_input" type="date"></label>
+</div>
+<button type="button" class="button is-accent">Sūtīt pieprasījumu<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+<p style="font-size: .75rem; color: #7F7F7F; line-height: 1.5">Apmaksa lapā nav jāveic. Pieejamību un cenu apstiprināsim pēc sazināšanās.</p>
+</form>
+<div class="rental-product_accordions">
+<details class="rental-product_accordion" open="">
+<summary>Specifikācija</summary>
+<div class="rental-product_spec">
+<span class="text-color-muted">Jauda</span><span>[kW]</span>
+<span class="text-color-muted">Kausa tilpums</span><span>[m³]</span>
+<span class="text-color-muted">Svars</span><span>[kg]</span>
+<span class="text-color-muted">Degviela</span><span>[dīzelis]</span>
+</div>
+</details>
+<details class="rental-product_accordion">
+<summary>Pielietojums</summary>
+<p class="text-color-muted" style="padding-bottom: 1.25rem; line-height: 1.6">Zemes pārvietošana, planēšana, sniega tīrīšana, materiālu iekraušana un pārvietošana objektā.</p>
+</details>
+<details class="rental-product_accordion">
+<summary>Nomas nosacījumi</summary>
+<p class="text-color-muted" style="padding-bottom: 1.25rem; line-height: 1.6">[Minimālais nomas laiks, piegāde, vadītāja apliecība, degvielas noteikumi]</p>
+</details>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<dc-import name="SiteFooter" hint-size="100%,460px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2200}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { img: 0 };
+}
+renderVals() {
+const imgs = [
+{ src: '/_blob/2e5b244c4dc865908f6dd25242cd511b', alt: 'Nomas tehnika būvlaukumā' },
+{ src: '/_blob/5ae8b024effcaa192c8835f28de91091', alt: 'Tehnika zemes darbos no augšas' },
+{ src: '/_blob/144c158c59a6f60aeeeec364c70f56e7', alt: 'Būvlaukums ar pamatu armatūru' },
+{ src: '/_blob/9908b73746208e67eede6dc7e360aef3', alt: 'Būvlaukuma komanda' }
+];
+const i = this.state.img;
+return {
+mainImg: imgs[i].src,
+mainAlt: imgs[i].alt,
+thumbs: imgs.map((im, k) => ({
+src: im.src,
+label: 'Rādīt bildi ' + (k + 1),
+cls: k === i ? 'rental-product_thumb is-active' : 'rental-product_thumb',
+pick: () => this.setState({ img: k })
+}))
+};
+}
+}
+</script>
+</body>
+</html>

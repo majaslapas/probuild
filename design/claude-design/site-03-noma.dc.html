@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>ProBuildGroup: tehnikas un instrumentu noma</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
+<style>
+body{margin:0;background:#000000;color:#FFFFFF;font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#FFFFFF}a:hover{color:#F58F54}
+img{display:block;max-width:100%}
+p,h1,h2,h3,h4,h5,h6,ul{margin:0}
+.color-scheme-1{background-color:#000000;color:#FFFFFF;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
+.color-scheme-2{background-color:#191919;color:#FFFFFF;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
+.padding-global{padding-left:5%;padding-right:5%}
+.container-large{width:100%;max-width:80rem;margin-left:auto;margin-right:auto}
+.padding-section-large{padding-top:7rem;padding-bottom:7rem}
+.heading-style-h1,.heading-style-h2,.heading-style-h6{font-family:'Martian Mono',ui-monospace,monospace;font-weight:500;letter-spacing:-0.01em;line-height:1.2}
+.heading-style-h1{font-size:3.5rem}.heading-style-h2{font-size:3rem}.heading-style-h6{font-size:1.25rem;line-height:1.4}
+.text-size-large{font-size:1.25rem;line-height:1.5}.text-size-medium{font-size:1.125rem;line-height:1.6}.text-size-small{font-size:.875rem;line-height:1.5}
+.text-color-muted{color:var(--scheme-muted)}
+.text-style-tagline{display:inline-flex;align-items:center;gap:.625rem;font-family:'Martian Mono',monospace;font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.text-style-tagline::before{content:"";width:.5rem;height:.5rem;background:#F2600C;flex-shrink:0}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:.625rem;min-height:3rem;padding:0 1.5rem;border-radius:100px;border:1px solid #FFFFFF;background:#FFFFFF;color:#000000;font-family:inherit;font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
+.button:hover{background:#D8D8D8;border-color:#D8D8D8;color:#000000}
+.button.is-accent{background:#F2600C;border-color:#F2600C;color:#000000}
+.button.is-accent:hover{background:#F58F54;border-color:#F58F54;color:#000000}
+.button.is-secondary{background:transparent;border-color:var(--scheme-border);color:inherit}
+.button.is-secondary:hover{border-color:currentColor;color:inherit}
+.icon-arrow{width:1.125rem;height:1.125rem;flex-shrink:0}
+.tag{display:inline-flex;align-items:center;min-height:1.75rem;padding:0 .75rem;border-radius:100px;border:1px solid var(--scheme-border);font-size:.8125rem;line-height:1}
+.img-cover{width:100%;height:100%;object-fit:cover}
+.form_field{display:flex;flex-direction:column;gap:.5rem;font-size:.875rem;font-weight:600}
+.form_input{width:100%;min-height:3rem;padding:0 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#000000;color:#FFFFFF;font-family:inherit;font-size:1rem;font-weight:400}
+.form_input:focus{outline:2px solid #F2600C;outline-offset:1px;border-color:transparent}
+.form_input::placeholder{color:#7F7F7F}
+textarea.form_input{padding:.875rem 1rem;min-height:8rem;resize:vertical}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5rem}
+.rental-list_list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem 1.5rem}
+.rental-list_tab{min-height:2.75rem;padding:0 1.25rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#FFFFFF;font-family:inherit;font-size:.9375rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem}
+.rental-list_tab:hover{border-color:#FFFFFF}
+.rental-list_tab.is-active{background:#FFFFFF;border-color:#FFFFFF;color:#000000}
+.rental-list_count{font-family:'Martian Mono',monospace;font-size:.75rem;opacity:.6}
+.rental-list_item{display:flex;flex-direction:column;gap:1rem;text-decoration:none;color:#FFFFFF}
+.rental-list_item:hover{color:#FFFFFF}
+.rental-list_item:hover .rental-list_image{transform:scale(1.04)}
+.rental-list_image{transition:transform .6s}
+.rental-list_cta{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.9375rem;color:#F58F54}
+@media (max-width:991px){.rental-list_list{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2{gap:3rem}}
+@media (max-width:767px){.heading-style-h1{font-size:2.5rem}.heading-style-h2{font-size:2.25rem}.text-size-large{font-size:1.125rem}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.grid-2,.rental-list_list{grid-template-columns:minmax(0,1fr)}}
+</style>
+</helmet>
+<div class="page-wrapper">
+<dc-import name="SiteNavbar" current="noma" hint-size="100%,88px"></dc-import>
+<main class="main-wrapper">
+
+<section class="section_rental-list color-scheme-1">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="padding-top: 6rem; display: flex; flex-direction: column; gap: 3.5rem">
+<div class="rental-list_header" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 2rem 4rem; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 1.5rem">
+<span class="text-style-tagline">Noma</span>
+<h1 class="heading-style-h1">Tehnikas un instrumentu noma</h1>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1rem">
+<p class="text-size-large text-color-muted">Nomājiet būvniecības tehniku un instrumentus tik ilgi, cik vajag. Izvēlieties vienību un nosūtiet pieprasījumu.</p>
+<p class="text-size-small" style="color: #7F7F7F">Apmaksa lapā nav jāveic. Cenu un periodu saskaņosim pēc sazināšanās.</p>
+</div>
+</div>
+<div class="rental-list_tabs" role="tablist" aria-label="Nomas kategorijas" style="display: flex; flex-wrap: wrap; gap: .75rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,.15)">
+<sc-for list="{{tabs}}" as="tab" hint-placeholder-count="3">
+<button type="button" role="tab" class="{{tab.cls}}" aria-selected="{{tab.selected}}" onClick="{{tab.pick}}">{{tab.label}}<span class="rental-list_count">{{tab.count}}</span></button>
+</sc-for>
+</div>
+<div class="rental-list_list" role="tabpanel">
+<sc-for list="{{items}}" as="item" hint-placeholder-count="5">
+<a href="site-04-nomas-produkts.dc.html" class="rental-list_item">
+<div style="aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; position: relative; background: #191919"><img src="{{item.img}}" alt="{{item.alt}}" class="rental-list_image img-cover"><span class="tag" style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,.72); border-color: transparent">{{item.cat}}</span></div>
+<div style="display: flex; flex-direction: column; gap: .5rem">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 1rem"><h2 class="heading-style-h6">{{item.name}}</h2><span style="font-family: 'Martian Mono', monospace; font-size: .9375rem; white-space: nowrap">{{item.price}}</span></div>
+<p class="text-size-small text-color-muted">{{item.desc}}</p>
+</div>
+<span class="rental-list_cta">Sūtīt pieprasījumu<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</a>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section_rental-contact color-scheme-2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="grid-2">
+<div style="display: flex; flex-direction: column; gap: 1.5rem">
+<span class="text-style-tagline">Pieprasījums</span>
+<h2 class="heading-style-h2">Neatradāt vajadzīgo?</h2>
+<p class="text-size-medium text-color-muted">Uzrakstiet, kāda tehnika vai instruments jums vajadzīgs un uz cik ilgu laiku. Atbildēsim, vai varam palīdzēt.</p>
+</div>
+<form class="rental-contact_form" aria-label="Nomas pieprasījums" style="display: flex; flex-direction: column; gap: 1.25rem">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem">
+<label class="form_field">Vārds<input class="form_input" type="text" autocomplete="name"></label>
+<label class="form_field">Telefons<input class="form_input" type="tel" autocomplete="tel"></label>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem">
+<label class="form_field">No<input class="form_input" type="date"></label>
+<label class="form_field">Līdz<input class="form_input" type="date"></label>
+</div>
+<label class="form_field">Ko vēlaties nomāt?<textarea class="form_input" placeholder="Tehnika vai instruments, darba vieta"></textarea></label>
+<button type="button" class="button is-accent" style="align-self: flex-start">Nosūtīt pieprasījumu</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<dc-import name="SiteFooter" hint-size="100%,460px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3000}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { cat: 'all' };
+}
+renderVals() {
+const all = [
+{ name: 'Traktors ar priekšējo kausu', cat: 'Tehnika', price: '[€]/diena', img: '/_blob/2e5b244c4dc865908f6dd25242cd511b', alt: 'Tehnika nomai būvlaukumā', desc: 'Zemes pārvietošanai, planēšanai un kravu iekraušanai.' },
+{ name: '[Tehnikas vienība]', cat: 'Tehnika', price: '[€]/diena', img: '/_blob/5ae8b024effcaa192c8835f28de91091', alt: 'Būvtehnika zemes darbos', desc: '[Apraksts, 2–5 teikumi]' },
+{ name: 'Armatūras siešanas instruments', cat: 'Instrumenti', price: '[€]/diena', img: '/_blob/fe5c41ae7be500f283b410e82b261de7', alt: 'Armatūras instrumenti', desc: 'Ātrai un vienmērīgai armatūras sasiešanai pamatu darbos.' },
+{ name: 'Armatūras lieces instruments', cat: 'Instrumenti', price: '[€]/diena', img: '/_blob/cea60e905110ba864a049044cf0fbdae', alt: 'Instrumenti uz darbnīcas sienas', desc: 'Armatūras stieņu liekšanai tieši objektā.' },
+{ name: '[Instruments]', cat: 'Instrumenti', price: '[€]/diena', img: '/_blob/8132e3c38da1e7c6fbea8369ebf5ff50', alt: 'Rokas instruments', desc: '[Apraksts, 2–5 teikumi]' }
+];
+const cat = this.state.cat;
+const defs = [{ id: 'all', label: 'Visi' }, { id: 'Tehnika', label: 'Tehnika' }, { id: 'Instrumenti', label: 'Instrumenti' }];
+return {
+tabs: defs.map((d) => ({
+label: d.label,
+count: d.id === 'all' ? all.length : all.filter((i) => i.cat === d.id).length,
+cls: d.id === cat ? 'rental-list_tab is-active' : 'rental-list_tab',
+selected: d.id === cat ? 'true' : 'false',
+pick: () => this.setState({ cat: d.id })
+})),
+items: cat === 'all' ? all : all.filter((i) => i.cat === cat)
+};
+}
+}
+</script>
+</body>
+</html>

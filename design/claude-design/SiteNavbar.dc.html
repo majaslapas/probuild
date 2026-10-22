@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>ProBuildGroup navigācija</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
+<style>
+body{margin:0}
+.navbar_component *,.navbar_component *::before,.navbar_component *::after{box-sizing:border-box}
+.navbar_link{color:#D8D8D8;text-decoration:none;font-size:.9375rem;padding:.5rem 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.navbar_link:hover{color:#FFFFFF;border-bottom-color:#F2600C}
+.navbar_link.is-current{color:#FFFFFF;border-bottom-color:#F2600C}
+.navbar_phone{color:#FFFFFF;text-decoration:none;font-family:'Martian Mono',monospace;font-size:.8125rem}
+.navbar_phone:hover{color:#F58F54}
+.navbar_button{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:2.75rem;padding:0 1.25rem;border-radius:100px;background:#F2600C;color:#000000;font-weight:600;font-size:.9375rem;text-decoration:none;transition:background-color .2s}
+.navbar_button:hover{background:#F58F54;color:#000000}
+@media (max-width:991px){.navbar_phone{display:none}}
+</style>
+</helmet>
+<nav class="navbar_component color-scheme-2" aria-label="Galvenā navigācija" style="position: relative; z-index: 10; background: #191919; color: #FFFFFF; font-family: 'Noto Sans', sans-serif; border-bottom: 1px solid rgba(255,255,255,.12)">
+<div class="padding-global" style="padding-left: 5%; padding-right: 5%">
+<div class="navbar_container" style="max-width: 80rem; margin: 0 auto; min-height: 5.5rem; padding: .75rem 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 2rem">
+<a href="site-01-sakums.dc.html" class="navbar_logo-link" aria-label="ProBuildGroup sākumlapa" style="display: flex; align-items: center"><img src="/_blob/9d096e13f2c82c26cb7287f0427044d5" alt="ProBuildGroup" class="navbar_logo" style="width: 80px; height: 41px"></a>
+<div class="navbar_menu" style="display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 2rem">
+<sc-for list="{{links}}" as="link" hint-placeholder-count="5">
+<a href="{{link.href}}" class="{{link.cls}}">{{link.label}}</a>
+</sc-for>
+</div>
+<div class="navbar_actions" style="display: flex; align-items: center; gap: 1.5rem">
+<a href="tel:+37100000000" class="navbar_phone">[+371 2X XXX XXX]</a>
+<a href="site-08-kontakti.dc.html" class="navbar_button">Sazināties</a>
+</div>
+</div>
+</div>
+</nav>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"current":{"editor":"enum","options":["sakums","pakalpojumi","noma","portfolio","par-mums","kontakti"],"default":"sakums"},"$preview":{"width":1440,"height":88}}'>
+class Component extends DCLogic {
+renderVals() {
+const current = this.props.current ?? 'sakums';
+const items = [
+{ id: 'sakums', label: 'Sākums', href: 'site-01-sakums.dc.html' },
+{ id: 'pakalpojumi', label: 'Pakalpojumi', href: 'site-02-pakalpojumi.dc.html' },
+{ id: 'noma', label: 'Noma', href: 'site-03-noma.dc.html' },
+{ id: 'portfolio', label: 'Projekti', href: 'site-05-portfolio.dc.html' },
+{ id: 'par-mums', label: 'Par mums', href: 'site-07-par-mums.dc.html' }
+];
+return { links: items.map((l) => ({ ...l, cls: l.id === current ? 'navbar_link is-current' : 'navbar_link' })) };
+}
+}
+</script>
+</body>
+</html>

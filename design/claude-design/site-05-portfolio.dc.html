@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>ProBuildGroup: pabeigtie projekti</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
+<style>
+body{margin:0;background:#000000;color:#FFFFFF;font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#FFFFFF}a:hover{color:#F58F54}
+img{display:block;max-width:100%}
+p,h1,h2,h3,h4,h5,h6,ul{margin:0}
+.color-scheme-1{background-color:#000000;color:#FFFFFF;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
+.padding-global{padding-left:5%;padding-right:5%}
+.container-large{width:100%;max-width:80rem;margin-left:auto;margin-right:auto}
+.padding-section-large{padding-top:7rem;padding-bottom:7rem}
+.heading-style-h1,.heading-style-h5{font-family:'Martian Mono',ui-monospace,monospace;font-weight:500;letter-spacing:-0.01em;line-height:1.2}
+.heading-style-h1{font-size:3.5rem}.heading-style-h5{font-size:1.5rem;line-height:1.4}
+.text-size-large{font-size:1.25rem;line-height:1.5}.text-size-small{font-size:.875rem;line-height:1.5}
+.text-color-muted{color:var(--scheme-muted)}
+.text-style-tagline{display:inline-flex;align-items:center;gap:.625rem;font-family:'Martian Mono',monospace;font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.text-style-tagline::before{content:"";width:.5rem;height:.5rem;background:#F2600C;flex-shrink:0}
+.icon-arrow{width:1.125rem;height:1.125rem;flex-shrink:0}
+.tag{display:inline-flex;align-items:center;min-height:1.75rem;padding:0 .75rem;border-radius:100px;border:1px solid var(--scheme-border);font-size:.8125rem;line-height:1}
+.img-cover{width:100%;height:100%;object-fit:cover}
+.portfolio-list_filter{min-height:2.75rem;padding:0 1.25rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#FFFFFF;font-family:inherit;font-size:.9375rem;font-weight:600;cursor:pointer}
+.portfolio-list_filter:hover{border-color:#FFFFFF}
+.portfolio-list_filter.is-active{background:#FFFFFF;border-color:#FFFFFF;color:#000000}
+.portfolio-list_list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3.5rem 2rem}
+.portfolio-list_item{display:flex;flex-direction:column;gap:1.25rem;text-decoration:none;color:#FFFFFF}
+.portfolio-list_item:hover{color:#FFFFFF}
+.portfolio-list_item:hover .portfolio-list_image{transform:scale(1.04)}
+.portfolio-list_item:hover .portfolio-list_arrow{background:#F2600C;color:#000000;border-color:#F2600C}
+.portfolio-list_image{transition:transform .6s}
+.portfolio-list_arrow{display:flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);flex-shrink:0;transition:background-color .2s,color .2s,border-color .2s}
+@media (max-width:767px){.heading-style-h1{font-size:2.5rem}.text-size-large{font-size:1.125rem}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.portfolio-list_list{grid-template-columns:minmax(0,1fr)}}
+</style>
+</helmet>
+<div class="page-wrapper">
+<dc-import name="SiteNavbar" current="portfolio" hint-size="100%,88px"></dc-import>
+<main class="main-wrapper">
+
+<section class="section_portfolio-list color-scheme-1">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="padding-top: 6rem; display: flex; flex-direction: column; gap: 3.5rem">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 2rem 4rem; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 1.5rem">
+<span class="text-style-tagline">Projekti</span>
+<h1 class="heading-style-h1">Pabeigtie projekti</h1>
+</div>
+<p class="text-size-large text-color-muted">Mūsu darbs runā pats par sevi. Apskatiet paveikto: ar platību, darbu veidiem un termiņiem.</p>
+</div>
+<div class="portfolio-list_filters" role="group" aria-label="Filtrēt pēc darba veida" style="display: flex; flex-wrap: wrap; gap: .75rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,.15)">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="5">
+<button type="button" class="{{f.cls}}" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}">{{f.label}}</button>
+</sc-for>
+</div>
+<div class="portfolio-list_list">
+<sc-for list="{{projects}}" as="p" hint-placeholder-count="4">
+<a href="site-06-projekts.dc.html" class="portfolio-list_item">
+<div style="aspect-ratio: 3 / 2; border-radius: 16px; overflow: hidden; background: #191919"><img src="{{p.img}}" alt="{{p.alt}}" class="portfolio-list_image img-cover"></div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem">
+<div style="display: flex; flex-direction: column; gap: .625rem">
+<span class="text-size-small" style="font-family: 'Martian Mono', monospace; color: #F58F54">{{p.type}}</span>
+<h2 class="heading-style-h5">{{p.name}}</h2>
+<p class="text-color-muted" style="line-height: 1.6">{{p.desc}}</p>
+</div>
+<span class="portfolio-list_arrow" aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: .5rem">
+<span class="tag">{{p.area}}</span><span class="tag">{{p.price}}</span><span class="tag">{{p.time}}</span>
+</div>
+</a>
+</sc-for>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<dc-import name="SiteFooter" hint-size="100%,460px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2900}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { f: 'Visi' };
+}
+renderVals() {
+const all = [
+{ name: 'Koka karkasa privātmāja', type: 'Koka karkass', img: '/_blob/ac41d716b07d09c6900a20767f0b609f', alt: 'Moderna māja ar koka fasādi', desc: '[Īss apraksts, 1–2 teikumi]' },
+{ name: 'Pamati divstāvu mājai', type: 'Pamati', img: '/_blob/144c158c59a6f60aeeeec364c70f56e7', alt: 'Pamatu armatūra būvlaukumā', desc: '[Īss apraksts, 1–2 teikumi]' },
+{ name: 'Fasādes atjaunošana', type: 'Fasādes', img: '/_blob/03c19ae3612924c863066a509e0e9ca9', alt: 'Balta māja ar dēļu apdari', desc: '[Īss apraksts, 1–2 teikumi]' },
+{ name: 'Mājas iekšdarbi un apdare', type: 'Iekšdarbi', img: '/_blob/d9ad93bed9cab974e7d2878f4b82abd5', alt: 'Gaiša, pabeigta dzīvojamā istaba', desc: '[Īss apraksts, 1–2 teikumi]' },
+{ name: 'Elektroinstalācija jaunbūvē', type: 'Elektroinstalācija', img: '/_blob/7a7c82005735178f54eba9b0cde45fa1', alt: 'Elektriķis pie sadales', desc: '[Īss apraksts, 1–2 teikumi]' },
+{ name: 'Moderna ģimenes māja', type: 'Koka karkass', img: '/_blob/c46e9e402d9b8e5a4573b2ffe47dae20', alt: 'Moderna māja vakarā', desc: '[Īss apraksts, 1–2 teikumi]' }
+].map((p) => ({ ...p, area: '[m²]', price: '[€/m²]', time: '[x nedēļas]' }));
+const labels = ['Visi', 'Pamati', 'Koka karkass', 'Fasādes', 'Iekšdarbi', 'Elektroinstalācija'];
+const f = this.state.f;
+return {
+filters: labels.map((l) => ({
+label: l,
+cls: l === f ? 'portfolio-list_filter is-active' : 'portfolio-list_filter',
+pressed: l === f ? 'true' : 'false',
+pick: () => this.setState({ f: l })
+})),
+projects: f === 'Visi' ? all : all.filter((p) => p.type === f)
+};
+}
+}
+</script>
+</body>
+</html>

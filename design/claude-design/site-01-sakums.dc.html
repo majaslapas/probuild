@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>ProBuildGroup: sākumlapa</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
+<style>
+body{margin:0;background:#000000;color:#FFFFFF;font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#FFFFFF}a:hover{color:#F58F54}
+img{display:block;max-width:100%}
+p,h1,h2,h3,h4,h5,h6,ul{margin:0}
+.color-scheme-1{background-color:#000000;color:#FFFFFF;--scheme-fg:#191919;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
+.color-scheme-2{background-color:#191919;color:#FFFFFF;--scheme-fg:#000000;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
+.color-scheme-3{background-color:#F2600C;color:#000000;--scheme-fg:#C14C09;--scheme-border:rgba(0,0,0,.25);--scheme-muted:#191919}
+.padding-global{padding-left:5%;padding-right:5%}
+.container-large{width:100%;max-width:80rem;margin-left:auto;margin-right:auto}
+.container-small{width:100%;max-width:48rem;margin-left:auto;margin-right:auto}
+.padding-section-large{padding-top:7rem;padding-bottom:7rem}
+.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h4,.heading-style-h5,.heading-style-h6{font-family:'Martian Mono',ui-monospace,monospace;font-weight:500;letter-spacing:-0.01em;line-height:1.2}
+.heading-style-h1{font-size:3.5rem}.heading-style-h2{font-size:3rem}.heading-style-h3{font-size:2.5rem}.heading-style-h4{font-size:2rem;line-height:1.3}.heading-style-h5{font-size:1.5rem;line-height:1.4}.heading-style-h6{font-size:1.25rem;line-height:1.4}
+.text-size-large{font-size:1.25rem;line-height:1.5}.text-size-medium{font-size:1.125rem;line-height:1.6}.text-size-regular{font-size:1rem;line-height:1.6}.text-size-small{font-size:.875rem;line-height:1.5}
+.text-color-muted{color:var(--scheme-muted)}
+.text-style-tagline{display:inline-flex;align-items:center;gap:.625rem;font-family:'Martian Mono',monospace;font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.text-style-tagline::before{content:"";width:.5rem;height:.5rem;background:#F2600C;flex-shrink:0}
+.color-scheme-3 .text-style-tagline::before{background:#000000}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:.625rem;min-height:3rem;padding:0 1.5rem;border-radius:100px;border:1px solid #FFFFFF;background:#FFFFFF;color:#000000;font-family:inherit;font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
+.button:hover{background:#D8D8D8;border-color:#D8D8D8;color:#000000}
+.button.is-accent{background:#F2600C;border-color:#F2600C;color:#000000}
+.button.is-accent:hover{background:#F58F54;border-color:#F58F54;color:#000000}
+.button.is-secondary{background:transparent;border-color:var(--scheme-border);color:inherit}
+.button.is-secondary:hover{border-color:currentColor;color:inherit}
+.button.is-dark{background:#000000;border-color:#000000;color:#FFFFFF}
+.button.is-dark:hover{background:#191919;border-color:#191919;color:#FFFFFF}
+.button-group{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.icon-arrow{width:1.125rem;height:1.125rem;flex-shrink:0}
+.tag{display:inline-flex;align-items:center;min-height:1.75rem;padding:0 .75rem;border-radius:100px;border:1px solid var(--scheme-border);font-size:.8125rem;line-height:1}
+.img-cover{width:100%;height:100%;object-fit:cover}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5rem;align-items:center}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.home-services_item{position:relative;display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:#000000;text-decoration:none;color:#FFFFFF;transition:transform .3s}
+.home-services_item:hover{color:#FFFFFF}
+.home-services_item:hover .home-services_image{transform:scale(1.04)}
+.home-services_image{transition:transform .6s}
+.home-services_link{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.9375rem;color:#F58F54}
+.home-rental_item{display:flex;flex-direction:column;gap:1.25rem;text-decoration:none;color:#FFFFFF}
+.home-rental_item:hover{color:#FFFFFF}
+.home-rental_item:hover .home-rental_image{transform:scale(1.04)}
+.home-rental_image{transition:transform .6s}
+.home-reviews_card{display:flex;flex-direction:column;gap:1.5rem;padding:2rem;border-radius:16px;background:#000000}
+@media (max-width:991px){.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2{gap:3rem}}
+@media (max-width:767px){.heading-style-h1{font-size:2.5rem}.heading-style-h2{font-size:2.25rem}.heading-style-h3{font-size:2rem}.heading-style-h5{font-size:1.25rem}.text-size-large{font-size:1.125rem}.text-size-medium{font-size:1rem}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.grid-2,.grid-3{grid-template-columns:minmax(0,1fr)}.home-hero_facts{display:none}}
+</style>
+</helmet>
+<div class="page-wrapper">
+<dc-import name="SiteNavbar" current="sakums" hint-size="100%,88px"></dc-import>
+<main class="main-wrapper">
+
+<header class="section_home-hero color-scheme-2" style="position: relative; overflow: hidden; background: #191919">
+<img src="/_blob/d6153579c9f20b8183947995f3c86697" alt="Meistars montē koka fasādes apdari" class="home-hero_background-image img-cover" style="position: absolute; inset: 0; object-position: 70% 30%">
+<div class="home-hero_overlay" aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.82) 0%, rgba(0,0,0,.55) 45%, rgba(0,0,0,.1) 100%)"></div>
+<div class="padding-global" style="position: relative">
+<div class="container-large">
+<div class="home-hero_component" style="min-height: 44rem; padding: 8rem 0 3rem; display: flex; flex-direction: column; justify-content: flex-end; gap: 5rem">
+<div class="home-hero_content" style="max-width: 46rem; display: flex; flex-direction: column; gap: 1.75rem">
+<span class="text-style-tagline">Būvniecības un remonta pakalpojumi</span>
+<h1 class="heading-style-h1" style="font-size: 4rem; line-height: 1.1">Profesionāli būvniecības risinājumi jūsu vajadzībām</h1>
+<p class="text-size-large" style="color: #D8D8D8; max-width: 38rem">Īstenojam jūsu ieceres ar augstu kvalitāti, profesionālu pieeju un atbildību katrā būvniecības posmā. Radām ilgtspējīgus, pārdomātus un uzticamus risinājumus.</p>
+<div class="button-group" style="padding-top: .5rem">
+<a href="site-02-pakalpojumi.dc.html" class="button is-accent">Uzzināt vairāk<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href="site-03-noma.dc.html" class="button is-secondary" style="border-color: rgba(255,255,255,.5)">Iegūt informāciju</a>
+</div>
+</div>
+<div class="home-hero_facts" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.25)">
+<div style="display: flex; flex-direction: column; gap: .25rem"><span style="font-family: 'Martian Mono', monospace; font-size: .75rem; color: #F58F54">01</span><span style="font-weight: 600">Būvniecība no pamatiem līdz atslēgai</span></div>
+<div style="display: flex; flex-direction: column; gap: .25rem"><span style="font-family: 'Martian Mono', monospace; font-size: .75rem; color: #F58F54">02</span><span style="font-weight: 600">Remonti, apdare, apsaimniekošana</span></div>
+<div style="display: flex; flex-direction: column; gap: .25rem"><span style="font-family: 'Martian Mono', monospace; font-size: .75rem; color: #F58F54">03</span><span style="font-weight: 600">Tehnikas un instrumentu noma</span></div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<section class="section_home-services color-scheme-2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
+<div class="home-services_header" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2rem">
+<div style="max-width: 44rem; display: flex; flex-direction: column; gap: 1.25rem">
+<span class="text-style-tagline">Pakalpojumi</span>
+<h2 class="heading-style-h2">Mūsu būvniecības pakalpojumi</h2>
+</div>
+<a href="site-02-pakalpojumi.dc.html" class="button is-secondary">Visi pakalpojumi<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div class="home-services_list grid-3">
+<a href="site-02-pakalpojumi.dc.html" class="home-services_item">
+<div class="home-services_image-wrapper" style="aspect-ratio: 4 / 3; overflow: hidden"><img src="/_blob/3a843929b2857bf09e24625a07152429" alt="Koka karkasa ēkas būvniecība" class="home-services_image img-cover"></div>
+<div style="padding: 1.75rem; display: flex; flex-direction: column; gap: .75rem; flex: 1">
+<span style="font-family: 'Martian Mono', monospace; font-size: .75rem; color: #7F7F7F">01</span>
+<h3 class="heading-style-h5">Ēku būvniecība</h3>
+<p class="text-color-muted">No pamatiem līdz atslēgai.</p>
+<span class="home-services_link" style="margin-top: auto; padding-top: .75rem">Uzzināt vairāk<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+<a href="site-02-pakalpojumi.dc.html" class="home-services_item">
+<div class="home-services_image-wrapper" style="aspect-ratio: 4 / 3; overflow: hidden"><img src="/_blob/430ec39b4c6023c9a01084d28a10b692" alt="Telpu renovācija procesā" class="home-services_image img-cover"></div>
+<div style="padding: 1.75rem; display: flex; flex-direction: column; gap: .75rem; flex: 1">
+<span style="font-family: 'Martian Mono', monospace; font-size: .75rem; color: #7F7F7F">02</span>
+<h3 class="heading-style-h5">Remonti un apdare</h3>
+<p class="text-color-muted">Apsaimniekošana un zemes darbi.</p>
+<span class="home-services_link" style="margin-top: auto; padding-top: .75rem">Uzzināt vairāk<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+<a href="site-03-noma.dc.html" class="home-services_item">
+<div class="home-services_image-wrapper" style="aspect-ratio: 4 / 3; overflow: hidden"><img src="/_blob/2e5b244c4dc865908f6dd25242cd511b" alt="Ekskavators būvlaukumā" class="home-services_image img-cover"></div>
+<div style="padding: 1.75rem; display: flex; flex-direction: column; gap: .75rem; flex: 1">
+<span style="font-family: 'Martian Mono', monospace; font-size: .75rem; color: #7F7F7F">03</span>
+<h3 class="heading-style-h5">Tehnikas noma</h3>
+<p class="text-color-muted">Instrumentu un tehnikas noma.</p>
+<span class="home-services_link" style="margin-top: auto; padding-top: .75rem">Skatīt nomu<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section_home-about color-scheme-3">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="home-about_component grid-2">
+<div class="home-about_image-wrapper" style="aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden"><img src="/_blob/2dfa1e0fad4aad44e625666462e1555b" alt="Meistars strādā pie loga montāžas" class="home-about_image img-cover"></div>
+<div class="home-about_content" style="display: flex; flex-direction: column; gap: 1.75rem">
+<span class="text-style-tagline">Par mums</span>
+<h2 class="heading-style-h2">Uzticams un stabils partneris būvniecībā</h2>
+<p class="text-size-medium" style="color: #191919">Esam uz kvalitāti un uzticamību orientēts būvniecības uzņēmums, kas palīdz īstenot klientu ieceres no idejas līdz gatavam rezultātam. Apvienojam profesionālu pieeju, rūpīgu plānošanu un atbildību katrā būvniecības posmā.</p>
+<ul class="home-about_list" style="list-style: none; padding: 0; display: flex; flex-direction: column; border-top: 1px solid rgba(0,0,0,.25)">
+<li style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,.25); font-weight: 600"><span style="font-family: 'Martian Mono', monospace; font-size: .75rem">01</span>Augsta darba kvalitāte</li>
+<li style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,.25); font-weight: 600"><span style="font-family: 'Martian Mono', monospace; font-size: .75rem">02</span>Profesionāla un atbildīga pieeja</li>
+<li style="display: flex; align-items: center; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,.25); font-weight: 600"><span style="font-family: 'Martian Mono', monospace; font-size: .75rem">03</span>Uzticamība katrā projektā</li>
+</ul>
+<div class="button-group">
+<a href="site-07-par-mums.dc.html" class="button is-dark">Par mums</a>
+<a href="site-08-kontakti.dc.html" class="button is-secondary" style="color: #000000">Sazināties</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section_home-rental color-scheme-1">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2rem">
+<div style="max-width: 44rem; display: flex; flex-direction: column; gap: 1.25rem">
+<span class="text-style-tagline">Noma</span>
+<h2 class="heading-style-h2">Tehnika un instrumenti nomai</h2>
+<p class="text-size-medium text-color-muted">Nomājiet to, kas vajadzīgs tieši jūsu darbam. Cenu un periodu saskaņosim pēc pieprasījuma.</p>
+</div>
+<a href="site-03-noma.dc.html" class="button is-secondary">Visa noma<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div class="home-rental_list grid-3">
+<a href="site-04-nomas-produkts.dc.html" class="home-rental_item">
+<div style="aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; position: relative"><img src="/_blob/2e5b244c4dc865908f6dd25242cd511b" alt="Tehnikas vienība nomai" class="home-rental_image img-cover"><span class="tag" style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,.7); border-color: transparent">Tehnika</span></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 1rem"><h3 class="heading-style-h6">Traktors ar priekšējo kausu</h3><span style="font-family: 'Martian Mono', monospace; white-space: nowrap">[€]/diena</span></div>
+</a>
+<a href="site-04-nomas-produkts.dc.html" class="home-rental_item">
+<div style="aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; position: relative"><img src="/_blob/fe5c41ae7be500f283b410e82b261de7" alt="Armatūras instrumenti" class="home-rental_image img-cover"><span class="tag" style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,.7); border-color: transparent">Instrumenti</span></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 1rem"><h3 class="heading-style-h6">Armatūras siešanas instruments</h3><span style="font-family: 'Martian Mono', monospace; white-space: nowrap">[€]/diena</span></div>
+</a>
+<a href="site-04-nomas-produkts.dc.html" class="home-rental_item">
+<div style="aspect-ratio: 1 / 1; border-radius: 16px; overflow: hidden; position: relative"><img src="/_blob/cea60e905110ba864a049044cf0fbdae" alt="Rokas instrumentu komplekts" class="home-rental_image img-cover"><span class="tag" style="position: absolute; top: 1rem; left: 1rem; background: rgba(0,0,0,.7); border-color: transparent">Instrumenti</span></div>
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 1rem"><h3 class="heading-style-h6">Armatūras lieces instruments</h3><span style="font-family: 'Martian Mono', monospace; white-space: nowrap">[€]/diena</span></div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section_home-reviews color-scheme-2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2rem">
+<div style="max-width: 40rem; display: flex; flex-direction: column; gap: 1.25rem">
+<span class="text-style-tagline">Atsauksmes</span>
+<h2 class="heading-style-h2">Ko saka mūsu klienti</h2>
+</div>
+<div class="home-reviews_rating" style="display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; border-radius: 16px; border: 1px solid rgba(255,255,255,.2)">
+<span class="heading-style-h4">[4,9]</span>
+<div style="display: flex; flex-direction: column; gap: .25rem">
+<span style="color: #F2600C; letter-spacing: .15em" aria-label="5 zvaigznes">★★★★★</span>
+<span class="text-size-small text-color-muted">[xx] atsauksmes Google</span>
+</div>
+</div>
+</div>
+<div class="home-reviews_list grid-3">
+<figure class="home-reviews_card" style="margin: 0">
+<span style="color: #F2600C; letter-spacing: .15em" aria-label="5 zvaigznes">★★★★★</span>
+<blockquote style="margin: 0; font-size: 1.0625rem; line-height: 1.6">[Google atsauksmes teksts ielādēsies automātiski. Rāda tikai 4 un 5 zvaigžņu atsauksmes.]</blockquote>
+<figcaption style="display: flex; align-items: center; gap: .875rem; margin-top: auto"><span style="width: 2.75rem; height: 2.75rem; border-radius: 100px; background: #4C4C4C; display: flex; align-items: center; justify-content: center; font-weight: 600">A</span><span style="display: flex; flex-direction: column"><span style="font-weight: 600">[Klienta vārds]</span><span class="text-size-small text-color-muted">Google atsauksme</span></span></figcaption>
+</figure>
+<figure class="home-reviews_card" style="margin: 0">
+<span style="color: #F2600C; letter-spacing: .15em" aria-label="5 zvaigznes">★★★★★</span>
+<blockquote style="margin: 0; font-size: 1.0625rem; line-height: 1.6">[Google atsauksmes teksts ielādēsies automātiski. Rāda tikai 4 un 5 zvaigžņu atsauksmes.]</blockquote>
+<figcaption style="display: flex; align-items: center; gap: .875rem; margin-top: auto"><span style="width: 2.75rem; height: 2.75rem; border-radius: 100px; background: #4C4C4C; display: flex; align-items: center; justify-content: center; font-weight: 600">B</span><span style="display: flex; flex-direction: column"><span style="font-weight: 600">[Klienta vārds]</span><span class="text-size-small text-color-muted">Google atsauksme</span></span></figcaption>
+</figure>
+<figure class="home-reviews_card" style="margin: 0">
+<span style="color: #F2600C; letter-spacing: .15em" aria-label="5 zvaigznes">★★★★★</span>
+<blockquote style="margin: 0; font-size: 1.0625rem; line-height: 1.6">[Google atsauksmes teksts ielādēsies automātiski. Rāda tikai 4 un 5 zvaigžņu atsauksmes.]</blockquote>
+<figcaption style="display: flex; align-items: center; gap: .875rem; margin-top: auto"><span style="width: 2.75rem; height: 2.75rem; border-radius: 100px; background: #4C4C4C; display: flex; align-items: center; justify-content: center; font-weight: 600">C</span><span style="display: flex; flex-direction: column"><span style="font-weight: 600">[Klienta vārds]</span><span class="text-size-small text-color-muted">Google atsauksme</span></span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section_home-cta color-scheme-1" style="position: relative; overflow: hidden">
+<img src="/_blob/c8b1d33252bde79111239cc5174e92f2" alt="" aria-hidden="true" class="home-cta_background-image img-cover" style="position: absolute; inset: 0">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(0,0,0,.7)"></div>
+<div class="padding-global" style="position: relative">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="container-small" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.75rem; padding: 2rem 0">
+<h2 class="heading-style-h2">Sāksim jūsu projektu</h2>
+<p class="text-size-large" style="color: #D8D8D8">Pastāstiet, ko vēlaties uzbūvēt, atjaunot vai nomāt. Atbildēsim ātri un skaidri.</p>
+<div class="button-group" style="justify-content: center">
+<a href="site-08-kontakti.dc.html" class="button is-accent">Sazināties</a>
+<a href="site-02-pakalpojumi.dc.html" class="button is-secondary" style="border-color: rgba(255,255,255,.5)">Aprēķināt izmaksas</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<dc-import name="SiteFooter" hint-size="100%,460px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5400}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>ProBuildGroup: par mums</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
+<style>
+body{margin:0;background:#000000;color:#FFFFFF;font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#FFFFFF}a:hover{color:#F58F54}
+img{display:block;max-width:100%}
+p,h1,h2,h3,h4,h5,h6,ul{margin:0}
+.color-scheme-1{background-color:#000000;color:#FFFFFF;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
+.color-scheme-2{background-color:#191919;color:#FFFFFF;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
+.color-scheme-3{background-color:#F2600C;color:#000000;--scheme-border:rgba(0,0,0,.25);--scheme-muted:#191919}
+.padding-global{padding-left:5%;padding-right:5%}
+.container-large{width:100%;max-width:80rem;margin-left:auto;margin-right:auto}
+.container-medium{width:100%;max-width:64rem;margin-left:auto;margin-right:auto}
+.container-small{width:100%;max-width:48rem;margin-left:auto;margin-right:auto}
+.padding-section-large{padding-top:7rem;padding-bottom:7rem}
+.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h4,.heading-style-h5,.heading-style-h6{font-family:'Martian Mono',ui-monospace,monospace;font-weight:500;letter-spacing:-0.01em;line-height:1.2}
+.heading-style-h1{font-size:3.5rem}.heading-style-h2{font-size:3rem}.heading-style-h3{font-size:2.5rem}.heading-style-h4{font-size:2rem;line-height:1.3}.heading-style-h5{font-size:1.5rem;line-height:1.4}.heading-style-h6{font-size:1.25rem;line-height:1.4}
+.text-size-large{font-size:1.25rem;line-height:1.5}.text-size-medium{font-size:1.125rem;line-height:1.6}.text-size-small{font-size:.875rem;line-height:1.5}
+.text-color-muted{color:var(--scheme-muted)}
+.text-style-tagline{display:inline-flex;align-items:center;gap:.625rem;font-family:'Martian Mono',monospace;font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.text-style-tagline::before{content:"";width:.5rem;height:.5rem;background:#F2600C;flex-shrink:0}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:.625rem;min-height:3rem;padding:0 1.5rem;border-radius:100px;border:1px solid #FFFFFF;background:#FFFFFF;color:#000000;font-family:inherit;font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
+.button:hover{background:#D8D8D8;border-color:#D8D8D8;color:#000000}
+.button.is-accent{background:#F2600C;border-color:#F2600C;color:#000000}
+.button.is-accent:hover{background:#F58F54;border-color:#F58F54;color:#000000}
+.button.is-secondary{background:transparent;border-color:var(--scheme-border);color:inherit}
+.button.is-secondary:hover{border-color:currentColor;color:inherit}
+.button-group{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.icon-arrow{width:1.125rem;height:1.125rem;flex-shrink:0}
+.img-cover{width:100%;height:100%;object-fit:cover}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5rem;align-items:center}
+.grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
+.about-partners_list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1rem}
+.about-partners_logo{height:6rem;border-radius:16px;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-family:'Martian Mono',monospace;font-size:.8125rem;color:#7F7F7F}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.about-marquee_track{display:flex;width:max-content;animation:marquee 40s linear infinite}
+.about-marquee_item{display:flex;align-items:center;gap:3rem;padding-right:3rem;font-family:'Martian Mono',monospace;font-weight:500;font-size:2rem;white-space:nowrap}
+.about-marquee_dot{width:.75rem;height:.75rem;background:#000000;flex-shrink:0}
+@media (prefers-reduced-motion:reduce){.about-marquee_track{animation:none}}
+@media (max-width:991px){.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2{gap:3rem}.about-partners_list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:767px){.heading-style-h1{font-size:2.5rem}.heading-style-h2{font-size:2.25rem}.heading-style-h3{font-size:1.75rem}.heading-style-h4{font-size:1.5rem}.text-size-large{font-size:1.125rem}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.grid-2,.grid-3{grid-template-columns:minmax(0,1fr)}.about-partners_list{grid-template-columns:repeat(2,minmax(0,1fr))}.about-marquee_item{font-size:1.25rem}}
+</style>
+</helmet>
+<div class="page-wrapper">
+<dc-import name="SiteNavbar" current="par-mums" hint-size="100%,88px"></dc-import>
+<main class="main-wrapper">
+
+<header class="section_about-hero color-scheme-1">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="padding-top: 6rem">
+<div class="grid-2">
+<div style="display: flex; flex-direction: column; gap: 1.75rem">
+<span class="text-style-tagline">Par mums</span>
+<h1 class="heading-style-h1">Būvējam ar atbildību</h1>
+<p class="text-size-large text-color-muted">Esam būvniecības uzņēmums no Salaspils puses. Būvējam, atjaunojam un uzturam ēkas, un iznomājam tehniku, ar kuru strādājam paši. Mūsu mērķis ir pārvērst klientu ieceres realitātē, radot ilgtspējīgus risinājumus, kas kalpo gadiem.</p>
+<div class="button-group"><a href="site-02-pakalpojumi.dc.html" class="button is-accent">Pakalpojumi</a><a href="site-08-kontakti.dc.html" class="button is-secondary">Sazināties</a></div>
+</div>
+<div style="aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden"><img src="/_blob/c56ada5a83888650f9f18d64089d4cef" alt="Būvinženieri pārrunā darbus būvlaukumā" class="about-hero_image img-cover"></div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<section class="section_about-marquee color-scheme-3" aria-label="Mūsu darbības jomas" style="overflow: hidden; padding: 1.75rem 0">
+<div class="about-marquee_track">
+<div class="about-marquee_item"><span>Būvniecība</span><span class="about-marquee_dot"></span><span>Pamati</span><span class="about-marquee_dot"></span><span>Koka karkass</span><span class="about-marquee_dot"></span><span>Fasādes</span><span class="about-marquee_dot"></span><span>Remonts</span><span class="about-marquee_dot"></span><span>Zemes darbi</span><span class="about-marquee_dot"></span><span>Tehnikas noma</span><span class="about-marquee_dot"></span></div>
+<div class="about-marquee_item" aria-hidden="true"><span>Būvniecība</span><span class="about-marquee_dot"></span><span>Pamati</span><span class="about-marquee_dot"></span><span>Koka karkass</span><span class="about-marquee_dot"></span><span>Fasādes</span><span class="about-marquee_dot"></span><span>Remonts</span><span class="about-marquee_dot"></span><span>Zemes darbi</span><span class="about-marquee_dot"></span><span>Tehnikas noma</span><span class="about-marquee_dot"></span></div>
+</div>
+</section>
+
+<section class="section_about-story color-scheme-1">
+<div class="padding-global">
+<div class="container-medium">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 2rem">
+<span class="text-style-tagline">Mūsu stāsts</span>
+<p class="heading-style-h4" style="line-height: 1.45">Mēs esam uz kvalitāti un uzticamību orientēts būvniecības uzņēmums, kas palīdz īstenot klientu ieceres no idejas līdz gatavam rezultātam. <span style="color: #7F7F7F">[Kā un kāpēc uzņēmums radās, vēsture, vīzija un vērtības, 5–15 teikumi no klienta.]</span></p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section_about-stats color-scheme-1" style="position: relative; overflow: hidden">
+<img src="/_blob/144c158c59a6f60aeeeec364c70f56e7" alt="" aria-hidden="true" class="img-cover" style="position: absolute; inset: 0">
+<div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(0,0,0,.78)"></div>
+<div class="padding-global" style="position: relative">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
+<div style="max-width: 40rem; display: flex; flex-direction: column; gap: 1.25rem">
+<h2 class="heading-style-h2">Pieredze skaitļos</h2>
+<p class="text-size-medium" style="color: #D8D8D8">[Apraksts, ~10 vārdi]</p>
+</div>
+<div class="about-stats_list grid-3" style="gap: 2rem">
+<div style="display: flex; flex-direction: column; gap: .75rem; padding-top: 1.5rem; border-top: 2px solid #F2600C"><span class="heading-style-h1" style="font-size: 4.5rem">[00]+</span><span class="text-size-medium" style="color: #D8D8D8">Paveiktie projekti</span></div>
+<div style="display: flex; flex-direction: column; gap: .75rem; padding-top: 1.5rem; border-top: 2px solid #F2600C"><span class="heading-style-h1" style="font-size: 4.5rem">[00]</span><span class="text-size-medium" style="color: #D8D8D8">Gadi būvniecībā</span></div>
+<div style="display: flex; flex-direction: column; gap: .75rem; padding-top: 1.5rem; border-top: 2px solid #F2600C"><span class="heading-style-h1" style="font-size: 4.5rem">[00]</span><span class="text-size-medium" style="color: #D8D8D8">Nomas tehnikas vienības</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section_about-values color-scheme-2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="grid-2" style="align-items: stretch">
+<div style="display: flex; flex-direction: column; gap: 2.5rem; justify-content: center">
+<div style="display: flex; flex-direction: column; gap: 1.25rem">
+<span class="text-style-tagline">Vērtības</span>
+<h2 class="heading-style-h2">Par ko iestājamies</h2>
+</div>
+<div style="display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1rem; padding: 1.5rem 0; border-top: 1px solid rgba(255,255,255,.15)"><span style="font-family: 'Martian Mono', monospace; color: #F58F54">01</span><div style="display: flex; flex-direction: column; gap: .5rem"><h3 class="heading-style-h6">Kvalitāte</h3><p class="text-color-muted" style="line-height: 1.6">Darām pareizi jau pirmajā reizē. Materiāli un tehnoloģijas, kas kalpo gadiem.</p></div></div>
+<div style="display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1rem; padding: 1.5rem 0; border-top: 1px solid rgba(255,255,255,.15)"><span style="font-family: 'Martian Mono', monospace; color: #F58F54">02</span><div style="display: flex; flex-direction: column; gap: .5rem"><h3 class="heading-style-h6">Atbildība</h3><p class="text-color-muted" style="line-height: 1.6">Turam doto vārdu, termiņus un budžetu. Laicīgi atbildam un informējam par katru posmu.</p></div></div>
+<div style="display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1rem; padding: 1.5rem 0; border-top: 1px solid rgba(255,255,255,.15); border-bottom: 1px solid rgba(255,255,255,.15)"><span style="font-family: 'Martian Mono', monospace; color: #F58F54">03</span><div style="display: flex; flex-direction: column; gap: .5rem"><h3 class="heading-style-h6">Uzticamība</h3><p class="text-color-muted" style="line-height: 1.6">Strādājam atklāti un godīgi, lai klienti pie mums atgrieztos un ieteiktu mūs citiem.</p></div></div>
+</div>
+</div>
+<div style="min-height: 32rem; border-radius: 16px; overflow: hidden"><img src="/_blob/c8b1d33252bde79111239cc5174e92f2" alt="Meistars griež kokmateriālus darbnīcā" class="about-values_image img-cover"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section_about-team color-scheme-1">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2rem">
+<div style="display: flex; flex-direction: column; gap: 1.25rem">
+<span class="text-style-tagline">Komanda</span>
+<h2 class="heading-style-h2">Cilvēki aiz darba</h2>
+</div>
+<p class="text-color-muted" style="max-width: 26rem">Iepazīstieties ar tiem, ar kuriem tiksieties objektā.</p>
+</div>
+<div class="about-team_list grid-3">
+<div class="about-team_item" style="display: flex; flex-direction: column; gap: 1.25rem"><div style="aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; background: #191919"><img src="/_blob/384dad3aa6d7352e9e1f4f68794b6627" alt="Komandas loceklis" class="img-cover" style="filter: grayscale(1)"></div><div style="display: flex; flex-direction: column; gap: .25rem"><h3 class="heading-style-h6">[Vārds Uzvārds]</h3><span style="font-family: 'Martian Mono', monospace; font-size: .8125rem; color: #F58F54">[Amats]</span></div><p class="text-color-muted" style="line-height: 1.6">[1–2 teikumi]</p></div>
+<div class="about-team_item" style="display: flex; flex-direction: column; gap: 1.25rem"><div style="aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; background: #191919"><img src="/_blob/2f647c2bcfb61ad99db8ff846d120bfa" alt="Komandas loceklis" class="img-cover" style="filter: grayscale(1)"></div><div style="display: flex; flex-direction: column; gap: .25rem"><h3 class="heading-style-h6">[Vārds Uzvārds]</h3><span style="font-family: 'Martian Mono', monospace; font-size: .8125rem; color: #F58F54">[Amats]</span></div><p class="text-color-muted" style="line-height: 1.6">[1–2 teikumi]</p></div>
+<div class="about-team_item" style="display: flex; flex-direction: column; gap: 1.25rem"><div style="aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; background: #191919"><img src="/_blob/edf9a517cd7c1bebb70c28a9c7f3dc76" alt="Komandas loceklis" class="img-cover" style="filter: grayscale(1)"></div><div style="display: flex; flex-direction: column; gap: .25rem"><h3 class="heading-style-h6">[Vārds Uzvārds]</h3><span style="font-family: 'Martian Mono', monospace; font-size: .8125rem; color: #F58F54">[Amats]</span></div><p class="text-color-muted" style="line-height: 1.6">[1–2 teikumi]</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section_about-partners color-scheme-2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-medium" style="padding-top: 5rem; padding-bottom: 5rem; display: flex; flex-direction: column; gap: 2.5rem">
+<h2 class="heading-style-h5" style="text-align: center">Mēs izvēlamies labāko</h2>
+<div class="about-partners_list">
+<div class="about-partners_logo">[Logo]</div><div class="about-partners_logo">[Logo]</div><div class="about-partners_logo">[Logo]</div><div class="about-partners_logo">[Logo]</div><div class="about-partners_logo">[Logo]</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section_about-cta color-scheme-3">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="grid-2">
+<div style="display: flex; flex-direction: column; gap: 1.75rem">
+<h2 class="heading-style-h2">Strādāsim kopā</h2>
+<p class="text-size-large" style="color: #191919">Pastāstiet par savu ieceri vai apskatiet, ko varam piedāvāt.</p>
+<div class="button-group"><a href="site-08-kontakti.dc.html" class="button" style="background: #000000; border-color: #000000; color: #FFFFFF">Sazināties</a><a href="site-02-pakalpojumi.dc.html" class="button is-secondary" style="color: #000000">Pakalpojumi</a></div>
+</div>
+<div style="aspect-ratio: 3 / 2; border-radius: 16px; overflow: hidden"><img src="/_blob/9908b73746208e67eede6dc7e360aef3" alt="Būvnieku komanda objektā" class="about-cta_image img-cover"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<dc-import name="SiteFooter" hint-size="100%,460px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6200}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
