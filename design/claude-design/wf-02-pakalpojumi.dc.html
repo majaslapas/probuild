@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>Wireframe: Pakalpojumi</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
+<style>
+body{margin:0;font-family:'Noto Sans',sans-serif;color:#191919;background:#FFFFFF}
+a{color:#191919}a:hover{color:#4C4C4C}
+p{margin:0;line-height:1.5;color:#4C4C4C}
+.padding-global{padding-left:5%;padding-right:5%}
+.container-large{width:100%;max-width:80rem;margin-left:auto;margin-right:auto}
+.container-small{width:100%;max-width:48rem;margin-left:auto;margin-right:auto}
+.padding-section-large{padding-top:7rem;padding-bottom:7rem}
+.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h5,.heading-style-h6{font-family:'Martian Mono',monospace;font-weight:500;letter-spacing:-0.01em;margin:0;line-height:1.2}
+.heading-style-h1{font-size:3.5rem}.heading-style-h2{font-size:3rem}.heading-style-h3{font-size:2.5rem}.heading-style-h5{font-size:1.5rem;line-height:1.4}.heading-style-h6{font-size:1.25rem;line-height:1.4}
+.text-size-medium{font-size:1.125rem}
+.text-style-tagline{font-family:'Martian Mono',monospace;font-size:.875rem;font-weight:500;color:#191919}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.5rem;border-radius:100px;background:#191919;color:#FFFFFF;text-decoration:none;font-size:1rem;border:1px solid #191919;box-sizing:border-box;font-family:inherit}
+.button:hover{color:#FFFFFF}
+.button.is-secondary{background:transparent;color:#191919}
+.button-group{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.wf-label{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 5%;background:#191919;color:#FFFFFF;font-family:'Martian Mono',monospace;font-size:12px}
+.wf-chip{padding:2px 8px;border-radius:100px;border:1px solid #FFFFFF55}
+.wf-note{padding:10px 5%;background:#FDEFE6;color:#481C03;font-size:13px;line-height:1.5}
+.wf-note b{color:#C14C09}
+.wf-img{background:#D8D8D8;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#4C4C4C;font-size:12px;font-family:'Martian Mono',monospace;text-align:center;padding:8px;box-sizing:border-box}
+.wf-card{border:1px solid #D8D8D8;border-radius:16px;background:#FFFFFF}
+.wf-tag{display:inline-flex;padding:4px 10px;border-radius:100px;background:#F2F2F2;font-size:12px}
+.wf-field{display:flex;flex-direction:column;gap:.5rem;font-size:.875rem}
+.wf-input{min-height:48px;border:1px solid #B2B2B2;border-radius:12px;padding:0 1rem;font:inherit;font-size:1rem;background:#FFFFFF;box-sizing:border-box;width:100%;color:#191919}
+.wf-grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem;align-items:start}
+.wf-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}
+@media (max-width:767px){.wf-grid-2,.wf-grid-3{grid-template-columns:minmax(0,1fr)}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.heading-style-h1{font-size:2.5rem}.heading-style-h2{font-size:2.25rem}}
+</style>
+</helmet>
+<div class="page-wrapper">
+<dc-import name="Navbar" hint-size="100%,80px"></dc-import>
+<main class="main-wrapper">
+
+<div class="wf-label"><span>01 · Hero + kalkulators</span><span>Relume header-36</span><span>section_services-hero</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_services-hero">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="services-hero_component wf-grid-2">
+<div class="services-hero_content" style="display: flex; flex-direction: column; gap: 1.5rem">
+<h1 class="heading-style-h1">Pilna cikla būvniecības risinājumi</h1>
+<p class="text-size-medium">[Apraksts, 1–2 teikumi]</p>
+<p>[Kalkulatora ievadteksts, 1 teikums]</p>
+</div>
+<form class="services-calculator_component wf-card" style="padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem" aria-label="Cenu kalkulators">
+<span class="text-style-tagline">services-calculator_component</span>
+<label class="wf-field">Pakalpojuma veids<select class="wf-input"><option>[No Excel: darbu saraksts]</option></select></label>
+<label class="wf-field">Darbs<select class="wf-input"><option>[Darbs pēc izvēlētā veida]</option></select></label>
+<label class="wf-field">Apjoms (m², gab., m)<input class="wf-input" type="text" placeholder="[mērvienība no Excel]"></label>
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding-top: 1rem; border-top: 1px solid #D8D8D8"><span>Aptuvenā summa</span><span class="heading-style-h5">[€ —]</span></div>
+<button type="button" class="button">Nosūtīt pieteikumu</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="wf-note"><b>01.10:</b> kalkulators ir lapas galvenais mērķis. Labajā pusē, vai zem virsraksta centrā, ja par šauru. Kompakts, nevis Excel tabula. Loģika tikai pēc klienta Excel faila; pieteikums nonāk CRM.</div>
+
+<div class="wf-label"><span>02 · Pakalpojumu saraksts</span><span>Relume portfolio-15</span><span>section_services-list</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_services-list">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
+<div class="container-small" style="text-align: center; display: flex; flex-direction: column; gap: 1.5rem">
+<h2 class="heading-style-h2">[Saraksta virsraksts]</h2>
+</div>
+<div class="services-list_list" style="display: flex; flex-direction: column; gap: 3rem">
+<article class="services-list_item wf-grid-2" style="align-items: center">
+<div class="wf-img" style="aspect-ratio: 4 / 3">services-list_image · līdz 15 bildēm</div>
+<div style="display: flex; flex-direction: column; gap: 1rem">
+<div style="display: flex; flex-wrap: wrap; gap: .5rem"><span class="wf-tag">Pamatu būvniecība</span></div>
+<h3 class="heading-style-h3">[Pakalpojuma nosaukums]</h3>
+<p>[Apraksts 3–8 teikumi: kas ietilpst darbā, kā notiek process]</p>
+<span class="heading-style-h6">no 180 €/m²</span>
+<div class="button-group"><a href="#" class="button is-secondary">Uz kalkulatoru</a></div>
+</div>
+</article>
+<article class="services-list_item wf-grid-2" style="align-items: center">
+<div class="wf-img" style="aspect-ratio: 4 / 3">services-list_image</div>
+<div style="display: flex; flex-direction: column; gap: 1rem">
+<div style="display: flex; flex-wrap: wrap; gap: .5rem"><span class="wf-tag">[Kategorija]</span></div>
+<h3 class="heading-style-h3">[Pakalpojuma nosaukums]</h3>
+<p>[Apraksts 3–8 teikumi]</p>
+<span class="heading-style-h6">[Cena no]</span>
+</div>
+</article>
+<article class="services-list_item wf-grid-2" style="align-items: center">
+<div class="wf-img" style="aspect-ratio: 4 / 3">services-list_image</div>
+<div style="display: flex; flex-direction: column; gap: 1rem">
+<div style="display: flex; flex-wrap: wrap; gap: .5rem"><span class="wf-tag">Apsaimniekošana</span></div>
+<h3 class="heading-style-h3">[Apsaimniekošana: servisa līgums]</h3>
+<p>[Apraksts 3–8 teikumi]</p>
+<span class="heading-style-h6">[Cena no]</span>
+</div>
+</article>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="wf-note"><b>Saturs:</b> katram pakalpojumam nosaukums, kategorija/atslēgvārdi, apraksts, cena no, bildes. Iekļauj apsaimniekošanu. Ieteikums: CMS kolekcija "Pakalpojumi". Klients pagaidām aizpildījis tikai 1. pakalpojumu.</div>
+
+<div class="wf-label"><span>03 · Ieguvumi</span><span>Relume layout-219</span><span>section_services-benefits</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_services-benefits" style="background: #F2F2F2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="wf-grid-2" style="align-items: center">
+<div style="display: flex; flex-direction: column; gap: 1.5rem">
+<h2 class="heading-style-h2">[Kāpēc izvēlēties mūs, līdz 6 vārdiem]</h2>
+<p class="text-size-medium">[Apraksts, 1–2 teikumi]</p>
+<div class="wf-grid-3" style="gap: 1.5rem">
+<div style="display: flex; flex-direction: column; gap: .5rem"><h3 class="heading-style-h6">[Ieguvums 1]</h3><p>[1–2 teikumi]</p></div>
+<div style="display: flex; flex-direction: column; gap: .5rem"><h3 class="heading-style-h6">[Ieguvums 2]</h3><p>[1–2 teikumi]</p></div>
+<div style="display: flex; flex-direction: column; gap: .5rem"><h3 class="heading-style-h6">[Ieguvums 3]</h3><p>[1–2 teikumi]</p></div>
+</div>
+</div>
+<div class="wf-img" style="aspect-ratio: 1 / 1">services-benefits_image</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="wf-label"><span>04 · Atsauksmes</span><span>Relume testimonial-17</span><span>section_services-reviews</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_services-reviews">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="wf-img" style="min-height: 320px">Google Business atsauksmes (tas pats embed kā sākumlapā, 4+)</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="wf-label"><span>05 · Pieteikums</span><span>Relume contact-05</span><span>section_services-contact</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_services-contact" style="background: #F2F2F2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="wf-grid-2">
+<div style="display: flex; flex-direction: column; gap: 1.5rem">
+<h2 class="heading-style-h2">[Virsraksts, līdz 6 vārdiem]</h2>
+<p class="text-size-medium">[1 teikums. Bez apmaksas, cenu saskaņo pēc sazināšanās]</p>
+</div>
+<form class="services-contact_form" style="display: flex; flex-direction: column; gap: 1rem" aria-label="Pieteikuma forma">
+<label class="wf-field">Vārds<input class="wf-input" type="text"></label>
+<label class="wf-field">Telefons<input class="wf-input" type="tel"></label>
+<label class="wf-field">E-pasts<input class="wf-input" type="email"></label>
+<label class="wf-field">Ziņa<textarea class="wf-input" rows="4" style="padding: 1rem; min-height: 120px"></textarea></label>
+<button type="button" class="button" style="align-self: flex-start">Nosūtīt</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="wf-note"><b>Forma → CRM.</b> Visas formas (pakalpojumi, noma, projekti, kontakti) ievelkas CRM ar avota lapu.</div>
+
+</main>
+<dc-import name="Footer" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4500}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

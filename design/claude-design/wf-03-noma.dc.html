@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>Wireframe: Noma</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
+<style>
+body{margin:0;font-family:'Noto Sans',sans-serif;color:#191919;background:#FFFFFF}
+a{color:#191919}a:hover{color:#4C4C4C}
+p{margin:0;line-height:1.5;color:#4C4C4C}
+.padding-global{padding-left:5%;padding-right:5%}
+.container-large{width:100%;max-width:80rem;margin-left:auto;margin-right:auto}
+.container-small{width:100%;max-width:48rem;margin-left:auto;margin-right:auto}
+.padding-section-large{padding-top:7rem;padding-bottom:7rem}
+.heading-style-h1,.heading-style-h2,.heading-style-h6{font-family:'Martian Mono',monospace;font-weight:500;letter-spacing:-0.01em;margin:0;line-height:1.2}
+.heading-style-h1{font-size:3.5rem}.heading-style-h2{font-size:3rem}.heading-style-h6{font-size:1.25rem;line-height:1.4}
+.text-size-medium{font-size:1.125rem}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.5rem;border-radius:100px;background:#191919;color:#FFFFFF;text-decoration:none;font-size:1rem;border:1px solid #191919;box-sizing:border-box;font-family:inherit}
+.button:hover{color:#FFFFFF}
+.button.is-secondary{background:transparent;color:#191919}
+.button.is-small{min-height:44px;padding:0 1rem;font-size:.875rem}
+.wf-label{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 5%;background:#191919;color:#FFFFFF;font-family:'Martian Mono',monospace;font-size:12px}
+.wf-chip{padding:2px 8px;border-radius:100px;border:1px solid #FFFFFF55}
+.wf-note{padding:10px 5%;background:#FDEFE6;color:#481C03;font-size:13px;line-height:1.5}
+.wf-note b{color:#C14C09}
+.wf-img{background:#D8D8D8;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#4C4C4C;font-size:12px;font-family:'Martian Mono',monospace;text-align:center;padding:8px;box-sizing:border-box}
+.wf-field{display:flex;flex-direction:column;gap:.5rem;font-size:.875rem}
+.wf-input{min-height:48px;border:1px solid #B2B2B2;border-radius:12px;padding:0 1rem;font:inherit;font-size:1rem;background:#FFFFFF;box-sizing:border-box;width:100%;color:#191919}
+.wf-grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem;align-items:start}
+.wf-grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2rem}
+.rental-list_item{display:flex;flex-direction:column;gap:.75rem;text-decoration:none}
+@media (max-width:991px){.wf-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){.wf-grid-2{grid-template-columns:minmax(0,1fr)}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.heading-style-h1{font-size:2.5rem}.heading-style-h2{font-size:2.25rem}}
+</style>
+</helmet>
+<div class="page-wrapper">
+<dc-import name="Navbar" hint-size="100%,80px"></dc-import>
+<main class="main-wrapper">
+
+<div class="wf-label"><span>01 · Hero + nomas saraksts</span><span>Relume product-08</span><span>section_rental-list</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_rental-list">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
+<div class="container-small" style="text-align: center; display: flex; flex-direction: column; gap: 1.5rem; align-items: center">
+<h1 class="heading-style-h1">[Nomas virsraksts, līdz 5 vārdiem]</h1>
+<p class="text-size-medium">[Apraksts, 1–2 teikumi]</p>
+</div>
+<div class="rental-list_tabs" role="tablist" aria-label="Nomas kategorijas" style="display: flex; flex-wrap: wrap; gap: .75rem; justify-content: center">
+<button type="button" role="tab" aria-selected="true" class="button is-small">Visi</button>
+<button type="button" role="tab" aria-selected="false" class="button is-secondary is-small">Tehnika</button>
+<button type="button" role="tab" aria-selected="false" class="button is-secondary is-small">Instrumenti</button>
+</div>
+<div class="rental-list_list wf-grid-4">
+<a href="wf-04-nomas-produkts.dc.html" class="rental-list_item"><div class="wf-img" style="aspect-ratio: 1 / 1">rental-list_image</div><div style="display: flex; justify-content: space-between; gap: 1rem"><h2 class="heading-style-h6">[Traktors ar kausu]</h2><span>[€/diena]</span></div><span style="font-size: .875rem">Tehnika</span><span class="button is-secondary is-small">Sūtīt pieprasījumu</span></a>
+<a href="wf-04-nomas-produkts.dc.html" class="rental-list_item"><div class="wf-img" style="aspect-ratio: 1 / 1">rental-list_image</div><div style="display: flex; justify-content: space-between; gap: 1rem"><h2 class="heading-style-h6">[Nosaukums]</h2><span>[Cena]</span></div><span style="font-size: .875rem">Tehnika</span><span class="button is-secondary is-small">Sūtīt pieprasījumu</span></a>
+<a href="wf-04-nomas-produkts.dc.html" class="rental-list_item"><div class="wf-img" style="aspect-ratio: 1 / 1">rental-list_image</div><div style="display: flex; justify-content: space-between; gap: 1rem"><h2 class="heading-style-h6">[Armatūras instruments]</h2><span>[Cena]</span></div><span style="font-size: .875rem">Instrumenti</span><span class="button is-secondary is-small">Sūtīt pieprasījumu</span></a>
+<a href="wf-04-nomas-produkts.dc.html" class="rental-list_item"><div class="wf-img" style="aspect-ratio: 1 / 1">rental-list_image</div><div style="display: flex; justify-content: space-between; gap: 1rem"><h2 class="heading-style-h6">[Nosaukums]</h2><span>[Cena]</span></div><span style="font-size: .875rem">Instrumenti</span><span class="button is-secondary is-small">Sūtīt pieprasījumu</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="wf-note"><b>01.10:</b> 2 kategorijas: Tehnika un Instrumenti, sākumā līdz ~10 vienībām. CMS "Nomas produkti" + "Nomas kategorijas"; filtrs pēc kategorijas. Tikai ar būvniecību saistītas lietas (SEO).</div>
+
+<div class="wf-label"><span>02 · Pieteikums</span><span>Relume contact-05</span><span>section_rental-contact</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_rental-contact" style="background: #F2F2F2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="wf-grid-2">
+<div style="display: flex; flex-direction: column; gap: 1.5rem">
+<h2 class="heading-style-h2">[Virsraksts, līdz 6 vārdiem]</h2>
+<p class="text-size-medium">[1 teikums. Bez apmaksas lapā, cenu saskaņo pēc sazināšanās]</p>
+</div>
+<form class="rental-contact_form" style="display: flex; flex-direction: column; gap: 1rem" aria-label="Nomas pieprasījums">
+<label class="wf-field">Vārds<input class="wf-input" type="text"></label>
+<label class="wf-field">Telefons<input class="wf-input" type="tel"></label>
+<label class="wf-field">Ko vēlaties nomāt?<select class="wf-input"><option>[CMS nomas vienības]</option></select></label>
+<label class="wf-field">Periods / ziņa<textarea class="wf-input" rows="4" style="padding: 1rem; min-height: 120px"></textarea></label>
+<button type="button" class="button" style="align-self: flex-start">Nosūtīt</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<dc-import name="Footer" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2700}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

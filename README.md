@@ -12,6 +12,14 @@ Mājaslapa būvniecības, remonta un tehnikas nomas uzņēmumam ProBuildGroup (S
 | [docs/atverti-jautajumi.md](docs/atverti-jautajumi.md) | Kas vēl jāizlemj ar klientu |
 | [docs/ProBuildGroup_Piedavajums.pdf](docs/ProBuildGroup_Piedavajums.pdf) | Klientam nosūtītais piedāvājums (2026-09-22) |
 | [docs/sazvana-transkripts-2026-09-22.md](docs/sazvana-transkripts-2026-09-22.md) | Noslēdzošā sazvana automātiskais transkripts |
+| [docs/skeleta-sazvans-2026-10-01.md](docs/skeleta-sazvans-2026-10-01.md) | Skeleta un dizaina sazvana lēmumi (01.10) |
+| [docs/webflow-client-first.md](docs/webflow-client-first.md) | Client-First klases, tokeni → Webflow Variables, CMS kolekcijas |
+| [reference/](reference/) | Relume eksports: DESIGN.md (tokeni), sitemap, React komponentes, fonti, logo, bildes |
+| [design/claude-design/](design/claude-design/) | Claude Design audekla avoti (wireframe'i, stila vadlīnijas) |
+
+## Claude Design
+
+Audekls: https://claude.ai/artifact/5uqi6Df3BGRAhyESzSzX3a (privāts, jādalās caur Share). Satur projekta pārskatu, stila vadlīnijas, Relume sākumlapas atsauci, navbar/footer komponentes un 8 lapu wireframe'us ar Client-First klasēm un 01.10 izmaiņām. Būvēšana vēl nav sākta.
 
 ## Avoti un pieņemtie lēmumi
 

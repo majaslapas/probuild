@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>Navigācija</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#191919}a:hover{color:#4C4C4C}
+</style>
+</helmet>
+<nav class="navbar_component" aria-label="Galvenā navigācija" style="font-family: 'Noto Sans', sans-serif; color: #191919; background: #F2F2F2; border-bottom: 1px solid #D8D8D8">
+<div class="padding-global" style="padding-left: 5%; padding-right: 5%">
+<div class="navbar_container" style="min-height: 80px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px; padding: 12px 0; box-sizing: border-box">
+<a href="wf-01-sakums.dc.html" class="navbar_logo-link" style="display: flex; align-items: center; justify-content: center; width: 72px; height: 40px; border: 1px dashed #7F7F7F; border-radius: 8px; font-family: 'Martian Mono', monospace; font-size: 11px; text-decoration: none">LOGO</a>
+<div class="navbar_menu" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; font-size: 15px">
+<a href="wf-01-sakums.dc.html" class="navbar_link" style="text-decoration: none">Sākums</a>
+<a href="wf-02-pakalpojumi.dc.html" class="navbar_link" style="text-decoration: none">Pakalpojumi</a>
+<a href="wf-03-noma.dc.html" class="navbar_link" style="text-decoration: none">Noma</a>
+<a href="wf-05-portfolio.dc.html" class="navbar_link" style="text-decoration: none">Portfolio</a>
+<a href="wf-07-par-mums.dc.html" class="navbar_link" style="text-decoration: none">Par mums</a>
+</div>
+<a href="wf-08-kontakti.dc.html" class="button" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 24px; border-radius: 100px; background: #191919; color: #FFFFFF; text-decoration: none; font-size: 15px">Kontakti</a>
+</div>
+</div>
+</nav>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":80}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

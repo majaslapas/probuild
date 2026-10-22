@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>Wireframe: Par mums</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
+<style>
+body{margin:0;font-family:'Noto Sans',sans-serif;color:#191919;background:#FFFFFF}
+a{color:#191919}a:hover{color:#4C4C4C}
+p{margin:0;line-height:1.5;color:#4C4C4C}
+.padding-global{padding-left:5%;padding-right:5%}
+.container-large{width:100%;max-width:80rem;margin-left:auto;margin-right:auto}
+.container-medium{width:100%;max-width:64rem;margin-left:auto;margin-right:auto}
+.container-small{width:100%;max-width:48rem;margin-left:auto;margin-right:auto}
+.padding-section-large{padding-top:7rem;padding-bottom:7rem}
+.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h5,.heading-style-h6{font-family:'Martian Mono',monospace;font-weight:500;letter-spacing:-0.01em;margin:0;line-height:1.2}
+.heading-style-h1{font-size:3.5rem}.heading-style-h2{font-size:3rem}.heading-style-h3{font-size:2.5rem}.heading-style-h5{font-size:1.5rem;line-height:1.4}.heading-style-h6{font-size:1.25rem;line-height:1.4}
+.text-size-medium{font-size:1.125rem}
+.text-style-tagline{font-family:'Martian Mono',monospace;font-size:.875rem;font-weight:500;color:#191919}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.5rem;border-radius:100px;background:#191919;color:#FFFFFF;text-decoration:none;font-size:1rem;border:1px solid #191919;box-sizing:border-box}
+.button:hover{color:#FFFFFF}
+.button.is-secondary{background:transparent;color:#191919}
+.button-group{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.wf-label{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 5%;background:#191919;color:#FFFFFF;font-family:'Martian Mono',monospace;font-size:12px}
+.wf-chip{padding:2px 8px;border-radius:100px;border:1px solid #FFFFFF55}
+.wf-note{padding:10px 5%;background:#FDEFE6;color:#481C03;font-size:13px;line-height:1.5}
+.wf-note b{color:#C14C09}
+.wf-img{background:#D8D8D8;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#4C4C4C;font-size:12px;font-family:'Martian Mono',monospace;text-align:center;padding:8px;box-sizing:border-box}
+.wf-grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem;align-items:center}
+.wf-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}
+.wf-grid-5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1.5rem}
+@media (max-width:767px){.wf-grid-2,.wf-grid-3{grid-template-columns:minmax(0,1fr)}.wf-grid-5{grid-template-columns:repeat(2,minmax(0,1fr))}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.heading-style-h1{font-size:2.5rem}.heading-style-h2{font-size:2.25rem}.heading-style-h3{font-size:2rem}}
+</style>
+</helmet>
+<div class="page-wrapper">
+<dc-import name="Navbar" hint-size="100%,80px"></dc-import>
+<main class="main-wrapper">
+
+<div class="wf-label"><span>01 · Hero</span><span>Relume header-01</span><span>section_about-hero</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_about-hero">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="wf-grid-2">
+<div style="display: flex; flex-direction: column; gap: 1.5rem">
+<h1 class="heading-style-h1">[Virsraksts, līdz 5 vārdiem]</h1>
+<p class="text-size-medium">[2–3 teikumi: kas mēs esam, ko darām un kāpēc]</p>
+<div class="button-group"><a href="wf-02-pakalpojumi.dc.html" class="button">Pakalpojumi</a><a href="wf-08-kontakti.dc.html" class="button is-secondary">Kontakti</a></div>
+</div>
+<div class="wf-img" style="aspect-ratio: 1 / 1">about-hero_image · "Par mums"</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="wf-label"><span>02 · Atslēgvārdu josla</span><span>Relume banner-14</span><span>section_about-marquee</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_about-marquee" style="border-top: 1px solid #D8D8D8; border-bottom: 1px solid #D8D8D8; overflow: hidden">
+<div class="about-marquee_track" style="display: flex; gap: 3rem; padding: 1.5rem 5%; white-space: nowrap; font-family: 'Martian Mono', monospace; font-size: 1.5rem">
+<span>Būvniecība</span><span>·</span><span>Remonts</span><span>·</span><span>Pamati</span><span>·</span><span>Fasādes</span><span>·</span><span>Tehnikas noma</span><span>·</span><span>Apsaimniekošana</span>
+</div>
+</section>
+<div class="wf-note"><b>01.10:</b> josla slīd pa kreisi, tinot lapu (Webflow scroll interaction). Atslēgvārdi gan Google, gan lietotājam.</div>
+
+<div class="wf-label"><span>03 · Stāsts</span><span>Relume layout-484</span><span>section_about-story</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_about-story">
+<div class="padding-global">
+<div class="container-medium">
+<div class="padding-section-large">
+<p class="heading-style-h3" style="color: #191919">[Lielais teksta bloks, 5–15 teikumi: mērķis, vīzija, vērtības, vēsture, kā un kāpēc uzņēmums radās.]</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="wf-label"><span>04 · Statistika</span><span>Relume stats-16</span><span>section_about-stats</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_about-stats" style="background: #B2B2B2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
+<div style="max-width: 48rem; display: flex; flex-direction: column; gap: 1.5rem">
+<h2 class="heading-style-h2">[Virsraksts, līdz 6 vārdiem]</h2>
+<p class="text-size-medium" style="color: #191919">[Apraksts, ~10 vārdi]</p>
+</div>
+<div class="about-stats_list wf-grid-3">
+<div style="display: flex; flex-direction: column; gap: .5rem; padding-top: 1rem; border-top: 1px solid #191919"><span class="heading-style-h1">[00]</span><span>[Paveiktie projekti]</span></div>
+<div style="display: flex; flex-direction: column; gap: .5rem; padding-top: 1rem; border-top: 1px solid #191919"><span class="heading-style-h1">[00]</span><span>[Pieredzes gadi]</span></div>
+<div style="display: flex; flex-direction: column; gap: .5rem; padding-top: 1rem; border-top: 1px solid #191919"><span class="heading-style-h1">[00]</span><span>[Nomas vienības]</span></div>
+</div>
+<span style="font-family: 'Martian Mono', monospace; font-size: 12px">about-stats_background-image</span>
+</div>
+</div>
+</div>
+</section>
+<div class="wf-note"><b>01.10:</b> cipariem nav jābūt lieliem, tie rāda pieredzi. Klients vēl domā, kurus 3 ciparus.</div>
+
+<div class="wf-label"><span>05 · Vērtības</span><span>Relume layout-28</span><span>section_about-values</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_about-values">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="wf-grid-2">
+<div style="display: flex; flex-direction: column; gap: 2rem">
+<h2 class="heading-style-h2">[Mūsu vērtības]</h2>
+<div style="display: flex; flex-direction: column; gap: 1.5rem">
+<div style="display: flex; flex-direction: column; gap: .5rem"><h3 class="heading-style-h6">[Vērtība 1]</h3><p>[1–2 teikumi]</p></div>
+<div style="display: flex; flex-direction: column; gap: .5rem"><h3 class="heading-style-h6">[Vērtība 2]</h3><p>[1–2 teikumi]</p></div>
+<div style="display: flex; flex-direction: column; gap: .5rem"><h3 class="heading-style-h6">[Vērtība 3]</h3><p>[1–2 teikumi]</p></div>
+</div>
+</div>
+<div class="wf-img" style="aspect-ratio: 1 / 1">about-values_image</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="wf-label"><span>06 · Komanda (CMS)</span><span>Relume team-06</span><span>section_about-team</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_about-team" style="background: #F2F2F2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
+<div class="container-small" style="text-align: center"><h2 class="heading-style-h2">[Komanda]</h2></div>
+<div class="about-team_list wf-grid-3">
+<div class="about-team_item" style="display: flex; flex-direction: column; gap: 1rem"><div class="wf-img" style="aspect-ratio: 1 / 1">Komandas bilde</div><div><h3 class="heading-style-h6">[Vārds Uzvārds]</h3><span>[Amats]</span></div><p>[1–2 teikumi]</p></div>
+<div class="about-team_item" style="display: flex; flex-direction: column; gap: 1rem"><div class="wf-img" style="aspect-ratio: 1 / 1">Komandas bilde</div><div><h3 class="heading-style-h6">[Vārds Uzvārds]</h3><span>[Amats]</span></div><p>[1–2 teikumi]</p></div>
+<div class="about-team_item" style="display: flex; flex-direction: column; gap: 1rem"><div class="wf-img" style="aspect-ratio: 1 / 1">Komandas bilde</div><div><h3 class="heading-style-h6">[Vārds Uzvārds]</h3><span>[Amats]</span></div><p>[1–2 teikumi]</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="wf-note"><b>01.10:</b> komanda paliek. CMS "Komanda", klients pats pievieno/noņem. Bez stock bildēm: ja bilžu nav, sadaļu paslēpj.</div>
+
+<div class="wf-label"><span>07 · Partneri</span><span>Relume logo-04</span><span>section_about-partners</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_about-partners">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 3rem">
+<h2 class="heading-style-h5" style="text-align: center">[Mēs izvēlamies labāko]</h2>
+<div class="about-partners_list wf-grid-5">
+<div class="wf-img" style="height: 72px">Logo</div><div class="wf-img" style="height: 72px">Logo</div><div class="wf-img" style="height: 72px">Logo</div><div class="wf-img" style="height: 72px">Logo</div><div class="wf-img" style="height: 72px">Logo</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="wf-note"><b>01.10:</b> 5–10 zīmoli (materiālu piegādātāji, instrumentu/tehnikas zīmoli, nomas uzņēmumi). Logo piemeklē Fortic.</div>
+
+<div class="wf-label"><span>08 · CTA</span><span>Relume cta-39</span><span>section_about-cta</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_about-cta" style="background: #F2F2F2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="wf-grid-2">
+<div style="display: flex; flex-direction: column; gap: 1.5rem">
+<h2 class="heading-style-h2">[CTA virsraksts]</h2>
+<p class="text-size-medium">[Aicina sazināties vai apskatīt pakalpojumus]</p>
+<div class="button-group"><a href="wf-08-kontakti.dc.html" class="button">Kontakti</a><a href="wf-02-pakalpojumi.dc.html" class="button is-secondary">Pakalpojumi</a></div>
+</div>
+<div class="wf-img" style="aspect-ratio: 3 / 2">about-cta_image</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<dc-import name="Footer" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5300}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

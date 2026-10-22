@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>Wireframe: Sākumlapa</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
+<style>
+body{margin:0;font-family:'Noto Sans',sans-serif;color:#191919;background:#FFFFFF}
+a{color:#191919}a:hover{color:#4C4C4C}
+p{margin:0;line-height:1.5;color:#4C4C4C}
+.padding-global{padding-left:5%;padding-right:5%}
+.container-large{width:100%;max-width:80rem;margin-left:auto;margin-right:auto}
+.container-small{width:100%;max-width:48rem;margin-left:auto;margin-right:auto}
+.padding-section-large{padding-top:7rem;padding-bottom:7rem}
+.heading-style-h1,.heading-style-h2,.heading-style-h3,.heading-style-h5,.heading-style-h6{font-family:'Martian Mono',monospace;font-weight:500;letter-spacing:-0.01em;margin:0;line-height:1.2}
+.heading-style-h1{font-size:3.5rem}.heading-style-h2{font-size:3rem}.heading-style-h3{font-size:2.5rem}.heading-style-h5{font-size:1.5rem;line-height:1.4}.heading-style-h6{font-size:1.25rem;line-height:1.4}
+.text-size-medium{font-size:1.125rem}
+.text-style-tagline{font-family:'Martian Mono',monospace;font-size:.875rem;font-weight:500;color:#191919}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 1.5rem;border-radius:100px;background:#191919;color:#FFFFFF;text-decoration:none;font-size:1rem;border:1px solid #191919;box-sizing:border-box}
+.button:hover{color:#FFFFFF}
+.button.is-secondary{background:transparent;color:#191919}
+.button-group{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.wf-label{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;padding:8px 5%;background:#191919;color:#FFFFFF;font-family:'Martian Mono',monospace;font-size:12px}
+.wf-chip{padding:2px 8px;border-radius:100px;border:1px solid #FFFFFF55}
+.wf-chip.is-s3{background:#F2600C;border-color:#F2600C}
+.wf-note{padding:10px 5%;background:#FDEFE6;color:#481C03;font-size:13px;line-height:1.5}
+.wf-note b{color:#C14C09}
+.wf-img{background:#D8D8D8;border-radius:16px;display:flex;align-items:center;justify-content:center;color:#4C4C4C;font-size:12px;font-family:'Martian Mono',monospace;text-align:center;padding:8px;box-sizing:border-box}
+.wf-card{border:1px solid #D8D8D8;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;background:#FFFFFF}
+.wf-grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3rem;align-items:center}
+.wf-grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem}
+@media (max-width:767px){.wf-grid-2,.wf-grid-3{grid-template-columns:minmax(0,1fr)}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.heading-style-h1{font-size:2.5rem}.heading-style-h2{font-size:2.25rem}}
+</style>
+</helmet>
+<div class="page-wrapper">
+<dc-import name="Navbar" hint-size="100%,80px"></dc-import>
+<main class="main-wrapper">
+
+<div class="wf-label"><span>01 · Hero</span><span>Relume header-05</span><span>section_home-hero</span><span class="wf-chip">color-scheme-2</span></div>
+<section class="section_home-hero" style="position: relative; background: #B2B2B2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="min-height: 560px; display: flex; align-items: center; box-sizing: border-box">
+<div class="home-hero_content" style="max-width: 40rem; display: flex; flex-direction: column; gap: 1.5rem">
+<h1 class="heading-style-h1">Profesionāli būvniecības risinājumi jūsu vajadzībām</h1>
+<p class="text-size-medium" style="color: #191919">[Apraksts, 1–2 teikumi: būvniecība, remonts, tehnikas noma Salaspils pusē]</p>
+<div class="button-group"><a href="wf-02-pakalpojumi.dc.html" class="button">Uzzināt vairāk</a><a href="wf-03-noma.dc.html" class="button is-secondary">Iegūt informāciju</a></div>
+</div>
+</div>
+</div>
+</div>
+<span style="position: absolute; right: 5%; bottom: 16px; font-family: 'Martian Mono', monospace; font-size: 12px; color: #191919">home-hero_background-image · augstas kvalitātes, stock ja nav</span>
+</section>
+<div class="wf-note"><b>Saturs:</b> virsraksts 5–7 vārdi (klienta melnraksts augstāk), apraksts 1–2 teikumi, 1 fona bilde. Telefona darba bildes sākumlapā neliekam.</div>
+
+<div class="wf-label"><span>02 · Izceltie pakalpojumi</span><span>Relume blog-44</span><span>section_home-services</span><span class="wf-chip">color-scheme-2</span></div>
+<section class="section_home-services">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1.5rem">
+<div style="max-width: 48rem; display: flex; flex-direction: column; gap: 1.5rem">
+<h2 class="heading-style-h2">Mūsu būvniecības pakalpojumi</h2>
+<p class="text-size-medium">[Īss ievads, 1 teikums]</p>
+</div>
+<a href="wf-02-pakalpojumi.dc.html" class="button is-secondary">Visi pakalpojumi</a>
+</div>
+<div class="home-services_list wf-grid-3">
+<a href="wf-02-pakalpojumi.dc.html" class="home-services_item wf-card" style="text-decoration: none">
+<div class="wf-img" style="height: 240px; border-radius: 0">Pakalpojuma bilde (stock)</div>
+<div style="padding: 1.5rem; display: flex; flex-direction: column; gap: .5rem"><h3 class="heading-style-h5">Ēku būvniecība</h3><p>No pamatiem līdz atslēgai.</p></div>
+</a>
+<a href="wf-02-pakalpojumi.dc.html" class="home-services_item wf-card" style="text-decoration: none">
+<div class="wf-img" style="height: 240px; border-radius: 0">Pakalpojuma bilde (stock)</div>
+<div style="padding: 1.5rem; display: flex; flex-direction: column; gap: .5rem"><h3 class="heading-style-h5">Remonti un apdare</h3><p>Apsaimniekošana, zemes darbi.</p></div>
+</a>
+<a href="wf-03-noma.dc.html" class="home-services_item wf-card" style="text-decoration: none">
+<div class="wf-img" style="height: 240px; border-radius: 0">Pakalpojuma bilde (stock)</div>
+<div style="padding: 1.5rem; display: flex; flex-direction: column; gap: .5rem"><h3 class="heading-style-h5">Tehnikas noma</h3><p>Instrumentu un tehnikas noma.</p></div>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class="wf-note"><b>01.10:</b> 3 virzieni (būvniecība, remonts, noma), katram nosaukums + līdz 10 vārdiem. Ja klients grib 4, izkārtojums 2×2. Apsaimniekošana pakalpojumu lapā.</div>
+
+<div class="wf-label"><span>03 · Īsumā par mums</span><span>Relume layout-207</span><span>section_home-about</span><span class="wf-chip is-s3">color-scheme-3</span></div>
+<section class="section_home-about" style="background: #FDEFE6">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="home-about_component wf-grid-2">
+<div class="wf-img" style="aspect-ratio: 1 / 1">home-about_image · "Sākums – par mums"</div>
+<div class="home-about_content" style="display: flex; flex-direction: column; gap: 1.5rem">
+<span class="text-style-tagline">Par mums</span>
+<h2 class="heading-style-h2">Uzticams un stabils partneris būvniecībā</h2>
+<p class="text-size-medium">[Apraksts, 2–4 teikumi: mērķis, ko darām, par ko iestājamies]</p>
+<ul style="margin: 0; padding-left: 1.25rem; display: flex; flex-direction: column; gap: .75rem; line-height: 1.5">
+<li>Augsta darba kvalitāte</li>
+<li>Profesionāla un atbildīga pieeja</li>
+<li>Uzticamība katrā projektā</li>
+</ul>
+<div class="button-group"><a href="wf-07-par-mums.dc.html" class="button is-secondary">Par mums</a><a href="wf-08-kontakti.dc.html" class="button">Kontakti</a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="wf-label"><span>04 · Izceltā noma</span><span>Relume: jāpievieno (ieteikums product-08)</span><span>section_home-rental</span><span class="wf-chip">color-scheme-2</span></div>
+<div class="wf-note"><b>Jauns pēc 01.10:</b> "Produktiem arī jābūt sākumlapā". 3 izceltas nomas vienības no CMS, saite uz nomas lapu.</div>
+<section class="section_home-rental" style="background: #F2F2F2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 1.5rem">
+<h2 class="heading-style-h2">[Nomas virsraksts]</h2>
+<a href="wf-03-noma.dc.html" class="button is-secondary">Visa noma</a>
+</div>
+<div class="home-rental_list wf-grid-3">
+<a href="wf-04-nomas-produkts.dc.html" class="home-rental_item" style="display: flex; flex-direction: column; gap: 1rem; text-decoration: none"><div class="wf-img" style="aspect-ratio: 1 / 1">Nomas vienība (CMS)</div><div style="display: flex; justify-content: space-between; gap: 1rem"><h3 class="heading-style-h6">[Nosaukums]</h3><span>[Cena]</span></div><span style="font-size: .875rem">[Kategorija]</span></a>
+<a href="wf-04-nomas-produkts.dc.html" class="home-rental_item" style="display: flex; flex-direction: column; gap: 1rem; text-decoration: none"><div class="wf-img" style="aspect-ratio: 1 / 1">Nomas vienība (CMS)</div><div style="display: flex; justify-content: space-between; gap: 1rem"><h3 class="heading-style-h6">[Nosaukums]</h3><span>[Cena]</span></div><span style="font-size: .875rem">[Kategorija]</span></a>
+<a href="wf-04-nomas-produkts.dc.html" class="home-rental_item" style="display: flex; flex-direction: column; gap: 1rem; text-decoration: none"><div class="wf-img" style="aspect-ratio: 1 / 1">Nomas vienība (CMS)</div><div style="display: flex; justify-content: space-between; gap: 1rem"><h3 class="heading-style-h6">[Nosaukums]</h3><span>[Cena]</span></div><span style="font-size: .875rem">[Kategorija]</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="wf-label"><span>05 · Atsauksmes</span><span>Relume testimonial-17</span><span>section_home-reviews</span><span class="wf-chip">color-scheme-2</span></div>
+<section class="section_home-reviews">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="display: flex; flex-direction: column; gap: 4rem">
+<div class="container-small" style="text-align: center; display: flex; flex-direction: column; gap: 1.5rem">
+<h2 class="heading-style-h2">[Atsauksmju virsraksts]</h2>
+<p class="text-size-medium">[1 teikums]</p>
+</div>
+<div class="wf-img" style="min-height: 360px">home-reviews_embed · Google Business atsauksmes, automātiski, tikai 4+ zvaigznes</div>
+</div>
+</div>
+</div>
+</section>
+<div class="wf-note"><b>Saturs:</b> teksti nav jāraksta. Vajag klienta Google Business profila saiti.</div>
+
+<div class="wf-label"><span>06 · Noslēguma CTA</span><span>Relume cta-27</span><span>section_home-cta</span><span class="wf-chip">color-scheme-1</span></div>
+<section class="section_home-cta" style="background: #B2B2B2">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large">
+<div class="container-small" style="text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem">
+<h2 class="heading-style-h2">[CTA virsraksts]</h2>
+<p class="text-size-medium" style="color: #191919">[1 teikums, aicina sazināties]</p>
+<div class="button-group" style="justify-content: center"><a href="wf-08-kontakti.dc.html" class="button">Kontakti</a><a href="wf-03-noma.dc.html" class="button is-secondary">Noma</a></div>
+<span style="font-family: 'Martian Mono', monospace; font-size: 12px">home-cta_background-image · "Sākums – CTA"</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<dc-import name="Footer" hint-size="100%,320px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4700}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
