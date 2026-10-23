@@ -1,1 +1,278 @@
-{"v":3,"createdOnFiles":{"v":1,"at":"2026-10-22T09:30:00Z"},"title":"ProBuildGroup.lv","launch":{"view":"canvas"},"pages":[],"boards":{"Main.dc.html":{"x":0,"y":0,"w":1440,"h":1100,"title":"00 · Projekta pārskats"},"StyleGuide.dc.html":{"x":1520,"y":0,"w":1440,"h":2200,"title":"Stila vadlīnijas (Relume, 1. variants)"},"Reference-Relume-Home.dc.html":{"x":3040,"y":0,"w":1440,"h":4440,"title":"Atsauce: Relume sākumlapas dizains"},"Navbar.dc.html":{"x":4560,"y":0,"w":1440,"h":80,"title":"Komponente: navbar_component","expand":"fill","is_interactive":true},"Footer.dc.html":{"x":4560,"y":200,"w":1440,"h":320,"title":"Komponente: footer_component","expand":"fill","is_interactive":true},"wf-01-sakums.dc.html":{"x":0,"y":4800,"w":1440,"h":4700,"title":"WF 01 · Sākumlapa /","expand":"fill","is_interactive":true},"wf-02-pakalpojumi.dc.html":{"x":1520,"y":4800,"w":1440,"h":4500,"title":"WF 02 · Pakalpojumi /pakalpojumi","expand":"fill","is_interactive":true},"wf-03-noma.dc.html":{"x":3040,"y":4800,"w":1440,"h":2700,"title":"WF 03 · Noma /noma","expand":"fill","is_interactive":true},"wf-04-nomas-produkts.dc.html":{"x":4560,"y":4800,"w":1440,"h":1900,"title":"WF 04 · Nomas produkts (CMS)","expand":"fill","is_interactive":true},"wf-05-portfolio.dc.html":{"x":6080,"y":4800,"w":1440,"h":2400,"title":"WF 05 · Portfolio /portfolio","expand":"fill","is_interactive":true},"wf-06-projekts.dc.html":{"x":7600,"y":4800,"w":1440,"h":3700,"title":"WF 06 · Projekts (CMS)","expand":"fill","is_interactive":true},"wf-07-par-mums.dc.html":{"x":9120,"y":4800,"w":1440,"h":5300,"title":"WF 07 · Par mums /par-mums","expand":"fill","is_interactive":true},"wf-08-kontakti.dc.html":{"x":10640,"y":4800,"w":1440,"h":1500,"title":"WF 08 · Kontakti /kontakti","expand":"fill","is_interactive":true},"site-01-sakums.dc.html":{"x":0,"y":10500,"w":1440,"h":5400,"title":"Dizains 01 · Sākumlapa","expand":"fill","is_interactive":true},"site-02-pakalpojumi.dc.html":{"x":1520,"y":10500,"w":1440,"h":6000,"title":"Dizains 02 · Pakalpojumi","expand":"fill","is_interactive":true},"site-03-noma.dc.html":{"x":3040,"y":10500,"w":1440,"h":3000,"title":"Dizains 03 · Noma","expand":"fill","is_interactive":true},"site-04-nomas-produkts.dc.html":{"x":4560,"y":10500,"w":1440,"h":2200,"title":"Dizains 04 · Nomas produkts","expand":"fill","is_interactive":true},"site-05-portfolio.dc.html":{"x":6080,"y":10500,"w":1440,"h":2900,"title":"Dizains 05 · Portfolio","expand":"fill","is_interactive":true},"site-06-projekts.dc.html":{"x":7600,"y":10500,"w":1440,"h":4400,"title":"Dizains 06 · Projekts","expand":"fill","is_interactive":true},"site-07-par-mums.dc.html":{"x":9120,"y":10500,"w":1440,"h":6200,"title":"Dizains 07 · Par mums","expand":"fill","is_interactive":true},"site-08-kontakti.dc.html":{"x":10640,"y":10500,"w":1440,"h":1700,"title":"Dizains 08 · Kontakti","expand":"fill","is_interactive":true},"site-02b-pakalpojumi-v2.dc.html":{"x":1520,"y":16900,"w":1440,"h":6200,"title":"Dizains 02 B · Pakalpojumi (jauns izkārtojums)","expand":"fill","is_interactive":true},"SiteNavbar.dc.html":{"x":12160,"y":10500,"w":1440,"h":88,"title":"Komponente: navbar_component (dizains)","expand":"fill","is_interactive":true},"SiteFooter.dc.html":{"x":12160,"y":10708,"w":1440,"h":460,"title":"Komponente: footer_component (dizains)","expand":"fill","is_interactive":true}},"order":["Main.dc.html","StyleGuide.dc.html","Reference-Relume-Home.dc.html","Navbar.dc.html","Footer.dc.html","wf-01-sakums.dc.html","wf-02-pakalpojumi.dc.html","wf-03-noma.dc.html","wf-04-nomas-produkts.dc.html","wf-05-portfolio.dc.html","wf-06-projekts.dc.html","wf-07-par-mums.dc.html","wf-08-kontakti.dc.html","site-01-sakums.dc.html","site-02-pakalpojumi.dc.html","site-02b-pakalpojumi-v2.dc.html","site-03-noma.dc.html","site-04-nomas-produkts.dc.html","site-05-portfolio.dc.html","site-06-projekts.dc.html","site-07-par-mums.dc.html","site-08-kontakti.dc.html","SiteNavbar.dc.html","SiteFooter.dc.html"],"notes":{"row3":{"x":0,"y":10240,"text":"Dizains: visas lapas (1. variants, stock bildes, mājasdarba teksti)","kind":"title1","maxW":13600},"row1":{"x":0,"y":-300,"text":"Iestatīšana: pārskats, stils, atsauce, komponentes","kind":"title1","maxW":6000},"row2":{"x":0,"y":4500,"text":"Wireframes: Relume skelets + 01.10 sazvana izmaiņas","kind":"title1","maxW":12080}},"designSystems":[]}
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Footer.dc.html": {
+      "expand": "fill",
+      "h": 320,
+      "is_interactive": true,
+      "title": "Komponente: footer_component",
+      "w": 1440,
+      "x": 4560,
+      "y": 200
+    },
+    "Main.dc.html": {
+      "h": 1100,
+      "title": "00 · Projekta pārskats",
+      "w": 1440,
+      "x": 0,
+      "y": 0
+    },
+    "Navbar.dc.html": {
+      "expand": "fill",
+      "h": 80,
+      "is_interactive": true,
+      "title": "Komponente: navbar_component",
+      "w": 1440,
+      "x": 4560,
+      "y": 0
+    },
+    "Reference-Relume-Home.dc.html": {
+      "h": 4440,
+      "title": "Atsauce: Relume sākumlapas dizains",
+      "w": 1440,
+      "x": 3040,
+      "y": 0
+    },
+    "SiteFooter.dc.html": {
+      "expand": "fill",
+      "h": 460,
+      "is_interactive": true,
+      "title": "Komponente: footer_component (dizains)",
+      "w": 1440,
+      "x": 12160,
+      "y": 10708
+    },
+    "SiteNavbar.dc.html": {
+      "expand": "fill",
+      "h": 88,
+      "is_interactive": true,
+      "title": "Komponente: navbar_component (dizains)",
+      "w": 1440,
+      "x": 12160,
+      "y": 10500
+    },
+    "StyleGuide.dc.html": {
+      "h": 2200,
+      "title": "Stila vadlīnijas (Relume, 1. variants)",
+      "w": 1440,
+      "x": 1520,
+      "y": 0
+    },
+    "site-01-sakums.dc.html": {
+      "expand": "fill",
+      "h": 5400,
+      "is_interactive": true,
+      "title": "Dizains 01 · Sākumlapa",
+      "w": 1440,
+      "x": 0,
+      "y": 10500
+    },
+    "site-02-pakalpojumi.dc.html": {
+      "expand": "fill",
+      "h": 6000,
+      "is_interactive": true,
+      "title": "Dizains 02 · Pakalpojumi",
+      "w": 1440,
+      "x": 1520,
+      "y": 10500
+    },
+    "site-02b-pakalpojumi-v2.dc.html": {
+      "expand": "fill",
+      "h": 6200,
+      "is_interactive": true,
+      "title": "Dizains 02 B · Pakalpojumi (jauns izkārtojums)",
+      "w": 1440,
+      "x": 1520,
+      "y": 16900
+    },
+    "site-03-noma.dc.html": {
+      "expand": "fill",
+      "h": 3000,
+      "is_interactive": true,
+      "title": "Dizains 03 · Noma",
+      "w": 1440,
+      "x": 3040,
+      "y": 10500
+    },
+    "site-04-nomas-produkts.dc.html": {
+      "expand": "fill",
+      "h": 2200,
+      "is_interactive": true,
+      "title": "Dizains 04 · Nomas produkts",
+      "w": 1440,
+      "x": 4560,
+      "y": 10500
+    },
+    "site-05-portfolio.dc.html": {
+      "expand": "fill",
+      "h": 2900,
+      "is_interactive": true,
+      "title": "Dizains 05 · Portfolio",
+      "w": 1440,
+      "x": 6080,
+      "y": 10500
+    },
+    "site-06-projekts.dc.html": {
+      "expand": "fill",
+      "h": 4400,
+      "is_interactive": true,
+      "title": "Dizains 06 · Projekts",
+      "w": 1440,
+      "x": 7600,
+      "y": 10500
+    },
+    "site-07-par-mums.dc.html": {
+      "expand": "fill",
+      "h": 6200,
+      "is_interactive": true,
+      "title": "Dizains 07 · Par mums",
+      "w": 1440,
+      "x": 9120,
+      "y": 10500
+    },
+    "site-08-kontakti.dc.html": {
+      "expand": "fill",
+      "h": 1700,
+      "is_interactive": true,
+      "title": "Dizains 08 · Kontakti",
+      "w": 1440,
+      "x": 10640,
+      "y": 10500
+    },
+    "wf-01-sakums.dc.html": {
+      "expand": "fill",
+      "h": 4700,
+      "is_interactive": true,
+      "title": "WF 01 · Sākumlapa /",
+      "w": 1440,
+      "x": 0,
+      "y": 4800
+    },
+    "wf-02-pakalpojumi.dc.html": {
+      "expand": "fill",
+      "h": 4500,
+      "is_interactive": true,
+      "title": "WF 02 · Pakalpojumi /pakalpojumi",
+      "w": 1440,
+      "x": 1520,
+      "y": 4800
+    },
+    "wf-03-noma.dc.html": {
+      "expand": "fill",
+      "h": 2700,
+      "is_interactive": true,
+      "title": "WF 03 · Noma /noma",
+      "w": 1440,
+      "x": 3040,
+      "y": 4800
+    },
+    "wf-04-nomas-produkts.dc.html": {
+      "expand": "fill",
+      "h": 1900,
+      "is_interactive": true,
+      "title": "WF 04 · Nomas produkts (CMS)",
+      "w": 1440,
+      "x": 4560,
+      "y": 4800
+    },
+    "wf-05-portfolio.dc.html": {
+      "expand": "fill",
+      "h": 2400,
+      "is_interactive": true,
+      "title": "WF 05 · Portfolio /portfolio",
+      "w": 1440,
+      "x": 6080,
+      "y": 4800
+    },
+    "wf-06-projekts.dc.html": {
+      "expand": "fill",
+      "h": 3700,
+      "is_interactive": true,
+      "title": "WF 06 · Projekts (CMS)",
+      "w": 1440,
+      "x": 7600,
+      "y": 4800
+    },
+    "wf-07-par-mums.dc.html": {
+      "expand": "fill",
+      "h": 5300,
+      "is_interactive": true,
+      "title": "WF 07 · Par mums /par-mums",
+      "w": 1440,
+      "x": 9120,
+      "y": 4800
+    },
+    "wf-08-kontakti.dc.html": {
+      "expand": "fill",
+      "h": 1500,
+      "is_interactive": true,
+      "title": "WF 08 · Kontakti /kontakti",
+      "w": 1440,
+      "x": 10640,
+      "y": 4800
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-22T09:30:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "row1": {
+      "kind": "title1",
+      "maxW": 6000,
+      "text": "Iestatīšana: pārskats, stils, atsauce, komponentes",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "row2": {
+      "kind": "title1",
+      "maxW": 8000,
+      "text": "Wireframes: Relume skelets + 01.10 sazvana izmaiņas",
+      "w": 240,
+      "x": 0,
+      "y": 4500
+    },
+    "row3": {
+      "kind": "title1",
+      "maxW": 8000,
+      "text": "Dizains: visas lapas (1. variants, stock bildes, mājasdarba teksti)",
+      "w": 240,
+      "x": 0,
+      "y": 10240
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "StyleGuide.dc.html",
+    "Reference-Relume-Home.dc.html",
+    "Navbar.dc.html",
+    "Footer.dc.html",
+    "wf-01-sakums.dc.html",
+    "wf-02-pakalpojumi.dc.html",
+    "wf-03-noma.dc.html",
+    "wf-04-nomas-produkts.dc.html",
+    "wf-05-portfolio.dc.html",
+    "wf-06-projekts.dc.html",
+    "wf-07-par-mums.dc.html",
+    "wf-08-kontakti.dc.html",
+    "site-01-sakums.dc.html",
+    "site-02-pakalpojumi.dc.html",
+    "site-02b-pakalpojumi-v2.dc.html",
+    "site-03-noma.dc.html",
+    "site-04-nomas-produkts.dc.html",
+    "site-05-portfolio.dc.html",
+    "site-06-projekts.dc.html",
+    "site-07-par-mums.dc.html",
+    "site-08-kontakti.dc.html",
+    "SiteNavbar.dc.html",
+    "SiteFooter.dc.html"
+  ],
+  "pages": [],
+  "title": "ProBuildGroup.lv"
+}

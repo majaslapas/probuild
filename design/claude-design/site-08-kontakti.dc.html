@@ -11,54 +11,80 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
 <style>
 body{margin:0;background:#000000;color:#FFFFFF;font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+:root{color-scheme:dark}
 *,*::before,*::after{box-sizing:border-box}
 a{color:#FFFFFF}a:hover{color:#F58F54}
 img{display:block;max-width:100%}
-p,h1,h2,h3,h4,h5,h6,ul{margin:0}
+p,h1,h2,h3,h4,h5,h6,ul,ol,figure,blockquote{margin:0}
+p{text-wrap:pretty}
 .color-scheme-1{background-color:#000000;color:#FFFFFF;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
+.color-scheme-2{background-color:#191919;color:#FFFFFF;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
 .padding-global{padding-left:5%;padding-right:5%}
 .container-large{width:100%;max-width:80rem;margin-left:auto;margin-right:auto}
-.padding-section-large{padding-top:7rem;padding-bottom:7rem}
-.heading-style-h1,.heading-style-h5{font-family:'Martian Mono',ui-monospace,monospace;font-weight:500;letter-spacing:-0.01em;line-height:1.2}
-.heading-style-h1{font-size:3.5rem}.heading-style-h5{font-size:1.5rem;line-height:1.4}
+.heading-style-h1,.heading-style-h5,.heading-style-h6{font-family:'Martian Mono',ui-monospace,monospace;font-weight:500;line-height:1.2;text-wrap:balance}
+.heading-style-h1{font-size:clamp(2.75rem,5vw,4.5rem);line-height:1.05;letter-spacing:-0.035em}
+.heading-style-h5{font-size:1.5rem;line-height:1.4}.heading-style-h6{font-size:1.25rem;line-height:1.4}
 .text-size-large{font-size:1.25rem;line-height:1.5}.text-size-small{font-size:.875rem;line-height:1.5}
 .text-color-muted{color:var(--scheme-muted)}
-.text-style-tagline{display:inline-flex;align-items:center;gap:.625rem;font-family:'Martian Mono',monospace;font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
-.text-style-tagline::before{content:"";width:.5rem;height:.5rem;background:#F2600C;flex-shrink:0}
-.button{display:inline-flex;align-items:center;justify-content:center;gap:.625rem;min-height:3rem;padding:0 1.5rem;border-radius:100px;border:1px solid #F2600C;background:#F2600C;color:#000000;font-family:inherit;font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;transition:background-color .2s}
+.text-style-tagline{font-size:1.0625rem;font-weight:600;color:#F58F54}
+.stars{color:#F2600C;letter-spacing:.15em}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #F2600C;outline-offset:3px}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:.625rem;min-height:3rem;padding:0 1.5rem;border-radius:100px;border:1px solid #F2600C;background:#F2600C;color:#000000;font-family:inherit;font-size:1rem;font-weight:600;text-decoration:none;cursor:pointer;touch-action:manipulation;transition:background-color .2s,border-color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
 .button:hover{background:#F58F54;border-color:#F58F54;color:#000000}
+.button:active{transform:scale(.97)}
 .icon-arrow{width:1.125rem;height:1.125rem;flex-shrink:0}
 .form_field{display:flex;flex-direction:column;gap:.5rem;font-size:.875rem;font-weight:600}
-.form_input{width:100%;min-height:3rem;padding:0 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#000000;color:#FFFFFF;font-family:inherit;font-size:1rem;font-weight:400}
+.form_input{width:100%;min-height:3rem;padding:0 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:#000000;color:#FFFFFF;font-family:inherit;font-size:1rem;font-weight:400;transition:border-color .2s}
+.form_input:hover{border-color:rgba(255,255,255,.4)}
 .form_input:focus{outline:2px solid #F2600C;outline-offset:1px;border-color:transparent}
 .form_input::placeholder{color:#7F7F7F}
 textarea.form_input{padding:.875rem 1rem;min-height:9rem;resize:vertical}
-.contact_component{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:5rem;align-items:start}
-.contact_item{display:flex;align-items:center;gap:1.25rem;padding:1.5rem 0;border-top:1px solid rgba(255,255,255,.15);text-decoration:none;color:#FFFFFF}
-.contact_item:hover{color:#FFFFFF}
-.contact_item:hover .contact_icon{background:#F2600C;color:#000000;border-color:#F2600C}
-.contact_icon{display:flex;align-items:center;justify-content:center;width:3rem;height:3rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);flex-shrink:0;transition:background-color .2s,color .2s,border-color .2s}
+/* top */
+.contact-hero_top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:2rem 5rem;align-items:end}
+.contact-hero_rating{display:flex;align-items:center;gap:1rem;padding:1.25rem 1.5rem;border-radius:16px;background:#191919;justify-self:end}
+.contact-hero_score{font-family:'Martian Mono',monospace;font-size:2.5rem;line-height:1;letter-spacing:-0.03em}
+/* quick channels */
+.contact-channels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.contact-channel{display:flex;flex-direction:column;justify-content:space-between;gap:2.5rem;min-height:12rem;padding:1.75rem;border-radius:16px;background:#191919;text-decoration:none;color:#FFFFFF;transition:background-color .2s,transform .3s cubic-bezier(.23,1,.32,1)}
+.contact-channel:hover{background:#1F1F1F;color:#FFFFFF;transform:translateY(-4px)}
+.contact-channel:active{transform:scale(.99)}
+.contact-channel.is-primary{background:#F2600C;color:#000000}
+.contact-channel.is-primary:hover{background:#F58F54;color:#000000}
+.contact-channel_icon{display:flex;align-items:center;justify-content:center;width:3rem;height:3rem;border-radius:100px;background:#000000;color:#F2600C}
+.contact-channel_value{font-family:'Martian Mono',monospace;font-weight:500;font-size:1.25rem;line-height:1.3;letter-spacing:-0.01em;overflow-wrap:anywhere}
+/* main */
+.contact_component{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:1.5rem;align-items:start}
+.contact_form{display:flex;flex-direction:column;gap:1.5rem;padding:2.5rem;border-radius:16px;background:#191919}
 .contact_chip{position:relative}
 .contact_chip input{position:absolute;opacity:0;pointer-events:none}
-.contact_chip span{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 1.125rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);font-size:.875rem;font-weight:600;cursor:pointer;transition:background-color .2s,border-color .2s}
+.contact_chip span{display:inline-flex;align-items:center;min-height:2.75rem;padding:0 1.125rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);font-size:.875rem;font-weight:600;cursor:pointer;transition:background-color .2s,border-color .2s,color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
+.contact_chip span:hover{border-color:#FFFFFF}
+.contact_chip:active span{transform:scale(.97)}
 .contact_chip input:checked + span{background:#FFFFFF;border-color:#FFFFFF;color:#000000}
 .contact_chip input:focus-visible + span{outline:2px solid #F2600C;outline-offset:2px}
-@media (max-width:991px){.contact_component{grid-template-columns:minmax(0,1fr);gap:3rem}}
-@media (max-width:767px){.heading-style-h1{font-size:2.5rem}.text-size-large{font-size:1.125rem}.padding-section-large{padding-top:4rem;padding-bottom:4rem}}
-:root{color-scheme:dark}
-.heading-style-h1{letter-spacing:-0.02em;text-wrap:balance}
-p{text-wrap:pretty}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #F2600C;outline-offset:3px}
-.button,button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-.button{transition:background-color .2s,border-color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
-.button:active,.contact_chip:active span{transform:scale(.97)}
-.contact_chip span{transition:background-color .2s,border-color .2s,color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
-.contact_chip span:hover{border-color:#FFFFFF}
+.contact_aside{display:flex;flex-direction:column;gap:1rem;position:sticky;top:2rem}
+.contact_card{display:flex;flex-direction:column;gap:1.25rem;padding:1.75rem;border-radius:16px;background:#191919}
+.contact_person{display:flex;align-items:center;gap:1rem}
+.contact_avatar{display:flex;align-items:center;justify-content:center;width:3.25rem;height:3.25rem;border-radius:100px;background:#000000;color:#F2600C;font-family:'Martian Mono',monospace;font-weight:500;flex-shrink:0}
+.contact_steps{list-style:none;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.contact_step{display:grid;grid-template-columns:2.25rem minmax(0,1fr);gap:1rem;align-items:start;padding:1rem;border-radius:12px;background:#000000}
+.contact_step-dot{display:flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;border-radius:100px;background:#F2600C;color:#000000}
+.contact_stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem}
+.contact_stat{display:flex;flex-direction:column;gap:.25rem;padding:1rem;border-radius:12px;background:#000000}
+.contact_stat strong{font-family:'Martian Mono',monospace;font-weight:500;font-size:1.75rem;line-height:1;letter-spacing:-0.02em;color:#F58F54;font-variant-numeric:tabular-nums}
+/* partners band */
+.contact-partners{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2rem 3rem}
+.contact-partners img{height:1.75rem;width:auto;opacity:.65;transition:opacity .2s}
+.contact-partners img:hover{opacity:1}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:no-preference){
-.contact_content>*,.contact_form{animation:rise .8s cubic-bezier(.23,1,.32,1) both}
-.contact_content>*:nth-child(2){animation-delay:.08s}.contact_content>*:nth-child(3){animation-delay:.16s}.contact_form{animation-delay:.12s}
+.contact-hero_top>*,.contact-channel,.contact_form,.contact_card{animation:rise .8s cubic-bezier(.23,1,.32,1) both}
+.contact-hero_top>*:nth-child(2){animation-delay:.08s}
+.contact-channel:nth-child(1){animation-delay:.12s}.contact-channel:nth-child(2){animation-delay:.18s}.contact-channel:nth-child(3){animation-delay:.24s}
+.contact_form{animation-delay:.3s}.contact_card:nth-child(1){animation-delay:.36s}.contact_card:nth-child(2){animation-delay:.42s}.contact_card:nth-child(3){animation-delay:.48s}
 }
+@media (max-width:991px){.contact-hero_top,.contact_component{grid-template-columns:minmax(0,1fr)}.contact-hero_rating{justify-self:start}.contact_aside{position:static}}
+@media (max-width:767px){.contact-channels{grid-template-columns:minmax(0,1fr)}.contact-channel{min-height:auto;gap:1.5rem}.contact_form{padding:1.5rem}.text-size-large{font-size:1.125rem}}
 </style>
 </helmet>
 <div class="page-wrapper">
@@ -68,43 +94,106 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #F260
 <section class="section_contact color-scheme-1">
 <div class="padding-global">
 <div class="container-large">
-<div class="padding-section-large" style="padding-top: 6rem">
-<div class="contact_component">
-<div class="contact_content" style="display: flex; flex-direction: column; gap: 2.5rem">
+<div style="padding-top: 5rem; padding-bottom: 6rem; display: flex; flex-direction: column; gap: 3rem">
+
+<div class="contact-hero_top">
 <div style="display: flex; flex-direction: column; gap: 1.5rem">
-<h1 class="heading-style-h1">Sazināsimies</h1>
-<p class="text-size-large text-color-muted">Zvaniet, rakstiet vai aizpildiet formu. Atbildēsim darba dienas laikā.</p>
+<span class="text-style-tagline">Kontakti</span>
+<h1 class="heading-style-h1">Sazināsimies par<br>jūsu ieceri</h1>
+<p class="text-size-large text-color-muted" style="max-width: 36rem">Zvaniet, rakstiet vai aizpildiet formu. Atbildēsim darba dienas laikā.</p>
 </div>
-<div class="contact_list" style="display: flex; flex-direction: column; border-bottom: 1px solid rgba(255,255,255,.15)">
-<a href="tel:+37100000000" class="contact_item"><span class="contact_icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span><span style="display: flex; flex-direction: column; gap: .125rem"><span class="text-size-small text-color-muted">Telefons</span><span class="heading-style-h5" style="font-size: 1.25rem">[+371 2X XXX XXX]</span></span></a>
-<a href="mailto:info@probuildgroup.lv" class="contact_item"><span class="contact_icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span><span style="display: flex; flex-direction: column; gap: .125rem"><span class="text-size-small text-color-muted">E-pasts</span><span class="heading-style-h5" style="font-size: 1.25rem">[info@probuildgroup.lv]</span></span></a>
-<div class="contact_item"><span class="contact_icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></span><span style="display: flex; flex-direction: column; gap: .125rem"><span class="text-size-small text-color-muted">Darbības reģions</span><span class="heading-style-h5" style="font-size: 1.25rem">Salaspils un apkārtne</span></span></div>
+<div class="contact-hero_rating" aria-label="Google vērtējums">
+<span class="contact-hero_score">[4,9]</span>
+<div style="display: flex; flex-direction: column; gap: .25rem"><span class="stars" aria-label="5 no 5 zvaigznēm">★★★★★</span><span class="text-size-small text-color-muted">[xx] atsauksmes Google</span></div>
 </div>
-<p class="text-size-small" style="color: #7F7F7F">[Rekvizīti: SIA nosaukums, reģ. nr., juridiskā adrese, ja klients vēlas]</p>
 </div>
-<form class="contact_form" aria-label="Kontaktforma" style="display: flex; flex-direction: column; gap: 1.5rem; padding: 2.5rem; border-radius: 16px; background: #191919">
+
+<div class="contact-channels">
+<a href="tel:+37100000000" class="contact-channel is-primary">
+<span class="contact-channel_icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: .375rem"><span style="font-weight: 600">Zvanīt</span><span class="contact-channel_value">[+371 2X XXX XXX]</span></span>
+</a>
+<a href="mailto:info@probuildgroup.lv" class="contact-channel">
+<span class="contact-channel_icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>
+<span style="display: flex; flex-direction: column; gap: .375rem"><span style="font-weight: 600">Rakstīt</span><span class="contact-channel_value">[info@probuildgroup.lv]</span></span>
+</a>
+<div class="contact-channel">
+<span class="contact-channel_icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></span>
+<span style="display: flex; flex-direction: column; gap: .375rem"><span style="font-weight: 600">Darbības reģions</span><span class="contact-channel_value">Salaspils un apkārtne</span></span>
+</div>
+</div>
+
+<div class="contact_component">
+<form class="contact_form" aria-label="Kontaktforma">
 <div style="display: flex; flex-direction: column; gap: .5rem">
-<h2 class="heading-style-h5">Nosūtiet ziņu</h2>
-<p class="text-size-small text-color-muted">Pieteikums nonāk tieši pie mums, apmaksa nav jāveic.</p>
+<h2 class="heading-style-h5">Nosūtiet pieteikumu</h2>
+<p class="text-size-small text-color-muted">Pieteikums nonāk tieši pie mums. Bez saistībām, apmaksa nav jāveic.</p>
 </div>
-<fieldset style="border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .75rem">
+<fieldset style="border: 0; margin: 0; padding: 0">
 <legend style="font-size: .875rem; font-weight: 600; padding: 0; margin-bottom: .75rem">Kas jūs interesē?</legend>
 <div style="display: flex; flex-wrap: wrap; gap: .5rem">
-<label class="contact_chip"><input type="radio" name="interest" checked=""><span>Būvniecība</span></label>
-<label class="contact_chip"><input type="radio" name="interest"><span>Remonts</span></label>
-<label class="contact_chip"><input type="radio" name="interest"><span>Apsaimniekošana</span></label>
-<label class="contact_chip"><input type="radio" name="interest"><span>Noma</span></label>
-<label class="contact_chip"><input type="radio" name="interest"><span>Cits</span></label>
+<label class="contact_chip"><input type="radio" name="interese" value="buvnieciba" checked=""><span>Būvniecība</span></label>
+<label class="contact_chip"><input type="radio" name="interese" value="remonts"><span>Remonts un apdare</span></label>
+<label class="contact_chip"><input type="radio" name="interese" value="teritorija"><span>Teritorija</span></label>
+<label class="contact_chip"><input type="radio" name="interese" value="apsaimniekosana"><span>Apsaimniekošana</span></label>
+<label class="contact_chip"><input type="radio" name="interese" value="noma"><span>Tehnikas noma</span></label>
+<label class="contact_chip"><input type="radio" name="interese" value="cits"><span>Cits</span></label>
 </div>
 </fieldset>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.25rem">
-<label class="form_field">Vārds<input class="form_input" type="text" autocomplete="name"></label>
-<label class="form_field">Telefons<input class="form_input" type="tel" autocomplete="tel"></label>
+<label class="form_field">Vārds<input class="form_input" type="text" name="vards" autocomplete="name" required=""></label>
+<label class="form_field">Telefons<input class="form_input" type="tel" name="telefons" autocomplete="tel" inputmode="tel" required=""></label>
 </div>
-<label class="form_field">E-pasts<input class="form_input" type="email" autocomplete="email"></label>
-<label class="form_field">Ziņa<textarea class="form_input" name="zina" placeholder="Pastāstiet par savu ieceri…"></textarea></label>
-<button type="button" class="button" style="align-self: flex-start">Nosūtīt<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+<label class="form_field">E-pasts<input class="form_input" type="email" name="epasts" autocomplete="email" spellcheck="false"></label>
+<label class="form_field">Ziņa<textarea class="form_input" name="zina" placeholder="Piem., pamati privātmājai, ~120 m², Salaspils, pavasarī…"></textarea></label>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem">
+<button type="button" class="button">Nosūtīt pieteikumu<svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button>
+<span class="text-size-small" style="color: #7F7F7F">Atbildam darba dienas laikā</span>
+</div>
 </form>
+
+<aside class="contact_aside" aria-label="Par sadarbību">
+<div class="contact_card">
+<h2 class="heading-style-h6">Ar jums sazināsies</h2>
+<div class="contact_person"><span class="contact_avatar" aria-hidden="true">JĀ</span><span style="display: flex; flex-direction: column"><span style="font-weight: 600">Jānis Ādamsons</span><span class="text-size-small text-color-muted">Komandas vadītājs</span></span></div>
+<div class="contact_person"><span class="contact_avatar" aria-hidden="true">NM</span><span style="display: flex; flex-direction: column"><span style="font-weight: 600">Nauris Miķelsons</span><span class="text-size-small text-color-muted">Galvenais meistars</span></span></div>
+</div>
+<div class="contact_card">
+<h2 class="heading-style-h6">Kā notiek sadarbība</h2>
+<ol class="contact_steps">
+<li class="contact_step"><span class="contact_step-dot" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4zM4 7l8 6 8-6"></path></svg></span><span style="display: flex; flex-direction: column; gap: .125rem"><span style="font-weight: 600">Pieteikums</span><span class="text-size-small text-color-muted">Pastāstiet par ieceri formā vai pa telefonu.</span></span></li>
+<li class="contact_step"><span class="contact_step-dot" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"></path></svg></span><span style="display: flex; flex-direction: column; gap: .125rem"><span style="font-weight: 600">Tikšanās un apskate</span><span class="text-size-small text-color-muted">Izvērtējam objektu un darbu apjomu uz vietas.</span></span></li>
+<li class="contact_step"><span class="contact_step-dot" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span><span style="display: flex; flex-direction: column; gap: .125rem"><span style="font-weight: 600">Tāme un darbu sākums</span><span class="text-size-small text-color-muted">Saskaņojam cenu, termiņus un sākam darbu.</span></span></li>
+</ol>
+</div>
+<div class="contact_card">
+<div class="contact_stats">
+<div class="contact_stat"><strong>17+</strong><span class="text-size-small text-color-muted">gadi būvniecībā</span></div>
+<div class="contact_stat"><strong>100+</strong><span class="text-size-small text-color-muted">remontdarbi</span></div>
+</div>
+<p class="text-size-small" style="color: #7F7F7F">[Rekvizīti: SIA nosaukums, reģ. nr., juridiskā adrese, ja klients vēlas]</p>
+</div>
+</aside>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+
+<section class="section_contact-partners color-scheme-2">
+<div class="padding-global">
+<div class="container-large">
+<div style="padding-top: 3.5rem; padding-bottom: 3.5rem; display: flex; flex-direction: column; gap: 2rem">
+<h2 class="text-size-small" style="font-weight: 600; color: #B2B2B2">Strādājam ar uzticamiem partneriem</h2>
+<div class="contact-partners">
+<img src="/_blob/b41c962529b9e57dfddd2e14c9992265" alt="Storent" style="height: 1.5rem">
+<img src="/_blob/f61388bf8c8f0ffd5274b1412711edf9" alt="Loxam Ramirent" style="height: 2.25rem">
+<img src="/_blob/2f0e41304d590de182ab1916679dcae6" alt="Bauroc" style="height: 1.375rem">
+<img src="/_blob/a499379c2baad4334e01beff0b6c5a9a" alt="Pipelife" style="height: 2rem">
+<img src="/_blob/e3fb85ef04a81e203117e0b0d788d8b2" alt="Latvia Timber International">
+<img src="/_blob/070c4c3cc99bb69749038018e25370fd" alt="Ferroli" style="height: 2.25rem">
+<img src="/_blob/00f723ae7b944da14068530257e9fd9d" alt="BetPro" style="height: 1.5rem">
 </div>
 </div>
 </div>
@@ -115,7 +204,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #F260
 <dc-import name="SiteFooter" hint-size="100%,460px"></dc-import>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1700}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2000}}'>
 class Component extends DCLogic {
 renderVals() { return {}; }
 }
