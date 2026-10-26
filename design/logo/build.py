@@ -46,13 +46,10 @@ BARS_E = [
     "M36 40L52 32V112H36Z",
 ]
 MARK_BOX = (-4, 8, 108, 104)  # x, y, w, h
-VARIANTS = {
-    "": dict(p_shape=P_SHAPE, bars=BARS, box=MARK_BOX),
-    "-roof": dict(p_shape=P_SHAPE_ROOF + " " + ROOF_DARK, bars=BARS_ROOF, box=(-24, 8, 128, 104)),
-    "-c": dict(p_shape=P_SHAPE_ROOF + " " + C_DARK, bars=BARS_C, box=MARK_BOX),
-    "-e": dict(p_shape=P_SHAPE_ROOF + " " + E_DARK, bars=BARS_E, box=MARK_BOX),
-    "-d": dict(p_shape=P_SHAPE_ROOF + " " + D_DARK, bars=BARS_C, box=(16, 8, 88, 104)),
-}
+# Mark geometry lives in marks.py (all iterations; uprights 12 wide like the first redraw).
+from marks import versions as _versions
+_V = _versions()
+VARIANTS = {"": _V["03"], "-roof": _V["08"], "-c": _V["09"], "-d": _V["10"], "-e": _V["12"]}
 
 
 def mark_group(ink, dx=0.0, dy=0.0, scale=1.0, m=None):

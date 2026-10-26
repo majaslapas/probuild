@@ -13,7 +13,7 @@ A redraw of the old logo using the website's colours and fonts.
 | `probuild-icon-{black,white}.svg` | Mark only |
 | `probuild-app-icon-{orange,black}.svg` | Square tile for favicons, social avatars and Google Business (512×512) |
 
-**Five versions of the mark.** In both, the orange bars are exactly as wide as the stem of the P.
+**Five versions of the mark.** All uprights other than the P stem are 12 units wide (the P stem is 16), as in the first redraw. Geometry for every iteration is in `marks.py`.
 - **A** (files without `-roof`): the tops of the bars rise to the right at the same angle the P's roof falls, as a mirror image. The tallest bar's peak is level with the top of the P's inner opening.
 - **B** (files with `-roof`, e.g. `probuild-logo-stacked-roof-black.svg`): the same idea, staggered like the old logo. Dark and orange pieces step up left to right in pairs that share one top line: a dark strip left of the first bar, a dark cap over each bar (no wider than the bar and as thick as the P), and over the tallest bar the P's own roof mirrored to the left, so the top reads as a pitched roof.
 - **C** (files with `-c`, e.g. `probuild-logo-stacked-c-black.svg`): like B, but with two orange bars. The left-most upright is a dark strip in place of the first orange bar.
