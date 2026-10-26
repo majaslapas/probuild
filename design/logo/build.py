@@ -11,29 +11,29 @@ OUT.mkdir(exist_ok=True)
 ORANGE = "#F2600C"
 INKS = {"black": "#000000", "white": "#FFFFFF"}
 
-# --- Mark (grid units). All slants are 1:2. Bar tops rise to the right, mirroring the
+# --- Mark (grid units). Bars are as wide as the P stem (16), 4 apart. All slants are 1:2. Bar tops rise to the right, mirroring the
 # P's roof and counter (which fall to the right). Tallest bar's peak sits level with the
 # counter's top corner (y=32). ---
 P_SHAPE = "M56 8L104 32V80L72 64V112H56Z M72 32L88 40V56L72 48Z"
 BARS = [
-    "M5 55.5L18 49V112H5Z",
-    "M22 47L35 40.5V112H22Z",
-    "M39 38.5L52 32V112H39Z",
+    "M-4 60L12 52V112H-4Z",
+    "M16 50L32 42V112H16Z",
+    "M36 40L52 32V112H36Z",
 ]
 # Roof variant (staggered, like the old logo): dark and orange pieces step up in
-# pairs that share one top line. A dark strip stands left of the first bar, a dark cap sits
-# over each bar, and the last cap is the P's own roof mirrored to the left.
-P_SHAPE_ROOF = "M33 19.5L56 8L104 32V80L72 64V112H56V24L33 35.5Z M72 32L88 40V56L72 48Z"
-ROOF_DARK = "M-7 95.5L1 91.5V112H-7Z M-1 75.5L18 66V78L-1 87.5Z M16 50L35 40.5V52.5L16 62Z"
+# pairs that share one top line. A dark strip stands left of the first bar, a dark cap exactly
+# as wide as each bar sits over it, and the last cap is the P's own roof mirrored to the left.
+P_SHAPE_ROOF = "M36 18L56 8L104 32V80L72 64V112H56V24L36 34Z M72 32L88 40V56L72 48Z"
+ROOF_DARK = "M-24 102L-8 94V112H-24Z M-4 76L12 68V78L-4 86Z M16 50L32 42V52L16 60Z"
 BARS_ROOF = [
-    "M5 89.5L18 83V112H5Z",
-    "M22 64L35 57.5V112H22Z",
-    "M39 38.5L52 32V112H39Z",
+    "M-4 92L12 84V112H-4Z",
+    "M16 66L32 58V112H16Z",
+    "M36 40L52 32V112H36Z",
 ]
-MARK_BOX = (5, 8, 99, 104)  # x, y, w, h
+MARK_BOX = (-4, 8, 108, 104)  # x, y, w, h
 VARIANTS = {
     "": dict(p_shape=P_SHAPE, bars=BARS, box=MARK_BOX),
-    "-roof": dict(p_shape=P_SHAPE_ROOF + " " + ROOF_DARK, bars=BARS_ROOF, box=(-7, 8, 111, 104)),
+    "-roof": dict(p_shape=P_SHAPE_ROOF + " " + ROOF_DARK, bars=BARS_ROOF, box=(-24, 8, 128, 104)),
 }
 
 
