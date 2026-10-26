@@ -112,7 +112,7 @@ def original():
     G = 20
     GV = G * (1 + s * s) ** 0.5  # vertical size of a slanted gap that is G thick
     X0, Y0 = 422, 60  # shift measured pixels so the mark starts near the origin
-    PX = -2  # P moved left so the gap between the tall bar and the stem is G
+    PX = -9  # P moved left so the gap between the (narrowed) tall bar and the stem is G
 
     def rise(px, py, dy=0):
         return lambda x: py + dy - s * (x - px)
@@ -122,9 +122,11 @@ def original():
 
     base = 469
     strip = (422, 452)
-    o1 = (strip[1] + G, 534)
-    o2 = (o1[1] + G, 623)
+    W = 62  # orange bars are as wide as the P stem
+    o1 = (strip[1] + G, strip[1] + G + W)
+    o2 = (o1[1] + G, o1[1] + G + W)
     stem = (o2[1] + G, 707 + PX)
+    assert stem[1] - stem[0] == W
     cap_t, cap_b = rise(490, 207), rise(490, 266)
     o1_t = rise(490, 266, GV)
     strip_t = o1_t  # strip top continues the first orange bar's top line
