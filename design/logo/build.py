@@ -11,12 +11,13 @@ OUT.mkdir(exist_ok=True)
 ORANGE = "#F2600C"
 INKS = {"black": "#000000", "white": "#FFFFFF"}
 
-# --- Mark (grid units). Gable: bar tops share one slope, P roof mirrors it. ---
+# --- Mark (grid units). Every slant runs down-right at 1:2 (P roof, counter, bar tops).
+# Tallest bar's peak sits level with the counter's top corner (y=32). ---
 P_SHAPE = "M56 8L104 32V80L72 64V112H56Z M72 32L88 40V56L72 48Z"
 BARS = [
-    "M5 45.5L18 39V112H5Z",
-    "M22 37L35 30.5V112H22Z",
-    "M39 28.5L52 22V112H39Z",
+    "M5 49L18 55.5V112H5Z",
+    "M22 40.5L35 47V112H22Z",
+    "M39 32L52 38.5V112H39Z",
 ]
 MARK_BOX = (5, 8, 99, 104)  # x, y, w, h
 
