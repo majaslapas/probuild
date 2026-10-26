@@ -1,0 +1,108 @@
+.home-hero_component { min-height: 46rem; padding: 9rem 0 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 4rem }
+.home-hero_main { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,22rem); gap: 3rem; align-items: end }
+.home-hero_content { max-width: 42.5rem; display: flex; flex-direction: column; gap: 1.5rem }
+.home-hero_title { font-family: var(--font--heading); font-weight: 500; font-size: clamp(2.5rem,4.6vw,4rem); line-height: 1.08; letter-spacing: -0.03em }
+.home-hero_proof { display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; border-radius: 16px; background-color: rgba(0,0,0,.82) }
+.home-hero_proof-row { display: flex; align-items: center; gap: 1rem }
+.home-hero_rating { font-family: var(--font--heading); font-size: 2.5rem; line-height: 1; letter-spacing: -0.03em }
+.home-hero_bar { display: grid; grid-template-columns: repeat(3,minmax(0,auto)) minmax(0,1fr); gap: 2.5rem; align-items: center; padding: 1.75rem 2rem; border-radius: 16px 16px 0 0; background-color: var(--neutral--darkest) }
+.home-hero_stat { display: flex; flex-direction: column; gap: .25rem }
+.home-hero_stat-number { font-family: var(--font--heading); font-weight: 500; font-size: 1.875rem; line-height: 1; letter-spacing: -0.02em; color: var(--christine--light); font-variant-numeric: tabular-nums }
+.home-hero_logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 1rem 2rem }
+.home-services_bento { display: grid; grid-template-columns: minmax(0,7fr) minmax(0,5fr); grid-template-rows: repeat(2,minmax(18rem,auto)); gap: 1.5rem }
+.home-services_item { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 18rem; border-radius: 16px; overflow: hidden; background-color: var(--neutral--darkest); text-decoration: none; color: var(--neutral--white); isolation: isolate }
+.home-services_item:hover { color: var(--neutral--white) }
+.home-services_item.is-feature { grid-row: span 2; min-height: 38rem }
+.home-services_image { position: absolute; inset: 0; z-index: -2; transition: transform .8s cubic-bezier(.23,1,.32,1) }
+.home-services_body { display: flex; flex-direction: column; gap: 1rem; padding: 2rem }
+.home-services_chips { display: flex; flex-wrap: wrap; gap: .5rem }
+.home-services_chip { display: inline-flex; align-items: center; min-height: 2rem; padding: 0 .875rem; border-radius: 100px; background-color: rgba(255,255,255,.14); font-size: .875rem; font-weight: 600 }
+.home-services_price { display: inline-flex; align-items: center; min-height: 2rem; padding: 0 .875rem; border-radius: 100px; background-color: var(--christine--primary); color: var(--neutral--darkest); font-family: var(--font--heading); font-size: .8125rem; align-self: flex-start }
+.home-services_go { position: absolute; top: 1.5rem; right: 1.5rem; display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 100px; background-color: var(--neutral--white); color: var(--neutral--darkest); transition: transform .3s cubic-bezier(.23,1,.32,1),background-color .2s }
+.home-about_component { display: grid; grid-template-columns: minmax(0,6fr) minmax(0,5fr); gap: 5rem; align-items: center }
+.home-about_collage { position: relative; min-height: 36rem }
+.home-about_img-main { position: absolute; left: 0; top: 0; width: 78%; height: 86%; border-radius: 16px; overflow: hidden }
+.home-about_img-small { position: absolute; right: 0; bottom: 0; width: 48%; height: 46%; border-radius: 16px; overflow: hidden; border: 8px solid var(--christine--primary) }
+.home-about_badge { position: absolute; left: 1.5rem; bottom: 1.5rem; display: flex; flex-direction: column; gap: .25rem; padding: 1.25rem 1.5rem; border-radius: 16px; background-color: var(--neutral--darkest); color: var(--neutral--white) }
+.home-about_badge-number { font-family: var(--font--heading); font-weight: 500; font-size: 3rem; line-height: 1; letter-spacing: -0.03em; color: var(--christine--light) }
+.home-about_values { display: flex; flex-direction: column; gap: .75rem; list-style: none; padding: 0 }
+.home-about_value { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.25rem; border-radius: 12px; background-color: rgba(0,0,0,.12); font-weight: 600; font-size: 1.0625rem }
+.home-about_check { display: flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 100px; background-color: var(--neutral--darkest); color: var(--christine--primary); flex-shrink: 0 }
+.rental-card { display: flex; flex-direction: column; border-radius: 16px; overflow: hidden; background-color: var(--neutral--darker); text-decoration: none; color: var(--neutral--white); transition: background-color .2s }
+.rental-card:hover { color: var(--neutral--white); background-color: #1F1F1F }
+.rental-card_image { aspect-ratio: 4 / 3; overflow: hidden; position: relative }
+.rental-card_body { display: flex; flex-direction: column; gap: .75rem; padding: 1.5rem; flex: 1 }
+.rental-card_price { font-family: var(--font--heading); font-size: 1.125rem; color: var(--christine--light); font-variant-numeric: tabular-nums; margin-top: auto }
+.home-reviews_card { display: flex; flex-direction: column; gap: 1.5rem; padding: 2rem; border-radius: 16px; background-color: var(--neutral--darkest) }
+.navbar_link { color: var(--neutral--lighter); text-decoration: none; font-size: .9375rem; padding: .5rem 0; border-bottom: 1px solid transparent; transition: color .2s,border-color .2s }
+.navbar_link:hover { color: var(--neutral--white); border-bottom-color: var(--christine--primary) }
+.navbar_phone { color: var(--neutral--white); text-decoration: none; font-family: var(--font--heading); font-size: .8125rem }
+.navbar_phone:hover { color: var(--christine--light) }
+.navbar_button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 2.75rem; padding: 0 1.25rem; border-radius: 100px; background-color: var(--christine--primary); color: var(--neutral--darkest); font-weight: 600; font-size: .9375rem; text-decoration: none; transition: background-color .2s,transform .16s cubic-bezier(.23,1,.32,1); touch-action: manipulation }
+.navbar_button:hover { background-color: var(--christine--light); color: var(--neutral--darkest) }
+.navbar_skip { position: absolute; left: 1rem; top: -4rem; z-index: 20; padding: .75rem 1rem; border-radius: 12px; background-color: var(--christine--primary); color: var(--neutral--darkest); font-weight: 600; text-decoration: none; transition: top .2s }
+.navbar_skip:focus { top: 1rem; color: var(--neutral--darkest) }
+.navbar_button:active { transform: scale(.97) }
+.footer_link { color: var(--neutral--lighter); text-decoration: none; font-size: .9375rem; line-height: 1.5 }
+.footer_link:hover { color: var(--christine--light) }
+.footer_heading { font-family: var(--font--body); font-size: .9375rem; letter-spacing: 0; text-transform: none; color: var(--neutral--white); margin: 0 0 .25rem; font-weight: 600 }
+.footer_social { display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 100px; border: 1px solid var(--opacity--white-20); color: var(--neutral--white); transition: border-color .2s,color .2s }
+.footer_social:hover { border-color: var(--christine--primary); color: var(--christine--primary) }
+.footer_grid { display: grid; grid-template-columns: minmax(0,2fr) repeat(3,minmax(0,1fr)); gap: 3rem }
+.section_home-hero { position: relative; overflow: hidden; background-color: var(--neutral--darker) }
+.home-hero_background-image { position: absolute; inset: 0; object-position: 20% 80% }
+.home-hero_overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.85) 0%, rgba(0,0,0,.6) 50%, var(--opacity--black-20) 100%) }
+.home-services_header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2rem }
+.home-about_content { display: flex; flex-direction: column; gap: 1.75rem }
+.home-reviews_rating { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; border-radius: 16px; background-color: var(--neutral--darkest) }
+.section_home-cta { position: relative; overflow: hidden }
+.home-cta_background-image { position: absolute; inset: 0 }
+.home-hero_wrapper { position: relative }
+.home-hero_text { color: var(--neutral--lighter); max-width: 34rem }
+.home-hero_wrapper-2 { padding-top: .5rem }
+.home-hero_link { border-color: rgba(255,255,255,.5) }
+.home-hero_wrapper-3 { display: flex; flex-direction: column; gap: .25rem }
+.home-hero_text-2 { color: var(--neutral--light) }
+.home-hero_text-3 { font-size: .9375rem; line-height: 1.6; color: var(--neutral--lighter) }
+.home-hero_text-4 { font-weight: 600 }
+.home-hero_image { height: 1.375rem }
+.home-hero_image-2 { height: 1.75rem }
+.home-hero_image-3 { height: 1.25rem }
+.home-hero_image-4 { height: 1.5rem }
+.home-services_wrapper { display: flex; flex-direction: column; gap: 3.5rem }
+.home-services_heading { max-width: 40rem }
+.home-services_text { color: var(--neutral--lighter); max-width: 30rem }
+.home-services_text-2 { color: var(--neutral--lighter) }
+.home-about_text { color: var(--neutral--lighter) }
+.home-about_text-2 { color: var(--neutral--darker) }
+.home-about_link { color: var(--neutral--darkest) }
+.home-rental_wrapper { display: flex; flex-direction: column; gap: 3.5rem }
+.home-rental_wrapper-2 { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2rem }
+.home-rental_wrapper-3 { max-width: 44rem; display: flex; flex-direction: column; gap: 1.25rem }
+.rental-card_text { position: absolute; top: 1rem; left: 1rem }
+.home-reviews_wrapper { display: flex; flex-direction: column; gap: 4rem }
+.home-reviews_wrapper-2 { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2rem }
+.home-reviews_wrapper-3 { display: flex; flex-direction: column; gap: .25rem }
+.home-reviews_quote { font-size: 1.0625rem; line-height: 1.6 }
+.home-reviews_caption { display: flex; align-items: center; gap: .875rem; margin-top: auto }
+.home-reviews_text { width: 2.75rem; height: 2.75rem; border-radius: 100px; background-color: var(--neutral--dark); display: flex; align-items: center; justify-content: center; font-weight: 600 }
+.home-reviews_text-2 { display: flex; flex-direction: column }
+.home-reviews_text-3 { font-weight: 600 }
+.home-cta_wrapper { position: absolute; inset: 0; background-color: rgba(0,0,0,.7) }
+.home-cta_wrapper-2 { position: relative }
+.home-cta_wrapper-3 { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.75rem; padding: 2rem 0 }
+.home-cta_text { color: var(--neutral--lighter) }
+.home-cta_wrapper-4 { justify-content: center }
+.home-cta_link { border-color: rgba(255,255,255,.5) }
+.home-hero_link.button.is-secondary { border-color: rgba(255,255,255,.5) }
+.home-about_link.button.is-secondary { color: var(--neutral--darkest) }
+.home-cta_link.button.is-secondary { border-color: rgba(255,255,255,.5) }
+.home-rental_list { text-decoration-skip-ink: auto }
+.home-reviews_list { text-decoration-skip-ink: auto }
+.section_home-about { text-decoration-skip-ink: auto }
+.section_home-rental { text-decoration-skip-ink: auto }
+.section_home-reviews { text-decoration-skip-ink: auto }
+.section_home-services { text-decoration-skip-ink: auto }
+@media screen and (max-width: 991px) { .home-hero_main { grid-template-columns: minmax(0,1fr) } .home-hero_bar { grid-template-columns: repeat(3,minmax(0,1fr)) } .home-hero_logos { grid-column: 1 / -1; justify-content: flex-start } .home-services_bento { grid-template-columns: minmax(0,1fr); grid-template-rows: none } .home-services_item.is-feature { grid-row: auto; min-height: 28rem } .home-about_component { grid-template-columns: minmax(0,1fr); gap: 3rem } .navbar_phone { display: none } .footer_grid { grid-template-columns: repeat(2,minmax(0,1fr)) } }
+@media screen and (max-width: 767px) { .home-hero_bar { padding: 1.25rem; gap: 1.25rem } .home-hero_stat-number { font-size: 1.5rem } .home-about_collage { min-height: 26rem } .footer_grid { grid-template-columns: minmax(0,1fr) } }
+@media screen and (max-width: 479px) { .navbar_logo { width: 162px; height: 36px } }

@@ -1,0 +1,57 @@
+*{box-sizing: border-box}
+*::before{box-sizing: border-box}
+*::after{box-sizing: border-box}
+.text-style-tagline::before{content: ""; width: .5rem; height: .5rem; background: var(--christine--primary); flex-shrink: 0}
+.form_input::placeholder{color: var(--neutral--neutral)}
+textarea.form_input{padding: .875rem 1rem; min-height: 8rem; resize: vertical}
+.project-content_rich-text p{color: var(--neutral--lighter); line-height: 1.75; font-size: 1.0625rem}
+.project-content_rich-text h3{font-family: 'Martian Mono',monospace; font-weight: 500; font-size: 1.5rem; line-height: 1.4; margin-top: 1rem}
+.project-contact_stat strong{font-family: 'Martian Mono',monospace; font-weight: 500; font-size: 2rem; line-height: 1; letter-spacing: -0.03em}
+.text-style-tagline::before{display: none}
+button:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+input:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+button{touch-action: manipulation; -webkit-tap-highlight-color: transparent}
+.project-header_stat .heading-style-h6{font-variant-numeric: tabular-nums}
+.project-content_highlights li{padding-left: 1.25rem; position: relative}
+#pieteikums{scroll-margin-top: 2rem}
+@media (prefers-reduced-motion:no-preference){.lightbox_component{animation: fadein .2s ease-out both}}
+@media (prefers-reduced-motion:no-preference){.lightbox_component figure{animation: pop .25s cubic-bezier(.23,1,.32,1) both}}
+@media (prefers-reduced-motion:no-preference){.lightbox_component>div{animation: pop .25s cubic-bezier(.23,1,.32,1) both}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main section h2{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main section .project-gallery_list figure{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main section aside{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main .project-header_image-wrapper{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+.navbar_component *{box-sizing: border-box}
+.navbar_component *::before{box-sizing: border-box}
+.navbar_component *::after{box-sizing: border-box}
+.navbar_component a:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+.footer_component *{box-sizing: border-box}
+.footer_component *::before{box-sizing: border-box}
+.footer_component *::after{box-sizing: border-box}
+.footer_component a:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.project-content_highlights li.project-content_item{padding: 1rem 0}
+.project-content_highlights li.project-content_item{padding: 1rem 0}
+.project-content_highlights li.project-content_item{padding: 1rem 0}
+.lightbox_component:not(.is-open){display: none !important}
+.lightbox_video{padding-top: 0 !important}
+body:not(:has([data-lightbox="video"] iframe)) .project-header_play{display: none}
+.project-header_stat:has(.heading-style-h6.w-dyn-bind-empty){display: none}
+.project-content_rich-text > :first-child{margin-top: 0}
+.project-content_highlights:not(:has(.project-content_item:not(.w-dyn-bind-empty))){display: none}
+.project-content_component:not(:has(.project-content_item:not(.w-dyn-bind-empty))){grid-template-columns: minmax(0,1fr)}
+.section_project-content:not(:has(.project-content_item:not(.w-dyn-bind-empty))):has(.project-content_rich-text.w-dyn-bind-empty){display: none}
+.section_project-gallery:not(:has(.project-gallery_list figure)){display: none}
+.project-gallery_list > :not(figure){display: none}
+.project-gallery_list figure{position: relative; margin: 0 !important; width: auto !important; max-width: none !important; border-radius: 16px; overflow: hidden; cursor: zoom-in; background: var(--neutral--darker)}
+.project-gallery_list figure > div{display: block !important; width: 100%; height: 100%; padding: 0 !important}
+.project-gallery_list figure img{display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s}
+.project-gallery_list figure:hover img{transform: scale(1.04)}
+.project-gallery_list figure figcaption{display: none}
+.project-gallery_list figure:nth-of-type(1){grid-row: span 2}
+.project-gallery_list figure:nth-of-type(2){grid-column: span 2}
+.project-gallery_list figure:nth-of-type(n+5){display: none}
+.project-gallery_more{position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background-color: rgba(0,0,0,.62); color: var(--neutral--white); font-weight: 600; font-size: 1.0625rem; transition: background-color .2s}
+.project-gallery_list figure:hover .project-gallery_more{background: rgba(0,0,0,.5)}

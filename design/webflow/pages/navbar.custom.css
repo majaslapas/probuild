@@ -1,0 +1,4 @@
+.navbar_component *{box-sizing: border-box}
+.navbar_component *::before{box-sizing: border-box}
+.navbar_component *::after{box-sizing: border-box}
+.navbar_component a:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}

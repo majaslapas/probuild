@@ -1,0 +1,41 @@
+*{box-sizing: border-box}
+*::before{box-sizing: border-box}
+*::after{box-sizing: border-box}
+button:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+.about-marquee_track{animation: marquee 45s linear infinite}
+.section_about-marquee:hover .about-marquee_track{animation-play-state: paused}
+.about-values_item.is-key p{color: var(--neutral--darker)}
+.about-team_item:hover .about-team_initials{transform: translateY(-6px)}
+.about-partners_logo img{max-height: 2.75rem; max-width: 100%; width: auto; opacity: .72; transition: opacity .2s,transform .3s cubic-bezier(.23,1,.32,1)}
+.about-partners_logo:hover img{opacity: 1; transform: scale(1.04)}
+.about-partners_logo:hover .about-partners_word{opacity: 1}
+.about-hero_photo img{transition: transform .8s cubic-bezier(.23,1,.32,1)}
+.about-hero_photo:hover img{transform: scale(1.04)}
+.about-hero_badge strong{font-family: 'Martian Mono',monospace; font-weight: 500; font-size: 2.25rem; line-height: 1; letter-spacing: -0.03em; color: var(--christine--light)}
+@media (prefers-reduced-motion:reduce){.about-marquee_track{animation: none}}
+@media (prefers-reduced-motion:no-preference){.about-hero_content>*{animation: rise .8s cubic-bezier(.23,1,.32,1) both}}
+@media (prefers-reduced-motion:no-preference){.about-hero_content>*:nth-child(2){animation-delay: .08s}}
+@media (prefers-reduced-motion:no-preference){.about-hero_content>*:nth-child(3){animation-delay: .16s}}
+@media (prefers-reduced-motion:no-preference){.about-hero_content>*:nth-child(4){animation-delay: .24s}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main section h2{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main .about-story_block{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main .about-stats_item{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main .about-values_item{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main .about-team_item{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main .about-partners_logo{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+.navbar_component *{box-sizing: border-box}
+.navbar_component *::before{box-sizing: border-box}
+.navbar_component *::after{box-sizing: border-box}
+.navbar_component a:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+.footer_component *{box-sizing: border-box}
+.footer_component *::before{box-sizing: border-box}
+.footer_component *::after{box-sizing: border-box}
+.footer_component a:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.about-partners_logo img.about-partners_image{max-height: 2rem}
+.about-partners_logo img.about-partners_image{max-height: 2rem}
+.about-partners_logo img.about-partners_image-2{max-height: 3rem}
+.about-partners_logo img.about-partners_image-2{max-height: 3rem}
+.about-partners_logo img.about-partners_image-2{max-height: 3rem}
+.about-partners_logo img.about-partners_image-3{max-height: 2.25rem}

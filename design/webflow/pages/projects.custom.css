@@ -1,0 +1,21 @@
+*{box-sizing: border-box}
+*::before{box-sizing: border-box}
+*::after{box-sizing: border-box}
+.text-style-tagline::before{content: ""; width: .5rem; height: .5rem; background: var(--christine--primary); flex-shrink: 0}
+.portfolio-list_item:hover .portfolio-list_image{transform: scale(1.04)}
+.portfolio-list_item:hover .portfolio-list_arrow{background: var(--christine--primary); color: var(--neutral--darkest); border-color: var(--christine--primary)}
+button:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+button{touch-action: manipulation; -webkit-tap-highlight-color: transparent}
+@media (prefers-reduced-motion:no-preference){.portfolio-list_item{animation: rise .6s cubic-bezier(.23,1,.32,1) both}}
+@media (prefers-reduced-motion:no-preference){.portfolio-list_item:nth-child(2){animation-delay: .07s}}
+@media (prefers-reduced-motion:no-preference){.portfolio-list_item:nth-child(3){animation-delay: .14s}}
+@media (prefers-reduced-motion:no-preference){.portfolio-list_item:nth-child(4){animation-delay: .21s}}
+.navbar_component *{box-sizing: border-box}
+.navbar_component *::before{box-sizing: border-box}
+.navbar_component *::after{box-sizing: border-box}
+.navbar_component a:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+.footer_component *{box-sizing: border-box}
+.footer_component *::before{box-sizing: border-box}
+.footer_component *::after{box-sizing: border-box}
+.footer_component a:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}

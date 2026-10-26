@@ -1,0 +1,55 @@
+*{box-sizing: border-box}
+*::before{box-sizing: border-box}
+*::after{box-sizing: border-box}
+ol{margin: 0}
+button:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+input:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+select:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+textarea:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+.form_input::placeholder{color: var(--neutral--neutral)}
+textarea.form_input{padding: .875rem 1rem; min-height: 7rem; resize: vertical}
+.services-list_trigger:hover .services-list_name{color: var(--christine--light)}
+.services-list_trigger:hover .services-list_more{background: #272727; color: var(--neutral--white)}
+.services-list_item.is-open .services-list_more{background: var(--christine--primary); color: var(--neutral--darkest)}
+.services-list_item.is-open .services-list_chevron{transform: rotate(180deg); background: rgba(0,0,0,.15)}
+.services-list_prices p{display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin: 0; padding: .875rem 1.125rem; font-size: .9375rem; color: var(--neutral--light)}
+.services-list_prices p+p{border-top: 1px solid var(--opacity--white-10)}
+.services-list_prices strong{font-family: var(--font--heading); font-weight: 400; color: var(--neutral--white); white-space: nowrap; font-variant-numeric: tabular-nums}
+.services-list_includes ul{list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem}
+.services-list_includes li{position: relative; padding-left: 1.5rem; line-height: 1.5; color: var(--neutral--lighter)}
+.services-list_includes li::before{content: ""; position: absolute; left: 0; top: .55em; width: .5rem; height: .5rem; border-radius: 2px; background: var(--christine--primary)}
+.contacts_card.is-primary .contacts_icon{background: var(--neutral--darkest)}
+#kalkulators{scroll-margin-top: 2rem}
+#pakalpojumi{scroll-margin-top: 2rem}
+#kontakti{scroll-margin-top: 2rem}
+@media (prefers-reduced-motion:no-preference){.services-hero_content>*{animation: rise .8s cubic-bezier(.23,1,.32,1) both}}
+@media (prefers-reduced-motion:no-preference){.calc_panel{animation: rise .8s cubic-bezier(.23,1,.32,1) both}}
+@media (prefers-reduced-motion:no-preference){.services-hero_content>*:nth-child(2){animation-delay: .08s}}
+@media (prefers-reduced-motion:no-preference){.services-hero_content>*:nth-child(3){animation-delay: .16s}}
+@media (prefers-reduced-motion:no-preference){.services-hero_content>*:nth-child(4){animation-delay: .24s}}
+@media (prefers-reduced-motion:no-preference){.calc_panel{animation-delay: .2s}}
+@media (prefers-reduced-motion:no-preference){.calc_mode{animation: swap .35s cubic-bezier(.23,1,.32,1) both}}
+@media (prefers-reduced-motion:no-preference){.services-list_panel{animation: open .3s cubic-bezier(.23,1,.32,1) both}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main section h2{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main .benefits_item{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main .benefits_photo{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main .services-reviews_card{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){main .contacts_card{animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 35%}}}
+.navbar_component *{box-sizing: border-box}
+.navbar_component *::before{box-sizing: border-box}
+.navbar_component *::after{box-sizing: border-box}
+.navbar_component a:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+.footer_component *{box-sizing: border-box}
+.footer_component *::before{box-sizing: border-box}
+.footer_component *::after{box-sizing: border-box}
+.footer_component a:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.services-list_item.is-open{background-color: #1F1F1F; box-shadow: inset 0 0 0 1px rgba(242,96,12,.6)}
+.services-list_item:not(.is-open) .services-list_panel{display: none}
+.calc_toggle-option,.calc_option,.calc_stepper{display: inline-flex; align-items: center; justify-content: center; text-align: center}
+.calc_toggle-option{padding: 0 .75rem}
+.calc_stepper{padding: 0; line-height: 1; flex-shrink: 0}
+.calc_range{display: block; width: 100%; accent-color: var(--christine--primary); margin-top: .75rem}
+.calc_panel > .w-form + .w-form{display: none}

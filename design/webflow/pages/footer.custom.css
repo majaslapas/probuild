@@ -1,0 +1,4 @@
+.footer_component *{box-sizing: border-box}
+.footer_component *::before{box-sizing: border-box}
+.footer_component *::after{box-sizing: border-box}
+.footer_component a:focus-visible{outline: 2px solid var(--christine--primary); outline-offset: 3px}

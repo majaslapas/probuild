@@ -95,9 +95,10 @@ Webflow Variables kolekcijās (Client-First v2.1 pieeja):
 | Sākumlapa | `/` | `navbar` (2), `home-hero` (2), `home-services` (2), `home-about` (3), `home-rental` (2, jauns pēc 01.10), `home-reviews` (2), `home-cta` (1), `footer` (1) |
 | Pakalpojumi | `/pakalpojumi` | `services-hero` + kalkulators (1), `services-list` (1), `services-benefits` (1), `services-reviews` (1), `services-contact` (1) |
 | Noma | `/noma` | `rental-hero` (1), `rental-list` CMS ar kategorijām (1), `rental-contact` (1) |
-| Nomas produkts | `/noma/[slug]` CMS template | `rental-product` (1) ar `rental-product_form` |
-| Portfolio | `/portfolio` | `portfolio-list` CMS ar filtriem (1) |
-| Projekts | `/portfolio/[slug]` CMS template | `project-header` (1), `project-content` (1), `project-gallery` (1), `project-contact` (1) |
+| Nomas produkts | `/nomas-produkts/[slug]` CMS template | `rental-product` (1) ar `rental-product_form` |
+| Projekti | `/projekti` | `portfolio-list` CMS ar filtriem (1) |
+| Projekts | `/projekts/[slug]` CMS template | `project-header` (1), `project-content` (1), `project-gallery` (1), `project-contact` (1) |
+| Pakalpojums | `/pakalpojums/[slug]` CMS template | `service-detail` (1) |
 | Par mums | `/par-mums` | `about-hero`, `about-marquee`, `about-story`, `about-stats`, `about-values`, `about-team` (CMS), `about-partners`, `about-cta` (visas 1) |
 | Kontakti | `/kontakti` | `contact` (1): kontakti + anketa blakus, bez kartes |
 
@@ -105,12 +106,14 @@ Webflow Variables kolekcijās (Client-First v2.1 pieeja):
 
 | Kolekcija | Lauki |
 |---|---|
-| Nomas produkti | Nosaukums, slug, kategorija (ref → Nomas kategorijas), apraksts, cena (teksts), galerija (1–5), papildu sadaļa 1–3 (virsraksts + rich text; tukša neparādās) |
+| Nomas produkti | Nosaukums, slug, kategorija (ref → Nomas kategorijas), apraksts, cena (teksts), bilžu galerija (rich text ar bildēm), papildu sadaļa 1–3 (virsraksts + rich text; tukša neparādās) |
 | Nomas kategorijas | Nosaukums (Tehnika, Instrumenti) |
-| Projekti | Nosaukums, slug, darba veids (ref, filtram), īss apraksts, izceltie punkti (termiņš, m², cena, darbu veids), detalizēts apraksts (rich text), papildu punkti (līdz 3), titulbilde, galerija (līdz 25), YouTube saite |
+| Projekti | Nosaukums, slug, darba veids (ref, filtram), īss apraksts, izceltie punkti (termiņš, m², cena, darbu veids), detalizēts apraksts (rich text), papildu punkti (līdz 3), titulbilde, bilžu galerija (rich text, līdz 25 bildēm), YouTube saite |
 | Darba veidi | Nosaukums (filtriem, piem. pamati, koka karkass, elektroinstalācija) |
 | Komanda | Vārds uzvārds, amats, apraksts, bilde |
-| Pakalpojumi | Nosaukums, kategorija/atslēgvārdi, apraksts, cena no, titulbilde, papildu bildes (līdz 15) |
+| Pakalpojumi | Nosaukums, grupa (cilne), apraksts, cena no, cenas (rich text), iekļauts, piezīme, kalkulatora veids, titulbilde, bilžu galerija (rich text) |
+
+Galerijas ir rich text lauks "Bilžu galerija", nevis multi-image: Webflow API nevar piesaistīt Collection List multi-image laukam. Bildes pievieno rich text laukā, katru savā rindā; vietnes skripts tās pārvērš sīktēlos un galerijā.
 
 ## Pārnešana uz Webflow
 
@@ -119,4 +122,5 @@ Webflow Variables kolekcijās (Client-First v2.1 pieeja):
 3. Fontus augšupielādē no `reference/fonts/`.
 4. Katru Claude Design sadaļu būvē ar tieši tām pašām klasēm (tās redzamas Claude Design markup un sadaļu etiķetēs).
 5. Formas savieno ar CRM; Google atsauksmes caur embed (rāda tikai 4+).
-6. Logo: `design/logo/lockups/probuild-lockup-11-white.svg` (dark backgrounds, used in the navbar and footer) and `-black.svg` (light backgrounds). Navbar `navbar_logo` 197×44 px (162×36 at ≤479px), footer `footer_logo` 233×52 px. Favicon: `design/logo/probuild-app-icon-f-black.svg` or `-orange.svg`.
+6. Vietne ir uzbūvēta (2026-10-26): https://probuild-group.webflow.io. Lapas, CMS, skripti, pārbaudes un atlikušie soļi Designer: [design/webflow/README.md](../design/webflow/README.md).
+7. Logo: `design/logo/lockups/probuild-lockup-11-white.svg` (dark backgrounds, used in the navbar and footer) and `-black.svg` (light backgrounds). Navbar `navbar_logo` 197×44 px (162×36 at ≤479px), footer `footer_logo` 233×52 px. Favicon: `design/logo/probuild-app-icon-f-black.svg` or `-orange.svg`.

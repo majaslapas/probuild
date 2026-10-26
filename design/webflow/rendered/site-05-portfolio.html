@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<title>ProBuildGroup: realizētie projekti</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500&amp;family=Noto+Sans:wght@400;600&amp;display=swap">
+<style>
+
+body{margin:0;background:#000000;color:#FFFFFF;font-family:'Noto Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+*,*::before,*::after{box-sizing:border-box}
+a{color:#FFFFFF}a:hover{color:#F58F54}
+img{display:block;max-width:100%}
+p,h1,h2,h3,h4,h5,h6,ul{margin:0}
+.color-scheme-1{background-color:#000000;color:#FFFFFF;--scheme-border:rgba(255,255,255,.2);--scheme-muted:#B2B2B2}
+.padding-global{padding-left:5%;padding-right:5%}
+.container-large{width:100%;max-width:80rem;margin-left:auto;margin-right:auto}
+.padding-section-large{padding-top:7rem;padding-bottom:7rem}
+.heading-style-h1,.heading-style-h5{font-family:'Martian Mono',ui-monospace,monospace;font-weight:500;letter-spacing:-0.01em;line-height:1.2}
+.heading-style-h1{font-size:3.5rem}.heading-style-h5{font-size:1.5rem;line-height:1.4}
+.text-size-large{font-size:1.25rem;line-height:1.5}.text-size-small{font-size:.875rem;line-height:1.5}
+.text-color-muted{color:var(--scheme-muted)}
+.text-style-tagline{display:inline-flex;align-items:center;gap:.625rem;font-family:'Martian Mono',monospace;font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.text-style-tagline::before{content:"";width:.5rem;height:.5rem;background:#F2600C;flex-shrink:0}
+.icon-arrow{width:1.125rem;height:1.125rem;flex-shrink:0}
+.tag{display:inline-flex;align-items:center;min-height:1.75rem;padding:0 .75rem;border-radius:100px;border:1px solid var(--scheme-border);font-size:.8125rem;line-height:1}
+.img-cover{width:100%;height:100%;object-fit:cover}
+.portfolio-list_filter{min-height:2.75rem;padding:0 1.25rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#FFFFFF;font-family:inherit;font-size:.9375rem;font-weight:600;cursor:pointer}
+.portfolio-list_filter:hover{border-color:#FFFFFF}
+.portfolio-list_filter.is-active{background:#FFFFFF;border-color:#FFFFFF;color:#000000}
+.portfolio-list_list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3.5rem 2rem}
+.portfolio-list_item{display:flex;flex-direction:column;gap:1.25rem;text-decoration:none;color:#FFFFFF}
+.portfolio-list_item:hover{color:#FFFFFF}
+.portfolio-list_item:hover .portfolio-list_image{transform:scale(1.04)}
+.portfolio-list_item:hover .portfolio-list_arrow{background:#F2600C;color:#000000;border-color:#F2600C}
+.portfolio-list_image{transition:transform .6s}
+.portfolio-list_arrow{display:flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);flex-shrink:0;transition:background-color .2s,color .2s,border-color .2s}
+@media (max-width:767px){.heading-style-h1{font-size:2.5rem}.text-size-large{font-size:1.125rem}.padding-section-large{padding-top:4rem;padding-bottom:4rem}.portfolio-list_list{grid-template-columns:minmax(0,1fr)}}
+:root{color-scheme:dark}
+.heading-style-h1{letter-spacing:-0.02em;text-wrap:balance}
+.heading-style-h5{text-wrap:balance}
+p{text-wrap:pretty}
+a:focus-visible,button:focus-visible{outline:2px solid #F2600C;outline-offset:3px}
+button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.portfolio-list_filter{transition:background-color .2s,border-color .2s,color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
+.portfolio-list_filter:active{transform:scale(.97)}
+.portfolio-list_type{font-size:.875rem;font-weight:600;color:#F58F54}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+.portfolio-list_item{animation:rise .6s cubic-bezier(.23,1,.32,1) both}
+.portfolio-list_item:nth-child(2){animation-delay:.07s}.portfolio-list_item:nth-child(3){animation-delay:.14s}.portfolio-list_item:nth-child(4){animation-delay:.21s}
+}
+
+
+body{margin:0}
+.navbar_component *,.navbar_component *::before,.navbar_component *::after{box-sizing:border-box}
+.navbar_link{color:#D8D8D8;text-decoration:none;font-size:.9375rem;padding:.5rem 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.navbar_link:hover{color:#FFFFFF;border-bottom-color:#F2600C}
+.navbar_link.is-current{color:#FFFFFF;border-bottom-color:#F2600C}
+.navbar_phone{color:#FFFFFF;text-decoration:none;font-family:'Martian Mono',monospace;font-size:.8125rem}
+.navbar_phone:hover{color:#F58F54}
+.navbar_button{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:2.75rem;padding:0 1.25rem;border-radius:100px;background:#F2600C;color:#000000;font-weight:600;font-size:.9375rem;text-decoration:none;transition:background-color .2s}
+.navbar_button:hover{background:#F58F54;color:#000000}
+.navbar_skip{position:absolute;left:1rem;top:-4rem;z-index:20;padding:.75rem 1rem;border-radius:12px;background:#F2600C;color:#000000;font-weight:600;text-decoration:none;transition:top .2s}
+.navbar_skip:focus{top:1rem;color:#000000}
+.navbar_component a:focus-visible{outline:2px solid #F2600C;outline-offset:3px}
+.navbar_button{touch-action:manipulation;transition:background-color .2s,transform .16s cubic-bezier(.23,1,.32,1)}
+.navbar_button:active{transform:scale(.97)}
+@media (max-width:991px){.navbar_phone{display:none}}
+@media (max-width:479px){.navbar_logo{width:162px!important;height:36px!important}}
+
+
+body{margin:0}
+.footer_component *,.footer_component *::before,.footer_component *::after{box-sizing:border-box}
+.footer_link{color:#D8D8D8;text-decoration:none;font-size:.9375rem;line-height:1.5}
+.footer_link:hover{color:#F58F54}
+.footer_heading{font-family:'Martian Mono',monospace;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#7F7F7F;margin:0 0 .25rem}
+.footer_social{display:inline-flex;align-items:center;justify-content:center;width:2.75rem;height:2.75rem;border-radius:100px;border:1px solid rgba(255,255,255,.2);color:#FFFFFF;transition:border-color .2s,color .2s}
+.footer_social:hover{border-color:#F2600C;color:#F2600C}
+.footer_grid{display:grid;grid-template-columns:minmax(0,2fr) repeat(3,minmax(0,1fr));gap:3rem}
+.footer_component a:focus-visible{outline:2px solid #F2600C;outline-offset:3px}
+.footer_heading{font-family:'Noto Sans',system-ui,sans-serif;font-size:.9375rem;font-weight:600;letter-spacing:0;text-transform:none;color:#FFFFFF}
+@media (max-width:991px){.footer_grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){.footer_grid{grid-template-columns:minmax(0,1fr)}}
+
+</style>
+</head>
+<body>
+
+
+<div class="page-wrapper">
+<div data-import="SiteNavbar" data-import-props="{&quot;current&quot;:&quot;portfolio&quot;}">
+
+<nav class="navbar_component color-scheme-2" aria-label="Galvenā navigācija" style="position: relative; z-index: 10; background: #191919; color: #FFFFFF; font-family: 'Noto Sans', sans-serif; border-bottom: 1px solid rgba(255,255,255,.12)">
+<a href="#saturs" class="navbar_skip">Pāriet uz saturu</a>
+<div class="padding-global" style="padding-left: 5%; padding-right: 5%">
+<div class="navbar_container" style="max-width: 80rem; margin: 0 auto; min-height: 5.5rem; padding: .75rem 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 2rem">
+<a href="site-01-sakums.dc.html" class="navbar_logo-link" aria-label="ProBuildGroup sākumlapa" style="display: flex; align-items: center"><img src="/_blob/716a2030eb48fd6b6fc95e2ceed6f1f0" alt="ProBuild Group" class="navbar_logo" style="width: 197px; height: 44px"></a>
+<div class="navbar_menu" style="display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 2rem">
+
+<a href="site-01-sakums.dc.html" class="navbar_link">Sākums</a>
+
+<a href="site-02-pakalpojumi.dc.html" class="navbar_link">Pakalpojumi</a>
+
+<a href="site-03-noma.dc.html" class="navbar_link">Noma</a>
+
+<a href="site-05-portfolio.dc.html" class="navbar_link is-current" aria-current="page">Projekti</a>
+
+<a href="site-07-par-mums.dc.html" class="navbar_link">Par mums</a>
+
+</div>
+<div class="navbar_actions" style="display: flex; align-items: center; gap: 1.5rem">
+<a href="tel:+37126518131" class="navbar_phone">+371 26 518 131</a>
+<a href="site-08-kontakti.dc.html" class="navbar_button">Sazināties</a>
+</div>
+</div>
+</div>
+</nav>
+</div>
+<main id="saturs" class="main-wrapper">
+
+<section class="section_portfolio-list color-scheme-1">
+<div class="padding-global">
+<div class="container-large">
+<div class="padding-section-large" style="padding-top: 6rem; display: flex; flex-direction: column; gap: 3.5rem">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 2rem 4rem; align-items: end">
+<div style="display: flex; flex-direction: column; gap: 1.5rem">
+<h1 class="heading-style-h1">Realizētie projekti</h1>
+</div>
+<p class="text-size-large text-color-muted">Katrs pabeigtais projekts apliecina mūsu profesionalitāti, atbildību un rūpes par darba kvalitāti. Būvniecība un teritoriju labiekārtošana ar uzticamiem risinājumiem un ieturētiem termiņiem.</p>
+</div>
+<div class="portfolio-list_filters" role="group" aria-label="Filtrēt pēc darba veida" style="display: flex; flex-wrap: wrap; gap: .75rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,.15)">
+
+<button type="button" class="portfolio-list_filter is-active" aria-pressed="true">Visi</button>
+
+<button type="button" class="portfolio-list_filter" aria-pressed="false">Pamati</button>
+
+<button type="button" class="portfolio-list_filter" aria-pressed="false">Koka karkass</button>
+
+<button type="button" class="portfolio-list_filter" aria-pressed="false">Fasādes</button>
+
+<button type="button" class="portfolio-list_filter" aria-pressed="false">Iekšdarbi</button>
+
+<button type="button" class="portfolio-list_filter" aria-pressed="false">Elektroinstalācija</button>
+
+</div>
+<div class="portfolio-list_list">
+
+<a href="site-06-projekts.dc.html" class="portfolio-list_item">
+<div style="aspect-ratio: 3 / 2; border-radius: 16px; overflow: hidden; background: #191919"><img src="/_blob/ac41d716b07d09c6900a20767f0b609f" alt="Moderna māja ar koka fasādi" class="portfolio-list_image img-cover"></div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem">
+<div style="display: flex; flex-direction: column; gap: .625rem">
+<span class="portfolio-list_type">Koka karkass</span>
+<h2 class="heading-style-h5">Koka karkasa privātmāja</h2>
+<p class="text-color-muted" style="line-height: 1.6">[Īss apraksts, 1–2 teikumi]</p>
+</div>
+<span class="portfolio-list_arrow" aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: .5rem">
+<span class="tag">[m²]</span><span class="tag">[€/m²]</span><span class="tag">[x nedēļas]</span>
+</div>
+</a>
+
+<a href="site-06-projekts.dc.html" class="portfolio-list_item">
+<div style="aspect-ratio: 3 / 2; border-radius: 16px; overflow: hidden; background: #191919"><img src="/_blob/144c158c59a6f60aeeeec364c70f56e7" alt="Pamatu armatūra būvlaukumā" class="portfolio-list_image img-cover"></div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem">
+<div style="display: flex; flex-direction: column; gap: .625rem">
+<span class="portfolio-list_type">Pamati</span>
+<h2 class="heading-style-h5">Pamati divstāvu mājai</h2>
+<p class="text-color-muted" style="line-height: 1.6">[Īss apraksts, 1–2 teikumi]</p>
+</div>
+<span class="portfolio-list_arrow" aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: .5rem">
+<span class="tag">[m²]</span><span class="tag">[€/m²]</span><span class="tag">[x nedēļas]</span>
+</div>
+</a>
+
+<a href="site-06-projekts.dc.html" class="portfolio-list_item">
+<div style="aspect-ratio: 3 / 2; border-radius: 16px; overflow: hidden; background: #191919"><img src="/_blob/03c19ae3612924c863066a509e0e9ca9" alt="Balta māja ar dēļu apdari" class="portfolio-list_image img-cover"></div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem">
+<div style="display: flex; flex-direction: column; gap: .625rem">
+<span class="portfolio-list_type">Fasādes</span>
+<h2 class="heading-style-h5">Fasādes atjaunošana</h2>
+<p class="text-color-muted" style="line-height: 1.6">[Īss apraksts, 1–2 teikumi]</p>
+</div>
+<span class="portfolio-list_arrow" aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: .5rem">
+<span class="tag">[m²]</span><span class="tag">[€/m²]</span><span class="tag">[x nedēļas]</span>
+</div>
+</a>
+
+<a href="site-06-projekts.dc.html" class="portfolio-list_item">
+<div style="aspect-ratio: 3 / 2; border-radius: 16px; overflow: hidden; background: #191919"><img src="/_blob/d9ad93bed9cab974e7d2878f4b82abd5" alt="Gaiša, pabeigta dzīvojamā istaba" class="portfolio-list_image img-cover"></div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem">
+<div style="display: flex; flex-direction: column; gap: .625rem">
+<span class="portfolio-list_type">Iekšdarbi</span>
+<h2 class="heading-style-h5">Mājas iekšdarbi un apdare</h2>
+<p class="text-color-muted" style="line-height: 1.6">[Īss apraksts, 1–2 teikumi]</p>
+</div>
+<span class="portfolio-list_arrow" aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: .5rem">
+<span class="tag">[m²]</span><span class="tag">[€/m²]</span><span class="tag">[x nedēļas]</span>
+</div>
+</a>
+
+<a href="site-06-projekts.dc.html" class="portfolio-list_item">
+<div style="aspect-ratio: 3 / 2; border-radius: 16px; overflow: hidden; background: #191919"><img src="/_blob/7a7c82005735178f54eba9b0cde45fa1" alt="Elektriķis pie sadales" class="portfolio-list_image img-cover"></div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem">
+<div style="display: flex; flex-direction: column; gap: .625rem">
+<span class="portfolio-list_type">Elektroinstalācija</span>
+<h2 class="heading-style-h5">Elektroinstalācija jaunbūvē</h2>
+<p class="text-color-muted" style="line-height: 1.6">[Īss apraksts, 1–2 teikumi]</p>
+</div>
+<span class="portfolio-list_arrow" aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: .5rem">
+<span class="tag">[m²]</span><span class="tag">[€/m²]</span><span class="tag">[x nedēļas]</span>
+</div>
+</a>
+
+<a href="site-06-projekts.dc.html" class="portfolio-list_item">
+<div style="aspect-ratio: 3 / 2; border-radius: 16px; overflow: hidden; background: #191919"><img src="/_blob/c46e9e402d9b8e5a4573b2ffe47dae20" alt="Moderna māja vakarā" class="portfolio-list_image img-cover"></div>
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem">
+<div style="display: flex; flex-direction: column; gap: .625rem">
+<span class="portfolio-list_type">Koka karkass</span>
+<h2 class="heading-style-h5">Moderna ģimenes māja</h2>
+<p class="text-color-muted" style="line-height: 1.6">[Īss apraksts, 1–2 teikumi]</p>
+</div>
+<span class="portfolio-list_arrow" aria-hidden="true"><svg class="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"></path></svg></span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: .5rem">
+<span class="tag">[m²]</span><span class="tag">[€/m²]</span><span class="tag">[x nedēļas]</span>
+</div>
+</a>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+<div data-import="SiteFooter" data-import-props="{}">
+
+<footer class="footer_component color-scheme-1" style="background: #000000; color: #FFFFFF; font-family: 'Noto Sans', sans-serif; border-top: 1px solid rgba(255,255,255,.12)">
+<div class="padding-global" style="padding-left: 5%; padding-right: 5%">
+<div class="container-large" style="max-width: 80rem; margin: 0 auto; padding: 5rem 0 2rem; display: flex; flex-direction: column; gap: 4rem">
+<div class="footer_grid">
+<div class="footer_brand" style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 22rem">
+<img src="/_blob/716a2030eb48fd6b6fc95e2ceed6f1f0" alt="ProBuild Group" class="footer_logo" style="width: 233px; height: 52px">
+<p style="margin: 0; color: #B2B2B2; font-size: .9375rem; line-height: 1.6">Būvniecība, remonts un tehnikas noma Salaspils pusē. No pamatiem līdz atslēgai.</p>
+<div style="display: flex; gap: .75rem">
+<a href="#" class="footer_social" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V9H7v3.5h2V21h3.5v-8.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15z"></path></svg></a>
+<a href="#" class="footer_social" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"></circle></svg></a>
+<a href="#" class="footer_social" aria-label="Google Business profils"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></a>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: .75rem">
+<p class="footer_heading">Lapas</p>
+<a href="site-01-sakums.dc.html" class="footer_link">Sākums</a>
+<a href="site-02-pakalpojumi.dc.html" class="footer_link">Pakalpojumi</a>
+<a href="site-03-noma.dc.html" class="footer_link">Noma</a>
+<a href="site-05-portfolio.dc.html" class="footer_link">Projekti</a>
+<a href="site-07-par-mums.dc.html" class="footer_link">Par mums</a>
+<a href="site-08-kontakti.dc.html" class="footer_link">Kontakti</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: .75rem">
+<p class="footer_heading">Pakalpojumi</p>
+<a href="site-02-pakalpojumi.dc.html" class="footer_link">Pamatu būvniecība</a>
+<a href="site-02-pakalpojumi.dc.html" class="footer_link">Jumta un fasādes darbi</a>
+<a href="site-02-pakalpojumi.dc.html" class="footer_link">Renovācija un remonts</a>
+<a href="site-02-pakalpojumi.dc.html" class="footer_link">Inženiertīkli</a>
+<a href="site-02-pakalpojumi.dc.html" class="footer_link">Apsaimniekošana</a>
+<a href="site-03-noma.dc.html" class="footer_link">Tehnikas noma</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: .75rem">
+<p class="footer_heading">Kontakti</p>
+<a href="tel:+37126518131" class="footer_link">+371 26 518 131</a>
+<a href="mailto:probuildlatvia@gmail.com" class="footer_link">probuildlatvia@gmail.com</a>
+<span class="footer_link">Salaspils un apkārtne</span>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.12); font-size: .8125rem; color: #7F7F7F">
+<span>© 2026 SIA “Probuild” · Reģ. nr. 54103137871 · PVN nr. LV54103137871 · Limbažu nov., Vidrižu pag., “Garkalni”, LV-4013</span>
+<div style="display: flex; flex-wrap: wrap; gap: 1.5rem"><a href="#" class="footer_link" style="font-size: .8125rem">Privātuma politika</a><a href="#" class="footer_link" style="font-size: .8125rem">Sīkdatņu iestatījumi</a></div>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</div>
+
+</body>
+</html>
