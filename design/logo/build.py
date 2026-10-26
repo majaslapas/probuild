@@ -47,9 +47,10 @@ BARS_E = [
 ]
 MARK_BOX = (-4, 8, 108, 104)  # x, y, w, h
 # Mark geometry lives in marks.py (all iterations; uprights 12 wide like the first redraw).
-from marks import versions as _versions
+from marks import versions as _versions, original as _original
 _V = _versions()
-VARIANTS = {"": _V["03"], "-roof": _V["08"], "-c": _V["09"], "-d": _V["10"], "-e": _V["12"]}
+VARIANTS = {"": _V["03"], "-roof": _V["08"], "-c": _V["09"], "-d": _V["10"], "-e": _V["12"],
+            "-f": dict(_original(), orig=True)}
 
 
 def mark_group(ink, dx=0.0, dy=0.0, scale=1.0, m=None):
@@ -115,19 +116,30 @@ def svg(w, h, body, title):
             f'<title>{title}</title>{body}</svg>\n')
 
 
-def wordmark(ink, x, y, cap, gap_ratio=0.42, group_ratio=0.5):
+# Wordmark proportions. "orig" is measured from the 2025 logo: GROUP cap 0.56 of PROBUILD,
+# 0.22 cap gap, GROUP letters span 53% of the width, rules 0.17 of GROUP cap thick with a
+# 4%-of-width gap to the letters.
+WM_DEFAULT = dict(gap_ratio=0.42, group_ratio=0.5, group_span=None, rule_gap=None, rule_ratio=0.14)
+WM_ORIG = dict(gap_ratio=0.22, group_ratio=0.56, group_span=0.53, rule_gap=0.04, rule_ratio=0.17)
+
+
+def wordmark(ink, x, y, cap, gap_ratio=0.42, group_ratio=0.5, group_span=None, rule_gap=None,
+             rule_ratio=0.14):
     top = Word("mm-wide-800.ttf", "PROBUILD", cap)
     sub_cap = cap * group_ratio
-    sub = Word("mm-wide-500.ttf", "GROUP", sub_cap, tracking=sub_cap * 0.55)
+    if group_span:
+        sub = tracked_to("mm-wide-500.ttf", "GROUP", sub_cap, top.width * group_span)
+    else:
+        sub = Word("mm-wide-500.ttf", "GROUP", sub_cap, tracking=sub_cap * 0.55)
     gap = cap * gap_ratio
     sub_x = x + (top.width - sub.width) / 2
     sub_y = y + cap + gap
-    rule_gap = sub_cap * 0.9
-    rule_w = (top.width - sub.width) / 2 - rule_gap
-    rule_h = max(sub_cap * 0.14, 1.5)
+    r_gap = top.width * rule_gap if rule_gap else sub_cap * 0.9
+    rule_w = (top.width - sub.width) / 2 - r_gap
+    rule_h = max(sub_cap * rule_ratio, 1.5)
     rule_y = sub_y + (sub_cap - rule_h) / 2
     rules = (f'<rect x="{fmt(x)}" y="{fmt(rule_y)}" width="{fmt(rule_w)}" height="{fmt(rule_h)}"/>'
-             f'<rect x="{fmt(sub_x + sub.width + rule_gap)}" y="{fmt(rule_y)}" width="{fmt(rule_w)}" height="{fmt(rule_h)}"/>')
+             f'<rect x="{fmt(sub_x + sub.width + r_gap)}" y="{fmt(rule_y)}" width="{fmt(rule_w)}" height="{fmt(rule_h)}"/>')
     body = (f'<path fill="{ink}" d="{top.path(x, y)}"/>'
             f'<g fill="{ORANGE}">{rules}<path d="{sub.path(sub_x, sub_y)}"/></g>')
     return body, top.width, cap + gap + sub.height
@@ -146,24 +158,31 @@ def build_variant(v, m):
     for name, ink in INKS.items():
         # 1) Stacked: mark centred above wordmark
         cap = 40
+        wm = WM_ORIG if m.get("orig") else WM_DEFAULT
         wm_w = Word("mm-wide-800.ttf", "PROBUILD", cap).width
-        mark_h = 150
-        mark_s = mark_h / MARK_BOX[3]
-        mark_w = MARK_BOX[2] * mark_s
-        gap = 36
+        if m.get("orig"):  # 2025 logo: mark is 43% of the wordmark width, 0.34 cap above it
+            mark_w = wm_w * 0.429
+            mark_s = mark_w / MARK_BOX[2]
+            mark_h = MARK_BOX[3] * mark_s
+            gap = cap * 0.34
+        else:
+            mark_h = 150
+            mark_s = mark_h / MARK_BOX[3]
+            mark_w = MARK_BOX[2] * mark_s
+            gap = 36
         width = max(wm_w, mark_w)
-        wm_body, _, wm_h = wordmark(ink, (width - wm_w) / 2, mark_h + gap, cap)
+        wm_body, _, wm_h = wordmark(ink, (width - wm_w) / 2, mark_h + gap, cap, **wm)
         body = mark_group(ink, (width - mark_w) / 2, 0, mark_s, m) + wm_body
-        files.append((f"probuild-logo-stacked{v}-{name}.svg", svg(width, mark_h + gap + wm_h, body, "ProBuild Group")))
+        files.append((f"probuild-logo-stacked{v}-{name}.svg", svg(width, mark_h + gap + wm_h + cap * 0.05, body, "ProBuild Group")))  # 0.05 cap: round-letter overshoot
 
         # 2) Horizontal: mark left, two-line wordmark right (navbar / footer)
         cap = 40
-        wm_tmp_h = cap + cap * 0.42 + cap * 0.5
+        wm_tmp_h = cap + cap * wm["gap_ratio"] + cap * wm["group_ratio"]
         mark_h = wm_tmp_h * 1.32
         mark_s = mark_h / MARK_BOX[3]
         mark_w = MARK_BOX[2] * mark_s
         gap = mark_w * 0.28
-        wm_body, wm_w, wm_h = wordmark(ink, mark_w + gap, (mark_h - wm_tmp_h) / 2, cap)
+        wm_body, wm_w, wm_h = wordmark(ink, mark_w + gap, (mark_h - wm_tmp_h) / 2, cap, **wm)
         body = mark_group(ink, 0, 0, mark_s, m) + wm_body
         files.append((f"probuild-logo-horizontal{v}-{name}.svg", svg(mark_w + gap + wm_w, mark_h, body, "ProBuild Group")))
 

@@ -101,3 +101,43 @@ LABELS = {
     "08": "B: P-thick caps", "09": "C: two orange + black strip", "10": "D: two orange bars",
     "11": "E1: black upright in middle", "12": "E2: black upright on left (latest)",
 }
+
+
+# --- Version F: the original 2025 logo's construction, measured from the supplied image
+# (1254 px), with every slant set to one 0.6 slope (~31°) and the colours flattened. ---
+def original():
+    s = 0.6
+    X0, Y0 = 422, 60  # shift measured pixels so the mark starts near the origin
+
+    def rise(px, py):
+        return lambda x: py - s * (x - px)
+
+    def fall(px, py):
+        return lambda x: py + s * (x - px)
+
+    base = 469
+    strip_t = rise(436, 308)
+    o1_t = rise(505, 274)
+    cap_t, cap_b = rise(490, 207), rise(490, 266)
+    o2_t = rise(590, 176)
+    apex = (626, 67)
+    p_left_t = rise(*apex)
+    p_left_b = rise(590, 158)
+    roof_t = fall(*apex)
+    roof_u = fall(705, 184)
+    counter_b = fall(705, 248)
+    bowl_b = fall(740, 323)
+    inner_x = (184 - 0.6 * 705 - 158 - 0.6 * 590) / (-1.2)  # roof_u meets p_left_b
+    shift = lambda poly: [(x - X0, y - Y0) for x, y in poly]
+    orange = [
+        [(472, o1_t(472)), (534, o1_t(534)), (534, base), (472, base)],
+        [(554, o2_t(554)), (623, o2_t(623)), (623, base), (554, base)],
+    ]
+    dark = [
+        [(422, strip_t(422)), (452, strip_t(452)), (452, base), (422, base)],
+        [(460, cap_t(460)), (534, cap_t(534)), (534, cap_b(534)), (460, cap_b(460))],
+        [(554, p_left_t(554)), apex, (833, roof_t(833)), (833, bowl_b(833)), (707, bowl_b(707)),
+         (707, base), (645, base), (645, counter_b(645)), (772, counter_b(772)),
+         (772, roof_u(772)), (inner_x, roof_u(inner_x)), (554, p_left_b(554))],
+    ]
+    return mark([shift(p) for p in orange], [shift(p) for p in dark])

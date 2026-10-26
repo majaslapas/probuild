@@ -13,11 +13,12 @@ A redraw of the old logo using the website's colours and fonts.
 | `probuild-icon-{black,white}.svg` | Mark only |
 | `probuild-app-icon-{orange,black}.svg` | Square tile for favicons, social avatars and Google Business (512×512) |
 
-**Five versions of the mark.** All uprights other than the P stem are 12 units wide (the P stem is 16), as in the first redraw. Geometry for every iteration is in `marks.py`.
+**Six versions of the mark.** All uprights other than the P stem are 12 units wide (the P stem is 16), as in the first redraw. Geometry for every iteration is in `marks.py`.
 - **A** (files without `-roof`): the tops of the bars rise to the right at the same angle the P's roof falls, as a mirror image. The tallest bar's peak is level with the top of the P's inner opening.
 - **B** (files with `-roof`, e.g. `probuild-logo-stacked-roof-black.svg`): the same idea, staggered like the old logo. Dark and orange pieces step up left to right in pairs that share one top line: a dark strip left of the first bar, a dark cap over each bar (no wider than the bar and as thick as the P), and over the tallest bar the P's own roof mirrored to the left, so the top reads as a pitched roof.
 - **C** (files with `-c`, e.g. `probuild-logo-stacked-c-black.svg`): like B, but with two orange bars. The left-most upright is a dark strip in place of the first orange bar.
 - **E** (files with `-e`, PNGs in `png/`): a dark left-most upright whose top runs right over the middle orange bar, then the tallest orange bar and the P. The dark top line continues the underside of the P’s roof.
+- **F** (files with `-f`, PNGs in `png/`): the original 2025 logo rebuilt from measurements of the supplied image, with the same positions, widths, gaps and thicknesses. Every slant is set to one slope (about 31°), the colours are flattened to black or white plus `#F2600C`, and the stacked lockup keeps the original's proportions (the mark is 43% of the wordmark width). `png/probuild-logo-vs-original.png` compares it with the original.
 - **D** (files with `-d`): C without the left-most dark strip. Two orange bars with their caps and the P; the most compact mark.
 
 Previews: `preview.png` (A), `preview-roof.png` (B), `preview-c.png` (C), `preview-d.png` (D).
