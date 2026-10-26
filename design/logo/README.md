@@ -15,7 +15,7 @@ A redraw of the old logo using the website's colours and fonts.
 
 **Two versions of the mark.** In both, the orange bars are exactly as wide as the stem of the P.
 - **A** (files without `-roof`): the tops of the bars rise to the right at the same angle the P's roof falls, as a mirror image. The tallest bar's peak is level with the top of the P's inner opening.
-- **B** (files with `-roof`, e.g. `probuild-logo-stacked-roof-black.svg`): the same idea, staggered like the old logo. Dark and orange pieces step up left to right in pairs that share one top line: a dark strip left of the first bar, a dark cap over each bar (no wider than the bar), and over the tallest bar the P's own roof mirrored to the left, so the top reads as a pitched roof.
+- **B** (files with `-roof`, e.g. `probuild-logo-stacked-roof-black.svg`): the same idea, staggered like the old logo. Dark and orange pieces step up left to right in pairs that share one top line: a dark strip left of the first bar, a dark cap over each bar (no wider than the bar and as thick as the P), and over the tallest bar the P's own roof mirrored to the left, so the top reads as a pitched roof.
 
 Previews: `preview.png` (A), `preview-roof.png` (B).
 

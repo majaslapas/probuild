@@ -21,10 +21,10 @@ BARS = [
     "M36 40L52 32V112H36Z",
 ]
 # Roof variant (staggered, like the old logo): dark and orange pieces step up in
-# pairs that share one top line. A dark strip stands left of the first bar, a dark cap exactly
-# as wide as each bar sits over it, and the last cap is the P's own roof mirrored to the left.
+# pairs that share one top line. A dark strip stands left of the first bar, a dark cap as wide as
+# each bar and as thick as the P (16) sits over it, each step rising by one thickness, and the last cap is the P's own roof mirrored to the left.
 P_SHAPE_ROOF = "M36 18L56 8L104 32V80L72 64V112H56V24L36 34Z M72 32L88 40V56L72 48Z"
-ROOF_DARK = "M-24 102L-8 94V112H-24Z M-4 76L12 68V78L-4 86Z M16 50L32 42V52L16 60Z"
+ROOF_DARK = "M-24 102L-8 94V112H-24Z M-4 70L12 62V78L-4 86Z M16 44L32 36V52L16 60Z"
 BARS_ROOF = [
     "M-4 92L12 84V112H-4Z",
     "M16 66L32 58V112H16Z",
