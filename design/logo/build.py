@@ -33,6 +33,7 @@ BARS_ROOF = [
 # Version C: two orange bars; the left-most upright is a dark strip sharing the first
 # orange bar's top line (as the far-left strip does in the roof variant).
 C_DARK = "M-4 76L12 68V112H-4Z M16 44L32 36V52L16 60Z"
+D_DARK = "M16 44L32 36V52L16 60Z"  # Version D: C without the left-most dark strip
 BARS_C = [
     "M16 66L32 58V112H16Z",
     "M36 40L52 32V112H36Z",
@@ -42,6 +43,7 @@ VARIANTS = {
     "": dict(p_shape=P_SHAPE, bars=BARS, box=MARK_BOX),
     "-roof": dict(p_shape=P_SHAPE_ROOF + " " + ROOF_DARK, bars=BARS_ROOF, box=(-24, 8, 128, 104)),
     "-c": dict(p_shape=P_SHAPE_ROOF + " " + C_DARK, bars=BARS_C, box=MARK_BOX),
+    "-d": dict(p_shape=P_SHAPE_ROOF + " " + D_DARK, bars=BARS_C, box=(16, 8, 88, 104)),
 }
 
 
