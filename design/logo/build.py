@@ -15,21 +15,34 @@ INKS = {"black": "#000000", "white": "#FFFFFF"}
 # P's roof and counter (which fall to the right). Tallest bar's peak sits level with the
 # counter's top corner (y=32). ---
 P_SHAPE = "M56 8L104 32V80L72 64V112H56Z M72 32L88 40V56L72 48Z"
-# Roof variant: a band over the bars mirrors the P's roof (same 16-unit thickness),
-# turning the top of the mark into a gable.
-P_SHAPE_ROOF = "M5 33.5L56 8L104 32V80L72 64V112H56V24L5 49.5Z M72 32L88 40V56L72 48Z"
 BARS = [
     "M5 55.5L18 49V112H5Z",
     "M22 47L35 40.5V112H22Z",
     "M39 38.5L52 32V112H39Z",
 ]
-VARIANTS = {"": P_SHAPE, "-roof": P_SHAPE_ROOF}
+# Roof variant (staggered, like the old logo): dark and orange pieces step up in
+# pairs that share one top line. A dark strip stands left of the first bar, a dark cap sits
+# over each bar, and the last cap is the P's own roof mirrored to the left.
+P_SHAPE_ROOF = "M33 19.5L56 8L104 32V80L72 64V112H56V24L33 35.5Z M72 32L88 40V56L72 48Z"
+ROOF_DARK = "M-7 95.5L1 91.5V112H-7Z M-1 75.5L18 66V78L-1 87.5Z M16 50L35 40.5V52.5L16 62Z"
+BARS_ROOF = [
+    "M5 89.5L18 83V112H5Z",
+    "M22 64L35 57.5V112H22Z",
+    "M39 38.5L52 32V112H39Z",
+]
 MARK_BOX = (5, 8, 99, 104)  # x, y, w, h
+VARIANTS = {
+    "": dict(p_shape=P_SHAPE, bars=BARS, box=MARK_BOX),
+    "-roof": dict(p_shape=P_SHAPE_ROOF + " " + ROOF_DARK, bars=BARS_ROOF, box=(-7, 8, 111, 104)),
+}
 
 
-def mark_group(ink, dx=0.0, dy=0.0, scale=1.0, p_shape=P_SHAPE):
-    t = f'translate({fmt(dx)} {fmt(dy)}) scale({fmt(scale)}) translate(-{MARK_BOX[0]} -{MARK_BOX[1]})'
-    bars = "".join(f'<path d="{b}"/>' for b in BARS)
+def mark_group(ink, dx=0.0, dy=0.0, scale=1.0, m=None):
+    m = m or VARIANTS[""]
+    box = m["box"]
+    t = f'translate({fmt(dx)} {fmt(dy)}) scale({fmt(scale)}) translate({fmt(-box[0])} {fmt(-box[1])})'
+    bars = "".join(f'<path d="{b}"/>' for b in m["bars"])
+    p_shape = m["p_shape"]
     return (f'<g transform="{t}">'
             f'<g fill="{ORANGE}">{bars}</g>'
             f'<path fill="{ink}" fill-rule="evenodd" d="{p_shape}"/></g>')
@@ -107,13 +120,14 @@ def wordmark(ink, x, y, cap, gap_ratio=0.42, group_ratio=0.5):
 
 def build():
     files = []
-    for v, p_shape in VARIANTS.items():
-        files.extend(build_variant(v, p_shape))
+    for v, m in VARIANTS.items():
+        files.extend(build_variant(v, m))
     return files
 
 
-def build_variant(v, p_shape):
+def build_variant(v, m):
     files = []
+    MARK_BOX = m["box"]
     for name, ink in INKS.items():
         # 1) Stacked: mark centred above wordmark
         cap = 40
@@ -124,7 +138,7 @@ def build_variant(v, p_shape):
         gap = 36
         width = max(wm_w, mark_w)
         wm_body, _, wm_h = wordmark(ink, (width - wm_w) / 2, mark_h + gap, cap)
-        body = mark_group(ink, (width - mark_w) / 2, 0, mark_s, p_shape) + wm_body
+        body = mark_group(ink, (width - mark_w) / 2, 0, mark_s, m) + wm_body
         files.append((f"probuild-logo-stacked{v}-{name}.svg", svg(width, mark_h + gap + wm_h, body, "ProBuild Group")))
 
         # 2) Horizontal: mark left, two-line wordmark right (navbar / footer)
@@ -135,20 +149,20 @@ def build_variant(v, p_shape):
         mark_w = MARK_BOX[2] * mark_s
         gap = mark_w * 0.28
         wm_body, wm_w, wm_h = wordmark(ink, mark_w + gap, (mark_h - wm_tmp_h) / 2, cap)
-        body = mark_group(ink, 0, 0, mark_s, p_shape) + wm_body
+        body = mark_group(ink, 0, 0, mark_s, m) + wm_body
         files.append((f"probuild-logo-horizontal{v}-{name}.svg", svg(mark_w + gap + wm_w, mark_h, body, "ProBuild Group")))
 
         # 3) Icon only
         s = 2.0
         files.append((f"probuild-icon{v}-{name}.svg",
-                      svg(MARK_BOX[2] * s, MARK_BOX[3] * s, mark_group(ink, 0, 0, s, p_shape), "ProBuild Group")))
+                      svg(MARK_BOX[2] * s, MARK_BOX[3] * s, mark_group(ink, 0, 0, s, m), "ProBuild Group")))
 
     # Favicon / avatar: square tiles with background
     for name, (bg, ink) in {"orange": (ORANGE, "#000000"), "black": ("#000000", "#FFFFFF")}.items():
         size = 512
         s = size * 0.62 / MARK_BOX[3]
         mw, mh = MARK_BOX[2] * s, MARK_BOX[3] * s
-        mark = mark_group(ink, (size - mw) / 2, (size - mh) / 2, s, p_shape)
+        mark = mark_group(ink, (size - mw) / 2, (size - mh) / 2, s, m)
         if bg == ORANGE:  # orange bars would vanish on orange: whole mark goes to ink
             mark = mark.replace(f'fill="{ORANGE}"', f'fill="{ink}"')
         body = f'<rect width="{size}" height="{size}" rx="{size*0.22:.0f}" fill="{bg}"/>' + mark
