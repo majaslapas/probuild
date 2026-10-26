@@ -13,6 +13,12 @@ A redraw of the old logo using the website's colours and fonts.
 | `probuild-icon-{black,white}.svg` | Mark only |
 | `probuild-app-icon-{orange,black}.svg` | Square tile for favicons, social avatars and Google Business (512×512) |
 
+**Two versions of the mark**
+- **A** (files without `-roof`): the tops of the bars rise to the right at the same angle the P's roof falls, as a mirror image. The tallest bar's peak is level with the top of the P's inner opening.
+- **B** (files with `-roof`, e.g. `probuild-logo-stacked-roof-black.svg`): the same, plus a band over the bars at the P's roof angle and thickness, so the top of the mark reads as a pitched roof.
+
+Previews: `preview.png` (A), `preview-roof.png` (B).
+
 **Minimum size:** the horizontal logo stays readable down to 40px tall. For anything smaller, use the icon only.
 
 **Regenerating:** `python3 build.py` needs `fonttools` and the Martian Mono TTF files (from Google Fonts, `wdth 112.5`, weights 500 and 800) in `fonts/`.

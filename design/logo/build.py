@@ -11,23 +11,28 @@ OUT.mkdir(exist_ok=True)
 ORANGE = "#F2600C"
 INKS = {"black": "#000000", "white": "#FFFFFF"}
 
-# --- Mark (grid units). Every slant runs down-right at 1:2 (P roof, counter, bar tops).
-# Tallest bar's peak sits level with the counter's top corner (y=32). ---
+# --- Mark (grid units). All slants are 1:2. Bar tops rise to the right, mirroring the
+# P's roof and counter (which fall to the right). Tallest bar's peak sits level with the
+# counter's top corner (y=32). ---
 P_SHAPE = "M56 8L104 32V80L72 64V112H56Z M72 32L88 40V56L72 48Z"
+# Roof variant: a band over the bars mirrors the P's roof (same 16-unit thickness),
+# turning the top of the mark into a gable.
+P_SHAPE_ROOF = "M5 33.5L56 8L104 32V80L72 64V112H56V24L5 49.5Z M72 32L88 40V56L72 48Z"
 BARS = [
-    "M5 49L18 55.5V112H5Z",
-    "M22 40.5L35 47V112H22Z",
-    "M39 32L52 38.5V112H39Z",
+    "M5 55.5L18 49V112H5Z",
+    "M22 47L35 40.5V112H22Z",
+    "M39 38.5L52 32V112H39Z",
 ]
+VARIANTS = {"": P_SHAPE, "-roof": P_SHAPE_ROOF}
 MARK_BOX = (5, 8, 99, 104)  # x, y, w, h
 
 
-def mark_group(ink, dx=0.0, dy=0.0, scale=1.0):
+def mark_group(ink, dx=0.0, dy=0.0, scale=1.0, p_shape=P_SHAPE):
     t = f'translate({fmt(dx)} {fmt(dy)}) scale({fmt(scale)}) translate(-{MARK_BOX[0]} -{MARK_BOX[1]})'
     bars = "".join(f'<path d="{b}"/>' for b in BARS)
     return (f'<g transform="{t}">'
             f'<g fill="{ORANGE}">{bars}</g>'
-            f'<path fill="{ink}" fill-rule="evenodd" d="{P_SHAPE}"/></g>')
+            f'<path fill="{ink}" fill-rule="evenodd" d="{p_shape}"/></g>')
 
 
 def fmt(v):
@@ -102,8 +107,14 @@ def wordmark(ink, x, y, cap, gap_ratio=0.42, group_ratio=0.5):
 
 def build():
     files = []
+    for v, p_shape in VARIANTS.items():
+        files.extend(build_variant(v, p_shape))
+    return files
+
+
+def build_variant(v, p_shape):
+    files = []
     for name, ink in INKS.items():
-        pad = 0
         # 1) Stacked: mark centred above wordmark
         cap = 40
         wm_w = Word("mm-wide-800.ttf", "PROBUILD", cap).width
@@ -113,8 +124,8 @@ def build():
         gap = 36
         width = max(wm_w, mark_w)
         wm_body, _, wm_h = wordmark(ink, (width - wm_w) / 2, mark_h + gap, cap)
-        body = mark_group(ink, (width - mark_w) / 2, 0, mark_s) + wm_body
-        files.append((f"probuild-logo-stacked-{name}.svg", svg(width, mark_h + gap + wm_h, body, "ProBuild Group")))
+        body = mark_group(ink, (width - mark_w) / 2, 0, mark_s, p_shape) + wm_body
+        files.append((f"probuild-logo-stacked{v}-{name}.svg", svg(width, mark_h + gap + wm_h, body, "ProBuild Group")))
 
         # 2) Horizontal: mark left, two-line wordmark right (navbar / footer)
         cap = 40
@@ -124,29 +135,33 @@ def build():
         mark_w = MARK_BOX[2] * mark_s
         gap = mark_w * 0.28
         wm_body, wm_w, wm_h = wordmark(ink, mark_w + gap, (mark_h - wm_tmp_h) / 2, cap)
-        body = mark_group(ink, 0, 0, mark_s) + wm_body
-        files.append((f"probuild-logo-horizontal-{name}.svg", svg(mark_w + gap + wm_w, mark_h, body, "ProBuild Group")))
+        body = mark_group(ink, 0, 0, mark_s, p_shape) + wm_body
+        files.append((f"probuild-logo-horizontal{v}-{name}.svg", svg(mark_w + gap + wm_w, mark_h, body, "ProBuild Group")))
 
         # 3) Icon only
         s = 2.0
-        files.append((f"probuild-icon-{name}.svg",
-                      svg(MARK_BOX[2] * s, MARK_BOX[3] * s, mark_group(ink, 0, 0, s), "ProBuild Group")))
+        files.append((f"probuild-icon{v}-{name}.svg",
+                      svg(MARK_BOX[2] * s, MARK_BOX[3] * s, mark_group(ink, 0, 0, s, p_shape), "ProBuild Group")))
 
     # Favicon / avatar: square tiles with background
     for name, (bg, ink) in {"orange": (ORANGE, "#000000"), "black": ("#000000", "#FFFFFF")}.items():
         size = 512
         s = size * 0.62 / MARK_BOX[3]
         mw, mh = MARK_BOX[2] * s, MARK_BOX[3] * s
-        mark = mark_group(ink, (size - mw) / 2, (size - mh) / 2, s)
+        mark = mark_group(ink, (size - mw) / 2, (size - mh) / 2, s, p_shape)
         if bg == ORANGE:  # orange bars would vanish on orange: whole mark goes to ink
             mark = mark.replace(f'fill="{ORANGE}"', f'fill="{ink}"')
         body = f'<rect width="{size}" height="{size}" rx="{size*0.22:.0f}" fill="{bg}"/>' + mark
-        files.append((f"probuild-app-icon-{name}.svg", svg(size, size, body, "ProBuild Group")))
+        files.append((f"probuild-app-icon{v}-{name}.svg", svg(size, size, body, "ProBuild Group")))
 
+    return files
+
+
+def write(files):
     for fn, content in files:
         (OUT / fn).write_text(content)
         print(fn, len(content))
 
 
 if __name__ == "__main__":
-    build()
+    write(build())
