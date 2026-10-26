@@ -104,40 +104,52 @@ LABELS = {
 
 
 # --- Version F: the original 2025 logo's construction, measured from the supplied image
-# (1254 px), with every slant set to one 0.6 slope (~31°) and the colours flattened. ---
+# (1254 px), with every slant set to one 0.6 slope (~31°) and the colours flattened.
+# Every gap between pieces is 20 px: horizontal gaps are 20 wide and the slanted gaps are
+# 20 measured square to the slant. The cap over the first bar is exactly as wide as that bar. ---
 def original():
     s = 0.6
+    G = 20
+    GV = G * (1 + s * s) ** 0.5  # vertical size of a slanted gap that is G thick
     X0, Y0 = 422, 60  # shift measured pixels so the mark starts near the origin
+    PX = -2  # P moved left so the gap between the tall bar and the stem is G
 
-    def rise(px, py):
-        return lambda x: py - s * (x - px)
+    def rise(px, py, dy=0):
+        return lambda x: py + dy - s * (x - px)
 
     def fall(px, py):
-        return lambda x: py + s * (x - px)
+        return lambda x: py + s * (x - px - PX)
 
     base = 469
+    strip = (422, 452)
+    o1 = (strip[1] + G, 534)
+    o2 = (o1[1] + G, 623)
+    stem = (o2[1] + G, 707 + PX)
     strip_t = rise(436, 308)
-    o1_t = rise(505, 274)
     cap_t, cap_b = rise(490, 207), rise(490, 266)
-    o2_t = rise(590, 176)
-    apex = (626, 67)
+    o1_t = rise(490, 266, GV)
+    apex = (626 + PX, 67)
     p_left_t = rise(*apex)
     p_left_b = rise(590, 158)
-    roof_t = fall(*apex)
+    o2_t = rise(590, 158, GV)
+    roof_t = fall(626, 67)
     roof_u = fall(705, 184)
     counter_b = fall(705, 248)
     bowl_b = fall(740, 323)
-    inner_x = (184 - 0.6 * 705 - 158 - 0.6 * 590) / (-1.2)  # roof_u meets p_left_b
+    right, counter_r = 833 + PX, 772 + PX
+    # inner apex: roof underside meets the underside of the P's left part
+    inner_x = ((158 + 0.6 * 590) - (184 - 0.6 * (705 + PX))) / 1.2
     shift = lambda poly: [(x - X0, y - Y0) for x, y in poly]
     orange = [
-        [(472, o1_t(472)), (534, o1_t(534)), (534, base), (472, base)],
-        [(554, o2_t(554)), (623, o2_t(623)), (623, base), (554, base)],
+        [(o1[0], o1_t(o1[0])), (o1[1], o1_t(o1[1])), (o1[1], base), (o1[0], base)],
+        [(o2[0], o2_t(o2[0])), (o2[1], o2_t(o2[1])), (o2[1], base), (o2[0], base)],
     ]
     dark = [
-        [(422, strip_t(422)), (452, strip_t(452)), (452, base), (422, base)],
-        [(460, cap_t(460)), (534, cap_t(534)), (534, cap_b(534)), (460, cap_b(460))],
-        [(554, p_left_t(554)), apex, (833, roof_t(833)), (833, bowl_b(833)), (707, bowl_b(707)),
-         (707, base), (645, base), (645, counter_b(645)), (772, counter_b(772)),
-         (772, roof_u(772)), (inner_x, roof_u(inner_x)), (554, p_left_b(554))],
+        [(strip[0], strip_t(strip[0])), (strip[1], strip_t(strip[1])), (strip[1], base), (strip[0], base)],
+        [(o1[0], cap_t(o1[0])), (o1[1], cap_t(o1[1])), (o1[1], cap_b(o1[1])), (o1[0], cap_b(o1[0]))],
+        [(o2[0], p_left_t(o2[0])), apex, (right, roof_t(right)), (right, bowl_b(right)),
+         (stem[1], bowl_b(stem[1])), (stem[1], base), (stem[0], base), (stem[0], counter_b(stem[0])),
+         (counter_r, counter_b(counter_r)), (counter_r, roof_u(counter_r)),
+         (inner_x, roof_u(inner_x)), (o2[0], p_left_b(o2[0]))],
     ]
     return mark([shift(p) for p in orange], [shift(p) for p in dark])
