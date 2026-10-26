@@ -125,9 +125,9 @@ def original():
     o1 = (strip[1] + G, 534)
     o2 = (o1[1] + G, 623)
     stem = (o2[1] + G, 707 + PX)
-    strip_t = rise(436, 308)
     cap_t, cap_b = rise(490, 207), rise(490, 266)
     o1_t = rise(490, 266, GV)
+    strip_t = o1_t  # strip top continues the first orange bar's top line
     apex = (626 + PX, 67)
     p_left_t = rise(*apex)
     p_left_b = rise(590, 158)
