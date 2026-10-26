@@ -119,3 +119,4 @@ Webflow Variables kolekcijās (Client-First v2.1 pieeja):
 3. Fontus augšupielādē no `reference/fonts/`.
 4. Katru Claude Design sadaļu būvē ar tieši tām pašām klasēm (tās redzamas Claude Design markup un sadaļu etiķetēs).
 5. Formas savieno ar CRM; Google atsauksmes caur embed (rāda tikai 4+).
+6. Logo: `design/logo/lockups/probuild-lockup-11-white.svg` (dark backgrounds, used in the navbar and footer) and `-black.svg` (light backgrounds). Navbar `navbar_logo` 197×44 px (162×36 at ≤479px), footer `footer_logo` 233×52 px. Favicon: `design/logo/probuild-app-icon-f-black.svg` or `-orange.svg`.
