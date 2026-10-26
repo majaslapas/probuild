@@ -26,3 +26,7 @@ Previews: `preview.png` (A), `preview-roof.png` (B), `preview-c.png` (C), `previ
 **Minimum size:** the horizontal logo stays readable down to 40px tall. For anything smaller, use the icon only.
 
 **Regenerating:** `python3 build.py` needs `fonttools` and the Martian Mono TTF files (from Google Fonts, `wdth 112.5`, weights 500 and 800) in `fonts/`.
+
+## Wordmark combinations (mark F)
+
+`lockups/probuild-lockup-01…12-{black,white}.svg` are 12 text combinations for mark F, in Martian Mono and Noto Sans, with different capitalisation, colours, spacing and positions. The overview is `png/probuild-wordmark-combinations.png`. To regenerate them, run `python3 lockups.py`. It needs the Noto Sans TTFs (400, 800) and the Martian Mono TTFs (normal width 400/800, `wdth 112.5` 400/500/800) in `fonts/`.
