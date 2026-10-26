@@ -29,4 +29,4 @@ Previews: `preview.png` (A), `preview-roof.png` (B), `preview-c.png` (C), `previ
 
 ## Wordmark combinations (mark F)
 
-`lockups/probuild-lockup-01…12-{black,white}.svg` are 12 text combinations for mark F, in Martian Mono and Noto Sans, with different capitalisation, colours, spacing and positions. The overview is `png/probuild-wordmark-combinations.png`. To regenerate them, run `python3 lockups.py`. It needs the Noto Sans TTFs (400, 800) and the Martian Mono TTFs (normal width 400/800, `wdth 112.5` 400/500/800) in `fonts/`.
+`lockups/probuild-lockup-01…12-{black,white}.svg` are 12 text combinations for mark F. The ProBuild name is always in Martian Mono (the heading font); Group is in Martian Mono or Noto Sans. They vary in capitalisation, colours, spacing and positions. The overview is `png/probuild-wordmark-combinations.png`. To regenerate them, run `python3 lockups.py`. It needs the Noto Sans TTFs (400, 800) and the Martian Mono TTFs (normal width 400/800, `wdth 112.5` 400/500/800) in `fonts/`.

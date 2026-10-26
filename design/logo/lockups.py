@@ -1,4 +1,5 @@
-"""Wordmark combinations for mark F, in the site's two fonts (Martian Mono, Noto Sans).
+"""Wordmark combinations for mark F. The ProBuild name is always Martian Mono (the site's
+heading font); "Group" is in Martian Mono or Noto Sans (the body font).
 
 Text is outlined. Each lockup is placed items (mark, text runs, rules) and the SVG is cropped
 to their ink bounds. Run: python3 lockups.py -> out/lockups/*.svg + lockups.html
@@ -37,6 +38,7 @@ class Run:
         self.s = cap / f["OS/2"].sCapHeight
         self.track = track * cap
         gs, cmap = f.getGlyphSet(), f.getBestCmap()
+        self.gs = gs  # needed to draw composite glyphs
         self.glyphs = [(gs[cmap[ord(c)]], f["hmtx"][cmap[ord(c)]][0]) for c in text]
         seg = []
         for part in colors:
@@ -63,7 +65,7 @@ class Run:
         by = {}
         cur = x - self.left
         for (g, adv), col in zip(self.glyphs, self.cols):
-            pen = by.setdefault(col, SVGPathPen(None))
+            pen = by.setdefault(col, SVGPathPen(self.gs))
             g.draw(TransformPen(pen, (self.s, 0, 0, -self.s, cur, y + self.cap)))
             cur += adv * self.s + self.track
         out = ""
@@ -152,17 +154,17 @@ def v1():
     return L
 
 
-@variant("Noto Sans, stacked, PRO + BUILD in orange")
+@variant("Stacked, BUILD in orange, GROUP in Noto Sans")
 def v2():
     L = Lockup()
-    top = Run("noto-800", "PROBUILD", 44, -0.01, ((3, "ink"), (5, "orange")))
+    top = Run("mm-wide-800", "PROBUILD", 40, 0, ((3, "ink"), (5, "orange")))
     mw = top.width * 0.42
     mh = mw / MARK_RATIO
     L.mark((top.width - mw) / 2, 0, mh)
     y = mh + 16
     L.text(top, 0, y)
-    sub = track_to("mm-wide-400", "GROUP", 16, top.width)
-    L.text(sub, 0, y + 44 + 14)
+    sub = track_to("noto-600", "GROUP", 16, top.width)
+    L.text(sub, 0, y + 40 + 14)
     return L
 
 
@@ -197,12 +199,12 @@ def v4():
     return L
 
 
-@variant("Noto Sans, mixed case, Build in orange")
+@variant("Mixed case, Build in orange, GROUP in Noto Sans")
 def v5():
     L = Lockup()
     cap = 40
-    a = Run("noto-800", "ProBuild", cap, -0.01, ((3, "ink"), (5, "orange")))
-    b = track_to("mm-wide-400", "GROUP", cap * 0.36, a.width)
+    a = Run("mm-wide-800", "ProBuild", cap, 0, ((3, "ink"), (5, "orange")))
+    b = track_to("noto-600", "GROUP", cap * 0.36, a.width)
     block = cap + cap * 0.38 + b.cap
     mh = block * 1.3
     mw = L.mark(0, 0, mh)
@@ -213,18 +215,18 @@ def v5():
     return L
 
 
-@variant("Noto Sans, lowercase, one line")
+@variant("Lowercase, one line, group in Noto Sans")
 def v6():
     L = Lockup()
     cap = 40
-    a = Run("noto-800", "probuild", cap, -0.02)
+    a = Run("mm-wide-800", "probuild", cap, 0)
     b = Run("noto-400", "group", cap, -0.01, (("orange",),))
     mh = cap * 1.75
     mw = L.mark(0, 0, mh)
     x = mw + cap * 0.55
     y = mh - cap  # baseline on the mark's base
     L.text(a, x, y)
-    L.text(b, x + a.width + cap * 0.3, y)
+    L.text(b, x + a.width + cap * 0.5, y)
     return L
 
 
@@ -275,13 +277,13 @@ def v9():
     return L
 
 
-@variant("Noto Sans, stacked, ProBuild Group")
+@variant("Stacked, ProBuild + Group in Noto Sans")
 def v10():
     L = Lockup()
     cap = 40
-    a = Run("noto-800", "ProBuild", cap, -0.01)
+    a = Run("mm-wide-800", "ProBuild", cap, 0)
     b = Run("noto-400", "Group", cap, -0.01, (("orange",),))
-    gap = cap * 0.28
+    gap = cap * 0.5
     w = a.width + gap + b.width
     mw = w * 0.46
     mh = mw / MARK_RATIO
@@ -292,12 +294,12 @@ def v10():
     return L
 
 
-@variant("Both fonts: Noto Sans + Martian Mono, rule")
+@variant("GROUP in Noto Sans with a rule")
 def v11():
     L = Lockup()
     cap = 42
-    a = Run("noto-800", "PROBUILD", cap, 0.0)
-    b = Run("mm-wide-500", "GROUP", cap * 0.4, 0.25, (("orange",),))
+    a = Run("mm-wide-800", "PROBUILD", cap, 0)
+    b = Run("noto-600", "GROUP", cap * 0.4, 0.25, (("orange",),))
     block = cap + cap * 0.42 + b.cap
     mh = block * 1.25
     mw = L.mark(0, 0, mh)
