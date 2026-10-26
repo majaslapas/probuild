@@ -236,4 +236,138 @@
       });
     });
   });
+
+  // Motion and brand bars. Each empty .brand-bars element gets its bars here; the site head CSS
+  // sets their heights on one roof line. data-bars = count, data-bars-accent = how many of the
+  // last bars are orange, data-bars-jump = how many step up a tier, data-bars-cap = how many carry
+  // a cap, data-bars-scrub = the bars grow with the scroll instead of rising once.
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var vh = function () { return window.innerHeight || document.documentElement.clientHeight; };
+    $$('.brand-bars').forEach(function (el) {
+      if (el.querySelector('.brand-bars_bar')) return;
+      var num = function (a) { return +el.getAttribute('data-bars-' + a) || 0; };
+      var n = +el.getAttribute('data-bars') || 6;
+      for (var i = 0; i < n; i++) {
+        var b = document.createElement('i');
+        b.className = 'brand-bars_bar' + (i >= n - num('accent') ? ' is-accent' : '') + (i >= n - num('cap') ? ' has-cap' : '');
+        b.style.setProperty('--i', i);
+        b.style.setProperty('--t', (n > 1 ? i / (n - 1) : 1).toFixed(3));
+        if (i >= n - num('jump')) b.style.setProperty('--j', 1);
+        el.appendChild(b);
+      }
+      el.setAttribute('aria-hidden', 'true');
+      if (el.hasAttribute('data-bars-scrub')) el.classList.add('is-scrub');
+    });
+    if (reduce || !('IntersectionObserver' in window)) {
+      $$('.brand-bars').forEach(function (el) { el.classList.add('is-in'); el.style.setProperty('--p', 1); });
+      return;
+    }
+    document.documentElement.classList.add('pb-motion');
+
+    // Reveals: whatever enters the screen together rises in, staggered left to right, top to bottom.
+    var targets = [
+      'main section h2', '.home-services_item', '.home-about_collage', '.home-about_value', '.rental-card',
+      '.home-reviews_card', '.home-cta_wrapper-3 > *', '.benefits_item', '.benefits_photo', '.services-reviews_card',
+      '.contacts_card', '.services-list_cms-item', '.rental-list_item', '.portfolio-list_item', '.about-story_block',
+      '.about-stats_item', '.about-values_item', '.about-values_image', '.about-team_item', '.about-partners_logo',
+      '.about-cta_panel', '.contact-partners img', '.project-header_image-wrapper', 'main section aside',
+      '.project-gallery_list figure', '.rental-product_accordion', '.footer_grid > *'
+    ].join(',');
+    var io = new IntersectionObserver(function (entries) {
+      var hits = entries.filter(function (e) { return e.isIntersecting; }).map(function (e) { return e.target; });
+      hits.sort(function (a, b) {
+        var ra = a.getBoundingClientRect(), rb = b.getBoundingClientRect();
+        return Math.abs(ra.top - rb.top) > 24 ? ra.top - rb.top : ra.left - rb.left;
+      });
+      hits.forEach(function (el, k) {
+        el.style.setProperty('--pb-d', Math.min(k, 7) * 0.07 + 's');
+        el.classList.add('is-in');
+        io.unobserve(el);
+        el.addEventListener('transitionend', function done(e) {
+          if (e.target !== el || e.propertyName !== 'transform') return;
+          el.removeEventListener('transitionend', done);
+          el.removeAttribute('data-pb-reveal'); el.classList.remove('is-in'); el.style.removeProperty('--pb-d');
+        });
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    $$(targets).forEach(function (el) {
+      if (el.closest('.home-hero_component, .navbar_component')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < vh() * 0.92 && r.bottom > 0) return; // already on screen: never hide it
+      el.setAttribute('data-pb-reveal', '');
+      io.observe(el);
+    });
+
+    // Bars rise when they come into view; scrub bars grow with the scroll position.
+    var barIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); barIo.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    var scrub = [];
+    $$('.brand-bars').forEach(function (el) {
+      if (el.classList.contains('is-scrub')) scrub.push(el); else barIo.observe(el);
+    });
+    scrub.forEach(function (el) { el.classList.add('is-in'); });
+
+    // Counters: whole numbers (with an optional +) count up the first time they are seen.
+    var countIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        countIo.unobserve(e.target);
+        var el = e.target, end = +el.dataset.pbCount, suffix = el.dataset.pbSuffix || '', t0 = null;
+        el.style.minWidth = el.getBoundingClientRect().width + 'px';
+        (function step(ts) {
+          if (t0 === null) t0 = ts;
+          var p = Math.min(1, (ts - t0) / 1400), v = Math.round(end * (1 - Math.pow(1 - p, 4)));
+          el.textContent = v + suffix;
+          if (p < 1) requestAnimationFrame(step);
+        })(performance.now());
+      });
+    }, { threshold: 0.6 });
+    $$('.home-hero_stat-number, .home-about_badge-number, .about-stats_number, .about-hero_badge strong, .contact_stat strong, .benefits_big').forEach(function (el) {
+      var m = el.textContent.trim().match(/^(\d{1,4})(\+?)$/);
+      if (!m || el.children.length) return;
+      el.dataset.pbCount = m[1]; el.dataset.pbSuffix = m[2];
+      el.classList.add('pb-count');
+      countIo.observe(el);
+    });
+
+    // Scroll: hero and call-to-action photos drift slower than the page; scrub bars follow the scroll.
+    var drift = $$('.home-hero_background-image, .home-cta_background-image, .about-stats_image, .about-cta_bg');
+    var ticking = false;
+    function frame() {
+      ticking = false;
+      var h = vh();
+      drift.forEach(function (img) {
+        var box = (img.closest('section') || img.parentNode).getBoundingClientRect();
+        if (box.bottom < 0 || box.top > h) return;
+        var c = (box.top + box.height / 2 - h / 2) / (h + box.height);
+        img.style.translate = '0 ' + (c * -12).toFixed(2) + '%';
+      });
+      scrub.forEach(function (el) {
+        var r = el.getBoundingClientRect(), p = (h - r.bottom) / (h * 0.4);
+        el.style.setProperty('--p', Math.max(0, Math.min(1, p)).toFixed(3));
+      });
+    }
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+    drift.forEach(function (img) { img.style.scale = '1.14'; });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    frame();
+
+    // Filter tabs: the items left in view rise back in after a filter change.
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('[data-filter-group]')) return;
+      setTimeout(function () {
+        var shown = $$('[data-filter-value]').filter(function (i) {
+          if (i.style.display === 'none') return false;
+          var r = i.getBoundingClientRect(); return r.top < vh() && r.bottom > 0;
+        });
+        shown.forEach(function (i, k) {
+          if (i.animate) i.animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }],
+            { duration: 500, delay: Math.min(k, 7) * 50, easing: 'cubic-bezier(.23,1,.32,1)', fill: 'backwards' });
+        });
+      }, 0);
+    });
+  })();
 })();

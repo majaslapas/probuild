@@ -42,9 +42,9 @@ Every list sorts by `seciba` (lowest first). Empty optional fields hide their bl
 
 | Where | File | What it does |
 |---|---|---|
-| Site head | `site/site-head.html` (built from `site-head-links.html` + `site-head.css`) | Favicon, touch icon, theme colour; base resets over Webflow defaults, focus rings, reduced motion, rich-text clearfix removal |
-| Site footer | `site/site.js` (wrapped in `<script>`) | Filters, accordion, calculator, CMS card links, galleries, lightboxes, form fixes (below) |
-| Page head | `page-code/<page>.head.html` | Per-page CSS that Webflow classes cannot express: descendant hovers, pseudo-elements, keyframes, scroll animations, `:has()` empty-state rules |
+| Site head | `site/site-head.html` (built from `site-head-links.html` + `site-head.css`) | Favicon, touch icon, theme colour; base resets over Webflow defaults, focus rings, reduced motion, rich-text clearfix removal; brand pattern and motion styles (below) |
+| Site footer | `site/site.js` (wrapped in `<script>`) | Filters, accordion, calculator, CMS card links, galleries, lightboxes, form fixes (below); brand bars, reveals, counters, photo drift |
+| Page head | `page-code/<page>.head.html` | Per-page CSS that Webflow classes cannot express: descendant hovers, pseudo-elements, hero entrance keyframes, `:has()` empty-state rules |
 
 `site.js` features, all driven by data attributes in the markup:
 
@@ -54,6 +54,35 @@ Every list sorts by `seciba` (lowest first). Empty optional fields hide their bl
 - **CMS card links:** `a[data-cms-slug]` becomes `data-cms-base + slug`, for example `/projekts/koka-karkasa-privatmaja`. The static href is the listing page.
 - **Galleries:** product thumbnails, the project photo lightbox (arrows, ←/→, Esc) and the YouTube modal.
 - **Forms:** removes Webflow's "Example Text" placeholders. Groups radio buttons by their Group Name and selects the first choice. Fills hidden `[data-product-name]` inputs from the page's h1.
+
+## Brand pattern and motion (2026-10-26, second pass)
+
+The pattern is built from the logo's rising bars (mark F): bars of equal width whose slanted tops share one roof line at the mark's slope (0.6, about 31°), so each bar is a step taller than the last. As in the logo, the last bars can step up a tier ("jump") and carry a floating cap. It is used in five ways:
+
+| Use | Where | How |
+|---|---|---|
+| Bars standing on an edge | Sākums: on the hero stats panel (≥1200px), the orange section rising into the black above, the footer black rising into the call-to-action photo (≥992px). Noma and Projekti: a small mark on the filter divider (≥768px) | `.brand-bars` element (below) |
+| Background | Footer on every page: tone-on-tone bars behind the links | `.brand-bars.is-footer` in the Footer component |
+| Photo cutout | Sākums about photo, Pakalpojumi "Viens partneris" photo, Par mums values photo, project header photo: the top-left corner opens into rising bars | CSS mask on the class, `--pb-cut` |
+| Orange card glyph | Kontakti "Zvanīt", Pakalpojumi contact card, Par mums "Strādāsim kopā" | `::after` mask, `--pb-glyph` |
+| List marker | "Cenā iekļauts" lists (Pakalpojumi and the service template) | `::before` mask, `--pb-mark` |
+
+**`.brand-bars` elements** are empty divs in the Designer (class `brand-bars` + `is-hero`, `is-edge`, `is-cta`, `is-rule` or `is-footer`). `site.js` adds the bars. Attributes: `data-bars` (how many), `data-bars-accent` (how many of the last bars are orange), `data-bars-jump` (how many step up a tier), `data-bars-cap` (how many carry a cap), `data-bars-scrub` (grow with the scroll instead of rising once). Sizes, colours and positions per variant are custom properties in `site/site-head.css` (`--bb-w`, `--bb-gap`, `--bb-base`, `--bb-jump`, `--bb-color`). To move one, move or delete the div; to add one, copy an existing div and give it a position in the site head CSS.
+
+`tools/bars.py` regenerates the three mask SVGs (`pattern/`) and their data URIs.
+
+**Motion** (all in `site.js` and the site head, nothing in Webflow Interactions):
+
+- Sections, cards and footer columns below the first screen rise in as they enter, staggered in reading order. Content already on screen at load is never hidden, and nothing is hidden when the script doesn't run.
+- Bars rise from the ground when seen; `data-bars-scrub` bars follow the scroll.
+- Whole numbers ("17+", "100+", "14") count up once when seen.
+- The hero, call-to-action and Par mums photos drift slightly slower than the page.
+- Buttons press in (scale 0.97); arrows nudge on hover; orange-card glyphs lift on hover; filter changes bring the remaining cards back in.
+- `prefers-reduced-motion: reduce` turns all of it off: bars are shown full height and nothing moves.
+
+The per-page scroll-timeline reveals (`animation-timeline: view()`) and list load animations were removed from the page heads, because the script now handles them. Hero entrance animations stay in the page heads.
+
+`tools/motioncheck.mjs` scrolls every page with motion on (desktop and phone) and reports anything still hidden, the bars, the counters and script errors.
 
 ## Things to finish in the Webflow Designer
 
@@ -73,7 +102,7 @@ The pipeline, run from a working folder that holds the canvas export (`canvas/pr
 4. `python3 prep.py conv/<prefix>.html build/<prefix>.sections.html "<loop selector>=<slot>"` splits the page into insert fragments. It cuts CMS loops into slots plus item templates and restructures forms for Webflow.
 5. `python3 wfbuild.py build …` / `commit …` produces the WHTML payloads. Each style is sent only once; `site/registry.json` tracks the classes that already exist in Webflow.
 6. `python3 pagecss.py <prefix>` builds the page head CSS (`page-code/`).
-7. Verification: `shot.mjs` (screenshots), `textdiff.py` (canvas vs published text), `filtertest.mjs`, `calctest.mjs`, `tpltest.mjs`, `overflow.mjs` (390px overflow) and `finalcheck.mjs` (status, errors and links on every page).
+7. Verification: `shot.mjs` (screenshots), `textdiff.py` (canvas vs published text), `filtertest.mjs`, `calctest.mjs`, `tpltest.mjs`, `overflow.mjs` (390px overflow), `finalcheck.mjs` (status, errors and links on every page) and `motioncheck.mjs` (motion on, nothing left hidden).
 
 `pages/` holds the converted markup and CSS for each page, `rendered/` the static canvas renders, and `styleguide/` the Style Guide, Navbar and Footer payloads. `screenshots/` has design vs Webflow comparisons, with the canvas on the left and Webflow on the right.
 
