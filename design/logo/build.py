@@ -38,11 +38,11 @@ BARS_C = [
     "M16 66L32 58V112H16Z",
     "M36 40L52 32V112H36Z",
 ]
-# Version E: two orange bars with a dark upright between them. Its top runs left over the
-# first bar like a small P stem with its roof; its top line continues the P roof's underside.
-E_DARK = "M-4 54L32 36V112H16V60L-4 70Z"
+# Version E: dark left-most upright whose top runs right over the middle (orange) bar;
+# that top line continues the P roof's underside.
+E_DARK = "M-4 54L32 36V52L12 62V112H-4Z"
 BARS_E = [
-    "M-4 76L12 68V112H-4Z",
+    "M16 66L32 58V112H16Z",
     "M36 40L52 32V112H36Z",
 ]
 MARK_BOX = (-4, 8, 108, 104)  # x, y, w, h
