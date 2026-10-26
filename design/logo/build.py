@@ -38,11 +38,19 @@ BARS_C = [
     "M16 66L32 58V112H16Z",
     "M36 40L52 32V112H36Z",
 ]
+# Version E: two orange bars with a dark upright between them. Its top runs left over the
+# first bar like a small P stem with its roof; its top line continues the P roof's underside.
+E_DARK = "M-4 54L32 36V112H16V60L-4 70Z"
+BARS_E = [
+    "M-4 76L12 68V112H-4Z",
+    "M36 40L52 32V112H36Z",
+]
 MARK_BOX = (-4, 8, 108, 104)  # x, y, w, h
 VARIANTS = {
     "": dict(p_shape=P_SHAPE, bars=BARS, box=MARK_BOX),
     "-roof": dict(p_shape=P_SHAPE_ROOF + " " + ROOF_DARK, bars=BARS_ROOF, box=(-24, 8, 128, 104)),
     "-c": dict(p_shape=P_SHAPE_ROOF + " " + C_DARK, bars=BARS_C, box=MARK_BOX),
+    "-e": dict(p_shape=P_SHAPE_ROOF + " " + E_DARK, bars=BARS_E, box=MARK_BOX),
     "-d": dict(p_shape=P_SHAPE_ROOF + " " + D_DARK, bars=BARS_C, box=(16, 8, 88, 104)),
 }
 
