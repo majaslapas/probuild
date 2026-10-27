@@ -66,6 +66,9 @@
     });
   }
 
+  // Webflow's default placeholder ("Example text") is not ours: screen readers would read it.
+  $$('[placeholder="Example text"], [placeholder="Example Text"]').forEach(function (i) { i.removeAttribute('placeholder'); });
+
   // CMS request forms: the hidden [data-product-name] input carries the page's item name (h1).
   $$('[data-product-name]').forEach(function (i) {
     var h = document.querySelector('h1');

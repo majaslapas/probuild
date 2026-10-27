@@ -61,6 +61,7 @@ window.PBC_SETTINGS = {
   editCalc: 'Labot aprēķinu',
   worksFold: 'Izvēlētie darbi ({n})',
   requestIntro: 'Aprakstiet, kas jādara. Sazināsimies, precizēsim apjomus un sagatavosim cenas piedāvājumu.',
+  requestPick: 'Izvēlieties pakalpojumu',
   unavailable: 'Kalkulators šobrīd nav pieejams. Precīzu cenas piedāvājumu var pieprasīt pa tālruni +371 26 518 131.',
   // Ja lapā nav formas ar atribūtu data-pbc-form, poga ved uz šo adresi.
   fallbackUrl: '/kontakti',
@@ -293,6 +294,12 @@ window.PBC_SETTINGS = {
     var host = function (b, h) { if (b) { moved.push([b, b.parentNode, b.nextSibling]); h.appendChild(b); } };
     host(offerBlock, $('[data-offerhost]'));
     host(reqBlock, $('[data-reqhost]'));
+    // The request form's service list starts empty, so a pre-selected service is a real choice.
+    var reqSel = reqBlock && reqBlock.querySelector('select');
+    if (reqSel && ![].some.call(reqSel.options, function (o) { return !o.value; })) {
+      reqSel.insertBefore(new Option(S.requestPick || '—', ''), reqSel.firstChild);
+      reqSel.value = '';
+    }
 
     // Totals
     function line(id) {

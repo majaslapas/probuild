@@ -43,14 +43,14 @@ Every list sorts by `seciba` (lowest first). Empty optional fields hide their bl
 | Where | File | What it does |
 |---|---|---|
 | Site head | `site/site-head.html` (built from `site-head-links.html` + `site-head.css`) | Favicon, touch icon, theme colour; base resets over Webflow defaults, focus rings, reduced motion, rich-text clearfix removal; brand pattern and motion styles (below) |
-| Site footer | `site/site.js` (wrapped in `<script>`) | Filters, accordion, calculator, CMS card links, galleries, lightboxes, form fixes (below); brand bars, reveals, counters, photo drift |
+| Site footer | `site/site.js` (wrapped in `<script>`) | Filters, accordion, calculator service buttons, CMS card links, galleries, lightboxes, form fixes (below); brand bars, reveals, counters, photo drift |
 | Page head | `page-code/<page>.head.html` | Per-page CSS that Webflow classes cannot express: descendant hovers, pseudo-elements, hero entrance keyframes, `:has()` empty-state rules |
 
 `site.js` features, all driven by data attributes in the markup:
 
 - **Filters:** `[data-filter-group][data-filter]` tabs filter `[data-filter-value]` items inside `[data-filter-list]`, and `[data-filter-count]` shows the counts.
 - **Accordion:** `[data-accordion-trigger]` opens its `.services-list_item`, one at a time.
-- **Calculator panel:** `[data-calc-toggle]` switches the `.calc_panel` between the price calculator and the plain request form (`[data-calc-mode]`). Service buttons (`[data-service]`) open the calculator at that service's works (`window.pbCalc`), and the button on service pages links to `/pakalpojumi?pakalpojums=<name>#kalkulators`. The calculator itself is a set of Code Embeds: see [calculator/README.md](calculator/README.md).
+- **Calculator:** its own section under the Pakalpojumi hero: one Code Embed with the price table plus page custom code (see [calculator/README.md](calculator/README.md)). Service buttons (`[data-service]`) open it at that service's works (`pbCalc.show`) or open its plain request form (`pbCalc.request`); the button on service pages links to `/pakalpojumi?pakalpojums=<name>#kalkulators`. Webflow's default placeholder text ("Example text") is removed from all inputs.
 - **CMS card links:** `a[data-cms-slug]` becomes `data-cms-base + slug`, for example `/projekts/koka-karkasa-privatmaja`. The static href is the listing page.
 - **Galleries:** product thumbnails, the project photo lightbox (arrows, ←/→, Esc) and the YouTube modal.
 - **Forms:** removes Webflow's "Example Text" placeholders. Groups radio buttons by their Group Name and selects the first choice. Fills hidden `[data-product-name]` inputs from the page's h1.
