@@ -1,0 +1,224 @@
+{
+  "_review": "Draft from discover_forms.py. Fix keys/roles/labels, write purpose/subject templates, decide opportunity per form, then save as project-config.json (see references/config.md).",
+  "project": "probuild-group",
+  "level": "full",
+  "language": "en",
+  "webflow": {
+    "site_id": "REPLACE",
+    "staging_url": "https://probuild-group.webflow.io",
+    "production_url": ""
+  },
+  "hook_file": "~/.config/webcrm/PROJECT/ghl-hook",
+  "test_phone": "",
+  "ghl": {
+    "workflow": "Website → Sign-ups",
+    "folder": "Website sign-up",
+    "pipeline": "Website sign-ups",
+    "stage": "New",
+    "tag_all": "web-form",
+    "tag_form_prefix": "form-",
+    "notify": "REVIEW"
+  },
+  "script": {
+    "phone": {
+      "country": "",
+      "nationalLength": 0,
+      "nationalStart": ".",
+      "trunkPrefix": ""
+    },
+    "date": {
+      "order": "dmy"
+    },
+    "unknown_channel": "direct/unknown"
+  },
+  "picks": [],
+  "fields": {
+    "vards": {
+      "label": "vards",
+      "type": "text",
+      "role": "first_name",
+      "required": true
+    },
+    "telefons": {
+      "label": "telefons",
+      "type": "tel",
+      "role": "phone",
+      "required": true
+    },
+    "epasts": {
+      "label": "epasts",
+      "type": "email",
+      "role": "email"
+    },
+    "vieta": {
+      "label": "Objekta adrese vai pilsēta (nav obligāta)",
+      "type": "text"
+    },
+    "zina": {
+      "label": "Komentārs (nav obligāts)",
+      "type": "multiline",
+      "role": "message"
+    },
+    "interese": {
+      "label": "interese",
+      "type": "radio",
+      "options": [
+        "Cits"
+      ]
+    },
+    "first_name": {
+      "label": "Vārds",
+      "type": "text",
+      "role": "first_name"
+    },
+    "phone": {
+      "label": "Telefons",
+      "type": "tel",
+      "role": "phone"
+    },
+    "no": {
+      "label": "No",
+      "type": "date"
+    },
+    "lidz": {
+      "label": "Līdz",
+      "type": "date"
+    },
+    "service": {
+      "label": "Pakalpojums",
+      "type": "select",
+      "role": "service",
+      "options": [
+        "Pamatu būvniecība",
+        "Jumta darbi",
+        "Fasādes darbi",
+        "Inženiertīklu un komunikāciju izbūve",
+        "Ēku renovācija un rekonstrukcija",
+        "Remonta un apdares darbi",
+        "Demontāža un konstrukciju nojaukšana",
+        "Kokapstrāde",
+        "Metālapstrāde",
+        "Ēku apsaimniekošana un uzturēšana",
+        "Drenāžas un meliorācijas darbi",
+        "Apzaļumošana un labiekārtošana",
+        "Būvgružu izvešana un utilizācija",
+        "Koku zāģēšana un apauguma novākšana"
+      ]
+    }
+  },
+  "forms": [
+    {
+      "element_id": "dd2304bf-c927-eda7-8438-babe29a04994",
+      "name": "Kalkulators",
+      "published_name": "Kalkulators",
+      "key": "kalkulators",
+      "fields": [
+        "vards",
+        "telefons",
+        "epasts",
+        "vieta",
+        "zina"
+      ],
+      "published": {
+        "vards": "vards",
+        "telefons": "telefons",
+        "epasts": "epasts",
+        "vieta": "vieta",
+        "zina": "zina"
+      },
+      "purpose": "REVIEW",
+      "subject": "REVIEW",
+      "opportunity": true,
+      "check_page": "/pakalpojumi",
+      "pages": [
+        "/pakalpojumi"
+      ]
+    },
+    {
+      "element_id": "4d10121b-a9de-c7da-8368-dcad032a656a",
+      "name": "Kontaktforma",
+      "published_name": "Kontaktforma",
+      "key": "kontaktforma",
+      "fields": [
+        "interese",
+        "interese",
+        "interese",
+        "interese",
+        "interese",
+        "interese",
+        "vards",
+        "telefons",
+        "epasts",
+        "zina"
+      ],
+      "published": {
+        "interese": "interese",
+        "vards": "vards",
+        "telefons": "telefons",
+        "epasts": "epasts",
+        "zina": "zina"
+      },
+      "purpose": "REVIEW",
+      "subject": "REVIEW",
+      "opportunity": true,
+      "check_page": "/kontakti",
+      "pages": [
+        "/kontakti"
+      ]
+    },
+    {
+      "element_id": "e86c52af-94a3-9432-bf15-ea2220226664",
+      "name": "Nomas pieprasījums",
+      "published_name": "Nomas pieprasījums",
+      "key": "nomas-pieprasijums",
+      "fields": [
+        "first_name",
+        "phone",
+        "no",
+        "lidz",
+        "zina"
+      ],
+      "published": {
+        "first_name": "Vārds",
+        "phone": "Telefons",
+        "no": "No",
+        "lidz": "Līdz",
+        "zina": "zina"
+      },
+      "purpose": "REVIEW",
+      "subject": "REVIEW",
+      "opportunity": true,
+      "check_page": "/noma",
+      "pages": [
+        "/noma"
+      ]
+    },
+    {
+      "element_id": "dd2304bf-c927-eda7-8438-babe29a049e5",
+      "name": "Pakalpojuma pieteikums",
+      "published_name": "Pakalpojuma pieteikums",
+      "key": "pakalpojuma-pieteikums",
+      "fields": [
+        "service",
+        "vards",
+        "telefons",
+        "epasts",
+        "zina"
+      ],
+      "published": {
+        "service": "Pakalpojums",
+        "vards": "vards",
+        "telefons": "telefons",
+        "epasts": "epasts",
+        "zina": "zina"
+      },
+      "purpose": "REVIEW",
+      "subject": "REVIEW",
+      "opportunity": true,
+      "check_page": "/pakalpojumi",
+      "pages": [
+        "/pakalpojumi"
+      ]
+    }
+  ]
+}

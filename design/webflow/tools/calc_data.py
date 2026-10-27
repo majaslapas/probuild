@@ -3,8 +3,8 @@
     python3 -I tools/calc_data.py            (run from design/webflow)
 
 Reads calculator/source/*.xlsx and writes:
-  calculator/cenas-<area>.html   one Webflow Code Embed per workbook (the admin edits these)
-  calculator/prices.json         the same rows with their source cell, for calc_test.mjs
+  calculator/cenas.html    the Webflow Code Embed with every price as a plain-text table (the admin edits it)
+  calculator/prices.json   the same rows with their source cell, for calc_verify.py and calc_test.mjs
 
 Prices are copied unchanged. Names get spelling fixes (RENAME), units are mapped to the
 calculator's unit keys (UNIT), and the column order of every row becomes from, recommended, to.
@@ -54,7 +54,7 @@ AREAS = [
               'darbu ārpus darba laika (koeficients līdz 2). Daļa cenu ir ar PVN, daļa bez – precizēsim piedāvājumā.'),
 ]
 
-# Raw unit text (after removing "EUR/") → calculator unit key (see UNITS in kalkulators.html).
+# Raw unit text (after removing "EUR/") → calculator unit key (see units in kalkulators.html).
 UNIT = {
     'm2': 'm2', 'м2': 'm2', 'm²': 'm2', 'm3': 'm3', 'm³': 'm3', 'm³ izejmateriāla': 'm3 izejm.',
     't/m': 'm', 't\\m': 'm', 'm': 'm', 'tekošais m': 'm',
@@ -159,31 +159,49 @@ NOTE = {
         'Tehnikas darba stunda; mazam celmam iespējama minimālā maksa.',
 }
 
-HEADER = '''<script>
-/* ==========================================================================
-   PROBUILD CENU KALKULATORS · CENAS: {upper}
-   Avots: {drive} (2026. gada cenas)
-   --------------------------------------------------------------------------
-   KĀ LABOT CENAS
-   Katra rinda ir viens darbs:
-     ['Darba nosaukums', 'mērvienība', cena no, ieteicamā cena, cena līdz],
-   · Cenas ir eiro par vienu mērvienību. Decimāldaļu atdala ar punktu: 12.5
-   · Kalkulators rāda ieteicamo cenu un diapazonu no–līdz.
-   · Mērvienības: m2, m3, m (tekošais metrs), h (stunda), gab, kompl, t, kg,
-     diena, reize, … Pilns saraksts ir kalkulatora koda iestatījumos (UNITS).
-   · Rindas beigās var pievienot piezīmi klientam:
-     ['Darba nosaukums', 'm2', 10, 12, 15, 'Piezīme'],
-   · Jaunu darbu pievieno, nokopējot rindu. Rindas beigās jābūt komatam.
-   · Jaunu grupu pievieno, nokopējot bloku {{ group: '…', items: [ … ] }},
-   · Teksts starp pēdiņām nedrīkst saturēt pēdiņu ' (ja vajag, raksta \\').
-   ========================================================================== */
-(window.PBC_DATA = window.PBC_DATA || []).push({{
-  id: '{id}',
-  order: {order},
-  name: '{name}',
-  intro: '{intro}',
-  note: '{note}',
-  groups: [
+# The admin's view of the prices: one Code Embed with a plain-text table (the engine parses it).
+TABLE_HEAD = '''<script type="text/plain" data-pbc-cenas>
+==============================================================================
+  PROBUILD CENU KALKULATORS · DARBU CENAS 2026
+  Šajā blokā ir visas kalkulatora cenas. Kalkulatora kods ir lapas
+  iestatījumos (Page settings → Custom code), to mainīt nevajag.
+==============================================================================
+  KĀ MAINĪT CENU
+  Katra rinda ir viens darbs. Mainiet skaitļus pirmajās trīs kolonnās:
+
+      NO |   CENA |   LĪDZ | MĒRV.      | DARBS
+     2.5 |      4 |      7 | m2         | Sagatavošanas darbi, zemes darbi
+
+    NO    = zemākā cena
+    CENA  = ieteicamā cena, kalkulators to rāda kā galveno
+    LĪDZ  = augstākā cena
+    MĒRV. = mērvienība, par kuru ir cena
+
+  · Cena ir eiro par vienu mērvienību, bez € zīmes. Decimāldaļa: 12.5 vai 12,5
+  · Starp kolonnām jābūt svītrai |. Atstarpju skaits nav svarīgs.
+  · Ja cena ir viena, ierakstiet to visās trīs kolonnās: 40 | 40 | 40
+  · Piezīmi klientam raksta rindas beigās aiz vēl vienas svītras:
+      40 |     55 |     75 | h          | Darba nosaukums | Piezīme klientam
+  · Jauns darbs: nokopējiet rindu vajadzīgajā grupā un nomainiet tekstu.
+    Dzēst: izdzēsiet rindu. Paslēpt uz laiku: rindas sākumā ierakstiet #.
+  · Jauna grupa sākas ar ---, piem. „--- Jumts”; jauna joma ar ===.
+    Jomas „Apraksts:” rāda zem jomas nosaukuma, „Piezīme:” pie kopsummas.
+  · Mērvienības: m2, m3, m (tekošais metrs), h (stunda), gab, kompl, t, kg,
+    diena, reize, brauciens, izbraukums, pasūtījums, objekts, koks, celms.
+    „m2 reizē” cenu reizina arī ar reižu skaitu; „m2 mēnesī” un „mēnesī” ir
+    ikmēneša maksa, ko skaita atsevišķi.
+  · Rindas, kas sākas ar #, kalkulators neņem vērā.
+  · Pēc izmaiņām: Save, tad Publish. Kļūdainu rindu kalkulators izlaiž, un
+    adresē …webflow.io virs kalkulatora parāda, kurā rindā ir kļūda.
+==============================================================================
+'''
+COLS = '#   NO |   CENA |   LĪDZ | MĒRV.      | DARBS'
+TABLE_FOOT = '''
+=== BEIGAS ===================================================================
+</script>
+<div class="pbc" data-pbc>
+  <noscript><p>Kalkulatoram vajadzīgs JavaScript. Precīzu cenas piedāvājumu var pieprasīt pa tālruni +371 26 518 131.</p></noscript>
+</div>
 '''
 
 
@@ -196,14 +214,6 @@ def num(v):
 def parse_range(s):
     a, b = re.split(r'\s*[–-]\s*', str(s).strip())
     return num(a), num(b)
-
-
-def js(s):
-    return "'" + str(s).replace('\\', '\\\\').replace("'", "\\'") + "'"
-
-
-def jsnum(v):
-    return str(int(v)) if float(v).is_integer() else repr(round(v, 4))
 
 
 def clean(s):
@@ -241,34 +251,36 @@ def load(area):
     return groups, rows
 
 
-def embed(area, groups):
-    out = [HEADER.format(upper=area['name'].upper(), drive=area['drive'], id=area['id'], order=area['order'],
-                         name=area['name'].replace("'", "\\'"), intro=area['intro'].replace("'", "\\'"),
-                         note=area['note'].replace("'", "\\'"))]
-    for g, items in groups.items():
-        out.append('    {{ group: {}, items: [\n'.format(js(g)))
-        width = min(max(len(js(i['name'])) for i in items) + 1, 62)
-        for i in items:
-            name = (js(i['name']) + ',').ljust(width + 1)
-            cells = [name if name.endswith(' ') else name + ' ', (js(i['unit']) + ',').ljust(14),
-                     (jsnum(i['frm']) + ',').ljust(7), (jsnum(i['price']) + ',').ljust(7), jsnum(i['to'])]
-            note = (', ' + js(i['note'])) if i['note'] else ''
-            out.append('      [' + ''.join(cells) + note + '],\n')
-        out.append('    ]},\n')
-    out.append('  ]\n});\n</script>\n')
+def tnum(v):
+    return str(int(v)) if float(v).is_integer() else repr(round(v, 4))
+
+
+def table(loaded):
+    out = [TABLE_HEAD]
+    for area, groups in loaded:
+        out.append('\n\n=== %s %s\n' % (area['name'], '=' * max(3, 73 - len(area['name']))))
+        out.append('Apraksts: %s\nPiezīme: %s\n\n%s\n' % (area['intro'], area['note'], COLS + ' | PIEZĪME KLIENTAM' if any(
+            i['note'] for items in groups.values() for i in items) else COLS))
+        for g, items in groups.items():
+            out.append('\n--- %s\n' % g)
+            for i in items:
+                row = '%6s | %6s | %6s | %-10s | %s' % (tnum(i['frm']), tnum(i['price']), tnum(i['to']), i['unit'], i['name'])
+                out.append((row + ' | ' + i['note'] if i['note'] else row) + '\n')
+    out.append(TABLE_FOOT)
     return ''.join(out)
 
 
 def main():
-    allrows = []
+    allrows, loaded = [], []
     for area in AREAS:
         groups, rows = load(area)
-        code = embed(area, groups)
-        path = os.path.join(OUT, 'cenas-%s.html' % area['id'])
-        with open(path, 'w', encoding='utf-8') as f:
-            f.write(code)
-        print('%-40s %3d items %2d groups %6d chars' % (os.path.relpath(path, ROOT), len(rows), len(groups), len(code)))
+        loaded.append((area, groups))
+        print('%-16s %3d items %2d groups' % (area['id'], len(rows), len(groups)))
         allrows += rows
+    code = table(loaded)
+    with open(os.path.join(OUT, 'cenas.html'), 'w', encoding='utf-8') as f:
+        f.write(code)
+    print('calculator/cenas.html %d chars (Webflow Code Embed limit 50 000)' % len(code))
     meta = [{k: a[k] for k in ('id', 'order', 'name', 'file', 'sheet', 'drive')} for a in AREAS]
     with open(os.path.join(OUT, 'prices.json'), 'w', encoding='utf-8') as f:
         json.dump(dict(areas=meta, items=allrows), f, ensure_ascii=False, indent=1)

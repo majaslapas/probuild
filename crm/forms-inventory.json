@@ -1,0 +1,412 @@
+{
+  "pages_read": [
+    "/",
+    "/kontakti",
+    "/noma",
+    "/pakalpojumi",
+    "/par-mums",
+    "/projekti"
+  ],
+  "langs": [
+    "en"
+  ],
+  "forms": [
+    {
+      "element_id": "dd2304bf-c927-eda7-8438-babe29a04994",
+      "name": "Kalkulators",
+      "dom_id": "wf-form-Kalkulators",
+      "action": "",
+      "method": "post",
+      "crm_key": "",
+      "turnstile": false,
+      "pages": [
+        "/pakalpojumi"
+      ],
+      "fields": [
+        {
+          "name": "vards",
+          "data_name": "vards",
+          "dom_id": "izmaksu-kalkulators-un-pieteikums-vards",
+          "type": "text",
+          "required": true,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "vards",
+          "role": "first_name"
+        },
+        {
+          "name": "telefons",
+          "data_name": "telefons",
+          "dom_id": "izmaksu-kalkulators-un-pieteikums-telefons",
+          "type": "tel",
+          "required": true,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "telefons",
+          "role": "phone"
+        },
+        {
+          "name": "epasts",
+          "data_name": "epasts",
+          "dom_id": "izmaksu-kalkulators-un-pieteikums-e-pasts-nav-obligats",
+          "type": "email",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "epasts",
+          "role": "email"
+        },
+        {
+          "name": "vieta",
+          "data_name": "vieta",
+          "dom_id": "kalkulators-vieta",
+          "type": "text",
+          "required": false,
+          "placeholder": "Example Text",
+          "value": "",
+          "label": "Objekta adrese vai pilsēta (nav obligāta)",
+          "role": ""
+        },
+        {
+          "name": "zina",
+          "data_name": "zina",
+          "dom_id": "kalkulators-zina",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Example Text",
+          "value": "",
+          "label": "Komentārs (nav obligāts)",
+          "role": "message"
+        }
+      ],
+      "hidden": [],
+      "code_refs": [],
+      "langs": [
+        "en"
+      ],
+      "identical_on_all_pages": true
+    },
+    {
+      "element_id": "4d10121b-a9de-c7da-8368-dcad032a656a",
+      "name": "Kontaktforma",
+      "dom_id": "wf-form-Kontaktforma",
+      "action": "",
+      "method": "post",
+      "crm_key": "",
+      "turnstile": false,
+      "pages": [
+        "/kontakti"
+      ],
+      "fields": [
+        {
+          "name": "radio",
+          "data_name": "interese",
+          "dom_id": "interese-1",
+          "type": "radio",
+          "required": false,
+          "placeholder": "",
+          "value": "Būvniecība",
+          "label": "interese",
+          "options": [
+            "Būvniecība"
+          ],
+          "role": ""
+        },
+        {
+          "name": "radio-2",
+          "data_name": "interese",
+          "dom_id": "interese-2",
+          "type": "radio",
+          "required": false,
+          "placeholder": "",
+          "value": "Remonts un apdare",
+          "label": "interese",
+          "options": [
+            "Remonts un apdare"
+          ],
+          "role": ""
+        },
+        {
+          "name": "radio-3",
+          "data_name": "interese",
+          "dom_id": "interese-3",
+          "type": "radio",
+          "required": false,
+          "placeholder": "",
+          "value": "Teritorija",
+          "label": "interese",
+          "options": [
+            "Teritorija"
+          ],
+          "role": ""
+        },
+        {
+          "name": "radio-4",
+          "data_name": "interese",
+          "dom_id": "interese-4",
+          "type": "radio",
+          "required": false,
+          "placeholder": "",
+          "value": "Apsaimniekošana",
+          "label": "interese",
+          "options": [
+            "Apsaimniekošana"
+          ],
+          "role": ""
+        },
+        {
+          "name": "radio-5",
+          "data_name": "interese",
+          "dom_id": "interese-5",
+          "type": "radio",
+          "required": false,
+          "placeholder": "",
+          "value": "Tehnikas noma",
+          "label": "interese",
+          "options": [
+            "Tehnikas noma"
+          ],
+          "role": ""
+        },
+        {
+          "name": "radio-6",
+          "data_name": "interese",
+          "dom_id": "interese-6",
+          "type": "radio",
+          "required": false,
+          "placeholder": "",
+          "value": "Cits",
+          "label": "interese",
+          "options": [
+            "Cits"
+          ],
+          "role": ""
+        },
+        {
+          "name": "vards",
+          "data_name": "vards",
+          "dom_id": "kontaktforma-vards",
+          "type": "text",
+          "required": true,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "vards",
+          "role": "first_name"
+        },
+        {
+          "name": "telefons",
+          "data_name": "telefons",
+          "dom_id": "kontaktforma-telefons",
+          "type": "tel",
+          "required": true,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "telefons",
+          "role": "phone"
+        },
+        {
+          "name": "epasts",
+          "data_name": "epasts",
+          "dom_id": "kontaktforma-e-pasts",
+          "type": "email",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "epasts",
+          "role": "email"
+        },
+        {
+          "name": "zina",
+          "data_name": "zina",
+          "dom_id": "kontaktforma-zina",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Piem., pamati privātmājai, ~120 m², Salaspils, pavasarī…",
+          "value": "",
+          "label": "zina",
+          "role": "message"
+        }
+      ],
+      "hidden": [],
+      "code_refs": [
+        {
+          "field": "interese",
+          "ref": "radio",
+          "pages": [
+            "/kontakti"
+          ]
+        }
+      ],
+      "langs": [
+        "en"
+      ],
+      "identical_on_all_pages": true
+    },
+    {
+      "element_id": "e86c52af-94a3-9432-bf15-ea2220226664",
+      "name": "Nomas pieprasījums",
+      "dom_id": "wf-form-Nomas-piepras-jums",
+      "action": "",
+      "method": "post",
+      "crm_key": "",
+      "turnstile": false,
+      "pages": [
+        "/noma"
+      ],
+      "fields": [
+        {
+          "name": "Vārds",
+          "data_name": "Vārds",
+          "dom_id": "nomas-pieprasijums-vards",
+          "type": "text",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "Vārds",
+          "role": "first_name"
+        },
+        {
+          "name": "Telefons",
+          "data_name": "Telefons",
+          "dom_id": "nomas-pieprasijums-telefons",
+          "type": "tel",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "Telefons",
+          "role": "phone"
+        },
+        {
+          "name": "No",
+          "data_name": "No",
+          "dom_id": "nomas-pieprasijums-no",
+          "type": "date",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "No",
+          "role": ""
+        },
+        {
+          "name": "Līdz",
+          "data_name": "Līdz",
+          "dom_id": "nomas-pieprasijums-lidz",
+          "type": "date",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "Līdz",
+          "role": ""
+        },
+        {
+          "name": "zina",
+          "data_name": "zina",
+          "dom_id": "nomas-pieprasijums-ko-velaties-nomat",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Piem., traktors ar kausu, Salaspils…",
+          "value": "",
+          "label": "zina",
+          "role": "message"
+        }
+      ],
+      "hidden": [],
+      "code_refs": [],
+      "langs": [
+        "en"
+      ],
+      "identical_on_all_pages": true
+    },
+    {
+      "element_id": "dd2304bf-c927-eda7-8438-babe29a049e5",
+      "name": "Pakalpojuma pieteikums",
+      "dom_id": "wf-form-Pakalpojuma-pieteikums",
+      "action": "",
+      "method": "post",
+      "crm_key": "",
+      "turnstile": false,
+      "pages": [
+        "/pakalpojumi"
+      ],
+      "fields": [
+        {
+          "name": "Pakalpojums",
+          "data_name": "Pakalpojums",
+          "dom_id": "Pakalpojums",
+          "type": "select",
+          "required": false,
+          "placeholder": "",
+          "value": "",
+          "label": "Pakalpojums",
+          "options": [
+            "Pamatu būvniecība",
+            "Jumta darbi",
+            "Fasādes darbi",
+            "Inženiertīklu un komunikāciju izbūve",
+            "Ēku renovācija un rekonstrukcija",
+            "Remonta un apdares darbi",
+            "Demontāža un konstrukciju nojaukšana",
+            "Kokapstrāde",
+            "Metālapstrāde",
+            "Ēku apsaimniekošana un uzturēšana",
+            "Drenāžas un meliorācijas darbi",
+            "Apzaļumošana un labiekārtošana",
+            "Būvgružu izvešana un utilizācija",
+            "Koku zāģēšana un apauguma novākšana"
+          ],
+          "role": "service"
+        },
+        {
+          "name": "vards",
+          "data_name": "vards",
+          "dom_id": "pieteikuma-forma-vards",
+          "type": "text",
+          "required": true,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "vards",
+          "role": "first_name"
+        },
+        {
+          "name": "telefons",
+          "data_name": "telefons",
+          "dom_id": "pieteikuma-forma-telefons",
+          "type": "tel",
+          "required": true,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "telefons",
+          "role": "phone"
+        },
+        {
+          "name": "epasts",
+          "data_name": "epasts",
+          "dom_id": "pieteikuma-forma-e-pasts-nav-obligats",
+          "type": "email",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "epasts",
+          "role": "email"
+        },
+        {
+          "name": "zina",
+          "data_name": "zina",
+          "dom_id": "pieteikuma-forma-jusu-iecere",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Piem., pamati privātmājai, Salaspils, pavasarī…",
+          "value": "",
+          "label": "zina",
+          "role": "message"
+        }
+      ],
+      "hidden": [],
+      "code_refs": [],
+      "langs": [
+        "en"
+      ],
+      "identical_on_all_pages": true
+    }
+  ]
+}

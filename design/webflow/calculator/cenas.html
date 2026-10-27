@@ -1,0 +1,537 @@
+<script type="text/plain" data-pbc-cenas>
+==============================================================================
+  PROBUILD CENU KALKULATORS · DARBU CENAS 2026
+  Šajā blokā ir visas kalkulatora cenas. Kalkulatora kods ir lapas
+  iestatījumos (Page settings → Custom code), to mainīt nevajag.
+==============================================================================
+  KĀ MAINĪT CENU
+  Katra rinda ir viens darbs. Mainiet skaitļus pirmajās trīs kolonnās:
+
+      NO |   CENA |   LĪDZ | MĒRV.      | DARBS
+     2.5 |      4 |      7 | m2         | Sagatavošanas darbi, zemes darbi
+
+    NO    = zemākā cena
+    CENA  = ieteicamā cena, kalkulators to rāda kā galveno
+    LĪDZ  = augstākā cena
+    MĒRV. = mērvienība, par kuru ir cena
+
+  · Cena ir eiro par vienu mērvienību, bez € zīmes. Decimāldaļa: 12.5 vai 12,5
+  · Starp kolonnām jābūt svītrai |. Atstarpju skaits nav svarīgs.
+  · Ja cena ir viena, ierakstiet to visās trīs kolonnās: 40 | 40 | 40
+  · Piezīmi klientam raksta rindas beigās aiz vēl vienas svītras:
+      40 |     55 |     75 | h          | Darba nosaukums | Piezīme klientam
+  · Jauns darbs: nokopējiet rindu vajadzīgajā grupā un nomainiet tekstu.
+    Dzēst: izdzēsiet rindu. Paslēpt uz laiku: rindas sākumā ierakstiet #.
+  · Jauna grupa sākas ar ---, piem. „--- Jumts”; jauna joma ar ===.
+    Jomas „Apraksts:” rāda zem jomas nosaukuma, „Piezīme:” pie kopsummas.
+  · Mērvienības: m2, m3, m (tekošais metrs), h (stunda), gab, kompl, t, kg,
+    diena, reize, brauciens, izbraukums, pasūtījums, objekts, koks, celms.
+    „m2 reizē” cenu reizina arī ar reižu skaitu; „m2 mēnesī” un „mēnesī” ir
+    ikmēneša maksa, ko skaita atsevišķi.
+  · Rindas, kas sākas ar #, kalkulators neņem vērā.
+  · Pēc izmaiņām: Save, tad Publish. Kļūdainu rindu kalkulators izlaiž, un
+    adresē …webflow.io virs kalkulatora parāda, kurā rindā ir kļūda.
+==============================================================================
+
+
+=== Būvniecība ===============================================================
+Apraksts: Jaunbūve un būvdarbi: pamati, sienas, jumts, fasāde, grīdas, žogi, teritorija un komunikācijas.
+Piezīme: Darba cenas bez materiāliem un PVN. Cenu var mainīt objekta atrašanās vieta, darbu apjoms, piekļuve, augstums, sagatavošana, tehnika un atkritumu izvešana.
+
+#   NO |   CENA |   LĪDZ | MĒRV.      | DARBS
+
+--- Pamati
+   2.5 |      4 |      7 | m2         | Sagatavošanas darbi, zemes darbi, pamatu nospraušana
+    40 |     55 |     75 | h          | Zemes rakšana ar traktortehniku pamatiem (universālais ekskavators)
+    35 |     55 |     80 | m3         | Zemes darbi
+     5 |      8 |     13 | m2         | Šķembu pabēršana zem pamatiem un grīdām
+     8 |     12 |     18 | m          | Pamatnes (pēdas) sagatavošana
+    70 |     95 |    130 | m3         | Veidņu izgatavošana, armatūras uzstādīšana, betona ieliešana
+    12 |     18 |     28 | m          | Veidņu uzstādīšana un noņemšana no pamatu pēdas
+     8 |     12 |     20 | m2         | Gatavo veidņu montāža (piem. PERI-DOKA)
+    15 |     22 |     35 | m2         | Veidņu izgatavošana no dēļiem, finiera
+    40 |     55 |     75 | m3         | Armatūras uzstādīšana, betona ieliešana
+     6 |      9 |     15 | m2         | Horizontālā pamatu hidroizolācija
+     6 |      9 |     15 | m2         | Pamatu vertikālā un horizontālā hidroizolācija
+     8 |     12 |     20 | m2         | Pamatu siltināšana
+    18 |     25 |     40 | m          | Izlīdzinošā monolītā betona josla uz pamatiem
+    12 |     18 |     28 | gab        | Pamatu bloku uzstādīšana
+    40 |     55 |     75 | m3         | Pamatu izveide no FIBO, KIWI blokiem 5 MPa
+    45 |     65 |     90 | m3         | Monolītie aizbetonējumi starp pamatu blokiem
+    35 |     55 |     85 | gab        | Pārseguma paneļu uzstādīšana
+    12 |     20 |     35 | m          | Betona elementu griešana
+    25 |     45 |     80 | gab        | Tehnisko caurumu izgatavošana
+    30 |     45 |     65 | m2         | Monolīta pārseguma izveide ar armēšanu
+    50 |     75 |    110 | gab        | Monolītie betona pamati zem stabiem
+    80 |    120 |    180 | gab        | Pakāpienu betonēšana (līdz 2,5 m garumā)
+    30 |     45 |     70 | diena      | Objekta apsardze – videonovērošana
+
+--- Sienas
+     4 |      6 |      9 | m2         | Sastatņu uzstādīšana
+    70 |    100 |    140 | m3         | Ķieģeļu sienas mūrēšana b=51
+    55 |     80 |    120 | m kanāls   | Ventilācijas kanāla / dūmvada izgatavošana
+    45 |     65 |     90 | m3         | Gāzbetona bloku mūrēšana (AEROC, ROCLITE)
+    50 |     70 |     95 | m3         | Keramzīta bloku mūrēšana (FIBO)
+    18 |     25 |     38 | m2         | Koka karkasa sienas izbūve
+     8 |     12 |     20 | m2         | Kokšķiedras plāksnes montāža
+    10 |     15 |     24 | m2         | Kokšķiedras plāksnes montāža (griesti)
+     6 |     10 |     16 | m2         | Sienas siltināšana ar minerālvati
+     3 |      5 |      8 | m2         | Tvaika izolācijas ieklāšana
+    15 |     22 |     35 | m2         | Sendviča paneļi ar metāla karkasa izveidi
+    70 |    100 |    140 | m3         | Monolītās betona sienas izbūve
+     8 |     12 |     18 | m2         | Monolītās betona sienas slīpēšana
+    25 |     35 |     55 | m          | Ailu pārsedzes izgatavošana no monolītā betona
+    30 |     45 |     70 | gab        | Ailu pārsedzes montāža
+     7 |     12 |     20 | m          | Izlīdzinošās monolītās betona joslas izveidošana ar siltināšanu
+    55 |     80 |    115 | m          | Nesošās kolonnas izgatavošana
+    50 |     80 |    120 | gab        | Nesošās kolonnas montāža
+    25 |     45 |     80 | gab        | Tehnisko kanālu urbšana betonā
+   120 |    180 |    280 | t          | Metāla siju uzstādīšana
+    25 |     35 |     50 | h          | Metināšanas darbi
+
+--- Guļbūve, nojumes, terases
+    15 |     22 |     32 | m2         | Terases dēļu montāža (lineāri)
+    20 |     28 |     40 | m2         | Terases dēļu montāža (eglīte)
+    30 |     45 |     65 | m2         | Koka karkasa nojumes būvniecība (auto novietošanai, lapene)
+    22 |     35 |     55 | m          | Koka margas izgatavošana
+    20 |     35 |     55 | gab        | Koka stabu montāža
+    30 |     45 |     65 | m2         | Guļbaļķu sienas izbūve (Guļbūvju būvniecībā)
+    20 |     35 |     55 | m2         | Guļbūves logu vai durvju ailes izveide
+     6 |     10 |     16 | m2         | Guļbaļķu sienas slīpēšana
+     5 |      8 |     12 | m2         | Guļbūves sienas apstrāde ar linsēklu eļļu
+     5 |      8 |     12 | m2         | Guļbūves sienas balināšana
+
+--- Grīdas
+    14 |     20 |     30 | m2         | Koka pārseguma siju montāža
+    10 |     15 |     23 | m2         | Melnās grīdas izbūve
+     8 |     12 |     20 | m2         | Grīdas siltināšana ar minerālvati
+    12 |     18 |     28 | m2         | Grīdas siju uzstādīšana
+     5 |      8 |     13 | m2         | Finiera vai OSB3 montāža uz grīdas
+    10 |     15 |     24 | m2         | Grīdas dēļu ieklāšana
+    12 |     18 |     28 | m2         | Betona grīdas izveide ar armatūras sietu
+     8 |     12 |     18 | m2         | Grīdas izveidošana no sausā betona ESTRICH (tikai darbs)
+     6 |      9 |     15 | m2         | Hidroizolācijas darbi
+    12 |     18 |     28 | m2         | Siltās grīdas ierīkošana (ūdens apsilde)
+     8 |     12 |     20 | m2         | Siltās grīdas ierīkošana (elektriskā)
+
+--- Jumts
+     5 |      8 |     13 | m2         | Šīfera demontāža bez utilizācijas
+     6 |     10 |     16 | m2         | Jumtu siltumizolācija ar ISOPLAAT paneļiem
+     5 |      8 |     13 | m          | Mūrlatas uzstādīšana
+    20 |     28 |     40 | m2         | Jumta koka konstrukciju (spāres) montāža
+    30 |     45 |     65 | gab        | Cirtainu jumta spāru izgatavošana
+   2.5 |    3.5 |      5 | m2         | Pretkondensāta plēves ieklāšana
+   4.5 |      7 |     11 | m2         | Latojums
+     5 |      8 |     13 | m2         | OSB plāksnes montāža
+     9 |     14 |     20 | m2         | Kausējamā ruberoīda uzklāšana (2 kārtas)
+   2.5 |      4 |      6 | m2         | Bitumeņa apakšklāja ieklāšana
+    10 |     15 |     23 | m2         | Bitumeņa dakstiņu montāža
+    22 |     35 |     55 | m2         | Skaidu jumta klāšana
+     8 |     12 |     18 | m2         | Metāla dakstiņu montāža
+    14 |     20 |     30 | m2         | Māla vai polimēra dakstiņu montāža
+    15 |     22 |     33 | m2         | Valcprofila montāža
+     8 |     12 |     18 | m2         | Bezasbesta šīfera montāža
+    65 |    100 |    150 | gab        | Jumta logu montāža (VELUX, FAKRO)
+     6 |     10 |     15 | m          | Sniega barjeras montāža
+     6 |     10 |     16 | m          | Ūdens noteksistēmas uzstādīšana
+   100 |    180 |    300 | gab        | Dūmvadu apdare
+     9 |     15 |     22 | gab        | Jumta pakāpienu uzstādīšana
+    20 |     35 |     55 | gab        | Ventilācijas kanālu uzstādīšana (deflektors)
+     7 |     12 |     20 | m          | Zibensnovedēja uzstādīšana
+     8 |     12 |     20 | gab        | Jumta vējmalas uzstādīšana
+     5 |      8 |     13 | m          | Skārda lāseņa uzstādīšana
+     5 |      8 |     13 | m          | Jumta kores montāža
+    80 |    120 |    180 | m kanāls   | Dūmvada mūrēšana ar šuvju izšuvošanu
+     8 |     12 |     20 | m2         | Jumta siltināšana - mansarda
+
+--- Fasāde
+     5 |      8 |     12 | m2         | Putupolistirola montāža
+     6 |     10 |     15 | m2         | Akmens vates montāža
+    12 |     18 |     28 | m2         | CEWOOD paneļu montāža
+     4 |      7 |     11 | m          | Profilu ar sietu montāža uz fasādes
+     5 |      8 |     12 | m2         | Zemapmetuma stikla šķiedras sieta līmēšana – armēšana
+   1.5 |    2.5 |      4 | m2         | Gruntēšana ar kvarca grunti
+     8 |     12 |     18 | m2         | Dekoratīvais apmetums
+     5 |      8 |     13 | m2         | Fasādes špaktelēšana
+     6 |     10 |     16 | m          | Loga ailes apdare
+    10 |     18 |     30 | m          | Dekoratīvo elementu montāža
+    20 |     30 |     45 | m2         | Fasādes apdare ar dekoratīvajām ķieģeļflīzēm
+    30 |     45 |     65 | m2         | Fasādes apmūrēšana ar ķieģeli ar šuvju izšuvošanu
+     4 |      6 |      9 | m2         | Fasādes krāsošana 2 kārtās
+    18 |     28 |     42 | m2         | Ventilējamās fasādes ar spundēto dēļu apdari
+    15 |     22 |     35 | m2         | Sendviča paneļi (montāžas darbi)
+     8 |     12 |     18 | m2         | Apdare ar plastikāta dēļiem (SAIDINGS)
+    10 |     15 |     23 | m2         | Apdares dēļu BLOCKHOUSE montāža
+     8 |     15 |     25 | m2         | Vecās dekoratīvās apdares daļēja renovācija
+     8 |     12 |     18 | m          | Vēja kārbas karkasa izveide
+    12 |     18 |     28 | m          | Vēja kārbas apdare ar spundētiem dēļiem un krāsošana 2 kārtās
+     8 |     12 |     18 | m          | Vēja kārbas apdare ar PVC SAIDING dēļiem
+    22 |     35 |     55 | m2         | Cokola apdare ar dolomītu
+    12 |     18 |     28 | m2         | Cokola apdare ar minerīta plātnēm
+
+--- Apzaļumošana un labiekārtošana
+     4 |      7 |     11 | m2         | Vecā bruģa klājuma demontāža
+     8 |     12 |     18 | m2         | Zemes rakšana ar rokām b=20 cm celiņu izveidošanai
+     5 |      8 |     13 | m2         | Šķembu vai sīkšķembu pabēršana un blietēšana
+    12 |     18 |     27 | m2         | Bruģa ieklāšana
+    10 |     15 |     23 | m2         | Trotuāra plāksnes ieklāšana
+     6 |     10 |     15 | m          | Trotuāra apmales uzstādīšana
+    22 |     35 |     55 | m          | Pakāpienu izgatavošana no bruģa
+    40 |     55 |     75 | h          | Zemes līdzināšana ar traktortehniku
+     2 |      3 |      5 | m2         | Melnzemes blīvēšana
+     2 |      3 |      5 | m2         | Zāles stādīšana
+   1.5 |    2.5 |      4 | m2         | Ģeotekstila ieklāšana
+    20 |     35 |     60 | gab        | Koku stādīšana
+
+--- Žogi
+    22 |     35 |     55 | gab        | Gatavu betona žoga stabu uzstādīšana (betonēšana)
+    15 |     25 |     40 | gab        | Pasētas posma uzstādīšana
+    10 |     15 |     23 | m          | Gatava žoga posma uzstādīšana
+    16 |     25 |     38 | m2         | Koka žoga izgatavošana no dēļiem
+    15 |     25 |     40 | gab        | Metāla stabu uzstādīšana
+     5 |      8 |     12 | m          | Žoga sieta montāža
+   100 |    180 |    280 | gab        | Vārtu uzstādīšana mašīnas iebraukšanai
+    50 |     80 |    130 | gab        | Gājēju vārtu uzstādīšana
+    30 |     45 |     65 | m          | Monolītā betona pamatu izveide ķieģeļu žogam
+
+--- Komunikācijas
+     8 |     12 |     18 | m          | Drenāžas sistēmas ieklāšana
+   150 |    250 |    400 | kompl      | Kanalizācijas septika uzstādīšana
+    60 |    100 |    160 | kompl      | Revīzijas akas uzstādīšana
+     3 |      5 |      8 | m          | Elektriskā kabeļa ieguldīšana ne vairāk kā 90 cm dziļumā
+    15 |     25 |     40 | m3         | Būvgružu iznešana
+
+
+=== Remontdarbi ==============================================================
+Apraksts: Iekšdarbi dzīvoklī vai mājā: sienas, griesti, grīdas, elektrība, santehnika, logi un durvis.
+Piezīme: Darba cenas bez materiāliem, PVN, transporta un būvgružu izvešanas.
+
+#   NO |   CENA |   LĪDZ | MĒRV.      | DARBS
+
+--- Sienas
+    18 |     25 |     32 | h          | Laukakmeņu mūrēšanas darbi
+    22 |     30 |     38 | h          | Veco ķieģeļu mūrēšana (mākslinieciskā mūrēšana)
+    10 |     14 |     18 | m2         | Daļējs sienas apmetums
+    10 |     13 |     16 | m2         | Visas sienas apmetums (rokas darbs)
+     4 |    6.5 |      9 | m          | Plaisu apstrāde
+     1 |      2 |    3.5 | m2         | Gruntēšana
+   4.5 |      7 |     10 | m2         | Vecās apdares noņemšana (tapetes, krāsa u. c.)
+   6.5 |      9 |     14 | m2         | Sienas špaktelēšana
+    14 |     20 |     26 | m2         | Špaktelēšana LED apgaismojumam
+     3 |    4.5 |      6 | m2         | Slīpēšana
+   7.5 |      9 |     12 | m2         | Stiklšķiedras sieta uzlīmēšana
+    20 |     29 |     38 | m2         | Dekoratīvā krāsošana ar Venēcijas apmetuma imitācijas krāsām
+     4 |      6 |      9 | m2         | Krāsošana 2 kārtās
+    16 |   22.5 |     29 | m2         | Lamināta līmēšana uz sienām
+     3 |      5 |      7 | gab        | Stūru uzstādīšana (iekšējie un ārējie)
+     4 |      8 |     13 | m2         | Vinila tapešu līmēšana
+     7 |    9.5 |     12 | m2         | Stiklšķiedras tapešu līmēšana
+    12 |   18.5 |     25 | m2         | PVC plēves līmēšana
+    10 |     14 |     18 | m2         | Šķidro tapešu uzklāšana
+    12 |   18.5 |     25 | m2         | Foto tapešu līmēšana
+     3 |      5 |      7 | m2         | Šķidro tapešu apdare ar aizsarglaku
+     8 |   11.5 |     15 | m2         | OSB3 plāksnes montāža (sienas)
+     8 |     10 |     13 | m2         | Reģipša līmēšana uz sienām
+     3 |      4 |    5.5 | m2         | Ģipškartona montāža (bez profiliem)
+     7 |     10 |     13 | m2         | Metāla karkasa izveide ģipškartonam
+    30 |   42.5 |     55 | m2         | Reģipša arkas izveide līdz 1600 mm
+    28 |     38 |     48 | m2         | LED karnīze no reģipša ar krāsošanu
+    18 |   26.5 |     35 | m2         | Dekoratīvā kārba no ģipškartona
+    18 |     25 |     32 | m2         | Ģipškartona starpsienu izveide
+    28 |     38 |     48 | m2         | Ķieģeļu starpsienas mūrēšana
+     7 |   10.5 |     14 | m2         | Koka latojuma izbūve
+    12 |     17 |     22 | m2         | Spundēto dēļu apšuvums sienām
+     5 |    7.5 |     10 | m2         | Spundēto dēļu apšuvuma krāsošana 2 reizes
+    35 |     45 |    100 | m2         | Sienu flīzešana
+    12 |     18 |     24 | m2         | Grīdlistes izgatavošana no flīzēm
+
+--- Griesti
+   4.5 |      7 |     10 | m2         | Vecās apdares noņemšana (tapetes, krāsa u. c.)
+    12 |     17 |     22 | m2         | Daļējs apmetums
+    16 |   20.5 |     25 | m2         | Apmetums
+     4 |    6.5 |      9 | m          | Plaisu apstrāde
+   7.5 |      9 |     12 | m2         | Stiklšķiedras sieta uzlīmēšana
+     7 |   11.5 |     16 | m2         | Špaktelēšanas darbi
+     3 |    4.5 |      6 | m2         | Slīpēšana
+     1 |      2 |    3.5 | m2         | Gruntēšana
+     6 |    7.5 |      9 | m2         | Krāsošana 2 kārtās
+     8 |     11 |     14 | m2         | Tapešu līmēšana
+     4 |    5.5 |      7 | m2         | Griestu balsināšana
+    12 |     17 |     22 | m2         | Piekaramie griesti (Armstrong)
+    24 |     28 |     32 | m2         | Iestiepto griestu montāža
+    25 |     33 |     40 | m2         | Ģipškartona daudzlīmeņu griestu ierīkošana ar metāla karkasa izveidošanu
+    28 |     34 |     40 | m          | Aizkaru nišas izveide no reģipša + krāsošana
+    14 |     16 |     30 | m2         | Ģipškartona griestu ierīkošana ar metāla karkasa izveidošanu
+   5.5 |      7 |      9 | m          | Griestu līstes montāža
+     8 |     13 |     18 | m2         | Dekoratīvo plākšņu montāža
+    10 |     16 |     22 | m          | Ģipša dekoratīvo elementu uzstādīšana
+     7 |   10.5 |     14 | m2         | Koka latojuma izbūve (griesti)
+    14 |   19.5 |     25 | m2         | Griestu apšūšana ar spundētajiem dēļiem
+     7 |      9 |     10 | m2         | Spundēto dēļu apšuvuma krāsošana 2 reizes
+     8 |   11.5 |     15 | m2         | OSB3 plāksnes montāža (griesti)
+
+--- Grīda
+    12 |   18.5 |     25 | m2         | Grīdas koka konstrukcijas izlīdzināšana
+   4.5 |      7 |     10 | m2         | Vecās apdares noņemšana (linolejs, krāsa u. c.)
+    13 |     16 |     25 | m2         | Betona grīdas līdz 5 cm un armēšana (siltajām grīdām)
+   1.5 |    2.5 |    3.5 | m2         | Pašizlīdzinošās grīdas ierīkošana (sagatavošana, gruntēšana, ieliešana)
+   6.5 |      9 |     15 | m2         | Hidroizolācijas darbi
+    10 |     14 |     18 | m2         | Hidroizolācijas darbi ar stiklšķiedras hidroizolu
+    12 |     18 |     28 | m2         | Siltās grīdas ierīkošana
+     8 |   11.5 |     15 | m2         | OSB3 plāksnes montāža (grīda)
+     8 |     12 |     16 | m2         | Ūdensizturīga finiera montāža
+     8 |     11 |     16 | m2         | Trīsslāņu vairogparketa ieklāšana ar click sistēmu
+     1 |      2 |      4 | m2         | Lamināta apakšklāja ieklāšana
+     7 |     10 |     15 | m2         | Lamināta ieklāšana
+    18 |     28 |     35 | m2         | Parketa dēlīšu grīdas ieklāšana
+     3 |    4.5 |      6 | m2         | Grīdas špaktelēšana un slīpēšana
+     8 |   11.5 |     15 | m2         | Parketa lakošana, 3 kārtas
+     6 |     10 |     14 | m2         | Linoleja un mīksto grīdas segumu ieklāšana
+    35 |     45 |    100 | m2         | Grīdas flīzešana
+     8 |     13 |     18 | m          | Starpistabas sliekšņu uzstādīšana
+   3.5 |      6 |      8 | m          | Grīdlīstes montāža (PVC)
+   4.5 |      8 |     11 | m          | Grīdlīstes uzstādīšana
+
+--- Elektroinstalācijas darbi
+     5 |    6.5 |      8 | m          | Vadu kanālu štrobēšana, kabeļu ieguldīšana un kanālu aizpildīšana
+   2.5 |      4 |      6 | m          | Kabeļu ieguldīšana (bez štrobēšanas)
+     8 |     14 |     20 | m          | LED lentes montāža
+    20 |   32.5 |     45 | kompl      | Jauna elektrības punkta ierīkošana
+     8 |     13 |     18 | kompl      | Rozetes vai slēdža nomaiņa esošā vietā
+    10 |     15 |     20 | kompl      | Gaismas ķermeņa montāža (piekaramajos griestos)
+     2 |      3 |      4 | m          | Interneta, TV, telefona u. c. vadu instalācija
+    20 |   32.5 |     45 | kompl      | Lustras / gaismekļa uzstādīšana un pieslēgšana esošai elektroinstalācijai
+    35 |     50 |     65 | kompl      | Elektrisko dvieļu žāvētāja montāža
+    10 |     14 |     18 | kompl      | Iebūvēto gaismas ķermeņu uzstādīšana
+   140 |    230 |    320 | kompl      | Sadales skapja uzstādīšana un pieslēgšana
+
+--- Santehniskie darbi
+    20 |     30 |     40 | kompl      | Duškabīnes demontāža
+    20 |     60 |    100 | gab        | Vecās santehnikas demontāža
+    25 |   32.5 |     40 | m          | Kanalizācijas stāvvadu montāža
+    10 |     17 |     24 | m          | Ūdens cauruļu ierīkošana
+    95 |  132.5 |    170 | gab        | Dvieļu žāvētāja maiņa
+   130 |    165 |    200 | kompl      | Vannas uzstādīšana + pieslēgšana
+   110 |    165 |    220 | kompl      | Duškabīnes ar paliktni uzstādīšana
+   150 |    180 |    210 | kompl      | Piekaramā tualetes poda uzstādīšana
+    45 |   77.5 |    110 | kompl      | WC poda ar skalojamo kasti montāža
+    50 |     90 |    150 | kompl      | Dušas trapu uzstādīšana
+   250 |    450 |    650 | kompl      | Sienas gāzes katla uzstādīšana
+    45 |   72.5 |    100 | kompl      | Roku mazgātnes montāža (izlietne, kāja, sifons)
+    25 |     40 |     60 | kompl      | Jaucējkrāna montāža
+     8 |     16 |     24 | m          | Cauruļu montāža
+   100 |    125 |    150 | kompl      | Apkures radiatoru nomaiņa (demontāža un montāža)
+     8 |   10.5 |     13 | m2         | Veco flīžu noņemšana
+
+--- Logi un durvis
+    75 |    110 |    160 | kompl      | Iekšdurvju montāža
+    18 |     29 |     40 | gab        | Durvju demontāža
+    70 |    145 |    220 | kompl      | Durvju un logu renovācija
+    35 |     55 |     80 | m2         | PVC logu uzstādīšana
+     5 |    7.5 |     10 | m          | Apmaļu uzstādīšana durvīm
+     8 |     13 |     18 | m          | Palodžu uzstādīšana
+    12 |   18.5 |     25 | m          | Logu aiļu apdare
+
+--- Sadzīves tehnikas uzstādīšana un pieslēgšana
+    30 |     50 |     75 | kompl      | Veļas mašīnas uzstādīšana
+    80 |    130 |    180 | kompl      | Boilera uzstādīšana
+    50 |     65 |     80 | kompl      | Trauku mazgāšanas mašīnas uzstādīšana un pieslēgšana
+    35 |     65 |    110 | kompl      | Tvaika nosūcēju montāža
+
+--- Demontāžas darbi
+     5 |     10 |     18 | m2         | Ģipškartona starpsienas demontāža
+     4 |      7 |     12 | m2         | Ģipškartona demontāža
+    70 |    110 |    180 | m3         | Sienu demontāža (ķieģeļi, gāzbetons, keramzīta bloki)
+    45 |   72.5 |    100 | m3         | Koka konstrukciju demontāža
+   180 |    280 |    450 | m3         | Betona sienu, pamatu demontāža
+    18 |     29 |     40 | m3         | Darbs ar grunti, izlīdzināšana pēc demontāžas
+    20 |     35 |     55 | m3         | Būvgružu iznešana
+
+--- Mēbeļu un virtuves izgatavošana un montāža
+    25 |   42.5 |     60 | gab        | Meistara izbraukšana uz mērījumiem
+   150 |    300 |    450 | kompl      | Virtuves mēbeļu projektu izstrāde
+    80 |    150 |    220 | kompl      | Zīmējumu izstrāde bīdāmajam skapim
+    45 |     70 |     95 | m          | Moduļu virtuves mēbeļu montāža (apakšējā rinda)
+
+
+=== Metālapstrāde ============================================================
+Apraksts: Žogi, vārti, margas, metināšana, metāla konstrukcijas un to apdare.
+Piezīme: Darba cenas. Materiāls, pamati, stiprinājumi, furnitūra, automātika, apdare, transports un demontāža var būt atsevišķas pozīcijas. PVN precizēsim piedāvājumā.
+
+#   NO |   CENA |   LĪDZ | MĒRV.      | DARBS | PIEZĪME KLIENTAM
+
+--- Žogi, vārti un sētiņas
+    90 |    120 |    190 | m          | Vienkāršs metāla žogs — izgatavošana un montāža | Parasts krāsots tērauds; cena var ietvert sekcijas un montāžu, bet ne vienmēr stabus, pamatus vai demontāžu.
+    65 |     95 |    150 | m2         | Metāla žoga sekcija — izgatavošana bez montāžas | Cena atkarīga no profiliem, stieņu soļa, raksta, tērauda biezuma un apdares.
+   130 |    190 |    320 | m          | Dekoratīvs / kalts metāla žogs | Sarežģīts raksts, kalumi un nestandarta elementi sadārdzina izgatavošanu.
+    55 |     85 |    140 | m          | Metāla sētiņa / zema norobežojoša sekcija | Vienkārša konstrukcija, parasti zemāka un vieglāka par pilna augstuma žogu.
+   450 |    850 |   1600 | kompl      | Veramie metāla vārti — izgatavošana | Cena atkarīga no ailes platuma, vārtu svara, pildījuma, eņģēm un slēdzenes; automātika atsevišķi.
+   850 |   1450 |   2600 | kompl      | Bīdāmie metāla vārti — izgatavošana | Parasti bez automātikas, pamata un elektroinstalācijas; sliedes/konsoles atkarīgas no sistēmas.
+   180 |    320 |    600 | gab        | Gājēju vārtiņi | Rāmis, pildījums, eņģes un slēdzene; stabu un pamatu izmaksas var būt atsevišķi.
+   180 |    350 |    650 | kompl      | Vārtu automātikas uzstādīšana | Automātikas komplekta cena parasti atsevišķi; elektrības pievads un pamatu darbi nav iekļauti.
+
+--- Margas, balkoni un kāpnes
+    80 |    115 |    180 | m          | Kāpņu margas — izgatavošana un montāža | Krāsots tērauds, standarta profils; sarežģīta ģeometrija un stiprinājumi var palielināt cenu.
+    90 |    125 |    200 | m          | Balkona / terases margas — izgatavošana un montāža | Atkarīgs no augstuma, stiprinājuma, pildījuma, piekļuves un korozijas aizsardzības.
+   150 |    210 |    320 | m          | Nerūsējošā tērauda margas | AISI 304/316; stikla pildījums un sarežģīti savienojumi parasti sadārdzina.
+   180 |    300 |    550 | gab        | Franču balkona metāla margas | Cena atkarīga no ailes izmēra, stiprinājuma veida, pildījuma un apdares; montāža jāprecizē.
+    25 |     40 |     65 | h          | Margu remonts / stiprinājumu atjaunošana | Mazs remonts; materiāli, piekļuve augstumā un izbraukums var tikt rēķināti atsevišķi.
+
+--- Metināšana un remonts
+    25 |     40 |     60 | h          | Metinātāja darbs darbnīcā | Parasts tērauds; sagatavošana un materiāls atsevišķi, ja nav noteikts citādi.
+    35 |     50 |     75 | h          | Metinātājs ar izbraukumu uz objektu | Var būt minimālā izsaukuma maksa un ceļa izdevumi; darbi augstumā vai sarežģītā piekļuvē dārgāki.
+    30 |     60 |    150 | gab        | Neliels metināšanas remonts | Vārtu eņģe, kronšteins, plaisa vai līdzīgs lokāls remonts; cena pēc apskates.
+    25 |     38 |     55 | h          | MIG/MAG metināšana sērijveida detaļām | Cena atkarīga no šuves garuma, biezuma, pozīcijas, sagatavošanas un apjoma.
+    35 |     50 |     75 | h          | TIG metināšana nerūsējošajam tēraudam / alumīnijam | Precīzāks darbs; materiāla sagatavošana, piedevas un apdares prasības var būt atsevišķi.
+    22 |     35 |     55 | h          | Metināšanas šuvju slīpēšana un apdare | Atkarīgs no piekļuves, šuves garuma un prasītās vizuālās kvalitātes.
+
+--- Metāla izstrādājumi un konstrukcijas
+    15 |     35 |     90 | gab        | Vienkāršs metāla kronšteins / turētājs | Materiāls, caurumi, griezumi un apdare var mainīt cenu; vienas vienības izgatavošana parasti dārgāka.
+     3 |      5 |      9 | kg         | Metāla rāmis / neliela konstrukcija | Cena par izgatavošanas darbu; materiāls, cinkošana/krāsošana un montāža jāprecizē atsevišķi.
+   120 |    250 |    600 | gab        | Metāla galds, statīvs vai plaukta rāmis | Bez koka/stikla virsmas un bez sarežģīta dizaina; apdare var būt atsevišķi.
+   900 |   1700 |   3500 | kompl      | Metāla kāpņu karkass | Cena atkarīga no stāvu augstuma, slīpuma, slodzes, stiprinājumiem un projekta; pakāpieni atsevišķi.
+    90 |    150 |    260 | m2         | Nojumes / pergolas metāla karkass | Pamatā karkasa izgatavošana un/vai montāža; jumta segums, pamati un projektēšana var būt atsevišķi.
+    25 |     40 |     65 | h          | Nestandarta metāla izstrādājuma projektēšana / rasējums | Cena par projektēšanas vai rasēšanas darbu; aprēķini un sertificēta projekta daļa var maksāt vairāk.
+
+--- Griešana un mehāniskā apstrāde
+     2 |      5 |     12 | griezums   | Metāla griešana ar leņķa slīpmašīnu / lentzāģi | Vienkāršs griezums; biezums, materiāls un nostiprināšana ietekmē cenu.
+    35 |     60 |    100 | h          | Plazmas / lāzergriešana | Daudzi izpildītāji cenu nosaka pēc faila, materiāla, biezuma un griezuma metriem; materiāls atsevišķi.
+     2 |      5 |     15 | gab        | Urbšana, vītņošana, caurumu izveide | Atkarīgs no diametra, materiāla biezuma un vajadzīgās precizitātes.
+    30 |     50 |     85 | h          | Metāla locīšana / valcēšana | Atkarīga no loksnes biezuma, detaļas garuma, instrumenta sagatavošanas un sērijas.
+
+--- Virsmas aizsardzība un apdare
+    18 |     28 |     45 | m2         | Metāla izstrādājuma gruntēšana un krāsošana | Virsmas sagatavošana, rūsas noņemšana un krāsas sistēma būtiski ietekmē cenu.
+    20 |     32 |     50 | m2         | Pulverkrāsošana | Atkarīga no detaļu izmēriem, krāsas, priekšapstrādes un minimālās partijas maksas.
+   1.2 |      2 |    3.5 | kg         | Karstā cinkošana | Minimālā partijas maksa, transportēšana un detaļu ģeometrija var būtiski mainīt izmaksas.
+
+--- Demontāža un utilizācija
+     8 |     15 |     28 | m          | Metāla žoga demontāža | Neietver betona pamatu izlaušanu, dziļu stabu izcelšanu vai metāla aizvešanu, ja nav norādīts citādi.
+    50 |    100 |    220 | kompl      | Metāla vārtu / vārtiņu demontāža | Atkarīgs no svara, eņģēm, stiprinājumiem, elektrības un nepieciešamās tehnikas.
+    10 |     20 |     40 | m          | Metāla margu demontāža | Neietver fasādes/betona remontu pēc demontāžas; darbs augstumā var būt dārgāks.
+    30 |     50 |     80 | h          | Metāla konstrukciju griešana un demontāža | Bīstamība, konstrukcijas svars, augstums un piekļuve nosaka likmi; nepieciešams objekta novērtējums.
+    25 |     40 |     65 | h          | Metāllūžņu savākšana un iekraušana | Cena par darbu; metāllūžņu vērtība, transports un utilizācijas nosacījumi jāuzskaita atsevišķi.
+    50 |    100 |    220 | brauciens  | Metāllūžņu aizvešana ar transportu | Atkarīgs no attāluma, svara, iekraušanas, piekļuves un transportlīdzekļa; iespējams atsevišķs svars/tonnas tarifs.
+  -150 |      0 |    180 | t          | Metāllūžņu nodošana / utilizācija | Orientējošs norēķinu diapazons: dažādiem metāliem var būt samaksa par lūžņiem vai maksa par apstrādi; cena atkarīga no metāla veida, tīrības un aktuālās iepirkuma cenas.
+    25 |     38 |     60 | h          | Būvniecības metāla atkritumu šķirošana | Nesajauktus metālus šķirot vieglāk; bīstami vai piesārņoti materiāli jāvērtē atsevišķi.
+
+--- Izbraukums un palīgdarbi
+    25 |     45 |     90 | izbraukums | Meistara / montāžas brigādes izbraukums | Var būt atsevišķi no darba stundām; attālums un transporta vajadzības maina cenu.
+     0 |     35 |    100 | reize      | Uzmērīšana objektā un sākotnējā tāme | Daži uzņēmumi uzmērīšanu iekļauj pasūtījumā; attālos objektos var piemērot maksu.
+    25 |     40 |     65 | h          | Materiālu piegāde un izstrādājuma montāža | Materiālu un celtņa/manipulatora izmaksas atsevišķi; smagiem elementiem vajadzīga tehnika.
+
+
+=== Kokapstrāde ==============================================================
+Apraksts: Zāģēšana, ēvelēšana, žāvēšana, CNC apstrāde, apdare un galdniecība.
+Piezīme: Pakalpojumu cenas bez kokmateriāla, MDF, saplākšņa, finiera un furnitūras. Minimālā pasūtījuma maksa, transports un steidzamība var būt atsevišķi. PVN precizēsim piedāvājumā.
+
+#   NO |   CENA |   LĪDZ | MĒRV.      | DARBS | PIEZĪME KLIENTAM
+
+--- Zāģēšana un sagatavošana
+    35 |     55 |     85 | m3 izejm.  | Apaļkoku sazāģēšana dēļos uz vietas / zāģētavā | Atkarīgs no baļķu diametra, garuma, koksnes sugas, iekārtas un apjoma; transports atsevišķi.
+     1 |    2.5 |      6 | griezums   | Dēļu, brusas vai plātnes garināšana | Vienkāršs taisns griezums; liela izmēra detaļām vai sērijai cena var mainīties.
+   1.5 |      3 |      7 | m          | Garenzāģēšana / pārzāģēšana pēc izmēra | Atkarīgs no biezuma, garuma, materiāla nostiprināšanas un atgriezumu daudzuma.
+    20 |     30 |     45 | h          | Formātu zāģēšana plātņu materiāliem | Saplākšņa, MDF, skaidu plātnes izzāģēšana; materiāls nav iekļauts.
+    40 |     65 |    100 | m3         | Detaļu kalibrēšana / biezuma izlīdzināšana | Ja iespējams, cenu nosaka pēc apjoma un vajadzīgās precizitātes.
+
+--- Ēvelēšana un profili
+    35 |     55 |     85 | m3         | Ēvelēšana 1–2 pusēs | Atkarīgs no sagatavju izmēriem, koksnes kvalitātes un pasūtījuma apjoma.
+    55 |     85 |    130 | m3         | Ēvelēšana 3–4 pusēs / kalibrēšana | Vienkāršai dimensiju ēvelēšanai; nestandarta profili dārgāki.
+    25 |     40 |     65 | h          | Nestandarta profila izgatavošana un ēvelēšana | Profilnaži, sagatavošana un iestatīšana var tikt rēķināti atsevišķi.
+   0.5 |    1.5 |    3.5 | m          | Malu noapaļošana / fāzēšana | Atkarīgs no profila un detaļas izmēra; parasti bez slīpēšanas.
+
+--- Žāvēšana un impregnēšana
+    35 |     55 |     90 | m3         | Koksnes žāvēšana kaltē | Cena atkarīga no sugas, sākuma mitruma, gala mitruma, partijas un cikla ilguma.
+    10 |     15 |     25 | m3         | Antiseptizēšana / impregnēšana vannā | Nav tas pats, kas spiediena impregnēšana; līdzekļa un transporta nosacījumi jāprecizē.
+    25 |     45 |     75 | m3         | Spiediena impregnēšana | Atkarīga no koksnes sugas, izmēriem, impregnēšanas klases un partijas.
+
+--- CNC un precīzā apstrāde
+    25 |     35 |     55 | h          | CNC frēzēšana 2D detaļām | Materiāls un faila sagatavošana parasti atsevišķi; atkārtotas sērijas var būt lētākas.
+    35 |     50 |     75 | h          | CNC 3D frēzēšana / reljefs | Atkarīgs no reljefa sarežģītības, frēzes ceļa un apdares prasībām.
+    20 |     30 |     45 | h          | CNC programmas / rasējuma sagatavošana | Ja nav sagatavota DXF/DWG/STEP faila, modelēšana var būt atsevišķa pozīcija.
+    25 |     40 |     60 | h          | CNC gravēšana / personalizēšana | Minimālā pasūtījuma maksa iespējama; cenu ietekmē detaļu skaits un dizaina sagatavošana.
+    20 |     35 |     55 | h          | Urbšana, gropēšana vai ligzdu frēzēšana | Vienkāršai detaļu apstrādei; sarežģītas jig/šablona prasības sadārdzina.
+
+--- Slīpēšana un apdare
+     6 |      9 |     14 | m2         | Masīvkoka/plātņu detaļu slīpēšana | Atkarīgs no sākotnējās virsmas, koksnes, malu daudzuma un nepieciešamās gluduma klases.
+     6 |      9 |     14 | m2         | Beicēšana / tonēšana | Beice un izmēģinājuma paraugs var būt atsevišķi.
+    14 |     20 |     30 | m2         | Lakošana | Viena vai vairākas kārtas, starpslīpēšana un materiāls var mainīt cenu.
+    14 |     24 |     40 | m2         | Krāsošana (MDF, masīvkoks, saplāksnis) | Sagatavošana, grunts, krāsas veids un detaļu ģeometrija būtiski ietekmē cenu; minimālais pasūtījums iespējams.
+    20 |     27 |     38 | m2         | Eļļošana | Atkarīgs no eļļas, kārtu skaita un virsmas sagatavošanas.
+   1.5 |      3 |    5.5 | m          | Malu līmēšana plātņu detaļām | Malu lentes veids, biezums, detaļas skaits un sagatavošana ietekmē cenu.
+
+--- Galdniecība un izgatavošana
+    15 |     35 |     90 | gab        | Vienkāršas individuālas detaļas izgatavošana | Darbs bez materiāla; cena var būt augstāka, ja vajadzīgs rasējums, šablons vai sarežģīta pielaide.
+    25 |     40 |     65 | h          | Mēbeļu detaļu sērijas apstrāde | Lielākam vienādu detaļu daudzumam vienības cena parasti krītas; materiāls atsevišķi.
+    60 |    110 |    190 | m2         | Līmēta koka plātne / panelis pēc pasūtījuma | Materiāla suga, lamelu platums, biezums, līmēšana un kalibrēšana nosaka cenu; šeit norādīts apstrādes un izgatavošanas orientieris, nevis universāla materiāla cena.
+    45 |     90 |    180 | gab        | Koka kāpņu pakāpiena izgatavošana (bez montāžas) | Atkarīgs no koksnes sugas, izmēra, līmēta vai masīva materiāla un apdares.
+    90 |    160 |    280 | m2         | Galda virsmas izgatavošana pēc izmēra | Materiāls, biezums, malu profils, līmējums un apdare var būtiski mainīt cenu.
+    20 |     30 |     50 | h          | Koka detaļu remonts / pielāgošana | Minimālā pasūtījuma maksa vai transporta izmaksas var tikt piemērotas.
+
+--- Finierēšana un plātņu apstrāde
+    20 |     35 |     60 | m2         | Finierēšana / finiera uzklāšana | Finieris, līme, presēšana, malu apstrāde un detaļu izmērs var būt atsevišķi.
+     3 |      7 |     15 | gab        | Plātņu malu apstrāde un piegriešana komplektā | Cena par detaļu; sarežģīta ģeometrija un neliela sērija var sadārdzināt.
+
+--- Piegāde un palīgdarbi
+    18 |     25 |     40 | h          | Materiāla pieņemšana, šķirošana un komplektēšana | Atkarīgs no detaļu skaita, marķēšanas, iepakošanas un uzglabāšanas.
+    10 |     25 |     70 | pasūtījums | Iepakošana / aizsargiepakojums | Nestandarta vai trauslām detaļām vairāk; piegāde nav iekļauta.
+    25 |     45 |     90 | brauciens  | Piegāde ar furgonu pilsētā | Atkarīgs no attāluma, izmēriem, iekraušanas/izkraušanas un nepieciešamās palīdzības.
+
+
+=== Apsaimniekošana ==========================================================
+Apraksts: Ēku apsaimniekošana, uzkopšana, teritorijas uzturēšana, koku un sezonālie darbi.
+Piezīme: Plānošanas aplēses. Var piemērot minimālo izbraukuma maksu, transportu un piemaksu par darbu ārpus darba laika (koeficients līdz 2). Daļa cenu ir ar PVN, daļa bez – precizēsim piedāvājumā.
+
+#   NO |   CENA |   LĪDZ | MĒRV.      | DARBS | PIEZĪME KLIENTAM
+
+--- Apsaimniekošana
+  0.25 |   0.35 |    0.5 | m2 mēnesī  | Daudzdzīvokļu mājas pārvaldīšana un apsaimniekošana | Orientieris par ēkas pārvaldīšanu un ikdienas apsaimniekošanu; remontu uzkrājums parasti jāuzrāda atsevišķi.
+  0.05 |    0.1 |   0.25 | m2 mēnesī  | Remontdarbu uzkrājums | Atsevišķs uzkrājums nākotnes remontiem; nav tas pats, kas apsaimniekošanas maksa.
+    40 |     75 |    150 | mēnesī     | Privātmājas / neliela īpašuma ikmēneša tehniskā apsekošana | Periodiska vizuāla apsekošana, sīku defektu fiksēšana; remonti un avārijas izsaukumi atsevišķi.
+    20 |     30 |     45 | h          | Saimniecības darbu meistars | Sīki remonti un ikdienas saimniecības darbi; materiāli un izbraukums atsevišķi.
+    50 |     90 |    180 | izsaukums  | Avārijas izsaukums ārpus darba laika | Pirms darba sākšanas jāvienojas par izsaukuma maksu, stundas likmi un materiāliem.
+
+--- Koplietošanas telpas
+    20 |     35 |     60 | reize      | Kāpņu telpas uzkopšana nelielā mājā | Atkarīgs no stāvu skaita, platības, biežuma un logu/ieejas zonas uzkopšanas.
+   0.5 |    0.9 |    1.5 | m2 reizē   | Koplietošanas telpu uzkopšana | Grīdas un virsmu uzkopšana; logu mazgāšana un sanitāro telpu dziļā tīrīšana atsevišķi.
+     2 |      4 |      7 | m2         | Logu mazgāšana koplietošanas telpās | Pieejami logi; augstuma darbi, sarežģīta piekļuve un rāmju dziļā tīrīšana var sadārdzināt.
+    20 |     30 |     45 | h          | Lapu savākšana un sakraušana maisos | Maisi un izvešana nav iekļauti, ja nav atsevišķi norādīts.
+
+--- Teritorijas uzturēšana
+  0.03 |   0.07 |    0.1 | m2 reizē   | Zāles pļaušana ar mulčēšanu, bez savākšanas | Lielāka, regulāri kopta teritorija; minimālā izbraukuma maksa var būt spēkā.
+  0.08 |   0.12 |   0.15 | m2 reizē   | Zāles pļaušana ar zāles savākšanu | Pļaušana un zāles savākšana; izvešana atsevišķi, ja nav norādīts.
+  0.05 |   0.08 |   0.12 | m2 reizē   | Pļaušana ar trimmeri / grūti pieejamas vietas | Nogāzes, ap kokiem, gar žogiem; gara zāle un aizaugums var sadārdzināt.
+ 22.55 |  27.29 |     35 | h          | Zāles pļaušana ar trimmeri vai krūmgriezi | Darbinieks un trimmeris; transports un izvešana atsevišķi.
+ 38.25 |  46.28 |     60 | h          | Mehanizēta pļaušana ar traktoru / raideri | Lielākām teritorijām; piekļuve, slīpums un gara zāle ietekmē cenu.
+   0.1 |   0.18 |   0.35 | m2 reizē   | Aizaugušas teritorijas pļaušana | Neiekopta zāle, nezāles, nelīdzenumi; pirms darbu pasūtīšanas vajadzīga fotogrāfija/apsekošana.
+   1.3 |      3 |      6 | m          | Dzīvžoga apgriešana līdz ~2 m | Atkarīgs no dzīvžoga platuma, blīvuma un atgriezumu savākšanas.
+ 21.86 |  26.45 |     35 | h          | Krūmu cirpšana / formēšana | Nelieli krūmi un formēšana; zaru savākšana/šķeldošana var būt atsevišķi.
+  0.25 |    1.5 |      4 | m2         | Krūmu un apauguma izzāģēšana | Cena atkarīga no apauguma blīvuma, stumbru diametra un vai jāizņem saknes.
+
+--- Koku darbi
+    50 |     90 |    150 | koks       | Zaru apzāģēšana / vainaga kopšana mazam kokam | Cena atkarīga no augstuma, piekļuves, zaru daudzuma un savākšanas.
+    80 |    150 |    250 | koks       | Vidēja koka nozāģēšana brīvā piekļuvē | Bez īpaši sarežģītas nolaišanas; celma frēzēšana un zaru izvešana atsevišķi.
+ 30.85 |  37.33 |  60.02 | koks       | Koka nozāģēšana, stumbra diametrs 4–10 cm | Darba laikā brīvi pieejamā vietā; sarežģītos apstākļos dārgāk.
+ 42.05 |  50.88 |     75 | koks       | Koka nozāģēšana, stumbra diametrs 11–20 cm | Brīvi pieejamā vietā; augstākā cena – sarežģītākai piekļuvei.
+103.93 | 125.76 | 180.12 | koks       | Koka nozāģēšana, stumbra diametrs 21–30 cm | Brīvi pieejamā vietā; sarežģītos apstākļos dārgāk.
+   100 |    250 |    600 | koks       | Bīstama koka zāģēšana pa daļām | Pie ēkas, vadiem, žoga vai bīstama koka; nepieciešams arborista novērtējums, pacēlājs/virves var sadārdzināt.
+ 44.87 |  54.29 |     75 | h          | Celma frēzēšana | Tehnikas darba stunda; mazam celmam iespējama minimālā maksa.
+    35 |     65 |    150 | celms      | Celma frēzēšana / izraušana | Par nelielu celmu; diametrs, saknes, akmeņi un piekļuve būtiski maina cenu.
+ 51.84 |  62.73 |  80.02 | h          | Zaru šķeldošana ar vienu darbinieku | Tehnikas stunda; šķeldas izvešana nav iekļauta, ja nav atsevišķi saskaņota.
+ 66.13 |  80.02 |    100 | h          | Zaru šķeldošana ar diviem darbiniekiem | Tehnikas un divu darbinieku stunda; transports papildus.
+    25 |     35 |     60 | m3         | Zaru / koksnes savākšana un izvešana | Atkarīgs no zaru apjoma, sakraušanas un attāluma; minimālā pasūtījuma summa var būt spēkā.
+    50 |     60 |     90 | m3         | Zaru / koksnes sasmalcināšana | Cena atkarīga no diametra, apjoma un tehnikas piekļuves.
+    25 |     45 |     90 | h          | Nokrituša koka sazāģēšana un savākšana | Atkarīgs no koka izmēra, saspriegojuma un riska; izvešana atsevišķi.
+  0.25 |    1.5 |      4 | m2         | Zemes gabala attīrīšana no krūmiem un stādījumiem | Vienkāršs aizaugums pret blīvu apaugumu; sakņu izraušana, celmi un izvešana atsevišķi.
+
+--- Sezonālie darbi
+    25 |     40 |     65 | h          | Lapu savākšana un izvešana | Savākšana un sakraušana; transporta un utilizācijas maksa atsevišķi, ja nav norādīts.
+    25 |     40 |     60 | h          | Sniega tīrīšana no celiņiem un ieejas | Rokas darbs; sāls/smilts, transports un darbs ārpus darba laika atsevišķi.
+     3 |      6 |     12 | m          | Noteku tīrīšana no lapām | Cena atkarīga no augstuma, jumta slīpuma, piekļuves un atkritumu savākšanas.
+     1 |    2.5 |      5 | m2         | Bruģa / cieto segumu mazgāšana | Atkarīga no netīrības, laukuma, ūdens pieejamības un šuvju smilts atjaunošanas.
+   120 |    220 |    450 | objekts    | Teritorijas pavasara/rudens ģenerālsakopšana | Lapu, zaru un sīko atkritumu savākšana; lielas platības un izvešana papildus.
+
+=== BEIGAS ===================================================================
+</script>
+<div class="pbc" data-pbc>
+  <noscript><p>Kalkulatoram vajadzīgs JavaScript. Precīzu cenas piedāvājumu var pieprasīt pa tālruni +371 26 518 131.</p></noscript>
+</div>

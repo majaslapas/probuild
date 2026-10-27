@@ -1,15 +1,18 @@
-"""Checks the calculator's price embeds against the client's workbooks, cell by cell.
+"""Checks the calculator's price table against the client's workbooks, cell by cell.
 
     python3 -I tools/calc_verify.py            (run from design/webflow; needs node)
 
-Independent of calc_data.py: reads each workbook with its own column layout, evaluates the
-embeds as the browser does, and compares every row in order (prices exactly, units through
-the mapping below). Prints renamed rows for review and exits 1 on any price difference.
+Independent of calc_data.py: reads each workbook with its own column layout, parses the price
+table in cenas.html with its own parser, and compares every row in order (prices exactly, units
+through the mapping below, and every unit must be known to the engine). Prints renamed rows for
+review and exits 1 on any price difference.
 """
 import json
 import os
+import re
 import subprocess
 import sys
+import unicodedata
 
 import openpyxl
 
@@ -38,22 +41,55 @@ UNITS = {'m2': 'm2', 'м2': 'm2', 'm²': 'm2', 'EUR/m²': 'm2', 'm3': 'm3', 'm³
 LEFT_OUT = {'Ziemas ārkārtas darbi / brīvdienu piemaksa'}  # a coefficient, explained in the area note
 
 
-def embeds():
+def fold(s):
+    return ''.join(c for c in unicodedata.normalize('NFD', s.lower()) if not unicodedata.combining(c))
+
+
+def table():
+    """The price table as the admin sees it, parsed here independently of the engine."""
+    with open(os.path.join(CALC, 'cenas.html'), encoding='utf-8') as f:
+        text = f.read().split('data-pbc-cenas>', 1)[1].split('</script>', 1)[0]
+    areas, area, group = {}, None, None
+    for n, line in enumerate(text.splitlines(), 1):
+        s = line.strip()
+        if not s or s.startswith('#'):
+            continue
+        m = re.match(r'^={3,}\s*(.*?)\s*=*$', s)
+        if m:
+            if m.group(1) == 'BEIGAS':
+                break
+            if m.group(1):
+                area = areas.setdefault(fold(m.group(1)), dict(name=m.group(1), groups=[]))
+                group = None
+            continue
+        if area is None:
+            continue  # the instructions above the first area
+        m = re.match(r'^-{3,}\s*(.*?)\s*-*$', s)
+        if m and m.group(1):
+            group = dict(group=m.group(1), items=[])
+            area['groups'].append(group)
+        elif '|' in s:
+            c = [x.strip() for x in s.split('|')]
+            num = lambda x: float(x.replace(' ', '').replace(',', '.'))
+            group['items'].append([c[4], c[3], num(c[0]), num(c[1]), num(c[2])] + c[5:6])
+        elif not re.match(r'^(Apraksts|Piezīme):', s):
+            sys.exit('line %d not understood: %s' % (n, s))
+    return areas
+
+
+def engine_units():
+    """Unit keys known to the engine (its settings block, evaluated as the browser does)."""
     js = r'''
-const fs = require('fs'), path = require('path'), dir = process.argv[1], window = {};
-for (const f of fs.readdirSync(dir).filter(f => /^cenas-.*\.html$/.test(f))) {
-  new Function('window', fs.readFileSync(path.join(dir, f), 'utf8').split('<script>')[1].split('</script>')[0])(window);
-}
-const s = fs.readFileSync(path.join(dir, 'kalkulators.html'), 'utf8');
+const s = require('fs').readFileSync(process.argv[1], 'utf8'), window = {};
 new Function('window', s.slice(s.indexOf('window.PBC_SETTINGS'), s.indexOf('/* ====== Kalkulatora kods')))(window);
-console.log(JSON.stringify({ data: window.PBC_DATA, units: Object.keys(window.PBC_SETTINGS.units) }));
+console.log(JSON.stringify(Object.keys(window.PBC_SETTINGS.units)));
 '''
-    return json.loads(subprocess.check_output(['node', '-e', js, CALC]))
+    return json.loads(subprocess.check_output(['node', '-e', js, os.path.join(CALC, 'kalkulators.html')]))
 
 
 def main():
-    out = embeds()
-    data = {a['id']: a for a in out['data']}
+    data = table()
+    units = engine_units()
     bad = renamed = total = 0
     for area, (fname, sheet, c) in BOOKS.items():
         ws = openpyxl.load_workbook(os.path.join(CALC, 'source', fname), data_only=True)[sheet]
@@ -78,7 +114,7 @@ def main():
                 want = (lo, float(r[c['rec']]), hi)
                 got = tuple(float(x) for x in it[2:5])
                 unit = UNITS.get(str(r[c['u']]).strip())
-                if got != want or unit != it[1] or it[1] not in out['units']:
+                if got != want or unit != it[1] or it[1] not in units:
                     print('DIFF', area, g['group'], repr(r[c['n']]), 'sheet', want, r[c['u']], '| embed', got, it[1]); bad += 1
                 if str(r[c['n']]).strip() != it[0]:
                     renamed += 1
