@@ -2,6 +2,9 @@
 (function () {
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
+  // The site is in Latvian; until Site settings set the language, tell browsers and screen readers here.
+  if (!/^lv/i.test(document.documentElement.lang)) document.documentElement.lang = 'lv';
+
   // Webflow fills empty placeholders with "Example Text"; the design has none there.
   $$('input[placeholder], textarea[placeholder]').forEach(function (i) {
     if (/^example text$/i.test(i.getAttribute('placeholder'))) i.removeAttribute('placeholder');
@@ -48,10 +51,12 @@
       var inCalc = window.pbCalc && window.pbCalc.has(b.dataset.service);
       b.textContent = inCalc ? 'Aprēķināt un pieteikties' : 'Pieteikties šim pakalpojumam';
       b.addEventListener('click', function (e) {
-        if (!window.pbCalc) return;
+        // pbc-off: the calculator stopped (see the page head); the link then goes to the forms.
+        if (!window.pbCalc || document.documentElement.classList.contains('pbc-off')) return;
         e.preventDefault();
-        if (inCalc) window.pbCalc.show(b.dataset.service);
-        else window.pbCalc.request(b.dataset.service);
+        e.stopPropagation(); // Webflow's own #anchor scrolling would run as well
+        var name = b.dataset.service;
+        if (!(inCalc && window.pbCalc.show(name))) window.pbCalc.request(name);
       });
     });
   };
@@ -65,9 +70,6 @@
       if (svcName) a.setAttribute('href', '/pakalpojumi?pakalpojums=' + encodeURIComponent(svcName.textContent.trim()) + '#kalkulators');
     });
   }
-
-  // Webflow's default placeholder ("Example text") is not ours: screen readers would read it.
-  $$('[placeholder="Example text"], [placeholder="Example Text"]').forEach(function (i) { i.removeAttribute('placeholder'); });
 
   // CMS request forms: the hidden [data-product-name] input carries the page's item name (h1).
   $$('[data-product-name]').forEach(function (i) {

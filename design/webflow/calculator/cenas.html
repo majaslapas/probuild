@@ -1,38 +1,61 @@
 <script type="text/plain" data-pbc-cenas>
-==============================================================================
-  PROBUILD CENU KALKULATORS · DARBU CENAS 2026
-  Šajā blokā ir visas kalkulatora cenas. Kalkulatora kods ir lapas
-  iestatījumos (Page settings → Custom code), to mainīt nevajag.
-==============================================================================
-  KĀ MAINĪT CENU
-  Katra rinda ir viens darbs. Mainiet skaitļus pirmajās trīs kolonnās:
-
-      NO |   CENA |   LĪDZ | MĒRV.      | DARBS
-     2.5 |      4 |      7 | m2         | Sagatavošanas darbi, zemes darbi
-
-    NO    = zemākā cena
-    CENA  = ieteicamā cena, kalkulators to rāda kā galveno
-    LĪDZ  = augstākā cena
-    MĒRV. = mērvienība, par kuru ir cena
-
-  · Cena ir eiro par vienu mērvienību, bez € zīmes. Decimāldaļa: 12.5 vai 12,5
-  · Starp kolonnām jābūt svītrai |. Atstarpju skaits nav svarīgs.
-  · Ja cena ir viena, ierakstiet to visās trīs kolonnās: 40 | 40 | 40
-  · Piezīmi klientam raksta rindas beigās aiz vēl vienas svītras:
-      40 |     55 |     75 | h          | Darba nosaukums | Piezīme klientam
-  · Jauns darbs: nokopējiet rindu vajadzīgajā grupā un nomainiet tekstu.
-    Dzēst: izdzēsiet rindu. Paslēpt uz laiku: rindas sākumā ierakstiet #.
-  · Jauna grupa sākas ar ---, piem. „--- Jumts”; jauna joma ar ===.
-    Jomas „Apraksts:” rāda zem jomas nosaukuma, „Piezīme:” pie kopsummas,
-    „Īsā piezīme:” (nav obligāta) pie kopsummas, ja izvēlēti darbi vairākās jomās.
-  · Mērvienības: m2, m3, m (tekošais metrs), h (stunda), gab, kompl, t, kg,
-    diena, reize, brauciens, izbraukums, pasūtījums, objekts, koks, celms.
-    „m2 reizē” cenu reizina arī ar reižu skaitu; „m2 mēnesī” un „mēnesī” ir
-    ikmēneša maksa, ko skaita atsevišķi.
-  · Rindas, kas sākas ar #, kalkulators neņem vērā.
-  · Pēc izmaiņām: Save, tad Publish. Kļūdainu rindu kalkulators izlaiž, un
-    adresē …webflow.io virs kalkulatora parāda, kurā rindā ir kļūda.
-==============================================================================
+#=============================================================================
+#  PROBUILD CENU KALKULATORS · DARBU CENAS 2026
+#  Šajā blokā ir visas kalkulatora cenas. Kalkulatora kods ir lapas
+#  iestatījumos (Page settings → Custom code), to mainīt nevajag.
+#  Rindas, kas sākas ar #, ir paskaidrojumi: kalkulators tās nerāda.
+#=============================================================================
+#  KĀ MAINĪT CENU
+#  Katra rinda ir viens darbs. Mainiet skaitļus pirmajās trīs kolonnās:
+#
+#      NO |   CENA |   LĪDZ | MĒRV.      | DARBS
+#     2.5 |      4 |      7 | m2         | Sagatavošanas darbi, zemes darbi
+#
+#    NO    = zemākā cena
+#    CENA  = ieteicamā cena, kalkulators to rāda kā galveno
+#    LĪDZ  = augstākā cena
+#    MĒRV. = mērvienība, par kuru ir cena
+#
+#  · Cena ir eiro par vienu mērvienību, bez € zīmes. Decimāldaļa: 12.5 vai 12,5
+#  · Kolonnas atdala vertikālā svītra |. Atstarpju skaits nav svarīgs.
+#  · Ja cena ir viena, ierakstiet to visās trīs kolonnās: 40 | 40 | 40
+#  · Piezīmi klientam raksta rindas beigās aiz vēl vienas svītras |:
+#      40 |     55 |     75 | h          | Darba nosaukums | Piezīme klientam
+#
+#  PĒC IZMAIŅĀM
+#  · Spiediet Save & Close, tad Publish.
+#  · Pārbaudiet lapu adresē …webflow.io/pakalpojumi?pbc-check – ja kādā rindā
+#    ir kļūda, virs kalkulatora būs sarkans lodziņš ar rindas numuru un
+#    iemeslu. Kļūdainu rindu kalkulators nerāda, pārējās darbojas.
+#
+#  DARBI, DARBU VEIDI UN JOMAS
+#  · Jauns darbs: nokopējiet rindu tajā pašā darbu veidā un nomainiet tekstu.
+#    Dzēst: izdzēsiet rindu. Paslēpt uz laiku: rindas sākumā ierakstiet #.
+#  · Darbu veids (grupa) sākas ar rindu „--- Nosaukums”, joma – ar rindu
+#    „=== Nosaukums”. # šādas rindas sākumā paslēpj visu darbu veidu vai jomu.
+#  · Jomas teksti: „Apraksts:” – zem jomas nosaukuma; „Piezīme:” – pie
+#    kopsummas; „Īsā piezīme:” (nav obligāta) – pie kopsummas, ja izvēlēti
+#    darbi vairākās jomās.
+#  · Visas rindas jāraksta virs rindas „=== BEIGAS”.
+#  · Pakalpojumu saraksta pogas atver darbu veidu pēc tā nosaukuma. Ja
+#    pārdēvējat darbu veidu vai jomu, nomainiet nosaukumu arī lapas kodā
+#    (PBC_SETTINGS, daļā services), citādi poga atvērs pieteikumu bez aprēķina.
+#
+#  MĒRVIENĪBAS (rakstiet tieši tā)
+#    m2, m3, m3 izejm., m (tekošais metrs), m kanāls, h (stunda), gab,
+#    kompl, t, kg, diena, reize, brauciens, izbraukums, griezums,
+#    pasūtījums, koks, celms, objekts, izsaukums,
+#    m2 reizē – cenu reizina arī ar reižu skaitu (piem. pļaušana sezonā),
+#    m2 mēnesī un mēnesī – ikmēneša maksa, to skaita atsevišķi.
+#    Jaunu mērvienību pievieno lapas kodā (PBC_SETTINGS, daļā units).
+#
+#  NEMAINIET
+#  · Pirmo rindu (<script …>) un rindas zem „=== BEIGAS”.
+#  · Code Embed saglabā līdz 50 000 zīmēm. Ja vietas pietrūkst, ievietojiet
+#    tajā pašā sadaļā vēl vienu Code Embed ar daļu jomu: tas sākas ar rindu
+#    <script type="text/plain" data-pbc-cenas>, tad „=== Jomas nosaukums”,
+#    darbi, „=== BEIGAS” un tāda pati pēdējā rinda kā šim blokam.
+#=============================================================================
 
 
 === Būvniecība ===============================================================
@@ -97,7 +120,7 @@ Piezīme: Darba cenas bez materiāliem un PVN. Cenu var mainīt objekta atrašan
     30 |     45 |     65 | m2         | Koka karkasa nojumes būvniecība (auto novietošanai, lapene)
     22 |     35 |     55 | m          | Koka margas izgatavošana
     20 |     35 |     55 | gab        | Koka stabu montāža
-    30 |     45 |     65 | m2         | Guļbaļķu sienas izbūve (Guļbūvju būvniecībā)
+    30 |     45 |     65 | m2         | Guļbaļķu sienas izbūve (guļbūvju būvniecībā)
     20 |     35 |     55 | m2         | Guļbūves logu vai durvju ailes izveide
      6 |     10 |     16 | m2         | Guļbaļķu sienas slīpēšana
      5 |      8 |     12 | m2         | Guļbūves sienas apstrāde ar linsēklu eļļu
@@ -126,8 +149,8 @@ Piezīme: Darba cenas bez materiāliem un PVN. Cenu var mainīt objekta atrašan
    4.5 |      7 |     11 | m2         | Latojums
      5 |      8 |     13 | m2         | OSB plāksnes montāža
      9 |     14 |     20 | m2         | Kausējamā ruberoīda uzklāšana (2 kārtas)
-   2.5 |      4 |      6 | m2         | Bitumeņa apakšklāja ieklāšana
-    10 |     15 |     23 | m2         | Bitumeņa dakstiņu montāža
+   2.5 |      4 |      6 | m2         | Bitumena apakšklāja ieklāšana
+    10 |     15 |     23 | m2         | Bitumena dakstiņu montāža
     22 |     35 |     55 | m2         | Skaidu jumta klāšana
      8 |     12 |     18 | m2         | Metāla dakstiņu montāža
     14 |     20 |     30 | m2         | Māla vai polimēra dakstiņu montāža
@@ -144,7 +167,7 @@ Piezīme: Darba cenas bez materiāliem un PVN. Cenu var mainīt objekta atrašan
      5 |      8 |     13 | m          | Skārda lāseņa uzstādīšana
      5 |      8 |     13 | m          | Jumta kores montāža
     80 |    120 |    180 | m kanāls   | Dūmvada mūrēšana ar šuvju izšuvošanu
-     8 |     12 |     20 | m2         | Jumta siltināšana - mansarda
+     8 |     12 |     20 | m2         | Jumta siltināšana – mansarda
 
 --- Fasāde
      5 |      8 |     12 | m2         | Putupolistirola montāža
@@ -364,18 +387,18 @@ Piezīme: Darba cenas. Materiāls, pamati, stiprinājumi, furnitūra, automātik
 #   NO |   CENA |   LĪDZ | MĒRV.      | DARBS | PIEZĪME KLIENTAM
 
 --- Žogi, vārti un sētiņas
-    90 |    120 |    190 | m          | Vienkāršs metāla žogs — izgatavošana un montāža | Parasts krāsots tērauds; cena var ietvert sekcijas un montāžu, bet ne vienmēr stabus, pamatus vai demontāžu.
-    65 |     95 |    150 | m2         | Metāla žoga sekcija — izgatavošana bez montāžas | Cena atkarīga no profiliem, stieņu soļa, raksta, tērauda biezuma un apdares.
+    90 |    120 |    190 | m          | Vienkāršs metāla žogs – izgatavošana un montāža | Parasts krāsots tērauds; cena var ietvert sekcijas un montāžu, bet ne vienmēr stabus, pamatus vai demontāžu.
+    65 |     95 |    150 | m2         | Metāla žoga sekcija – izgatavošana bez montāžas | Cena atkarīga no profiliem, stieņu soļa, raksta, tērauda biezuma un apdares.
    130 |    190 |    320 | m          | Dekoratīvs / kalts metāla žogs | Sarežģīts raksts, kalumi un nestandarta elementi sadārdzina izgatavošanu.
     55 |     85 |    140 | m          | Metāla sētiņa / zema norobežojoša sekcija | Vienkārša konstrukcija, parasti zemāka un vieglāka par pilna augstuma žogu.
-   450 |    850 |   1600 | kompl      | Veramie metāla vārti — izgatavošana | Cena atkarīga no ailes platuma, vārtu svara, pildījuma, eņģēm un slēdzenes; automātika atsevišķi.
-   850 |   1450 |   2600 | kompl      | Bīdāmie metāla vārti — izgatavošana | Parasti bez automātikas, pamata un elektroinstalācijas; sliedes/konsoles atkarīgas no sistēmas.
+   450 |    850 |   1600 | kompl      | Veramie metāla vārti – izgatavošana | Cena atkarīga no ailes platuma, vārtu svara, pildījuma, eņģēm un slēdzenes; automātika atsevišķi.
+   850 |   1450 |   2600 | kompl      | Bīdāmie metāla vārti – izgatavošana | Parasti bez automātikas, pamata un elektroinstalācijas; sliedes/konsoles atkarīgas no sistēmas.
    180 |    320 |    600 | gab        | Gājēju vārtiņi | Rāmis, pildījums, eņģes un slēdzene; stabu un pamatu izmaksas var būt atsevišķi.
    180 |    350 |    650 | kompl      | Vārtu automātikas uzstādīšana | Automātikas komplekta cena parasti atsevišķi; elektrības pievads un pamatu darbi nav iekļauti.
 
 --- Margas, balkoni un kāpnes
-    80 |    115 |    180 | m          | Kāpņu margas — izgatavošana un montāža | Krāsots tērauds, standarta profils; sarežģīta ģeometrija un stiprinājumi var palielināt cenu.
-    90 |    125 |    200 | m          | Balkona / terases margas — izgatavošana un montāža | Atkarīgs no augstuma, stiprinājuma, pildījuma, piekļuves un korozijas aizsardzības.
+    80 |    115 |    180 | m          | Kāpņu margas – izgatavošana un montāža | Krāsots tērauds, standarta profils; sarežģīta ģeometrija un stiprinājumi var palielināt cenu.
+    90 |    125 |    200 | m          | Balkona / terases margas – izgatavošana un montāža | Atkarīgs no augstuma, stiprinājuma, pildījuma, piekļuves un korozijas aizsardzības.
    150 |    210 |    320 | m          | Nerūsējošā tērauda margas | AISI 304/316; stikla pildījums un sarežģīti savienojumi parasti sadārdzina.
    180 |    300 |    550 | gab        | Franču balkona metāla margas | Cena atkarīga no ailes izmēra, stiprinājuma veida, pildījuma un apdares; montāža jāprecizē.
     25 |     40 |     65 | h          | Margu remonts / stiprinājumu atjaunošana | Mazs remonts; materiāli, piekļuve augstumā un izbraukums var tikt rēķināti atsevišķi.
@@ -453,7 +476,7 @@ Piezīme: Pakalpojumu cenas bez kokmateriāla, MDF, saplākšņa, finiera un fur
     35 |     50 |     75 | h          | CNC 3D frēzēšana / reljefs | Atkarīgs no reljefa sarežģītības, frēzes ceļa un apdares prasībām.
     20 |     30 |     45 | h          | CNC programmas / rasējuma sagatavošana | Ja nav sagatavota DXF/DWG/STEP faila, modelēšana var būt atsevišķa pozīcija.
     25 |     40 |     60 | h          | CNC gravēšana / personalizēšana | Minimālā pasūtījuma maksa iespējama; cenu ietekmē detaļu skaits un dizaina sagatavošana.
-    20 |     35 |     55 | h          | Urbšana, gropēšana vai ligzdu frēzēšana | Vienkāršai detaļu apstrādei; sarežģītas jig/šablona prasības sadārdzina.
+    20 |     35 |     55 | h          | Urbšana, gropēšana vai ligzdu frēzēšana | Vienkāršai detaļu apstrādei; sarežģītas šablona prasības sadārdzina.
 
 --- Slīpēšana un apdare
      6 |      9 |     14 | m2         | Masīvkoka/plātņu detaļu slīpēšana | Atkarīgs no sākotnējās virsmas, koksnes, malu daudzuma un nepieciešamās gluduma klases.
@@ -510,7 +533,7 @@ Piezīme: Plānošanas aplēses. Var piemērot minimālo izbraukuma maksu, trans
    0.1 |   0.18 |   0.35 | m2 reizē   | Aizaugušas teritorijas pļaušana | Neiekopta zāle, nezāles, nelīdzenumi; pirms darbu pasūtīšanas vajadzīga fotogrāfija/apsekošana.
    1.3 |      3 |      6 | m          | Dzīvžoga apgriešana līdz ~2 m | Atkarīgs no dzīvžoga platuma, blīvuma un atgriezumu savākšanas.
  21.86 |  26.45 |     35 | h          | Krūmu cirpšana / formēšana | Nelieli krūmi un formēšana; zaru savākšana/šķeldošana var būt atsevišķi.
-  0.25 |    1.5 |      4 | m2         | Krūmu un apauguma izzāģēšana | Cena atkarīga no apauguma blīvuma, stumbru diametra un vai jāizņem saknes.
+  0.25 |    1.5 |      4 | m2         | Krūmu un apauguma izzāģēšana | Cena atkarīga no apauguma blīvuma, stumbru diametra un no tā, vai jāizņem saknes.
 
 --- Koku darbi
     50 |     90 |    150 | koks       | Zaru apzāģēšana / vainaga kopšana mazam kokam | Cena atkarīga no augstuma, piekļuves, zaru daudzuma un savākšanas.
@@ -536,6 +559,7 @@ Piezīme: Plānošanas aplēses. Var piemērot minimālo izbraukuma maksu, trans
    120 |    220 |    450 | objekts    | Teritorijas pavasara/rudens ģenerālsakopšana | Lapu, zaru un sīko atkritumu savākšana; lielas platības un izvešana papildus.
 
 === BEIGAS ===================================================================
+# Zem šīs rindas neko nemainiet.
 </script>
 <div class="pbc" data-pbc>
   <noscript><p>Kalkulatoram vajadzīgs JavaScript. Precīzu cenas piedāvājumu var pieprasīt pa tālruni +371 26 518 131.</p></noscript>

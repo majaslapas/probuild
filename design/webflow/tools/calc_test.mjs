@@ -29,7 +29,7 @@ const fmt = (n) => { const r = Math.round(n * 100) / 100; return Math.abs(r) >= 
 
 const browser = await chromium.launch();
 async function open(width, height = 900, query = '', o = {}) {
-  const ctx = await browser.newContext({ viewport: { width, height }, hasTouch: !!o.touch, reducedMotion: o.motion ? 'no-preference' : 'reduce' });
+  const ctx = await browser.newContext({ viewport: { width, height }, hasTouch: !!o.touch, isMobile: !!o.mobile, reducedMotion: o.motion ? 'no-preference' : 'reduce' });
   const page = await ctx.newPage();
   page.errors = [];
   page.on('pageerror', (e) => page.errors.push(String(e)));
@@ -132,7 +132,7 @@ const sum = (picks, k) => picks.reduce((s, [it, q, v]) => s + it[k] * q * (v || 
   await page.evaluate(() => window.pbCalc.reset());
   await pick(page, 'Metālapstrāde', 'Demontāža un utilizācija', 'Metāllūžņu nodošana / utilizācija', 3);
   const scrap = rowOf(page, 'Metāllūžņu nodošana / utilizācija');
-  ok(/−150 – 180/.test(await scrap.locator('.pbc_range').textContent()), 'negative price range shown: ' + (await scrap.locator('.pbc_range').textContent()));
+  ok(/−150 – 180/.test(sp(await scrap.locator('.pbc_range').textContent())), 'negative price range shown: ' + sp(await scrap.locator('.pbc_range').textContent()));
   ok(/0/.test(await total(page)) && /−450 – 540/.test(await rangeTxt(page)) && (await fields(page)).aprekins_no === '-450', 'scrap metal 3 t: ' + (await total(page)) + ', ' + (await rangeTxt(page)));
   // zero amount stays ticked
   await scrap.locator('.pbc_in[data-k="q"]').fill('');
@@ -163,7 +163,7 @@ const sum = (picks, k) => picks.reduce((s, [it, q, v]) => s + it[k] * q * (v || 
 // 3. Search
 {
   const page = await open(1440);
-  for (const [q, n] of [['gipskart', 8], ['flizes', 5], ['tualetes pods', 1], ['zagesana', 13], ['hidroizolacija', 5], ['  ĢIPŠKART  ', 8]]) {
+  for (const [q, n] of [['gipskart', 8], ['flizes', 5], ['tualetes pods', 1], ['zagesana', 13], ['hidroizolacija', 5], ['  ĢIPŠKART  ', 8], ['elektrība', 13], ['santehnika', 16], ['krāsot', 12], ['griesti', 25]]) {
     await page.fill('#pbc-q', q);
     const c = await page.locator('.pbc_sets .pbc_row').count();
     ok(c === n, `search "${q}" → ${c} results (want ${n})`);
@@ -276,6 +276,36 @@ for (const [w, h] of [[1440, 900], [900, 1100], [390, 844]]) {
     ok((await page.locator('.pbc_area[aria-current="true"] .pbc_area-n').textContent()) === 'Kokapstrāde', 'a [data-service] button in the services list opens the calculator there');
   }
   ok(!page.errors.length, 'no console warnings or errors' + (page.errors.length ? ': ' + page.errors.slice(0, 3).join(' | ') : ''));
+  await page.context().close();
+}
+
+// 6b. A real tap on a services-list button, with motion on: the calculator opens at that area and
+// Webflow's own #anchor scrolling does not move the page afterwards.
+for (const w of [1440, 390]) {
+  const page = await open(w, w < 900 ? 844 : 900, '', { motion: true, touch: w < 900, mobile: w < 900 });
+  const item = page.locator('.services-list_item').filter({ has: page.locator('[data-service="Kokapstrāde"]') });
+  if (await item.count()) {
+    await item.locator('.services-list_trigger').click();
+    await page.waitForTimeout(600);
+    await item.locator('[data-service="Kokapstrāde"]').click();
+    await page.waitForTimeout(1500);
+    const a = await page.evaluate(() => ({ y: scrollY, area: (document.querySelector('.pbc_area[aria-current="true"] .pbc_area-n') || {}).textContent,
+      hash: location.hash, top: Math.round(document.querySelector(matchMedia('(min-width:56.25em)').matches ? '#pbc-works-title' : '.pbc_set.is-open').getBoundingClientRect().top), dlg: !!document.querySelector('.pbc_dlg[open]') }));
+    await page.waitForTimeout(800);
+    const y2 = await page.evaluate(() => scrollY);
+    ok(a.area === 'Kokapstrāde' && Math.abs(y2 - a.y) < 2 && !a.dlg, `${w}px: tapping "Kokapstrāde" in the services list opens the calculator there and the page stays put (${JSON.stringify(a)}, then y ${y2})`);
+    ok(w < 900 ? Math.abs(a.top) <= 3 : a.top >= -2 && a.top < 900 * 0.6, `${w}px: ${w < 900 ? 'the opened area is at the top' : 'its works title is in view'} (${a.top} px)`);
+  } else ok(false, 'services list item for Kokapstrāde not found');
+  ok(!page.errors.length, `${w}px with motion: no console warnings or errors` + (page.errors.length ? ': ' + page.errors.slice(0, 3).join(' | ') : ''));
+  await page.context().close();
+}
+
+// 6c. Phones: the whole page (not only the calculator) does not scroll sideways
+for (const [w, h] of [[320, 568], [360, 740]]) {
+  const page = await open(w, h, '', { touch: true, mobile: true });
+  await pick(page, 'Remontdarbi', 'Grīda', 'Grīdas flīzēšana', 12);
+  const sw = await page.evaluate(() => [document.documentElement.scrollWidth, innerWidth]);
+  ok(sw[0] <= sw[1], `${w}×${h} mobile: page width ${sw[0]} ≤ ${sw[1]}`);
   await page.context().close();
 }
 

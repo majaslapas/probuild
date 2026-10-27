@@ -41,7 +41,7 @@ window.PBC_SETTINGS = {
   resultNoQty: 'Norādiet izvēlēto darbu apjomu.',
   howTitle: 'Kā tas notiek',
   how: ['Izvēlieties, ko plānojat: jomu un darbu veidu.', 'Atzīmējiet darbus un ierakstiet apjomu, piemēram, m² vai metrus.', 'Nosūtiet aprēķinu – precīzu cenas piedāvājumu sagatavosim pēc objekta apskates.'],
-  tip: 'Padoms: ierakstiet apjomu tieši darba rindā – darbs tiks atzīmēts pats.',
+  tip: 'Padoms: ierakstiet apjomu tieši darba rindā – darbs tiks atzīmēts automātiski.',
   clear: 'Notīrīt',
   clearConfirm: 'Notīrīt visu?',
   cleared: 'Izvēle notīrīta.',
@@ -70,7 +70,7 @@ window.PBC_SETTINGS = {
   // daudzuma (viens vārds vai [vienskaitlis, daudzskaitlis]); hint: paskaidrojums pie
   // atzīmēta darba; visits: cenu reizina arī ar reižu skaitu; monthly: ikmēneša maksa.
   units: {
-    'm2':         { price: '€/m²', qty: 'm²', hint: 'm² ir platība: garums × platums, piem. 4 m × 5 m = 20 m².' },
+    'm2':         { price: '€/m²', qty: 'm²', hint: 'm² ir platība: garums × platums, piem. 4 m × 5 m = 20 m².' },
     'm3':         { price: '€/m³', qty: 'm³', hint: 'm³ ir tilpums: garums × platums × augstums vai dziļums.' },
     'm3 izejm.':  { price: '€/m³ izejmateriāla', qty: 'm³', hint: 'Izejmateriāla tilpums kubikmetros.' },
     'm':          { price: '€/tek. m', qty: 'tek. m', hint: 'Tekošie metri: garums metros, piem. žoga vai notekas garums.' },
@@ -119,75 +119,123 @@ window.PBC_SETTINGS = {
 (function () {
   'use strict';
   var S = window.PBC_SETTINGS || {}, UNITS = S.units || {}, SVC = S.services || {};
-  var html = document.documentElement, api = null, queue = [], moved = [];
+  var html = document.documentElement, api = null, queue = [], moved = [], dead = false, anchor = null;
   var NB = String.fromCharCode(160);
   var fold = function (s) { return String(s || '').toLowerCase().normalize('NFD').replace(/\p{M}/gu, ''); };
+  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
   var warn = function (m) { console.warn('[Kalkulators] ' + m); };
+  // Settings the client edits must not be able to crash the calculator.
+  Object.keys(UNITS).forEach(function (k) { var u = UNITS[k] = UNITS[k] || {}; u.price = u.price || '€/' + k; u.qty = u.qty || k; });
+  // Units as typed in the price table: diacritics, case, "m²", spaces and a final dot do not matter.
+  var ukey = function (s) { return String(s).normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase().replace(/\s+/g, ' ').replace(/\.$/, '').trim(); };
+  var UKEY = {};
+  Object.keys(UNITS).forEach(function (k) { UKEY[ukey(k)] = k; });
   // Other scripts and links: pbCalc.show('Jumta darbi'), pbCalc.request('Kokapstrāde'), ?pakalpojums=…
   window.pbCalc = {
-    has: function (n) { return !!SVC[n] || !!(api && api.resolve(n)); },
-    show: function (t, o) { if (api) return api.show(t, o); queue.push(['show', t, o]); return true; },
+    has: function (n) { return !dead && (!!SVC[n] || !!(api && api.resolve(n))); },
+    show: function (t, o) { if (dead) return false; if (api) return api.show(t, o); queue.push(['show', t, o]); return true; },
     reset: function () { if (api) api.reset(); },
-    request: function (n) { if (api) api.request(n); else queue.push(['request', n]); }
+    request: function (n) { if (dead) return false; if (api) return api.request(n); queue.push(['request', n]); return true; }
   };
   html.classList.add('pbc-on');
-  function off() {
+  // Something went wrong: the Webflow forms go back to the page, under a short message.
+  function off(box) {
+    dead = true;
     html.classList.remove('pbc-on'); html.classList.add('pbc-off');
-    moved.forEach(function (m) { m[1].insertBefore(m[0], m[2]); });
+    moved.slice().reverse().forEach(function (m) { m[1].insertBefore(m[0], m[2]); });
+    moved = [];
     var r = document.querySelector('[data-pbc]');
-    if (r) r.innerHTML = '<p class="pbc_intro">' + (S.unavailable || '') + '</p>';
+    if (r) r.innerHTML = (box || '') + '<p class="pbc_intro">' + esc(S.unavailable || '') + '</p>';
+    if (anchor) anchor.id = 'kalkulators';
+    else if (r && !document.getElementById('kalkulators')) r.id = 'kalkulators';
   }
   function run() { try { init(); } catch (e) { console.error('[Kalkulators]', e); off(); } }
-  if (document.querySelector('[data-pbc]')) run(); else document.addEventListener('DOMContentLoaded', run);
+  if (document.querySelector('[data-pbc], [data-pbc-cenas]')) run(); else document.addEventListener('DOMContentLoaded', run);
 
   // The price table: <script type="text/plain" data-pbc-cenas> blocks (see the block's own instructions).
   function readTables() {
-    var areas = [], byId = {}, errors = [];
+    var areas = [], byId = {}, errors = [], seen = {}, area = null, group = null;
     var num = function (s) {
-      s = s.replace(/[\s€]/g, '').replace(',', '.').replace('−', '-');
+      s = s.replace(/[\s€]|eur/gi, '').replace(',', '.').replace('−', '-');
       return /^-?\d+(\.\d+)?$/.test(s) ? Number(s) : NaN;
     };
     [].forEach.call(document.querySelectorAll('[data-pbc-cenas]'), function (block, bi) {
-      var area = null, group = null, done = false;
+      var done = false, skip = '';
       block.textContent.split(/\r?\n/).forEach(function (raw, li) {
-        var s = raw.trim(), m;
-        var fail = function (why) { errors.push((bi ? bi + 1 + '. bloka ' : '') + (li + 1) + '. rindā: ' + why + '\n   ' + s); };
-        if (done || !s || s.charAt(0) === '#') return;
-        if ((m = /^={3,}\s*(.*?)\s*=*$/.exec(s))) {
+        var s = raw.trim(), m, k, at = (bi ? bi + 1 + '. bloka ' : '') + (li + 1) + '. rindā';
+        var fail = function (why) { errors.push(at + ': ' + why + '\n   ' + s); };
+        if (!s) return;
+        if (s.charAt(0) === '#') {
+          // "# --- Jumts" / "# === Kokapstrāde" hides that whole type of work / area
+          if (!done && (m = /^#\s*(={2,}|-{2,})\s*[^=\-\s]/.exec(s))) skip = m[1].charAt(0) === '=' ? 'area' : 'group';
+          return;
+        }
+        if (done) return fail('aiz „=== BEIGAS” rindas netiek rādītas – pārceliet tās virs „=== BEIGAS”');
+        if ((m = /^={2,}\s*(.*?)\s*=*$/.exec(s))) {
           if (!m[1]) return;
           if (fold(m[1]) === 'beigas') { done = true; return; }
           var id = fold(m[1]).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
           if (!byId[id]) areas.push(byId[id] = { id: id, name: m[1], intro: '', note: '', short: '', groups: [] });
-          area = byId[id]; group = null;
+          area = byId[id]; group = null; skip = '';
           return;
         }
-        if (!area) return;
-        if ((m = /^-{3,}\s*(.*?)\s*-*$/.exec(s))) {
-          if (m[1]) area.groups.push(group = { name: m[1], items: [] });
+        if (/^-{3,}$/.test(s)) return;
+        if (s.indexOf('|') < 0 && (m = /^-{2,}\s*([^\d\s.,-].*?)\s*-*$/.exec(s))) {
+          if (skip === 'area') return;
+          skip = '';
+          if (!area) return fail('darbu veids pirms jomas virsraksta „=== …” netiek rādīts');
+          k = fold(m[1]);
+          group = area.groups.filter(function (g) { return fold(g.name) === k; })[0];
+          if (!group) area.groups.push(group = { name: m[1], items: [] });
           return;
         }
-        if (s.indexOf('|') < 0) {
-          m = /^(apraksts|piezime|isa piezime)\s*:/.exec(fold(s));
-          if (m) area[{ apraksts: 'intro', piezime: 'note' }[m[1]] || 'short'] = s.slice(s.indexOf(':') + 1).trim();
-          else fail('nav saprotama rinda (starp kolonnām jābūt svītrai |)');
+        if (skip) return;
+        if ((m = /^(apraksts|piezime|isa piezime)\s*:/.exec(fold(s)))) {
+          if (!area) return fail('rinda pirms jomas virsraksta „=== …” netiek rādīta');
+          k = { apraksts: 'intro', piezime: 'note' }[m[1]] || 'short';
+          var v = s.slice(s.indexOf(':') + 1).trim();
+          if (area[k] && area[k] !== v) return fail('jomai „' + area.name + '” šis teksts jau ir – vai virs šīs rindas trūkst jomas virsraksta „=== …”?');
+          area[k] = v;
           return;
         }
-        if (!group) return fail('darbs pirms grupas virsraksta „--- …”');
-        var c = s.split('|').map(function (x) { return x.trim(); });
-        if (c.length < 5 || !c[4]) return fail('jābūt kolonnām NO | CENA | LĪDZ | MĒRV. | DARBS');
+        if (s.indexOf('|') < 0 && /^[=-]/.test(s) && !/^-\d/.test(s)) return fail('virsrakstam jāsākas ar === (joma) vai --- (darbu veids) un nosaukumu');
+        var c = (s.indexOf('|') < 0 && s.indexOf('\t') >= 0 ? s.split(/\t+/) : s.split('|')).map(function (x) { return x.trim(); });
+        if (c[0] === '') c.shift();
+        if (c[c.length - 1] === '') c.pop();
+        if (c.length < 5) return fail(c.length < 2 ? 'nesaprotama rinda: starp kolonnām jābūt vertikālajai svītrai |' : 'jābūt piecām kolonnām: NO | CENA | LĪDZ | MĒRV. | DARBS');
+        if (!area) return fail('rinda pirms jomas virsraksta „=== …” netiek rādīta');
+        if (!group) return fail('darbs pirms darbu veida virsraksta „--- …” netiek rādīts');
         var lo = num(c[0]), mid = num(c[1]), hi = num(c[2]);
         if (isNaN(lo) || isNaN(mid) || isNaN(hi)) return fail('cenai jābūt skaitlim, piem. 12.5');
-        if (!(lo <= mid && mid <= hi)) fail('jābūt NO ≤ CENA ≤ LĪDZ (rinda tomēr ir rādīta)');
-        group.items.push({ name: c[4], unitKey: c[3], from: lo, price: mid, to: hi, note: c.slice(5).join(' | ') });
+        var unit = UKEY[ukey(c[3])] || c[3];
+        if (!UNITS[unit]) fail('nezināma mērvienība „' + c[3] + '” – darbs ir rādīts, bet bez reižu skaita un ikmēneša maksas. Zināmās: ' + Object.keys(UNITS).join(', '));
+        if (!(lo <= mid && mid <= hi)) fail('jābūt NO ≤ CENA ≤ LĪDZ (darbs tomēr ir rādīts)');
+        k = fold(area.id + '|' + group.name + '|' + c[4] + '|' + unit);
+        if (seen[k]) return fail('šis darbs jau ir ' + seen[k] + ' – otrreiz netiek rādīts');
+        seen[k] = at;
+        group.items.push({ name: c[4], unitKey: unit, from: lo, price: mid, to: hi, note: c.slice(5).join(' | ') });
       });
     });
     areas.forEach(function (a) { a.groups = a.groups.filter(function (g) { return g.items.length; }); });
     return { areas: areas.filter(function (a) { return a.groups.length; }), errors: errors };
   }
+  // Table errors are listed above the calculator when the address has ?pbc-check (and always in the console).
+  function errHTML(errors) {
+    if (!errors.length || !/pbc-check/.test(location.search + location.hash)) return '';
+    var n = errors.length, list = errors.slice(0, 30).join('\n') + (n > 30 ? '\n… un vēl ' + (n - 30) : '');
+    return '<div class="pbc_err"><b>Cenu tabulā vai lapas kodā ir kļūdas (' + n + '). Šo redzat, jo adresē ir ?pbc-check.</b>\n' + esc(list) + '</div>';
+  }
 
   function init() {
     var root = document.querySelector('[data-pbc]');
-    if (!root || root.hasAttribute('data-pbc-ready')) return;
+    if (!root) {
+      // The <div data-pbc> under the price table was deleted: put it back after the last table block.
+      var bl = document.querySelectorAll('[data-pbc-cenas]');
+      if (!bl.length) return off();
+      root = document.createElement('div'); root.className = 'pbc'; root.setAttribute('data-pbc', '');
+      bl[bl.length - 1].parentNode.insertBefore(root, bl[bl.length - 1].nextSibling);
+    }
+    if (root.hasAttribute('data-pbc-ready')) return;
     root.setAttribute('data-pbc-ready', '');
 
     var mq = function (q) { return window.matchMedia(q); };
@@ -200,8 +248,7 @@ window.PBC_SETTINGS = {
     var num0 = function (n) { var r = Math.round(n * 100) / 100; return minus(Math.abs(r) >= 100 || r === Math.round(r) ? nf0.format(Math.round(r)) : nf2.format(r)); };
     var money = function (n) { return num0(n) + NB + '€'; };
     var rate = function (n) { return minus(n === Math.round(n) ? nf0.format(n) : nf2.format(n)); };
-    var rng = function (lo, hi, f, sp) { return lo === hi ? f(lo) : f(lo) + (sp || lo < 0 ? ' – ' : '–') + f(hi); };
-    var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+    var rng = function (lo, hi, f, sp) { return lo === hi ? f(lo) : f(lo) + (sp || lo < 0 ? NB + '– ' : '–') + f(hi); };
     var fill = function (s, o) { return String(s).replace(/\{(\w)\}/g, function (x, k) { return o[k]; }); };
     var word = function (f, n) { if (typeof f === 'string') return f; var i = Math.abs(Math.round(n)); return i % 10 === 1 && i % 100 !== 11 ? f[0] : f[1]; };
     var cnt = function (n, f) { return n + ' ' + word(f, n); };
@@ -216,25 +263,30 @@ window.PBC_SETTINGS = {
 
     // Data
     var tab = readTables(), AREAS = tab.areas, ITEMS = {};
-    tab.errors.forEach(warn);
     AREAS.forEach(function (a, ai) {
       a.i = ai;
       a.groups.forEach(function (g, gi) {
         g.i = gi; g.area = a;
         g.items.forEach(function (it, ii) {
           it.id = ai + '-' + gi + '-' + ii; it.area = a; it.group = g;
-          if (!UNITS[it.unitKey]) { warn('Nezināma mērvienība „' + it.unitKey + '”: ' + it.name); UNITS[it.unitKey] = { price: '€/' + it.unitKey, qty: it.unitKey }; }
+          if (!UNITS[it.unitKey]) UNITS[it.unitKey] = { price: '€/' + it.unitKey, qty: it.unitKey };
           it.unit = UNITS[it.unitKey];
           it.key = fold(it.name + ' ' + g.name + ' ' + a.name);
           ITEMS[it.id] = it;
         });
       });
     });
-    if (!AREAS.length) return off();
+    // A renamed area or type of work breaks the services list buttons: say so where the admin looks.
+    Object.keys(SVC).forEach(function (n) {
+      var r = resolve(n);
+      if (!r || !r.ok) tab.errors.push('Lapas kods (PBC_SETTINGS.services): pakalpojuma poga „' + n + '” vairs neatrod „' + SVC[n] + '”. Ja pārdēvējāt jomu vai darbu veidu, nomainiet nosaukumu arī tur.');
+    });
+    tab.errors.forEach(warn);
+    if (!AREAS.length) return off(errHTML(tab.errors));
 
     // State
     var st = { a: 0, g: 0, o: -1, q: '', stems: [], view: 'areas', prev: null };
-    var lastG = {}, picked = {}, order = [], lastQty = {}, linesKey = null;
+    var lastG = {}, lastO = {}, lastY = {}, picked = {}, order = [], lastQty = {}, linesKey = null;
     var area = function () { return AREAS[st.a]; };
     var countIn = function (test) { return order.filter(function (id) { return test(ITEMS[id]); }).length; };
     var countA = function (a) { return countIn(function (it) { return it.area === a; }); };
@@ -250,9 +302,7 @@ window.PBC_SETTINGS = {
     var quiet = function (lead, pill) {
       return (lead ? '<span>' + esc(lead) + '</span> ' : '') + '<button type="button" class="' + (pill ? 'pbc_pill' : 'pbc_link') + '" data-request>' + esc(S.quietBtn) + '</button>';
     };
-    var errBox = tab.errors.length && (/webflow\.io$/.test(location.hostname) || /pbc-check/.test(location.search))
-      ? '<div class="pbc_err" role="alert"><b>Cenu tabulā ir kļūdas (šo redz tikai …webflow.io adresē):</b>\n' + esc(tab.errors.join('\n')) + '</div>' : '';
-    root.innerHTML = errBox +
+    root.innerHTML = errHTML(tab.errors) +
       '<header class="pbc_head"><div><h2 class="pbc_title">' + esc(S.title) + '</h2><p class="pbc_intro">' + esc(S.intro) + '</p></div><p class="pbc_quiet">' + quiet(S.quietLead, 1) + '</p></header>' +
       '<div class="pbc_ws" id="pbc-ws">' +
         '<nav class="pbc_nav" aria-label="' + esc(S.navLabel) + '">' +
@@ -267,9 +317,10 @@ window.PBC_SETTINGS = {
         '<aside class="pbc_sum" aria-labelledby="pbc-sum-title" data-sum>' +
           '<div class="pbc_sum-h"><h3 id="pbc-sum-title">' + esc(S.resultTitle) + '</h3><span class="pbc_sum-n" data-sum-n></span>' +
             '<button type="button" class="pbc_link" data-clearall hidden>' + esc(S.clear) + '</button>' + X(S.closeSum) + '</div>' +
-          '<div class="pbc_sum-b"><div class="pbc_tot" data-tot></div><ul class="pbc_lines" role="list" data-lines></ul><div class="pbc_how" data-how></div></div>' +
+          '<div class="pbc_sum-b"><div class="pbc_tot" data-tot></div><ul class="pbc_lines" role="list" data-lines></ul><div class="pbc_how" data-how></div>' +
+            '<p class="pbc_quiet-in">' + quiet() + '</p></div>' +
           '<div class="pbc_foot"><button type="button" class="pbc_cta" data-cta aria-describedby="pbc-cta-n">' + esc(S.cta) + '</button>' +
-            '<p class="pbc_cta-n" id="pbc-cta-n" data-cta-n></p><p class="pbc_quiet-in">' + quiet() + '</p></div>' +
+            '<p class="pbc_cta-n" id="pbc-cta-n" data-cta-n></p></div>' +
         '</aside>' +
       '</div>' +
       '<div class="pbc_dock" role="region" aria-label="' + esc(S.dockLabel) + '" data-dock hidden>' +
@@ -288,8 +339,8 @@ window.PBC_SETTINGS = {
       sum: $('[data-sum]'), sumN: $('[data-sum-n]'), tot: $('[data-tot]'), lines: $('[data-lines]'), how: $('[data-how]'), ctaN: $('[data-cta-n]'), clearAll: $('[data-clearall]'),
       dock: $('[data-dock]'), status: $('[data-status]'), dSum: $('.pbc_dlg.is-sum'), dOffer: $('.pbc_dlg.is-offer'), dReq: $('.pbc_dlg.is-req'), recap: $('[data-recap]') };
     // #kalkulators lands on the workspace frame
-    var old = document.getElementById('kalkulators');
-    if (old) old.removeAttribute('id');
+    anchor = document.getElementById('kalkulators');
+    if (anchor) anchor.removeAttribute('id');
     el.ws.id = 'kalkulators';
     var host = function (b, h) { if (b) { moved.push([b, b.parentNode, b.nextSibling]); h.appendChild(b); } };
     host(offerBlock, $('[data-offerhost]'));
@@ -328,7 +379,7 @@ window.PBC_SETTINGS = {
       var n = a.groups.reduce(function (s, g) { return s + g.items.length; }, 0);
       return '<li><button type="button" class="pbc_area" data-area="' + i + '" aria-describedby="pbc-ai-' + i + '"><span class="pbc_area-n">' + esc(a.name) + '</span>' +
         '<span data-ab="' + i + '"></span>' + countH(n) + IC.right.replace('<svg', '<svg class="pbc_chev"') +
-        '<span class="pbc_area-i" id="pbc-ai-' + i + '">' + esc(a.intro) + '</span><span class="pbc_area-m">' + cnt(n, DARBI) + ' · ' + cnt(a.groups.length, VEIDI) + '</span></button></li>';
+        '<span class="pbc_area-i" aria-hidden="true" id="pbc-ai-' + i + '">' + esc(a.intro) + '</span><span class="pbc_area-m">' + cnt(n, DARBI) + ' · ' + cnt(a.groups.length, VEIDI) + '</span></button></li>';
     }).join('');
     function renderGroups() {
       var a = area();
@@ -360,16 +411,24 @@ window.PBC_SETTINGS = {
     }
 
     // Works
+    // Light Latvian stemming: "flīzes" finds "flīzēšana", "krāsot" finds "krāsošana".
     function stems(q) {
       return q.split(' ').filter(Boolean).map(function (w) {
         var m = w.length >= 4 && /(as|es|is|us|os|am|em|im|um|a|e|i|u|s)$/.exec(w);
-        return m && w.length - m[0].length >= 3 ? w.slice(0, -m[0].length) : w;
+        if (w.length >= 5 && /[aeiou]t$/.test(w)) w = w.slice(0, -1);
+        else if (m && w.length - m[0].length >= 3) w = w.slice(0, -m[0].length);
+        return w.length >= 7 ? w.slice(0, 6) : w;
       });
     }
+    var hitCache = {};
     function hits() {
-      return Object.keys(ITEMS).map(function (k) { return ITEMS[k]; }).filter(function (it) {
-        return st.stems.every(function (w) { return it.key.indexOf(w) >= 0; });
-      });
+      if (hitCache.q === st.q) return hitCache.list;
+      // Two letters match the start of a word in the name only (else whole areas match by their name).
+      var re = st.q.length < 3 && new RegExp('(^|[^a-z0-9])' + st.q.replace(/[^a-z0-9]/g, ''));
+      hitCache = { q: st.q, list: Object.keys(ITEMS).map(function (k) { return ITEMS[k]; }).filter(function (it) {
+        return re ? re.test(fold(it.name)) : st.stems.every(function (w) { return it.key.indexOf(w) >= 0; });
+      }) };
+      return hitCache.list;
     }
     function mark(name) {
       if (!st.q) return esc(name);
@@ -446,6 +505,7 @@ window.PBC_SETTINGS = {
       el.wh.innerHTML = h; el.sets.innerHTML = sets; el.wf.innerHTML = foot;
       el.wf.hidden = !foot;
       order.forEach(rowSum);
+      if (!order.length) el.tot.innerHTML = totHTML(totals(), 1);
       badges(); marks(); pad();
     }
     function rowSum(id) {
@@ -469,11 +529,15 @@ window.PBC_SETTINGS = {
       if (!any || !m.n) h += '<p class="pbc_total is-empty">—' + NB + '€</p><p class="pbc_rng">' + esc(any ? S.resultNoQty : S.resultEmpty) + '</p>';
       else {
         var mo = t.monthOnly ? '<i> mēnesī</i>' : '';
-        h += '<p class="pbc_total"><small>≈</small> ' + money(m.mid) + mo + '</p><p class="pbc_rng">' + esc(S.rangeLabel) + ' <b>' + rng(m.lo, m.hi, num0, 1) + NB + '€' + (t.monthOnly ? ' mēnesī' : '') + '</b></p>';
+        h += '<p class="pbc_total"><small>≈</small>' + NB + money(m.mid) + mo + '</p><p class="pbc_rng">' + esc(S.rangeLabel) + ' <b>' + rng(m.lo, m.hi, num0, 1) + NB + '€' + (t.monthOnly ? ' mēnesī' : '') + '</b></p>';
         if (t.once.n && t.month.n) h += '<p class="pbc_mon">' + esc(S.monthLabel) + ' <b>≈ ' + money(t.month.mid) + '</b> (' + rng(t.month.lo, t.month.hi, num0, 1) + NB + '€)</p>';
       }
       return h + notesHTML(t, shortOk);
     }
+    // Two picked works with the same name (walls and ceiling…) are told apart by their type of work.
+    var named = function (it) {
+      return order.some(function (id) { return ITEMS[id] !== it && ITEMS[id].name === it.name; }) ? it.name + ' (' + it.group.name + ')' : it.name;
+    };
     function renderLines(t) {
       var h = '';
       AREAS.forEach(function (a) {
@@ -481,16 +545,17 @@ window.PBC_SETTINGS = {
         if (!ls.length) return;
         h += '<li class="pbc_line-a"><span>' + esc(a.name) + '</span><span data-sub="' + a.i + '"></span></li>';
         ls.forEach(function (l) {
-          var it = l.it, p = l.p;
-          h += '<li class="pbc_line" data-id="' + it.id + '"><button type="button" class="pbc_line-n" data-goto aria-label="' + esc(it.name + ': ' + S.goto) + '">' + esc(it.name) + '</button>' +
+          var it = l.it, p = l.p, nm = named(it);
+          h += '<li class="pbc_line" data-id="' + it.id + '"><button type="button" class="pbc_line-n" data-goto aria-label="' + esc(nm + ': ' + S.goto) + '">' + esc(nm) + '</button>' +
             '<span class="pbc_lsum" data-ls></span><div class="pbc_lq">' +
-            '<input class="pbc_in" data-k="q" inputmode="decimal" autocomplete="off" value="' + nfq.format(p.q) + '" aria-label="' + esc(S.qtyLabel + ' (' + word(it.unit.qty, 2) + '), ' + it.name) + '"><span class="pbc_unit" data-u="q">' + esc(word(it.unit.qty, p.q)) + '</span>' +
-            (it.unit.visits ? '<span class="pbc_amt is-v">× <input class="pbc_in" data-k="v" inputmode="decimal" autocomplete="off" value="' + nfq.format(p.v) + '" aria-label="' + esc(S.visitsAria + ', ' + it.name) + '"> <span class="pbc_unit" data-u="v">' + word(REIZES, p.v) + '</span></span>' : '') +
+            '<input class="pbc_in" data-k="q" inputmode="decimal" autocomplete="off" value="' + nfq.format(p.q) + '" aria-label="' + esc(S.qtyLabel + ' (' + word(it.unit.qty, 2) + '), ' + nm) + '"><span class="pbc_unit" data-u="q">' + esc(word(it.unit.qty, p.q)) + '</span>' +
+            (it.unit.visits ? '<span class="pbc_amt is-v">× <input class="pbc_in" data-k="v" inputmode="decimal" autocomplete="off" value="' + nfq.format(p.v) + '" aria-label="' + esc(S.visitsAria + ', ' + nm) + '"> <span class="pbc_unit" data-u="v">' + word(REIZES, p.v) + '</span></span>' : '') +
             '<span class="pbc_rate">× ' + rate(it.price) + ' ' + esc(it.unit.price) + '</span>' +
-            '<button type="button" class="pbc_rm" data-remove aria-label="' + esc(S.remove + ': ' + it.name) + '">×</button></div></li>';
+            '<button type="button" class="pbc_rm" data-remove aria-label="' + esc(S.remove + ': ' + nm) + '">×</button></div></li>';
         });
       });
-      el.lines.innerHTML = h;
+      // On short laptop screens the disclaimers scroll with the lines (the pinned totals drop them).
+      el.lines.innerHTML = h + (t.lines.length ? '<li class="pbc_line-notes">' + notesHTML(t, 1) + '</li>' : '');
     }
     function renderSum() {
       var t = totals(), any = order.length > 0, u = used();
@@ -516,9 +581,9 @@ window.PBC_SETTINGS = {
       renderDock(t);
       writeFields(t);
       if (el.dOffer.open) renderRecap(t);
-      announce(!any ? '' : t.main.n ? S.resultLabel + ' ' + money(t.main.mid) + (t.monthOnly ? ' mēnesī' : '') + ', izvēlēti darbi: ' + order.length : 'Izvēlēti darbi: ' + order.length + ', apjoms nav norādīts');
+      announce(!any ? S.resultEmpty : t.main.n ? S.resultLabel + ' ' + money(t.main.mid) + (t.monthOnly ? ' mēnesī' : '') + ', izvēlēti darbi: ' + order.length : 'Izvēlēti darbi: ' + order.length + ', apjoms nav norādīts');
     }
-    el.how.innerHTML = '<h4>' + esc(S.howTitle) + '</h4><ol>' + (S.how || []).map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ol><p class="pbc_tip">' + esc(S.tip) + '</p><p>' + quiet() + '</p>';
+    el.how.innerHTML = '<h4>' + esc(S.howTitle) + '</h4><ol>' + (Array.isArray(S.how) ? S.how : []).map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ol><p class="pbc_tip">' + esc(S.tip) + '</p><p>' + quiet() + '</p>';
     function renderDock(t) {
       var any = order.length > 0, m = t.main, d = el.dock;
       var was = d.hidden;
@@ -526,7 +591,8 @@ window.PBC_SETTINGS = {
       if (!any) { if (!was) pad(); return; }
       $('[data-dt]').textContent = m.n ? '≈ ' + money(m.mid) + (t.monthOnly ? ' mēnesī' : '') : '—' + NB + '€';
       $('[data-di]').textContent = cnt(order.length, DARBI) + (m.n ? ' · ' + rng(m.lo, m.hi, num0) + NB + '€' : '') + (t.once.n && t.month.n ? ' · + ' + money(t.month.mid) + '/mēn.' : '');
-      $('[data-dn]').textContent = (t.once.n && t.month.n && mP.matches ? '+ ' + money(t.month.mid) + '/mēn. · ' : '') + S.dockNote;
+      var dn = String(S.dockNote || '');
+      $('[data-dn]').textContent = t.once.n && t.month.n && mP.matches ? '+ ' + money(t.month.mid) + '/mēn. · ' + dn.charAt(0).toLowerCase() + dn.slice(1) : dn;
       $('[data-dc]').textContent = order.length;
       if (was) pad();
     }
@@ -534,7 +600,7 @@ window.PBC_SETTINGS = {
       var open = !flow() ? ' open' : '';
       el.recap.innerHTML = '<h3 id="pbc-recap-title">' + esc(S.resultTitle) + '</h3><div class="pbc_tot">' + totHTML(t) + '</div>' +
         '<details' + open + '><summary>' + esc(fill(S.worksFold, { n: order.length })) + '</summary><ul role="list">' + t.lines.map(function (l) {
-          return '<li><span>' + esc(l.it.name) + '</span><b>' + lsum(l) + '</b><small>' + esc(qtyText(l.it, l.p)) + '</small></li>';
+          return '<li><span>' + esc(l.it.name) + '</span><b>' + lsum(l) + '</b><small>' + esc((named(l.it) !== l.it.name ? l.it.group.name + ' · ' : '') + qtyText(l.it, l.p)) + '</small></li>';
         }).join('') + '</ul></details><button type="button" class="pbc_pill" data-edit>' + esc(S.editCalc) + '</button>';
     }
     var timer;
@@ -571,7 +637,7 @@ window.PBC_SETTINGS = {
     function writeFields(t) {
       if (!form) return;
       t = t || totals();
-      var w = function (n) { return String(Math.round(n)); };
+      var w = function (n) { return String(Math.round(Math.round(n * 100) / 100)); };
       setField('aprekins', order.length ? summaryText(t) : '');
       setField('aprekins_joma', used().map(function (a) { return a.name; }).join(', '));
       setField('aprekins_darbi', String(order.length));
@@ -589,13 +655,14 @@ window.PBC_SETTINGS = {
       li.classList.toggle('is-on', on);
       li.querySelector('.pbc_check').checked = on;
       $$('.pbc_in', li).forEach(function (i) { if (i !== document.activeElement) i.value = on ? nfq.format(picked[id][i.getAttribute('data-k')]) : ''; });
+      $$('[data-u]', li).forEach(function (u) { var q = u.getAttribute('data-u') === 'q'; u.textContent = word(q ? ITEMS[id].unit.qty : REIZES, on ? picked[id][q ? 'q' : 'v'] : 0); });
       rowSum(id);
     }
     function toggle(id, on, k, n) {
       var it = ITEMS[id];
       if (on && !picked[id]) {
         picked[id] = { q: lastQty[it.unitKey] || 1, v: 1 };
-        if (k) picked[id][k] = k === 'v' ? Math.max(1, Math.round(n)) : Math.round(n * 100) / 100;
+        if (k) picked[id][k] = k === 'v' ? visits(n) : Math.round(n * 100) / 100;
         if (k === 'q' && n > 0) lastQty[it.unitKey] = picked[id].q;
         order.push(id);
       } else if (!on && picked[id]) {
@@ -603,14 +670,21 @@ window.PBC_SETTINGS = {
         order.splice(order.indexOf(id), 1);
       } else return;
       syncRow(id); badges(); renderSum();
+      // At W the new line is scrolled into view inside the summary list (never the page).
+      var ln = on && L() === 'W' && $('.pbc_ws .pbc_lines [data-id="' + id + '"]');
+      if (ln) {
+        var lr = el.lines.getBoundingClientRect(), r = ln.getBoundingClientRect();
+        if (r.top < lr.top || r.bottom > lr.bottom) el.lines.scrollTop += r.top - lr.top - (el.lines.clientHeight - r.height) / 2;
+      }
     }
+    var visits = function (n) { return Math.min(999, Math.max(1, Math.round(n))); };
     function parseNum(s) {
       var n = parseFloat(String(s).replace(/\s/g, '').replace(',', '.'));
       return isNaN(n) ? 0 : Math.min(Math.max(n, 0), 1e6);
     }
     function setQty(id, k, n, src) {
       var p = picked[id], it = ITEMS[id];
-      p[k] = k === 'v' ? Math.max(1, Math.round(n)) : Math.round(n * 100) / 100;
+      p[k] = k === 'v' ? visits(n) : Math.round(n * 100) / 100;
       if (k === 'q' && p.q > 0) lastQty[it.unitKey] = p.q;
       $$('[data-id="' + id + '"] .pbc_in[data-k="' + k + '"]').forEach(function (i) { if (i !== src) i.value = nfq.format(p[k]); });
       $$('[data-id="' + id + '"] [data-u="' + k + '"]').forEach(function (u) { u.textContent = k === 'q' ? word(it.unit.qty, p.q) : word(REIZES, p.v); });
@@ -636,9 +710,12 @@ window.PBC_SETTINGS = {
       if (h) scrollY(h.parentNode.getBoundingClientRect().top + window.scrollY - topOff(), fn); else toFrame(fn, 1);
     }
     var focus = function (n) { if (n) n.focus({ preventScroll: true }); };
+    var vis = function (n) { return n && n.isConnected && n.offsetParent !== null ? n : null; };
     function pad() {
-      var t = topOff() + 8, b = 0, h = flow() && (st.view === 'works' || st.q) && $('.pbc_set.is-open > .pbc_set-h, .pbc_set-h.is-static');
-      if (h && getComputedStyle(h).position === 'sticky') t += h.offsetHeight;
+      var t = topOff() + 8, b = 0;
+      if (flow() && (st.view === 'works' || st.q)) t += Math.max.apply(null, [0].concat($$('.pbc_set.is-open > .pbc_set-h, .pbc_set-h.is-static').filter(function (x) {
+        return getComputedStyle(x).position === 'sticky';
+      }).map(function (x) { return x.offsetHeight; })));
       if (!el.dock.hidden && el.dock.offsetHeight) b = el.dock.offsetHeight + (parseFloat(getComputedStyle(el.dock).bottom) || 0) + 8;
       html.style.setProperty('--pbc-spt', t + 'px');
       html.style.setProperty('--pbc-spb', b + 'px');
@@ -646,7 +723,8 @@ window.PBC_SETTINGS = {
 
     // Navigation actions
     function setView(v) { st.view = v; root.setAttribute('data-view', v); }
-    function exitSearch() { if (!st.q) return; st.q = ''; st.stems = []; el.q.value = ''; el.clear.hidden = true; root.removeAttribute('data-mode'); if (st.prev) setView(st.prev); st.prev = null; }
+    function leaveSearch() { if (!st.q) return; st.q = ''; st.stems = []; root.removeAttribute('data-mode'); if (st.prev) setView(st.prev); st.prev = null; }
+    function exitSearch() { el.q.value = ''; el.clear.hidden = true; leaveSearch(); }
     function go(ai, gi, o, v) {
       exitSearch();
       if (v) setView(v);
@@ -657,7 +735,7 @@ window.PBC_SETTINGS = {
     function search(v) {
       var q = fold(v.trim().replace(/\s+/g, ' '));
       el.clear.hidden = !v;
-      if (q.length < 2) { if (st.q) { exitSearch(); renderWorks(); } return; }
+      if (q.length < 2) { if (st.q) { leaveSearch(); renderWorks(); } return; }
       if (!st.q) { st.prev = st.view; setView('works'); root.setAttribute('data-mode', 'search'); }
       st.q = q; st.stems = stems(q);
       renderWorks();
@@ -705,17 +783,24 @@ window.PBC_SETTINGS = {
       if (!d.open) { d.showModal(); stack.push(d); }
       (topLayer() || root).appendChild(el.status);
       focus(target);
+      if (d !== el.dSum && flow()) {
+        var hd = $('.pbc_dlg-h', d);
+        if (hd) d.style.scrollPaddingTop = hd.offsetHeight + 8 + 'px';
+        if (target && target.getBoundingClientRect().bottom > d.clientHeight) target.scrollIntoView({ block: 'nearest' });
+      }
     }
     [el.dSum, el.dOffer, el.dReq].forEach(function (d) {
-      d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+      // Backdrop click closes, but not the end of a text selection dragged out of a field.
+      d.addEventListener('pointerdown', function (e) { d._down = e.target === d; });
+      d.addEventListener('click', function (e) { if (e.target === d && d._down) d.close(); d._down = false; });
       d.addEventListener('close', function () {
         stack.splice(stack.indexOf(d), 1);
         if (d === el.dSum) el.ws.appendChild(el.sum);
         (topLayer() || root).appendChild(el.status);
         if (d._skip) { d._skip = false; return; }
-        var op = d._op;
-        if (op && op.isConnected && op.offsetParent !== null) focus(op);
-        else focus(!el.dock.hidden && el.dock.offsetParent ? $('[data-open-sum]') : $('.pbc_foot [data-cta]'));
+        var t = vis(d._op) || vis($('[data-open-sum]')) || vis($('.pbc_ws .pbc_foot [data-cta]'));
+        if (t) focus(t);
+        else (vis($('.pbc_set.is-open .pbc_acc')) || vis($('#pbc-works-title')) || vis($('[data-area="' + st.a + '"]')) || el.q).focus();
       });
     });
     function closeAll() { stack.slice().reverse().forEach(function (d) { d._skip = true; d.close(); }); }
@@ -738,7 +823,12 @@ window.PBC_SETTINGS = {
       if (!reqBlock) { location.href = S.fallbackUrl; return; }
       var sel = reqBlock.querySelector('select');
       name = name || svcFor(st.a, st.g);
-      if (sel && name) [].some.call(sel.options, function (o) { if (fold(o.value || o.text) === fold(name) || fold(o.text) === fold(name)) { sel.value = o.value; return true; } });
+      if (sel) {
+        if (sel._auto != null && sel.value === sel._auto) sel.value = '';
+        if (name) [].some.call(sel.options, function (o) {
+          if (o.value && (fold(o.value) === fold(name) || fold(o.text) === fold(name))) { sel.value = sel._auto = o.value; return true; }
+        });
+      }
       openDlg(el.dReq, opener, doneMsg(reqBlock) || (sel && !sel.value ? sel : $('input:not([type=hidden]):not([type=submit]), textarea', reqBlock)));
     }
     function svcFor(ai, gi) {
@@ -779,10 +869,15 @@ window.PBC_SETTINGS = {
       var row = b.closest('[data-id]'), id = row && row.getAttribute('data-id'), a;
       if (b.hasAttribute('data-area')) {
         a = +b.getAttribute('data-area');
-        if (flow()) { go(a, lastG[a] || 0, -1, 'works'); toFrame(function () { focus($('#pbc-works-title')); }, 1); announce(AREAS[a].name + ': ' + cnt(AREAS[a].groups.length, VEIDI), 1); }
-        else { go(a, lastG[a] || 0, -1); toFrame(); announce(AREAS[a].name + ' › ' + area().groups[st.g].name + ': ' + cnt(area().groups[st.g].items.length, DARBI), 1); }
+        if (flow()) {
+          go(a, lastG[a] || 0, lastO[a] != null ? lastO[a] : -1, 'works');
+          var fin = function () { focus(vis($('.pbc_set.is-open .pbc_acc')) || $('#pbc-works-title')); };
+          if (lastY[a] != null) scrollY(lastY[a], fin); else toFrame(fin, 1);
+          announce(AREAS[a].name + ': ' + cnt(AREAS[a].groups.length, VEIDI), 1);
+        }
+        else { go(a, lastG[a] || 0, lastG[a] || 0, 'works'); toFrame(); announce(AREAS[a].name + ' › ' + area().groups[st.g].name + ': ' + cnt(area().groups[st.g].items.length, DARBI), 1); }
       }
-      else if (b.hasAttribute('data-group')) { a = +b.getAttribute('data-group'); go(st.a, a, a); toFrame(); announce(area().groups[a].name + ': ' + cnt(area().groups[a].items.length, DARBI), 1); }
+      else if (b.hasAttribute('data-group')) { a = +b.getAttribute('data-group'); go(st.a, a, a, 'works'); toFrame(); announce(area().groups[a].name + ': ' + cnt(area().groups[a].items.length, DARBI), 1); }
       else if (b.hasAttribute('data-acc')) {
         a = +b.getAttribute('data-acc');
         var open = st.o !== a;
@@ -793,12 +888,13 @@ window.PBC_SETTINGS = {
       }
       else if (b.hasAttribute('data-back')) {
         var left = st.a;
+        lastO[left] = st.o; lastY[left] = window.scrollY;
         exitSearch(); setView('areas'); pad();
         toFrame(function () { focus($('[data-area="' + left + '"]')); }, 1);
       }
       else if (b.hasAttribute('data-next')) {
         var nx = nextOf(st.a, st.g);
-        if (nx) { go(nx[0], nx[1], nx[1]); toFrame(function () { focus($('#pbc-works-title')); }, 1); }
+        if (nx) { go(nx[0], nx[1], nx[1], 'works'); toFrame(function () { focus($('#pbc-works-title')); }, 1); }
       }
       else if (b.hasAttribute('data-clear')) { exitSearch(); renderWorks(); focus(el.q); }
       else if (b.hasAttribute('data-step')) {
@@ -806,7 +902,10 @@ window.PBC_SETTINGS = {
         if (p) setQty(id, k, Math.max(k === 'v' ? 1 : 0, (p[k] || 0) + Number(b.getAttribute('data-step'))), null);
       }
       else if (b.hasAttribute('data-remove')) {
-        var i = order.indexOf(id), nid = order[i + 1] || order[i - 1];
+        var li = b.closest('.pbc_line'), nx2 = li.nextElementSibling, pv = li.previousElementSibling;
+        while (nx2 && !nx2.classList.contains('pbc_line')) nx2 = nx2.nextElementSibling;
+        while (pv && !pv.classList.contains('pbc_line')) pv = pv.previousElementSibling;
+        var nid = (nx2 || pv) && (nx2 || pv).getAttribute('data-id');
         toggle(id, false);
         focus(nid ? $('.pbc_lines [data-id="' + nid + '"] [data-remove]') : el.dSum.open ? $('.pbc_x', el.sum) : $('.pbc_foot [data-cta]'));
       }
@@ -817,13 +916,18 @@ window.PBC_SETTINGS = {
       else if (b.hasAttribute('data-edit')) edit();
       else if (b.hasAttribute('data-close')) b.closest('dialog').close();
       else if (b.hasAttribute('data-clearall')) {
+        var disarm = function () { clearTimeout(b._t); b.classList.remove('is-confirm'); b.textContent = S.clear; };
         if (!b.classList.contains('is-confirm')) {
           b.classList.add('is-confirm'); b.textContent = S.clearConfirm;
-          setTimeout(function () { b.classList.remove('is-confirm'); b.textContent = S.clear; }, 4000);
+          b._t = setTimeout(disarm, 4000);
+          announce(S.clearConfirm, 1);
           return;
         }
+        disarm();
         api.reset(); exitSearch(); renderWorks(); announce(S.cleared, 1);
-        focus(b.offsetParent ? b : $('.pbc_foot [data-cta]'));
+        if (el.dSum.open) { el.dSum._skip = true; el.dSum.close(); }
+        var ft = vis($('.pbc_ws .pbc_foot [data-cta]')) || vis($('.pbc_set.is-open .pbc_acc')) || vis($('#pbc-works-title')) || vis($('[data-area="' + st.a + '"]')) || el.q;
+        ft.focus();
       }
     });
     root.addEventListener('change', function (e) {
@@ -833,6 +937,9 @@ window.PBC_SETTINGS = {
       if (e.target.checked && mouse && mFine.matches) {
         var inp = e.target.closest('.pbc_row').querySelector('.pbc_in[data-k="q"]');
         if (inp && inp.offsetParent) { focus(inp); inp.select(); }
+      } else if (e.target.checked) {
+        var qb = e.target.closest('.pbc_row').querySelector('.pbc_qty');
+        if (qb && qb.offsetParent) requestAnimationFrame(function () { qb.scrollIntoView({ block: 'nearest', behavior: mRed.matches ? 'auto' : 'smooth' }); });
       }
       mouse = false;
     });
@@ -867,21 +974,34 @@ window.PBC_SETTINGS = {
     document.addEventListener('click', function (e) {
       var a = e.target.closest && e.target.closest('[data-pbc-show]');
       if (!a) return;
-      e.preventDefault(); show(a.getAttribute('data-pbc-show'));
-    });
+      e.preventDefault(); e.stopPropagation(); show(a.getAttribute('data-pbc-show'));
+    }, true);
     function relayout() {
       if (mW.matches && el.dSum.open) el.dSum.close();
+      var a = document.activeElement, li = a && el.sets.contains(a) && a.closest('[data-id]'), k = a && a.getAttribute && a.getAttribute('data-k');
+      var sel = a && a.selectionStart != null ? [a.selectionStart, a.selectionEnd] : null;
+      if (li && flow() && !st.q) { setView('works'); st.o = ITEMS[li.getAttribute('data-id')].group.i; }
       renderWorks(); renderDock(totals());
+      if (li && !li.isConnected) {
+        var n = $('.pbc_sets [data-id="' + li.getAttribute('data-id') + '"] ' + (k ? '.pbc_in[data-k="' + k + '"]' : '.pbc_check'));
+        n = vis(n) || $('#pbc-works-title');
+        n.focus();
+        if (sel && n.setSelectionRange) try { n.setSelectionRange(sel[0], sel[1]); } catch (x) {}
+      }
     }
     [mW, mS, mP].forEach(function (m) { if (m.addEventListener) m.addEventListener('change', relayout); else m.addListener(relayout); });
     if (window.ResizeObserver) new ResizeObserver(pad).observe(el.dock);
 
     api = {
       resolve: resolve, show: show,
-      reset: function () { order.slice().forEach(function (id) { toggle(id, false); }); },
-      request: function (n) { openRequest(n, document.activeElement); }
+      reset: function () {
+        var ids = order.slice();
+        ids.forEach(function (id) { delete picked[id]; });
+        order.length = 0;
+        ids.forEach(syncRow); badges(); renderSum();
+      },
+      request: function (n) { openRequest(n, document.activeElement); return true; }
     };
-    Object.keys(SVC).forEach(function (n) { var r = resolve(n); if (!r || !r.ok) warn('Pakalpojuma saite „' + n + '” norāda uz neesošu jomu vai darbu veidu: ' + SVC[n]); });
 
     // First render, then links into the calculator
     setView('areas');

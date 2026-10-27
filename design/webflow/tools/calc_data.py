@@ -84,6 +84,9 @@ RENAME = {
     'Pamatu izveide no FIBO,KIWI blokiem 5Mpa': 'Pamatu izveide no FIBO, KIWI blokiem 5 MPa',
     'Pakāpienu betonēšana (līdz 2,5m garumā)': 'Pakāpienu betonēšana (līdz 2,5 m garumā)',
     'Objektu apsardze - videonovērošana': 'Objekta apsardze – videonovērošana',
+    'Guļbaļķu sienas izbūve (Guļbūvju būvniecībā)': 'Guļbaļķu sienas izbūve (guļbūvju būvniecībā)',
+    'Bitumeņa apakšklāja ieklāšana': 'Bitumena apakšklāja ieklāšana',
+    'Bitumeņa dakstiņu montāža': 'Bitumena dakstiņu montāža',
     'Ventilācijas kanāla-dūmvada izgatavošana': 'Ventilācijas kanāla / dūmvada izgatavošana',
     'Gāzbetona bloku mūrēšana,AEROC,ROCLITE': 'Gāzbetona bloku mūrēšana (AEROC, ROCLITE)',
     'Keramzīta bloku mūrēšana, FIBO': 'Keramzīta bloku mūrēšana (FIBO)',
@@ -163,48 +166,76 @@ NOTE = {
         'Brīvi pieejamā vietā; sarežģītos apstākļos dārgāk.',
     'Valmieras Namsaimnieka likme par tehnikas darba stundu; mazam celmam iespējama minimālā maksa.':
         'Tehnikas darba stunda; mazam celmam iespējama minimālā maksa.',
+    'Cena atkarīga no apauguma blīvuma, stumbru diametra un vai jāizņem saknes.':
+        'Cena atkarīga no apauguma blīvuma, stumbru diametra un no tā, vai jāizņem saknes.',
+    'Vienkāršai detaļu apstrādei; sarežģītas jig/šablona prasības sadārdzina.':
+        'Vienkāršai detaļu apstrādei; sarežģītas šablona prasības sadārdzina.',
 }
 
 # The admin's view of the prices: one Code Embed with a plain-text table (the engine parses it).
 TABLE_HEAD = '''<script type="text/plain" data-pbc-cenas>
-==============================================================================
-  PROBUILD CENU KALKULATORS · DARBU CENAS 2026
-  Šajā blokā ir visas kalkulatora cenas. Kalkulatora kods ir lapas
-  iestatījumos (Page settings → Custom code), to mainīt nevajag.
-==============================================================================
-  KĀ MAINĪT CENU
-  Katra rinda ir viens darbs. Mainiet skaitļus pirmajās trīs kolonnās:
-
-      NO |   CENA |   LĪDZ | MĒRV.      | DARBS
-     2.5 |      4 |      7 | m2         | Sagatavošanas darbi, zemes darbi
-
-    NO    = zemākā cena
-    CENA  = ieteicamā cena, kalkulators to rāda kā galveno
-    LĪDZ  = augstākā cena
-    MĒRV. = mērvienība, par kuru ir cena
-
-  · Cena ir eiro par vienu mērvienību, bez € zīmes. Decimāldaļa: 12.5 vai 12,5
-  · Starp kolonnām jābūt svītrai |. Atstarpju skaits nav svarīgs.
-  · Ja cena ir viena, ierakstiet to visās trīs kolonnās: 40 | 40 | 40
-  · Piezīmi klientam raksta rindas beigās aiz vēl vienas svītras:
-      40 |     55 |     75 | h          | Darba nosaukums | Piezīme klientam
-  · Jauns darbs: nokopējiet rindu vajadzīgajā grupā un nomainiet tekstu.
-    Dzēst: izdzēsiet rindu. Paslēpt uz laiku: rindas sākumā ierakstiet #.
-  · Jauna grupa sākas ar ---, piem. „--- Jumts”; jauna joma ar ===.
-    Jomas „Apraksts:” rāda zem jomas nosaukuma, „Piezīme:” pie kopsummas,
-    „Īsā piezīme:” (nav obligāta) pie kopsummas, ja izvēlēti darbi vairākās jomās.
-  · Mērvienības: m2, m3, m (tekošais metrs), h (stunda), gab, kompl, t, kg,
-    diena, reize, brauciens, izbraukums, pasūtījums, objekts, koks, celms.
-    „m2 reizē” cenu reizina arī ar reižu skaitu; „m2 mēnesī” un „mēnesī” ir
-    ikmēneša maksa, ko skaita atsevišķi.
-  · Rindas, kas sākas ar #, kalkulators neņem vērā.
-  · Pēc izmaiņām: Save, tad Publish. Kļūdainu rindu kalkulators izlaiž, un
-    adresē …webflow.io virs kalkulatora parāda, kurā rindā ir kļūda.
-==============================================================================
+#=============================================================================
+#  PROBUILD CENU KALKULATORS · DARBU CENAS 2026
+#  Šajā blokā ir visas kalkulatora cenas. Kalkulatora kods ir lapas
+#  iestatījumos (Page settings → Custom code), to mainīt nevajag.
+#  Rindas, kas sākas ar #, ir paskaidrojumi: kalkulators tās nerāda.
+#=============================================================================
+#  KĀ MAINĪT CENU
+#  Katra rinda ir viens darbs. Mainiet skaitļus pirmajās trīs kolonnās:
+#
+#      NO |   CENA |   LĪDZ | MĒRV.      | DARBS
+#     2.5 |      4 |      7 | m2         | Sagatavošanas darbi, zemes darbi
+#
+#    NO    = zemākā cena
+#    CENA  = ieteicamā cena, kalkulators to rāda kā galveno
+#    LĪDZ  = augstākā cena
+#    MĒRV. = mērvienība, par kuru ir cena
+#
+#  · Cena ir eiro par vienu mērvienību, bez € zīmes. Decimāldaļa: 12.5 vai 12,5
+#  · Kolonnas atdala vertikālā svītra |. Atstarpju skaits nav svarīgs.
+#  · Ja cena ir viena, ierakstiet to visās trīs kolonnās: 40 | 40 | 40
+#  · Piezīmi klientam raksta rindas beigās aiz vēl vienas svītras |:
+#      40 |     55 |     75 | h          | Darba nosaukums | Piezīme klientam
+#
+#  PĒC IZMAIŅĀM
+#  · Spiediet Save & Close, tad Publish.
+#  · Pārbaudiet lapu adresē …webflow.io/pakalpojumi?pbc-check – ja kādā rindā
+#    ir kļūda, virs kalkulatora būs sarkans lodziņš ar rindas numuru un
+#    iemeslu. Kļūdainu rindu kalkulators nerāda, pārējās darbojas.
+#
+#  DARBI, DARBU VEIDI UN JOMAS
+#  · Jauns darbs: nokopējiet rindu tajā pašā darbu veidā un nomainiet tekstu.
+#    Dzēst: izdzēsiet rindu. Paslēpt uz laiku: rindas sākumā ierakstiet #.
+#  · Darbu veids (grupa) sākas ar rindu „--- Nosaukums”, joma – ar rindu
+#    „=== Nosaukums”. # šādas rindas sākumā paslēpj visu darbu veidu vai jomu.
+#  · Jomas teksti: „Apraksts:” – zem jomas nosaukuma; „Piezīme:” – pie
+#    kopsummas; „Īsā piezīme:” (nav obligāta) – pie kopsummas, ja izvēlēti
+#    darbi vairākās jomās.
+#  · Visas rindas jāraksta virs rindas „=== BEIGAS”.
+#  · Pakalpojumu saraksta pogas atver darbu veidu pēc tā nosaukuma. Ja
+#    pārdēvējat darbu veidu vai jomu, nomainiet nosaukumu arī lapas kodā
+#    (PBC_SETTINGS, daļā services), citādi poga atvērs pieteikumu bez aprēķina.
+#
+#  MĒRVIENĪBAS (rakstiet tieši tā)
+#    m2, m3, m3 izejm., m (tekošais metrs), m kanāls, h (stunda), gab,
+#    kompl, t, kg, diena, reize, brauciens, izbraukums, griezums,
+#    pasūtījums, koks, celms, objekts, izsaukums,
+#    m2 reizē – cenu reizina arī ar reižu skaitu (piem. pļaušana sezonā),
+#    m2 mēnesī un mēnesī – ikmēneša maksa, to skaita atsevišķi.
+#    Jaunu mērvienību pievieno lapas kodā (PBC_SETTINGS, daļā units).
+#
+#  NEMAINIET
+#  · Pirmo rindu (<script …>) un rindas zem „=== BEIGAS”.
+#  · Code Embed saglabā līdz 50 000 zīmēm. Ja vietas pietrūkst, ievietojiet
+#    tajā pašā sadaļā vēl vienu Code Embed ar daļu jomu: tas sākas ar rindu
+#    <script type="text/plain" data-pbc-cenas>, tad „=== Jomas nosaukums”,
+#    darbi, „=== BEIGAS” un tāda pati pēdējā rinda kā šim blokam.
+#=============================================================================
 '''
 COLS = '#   NO |   CENA |   LĪDZ | MĒRV.      | DARBS'
 TABLE_FOOT = '''
 === BEIGAS ===================================================================
+# Zem šīs rindas neko nemainiet.
 </script>
 <div class="pbc" data-pbc>
   <noscript><p>Kalkulatoram vajadzīgs JavaScript. Precīzu cenas piedāvājumu var pieprasīt pa tālruni +371 26 518 131.</p></noscript>
@@ -225,6 +256,10 @@ def parse_range(s):
 
 def clean(s):
     return re.sub(r'\s+', ' ', str(s or '')).strip()
+
+
+def dash(s):
+    return re.sub(r' [-—] ', ' – ', s)
 
 
 def load(area):
@@ -248,8 +283,8 @@ def load(area):
         else:
             frm, to = num(row[c['frm']]), num(row[c['to']])
         group = RENAME.get(clean(row[c['group']]), clean(row[c['group']]))
-        item = dict(area=area['id'], group=group, name=RENAME.get(raw_name, raw_name), unit=UNIT[unit_text],
-                    frm=frm, price=price, to=to, note=NOTE.get(clean(row[c['note']]), clean(row[c['note']])) if 'note' in c else '',
+        item = dict(area=area['id'], group=group, name=dash(RENAME.get(raw_name, raw_name)), unit=UNIT[unit_text],
+                    frm=frm, price=price, to=to, note=dash(NOTE.get(clean(row[c['note']]), clean(row[c['note']]))) if 'note' in c else '',
                     source=dict(file=area['file'], sheet=area['sheet'], row=r, name=raw_name, unit=raw_unit))
         if not frm <= price <= to:
             print('WARN %s row %d: from %s, recommended %s, to %s' % (area['file'], r, frm, price, to))

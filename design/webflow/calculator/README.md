@@ -32,15 +32,22 @@ Piezīme: …                          disclaimer shown at the total
     NO     CENA     LĪDZ   unit   name
 ```
 
-Lines starting with `#` are comments; everything above the first `===` (the instructions) and after
-`=== BEIGAS` is ignored. Numbers accept a comma or a point. A row with a mistake is skipped and logged with
-its line number (`[Kalkulators] …` in the console); on `*.webflow.io` the errors are also shown above the
-calculator. More than one table block (`<script type="text/plain" data-pbc-cenas>`) may be used if one embed
-gets too long: the blocks are read in page order and areas with the same name are merged.
+Lines starting with `#` are comments (the instructions at the top are all comments). A `#` in front of a
+`---` or `===` heading hides that whole type of work or area. Rows must stand above `=== BEIGAS`. Numbers
+accept a comma or a point; cells may also be split by tabs (pasted from a spreadsheet). A row with a mistake
+is skipped and logged with its line number (`[Kalkulators] …` in the console); with `?pbc-check` in the
+address the errors are listed above the calculator (at most 30). More than one table block
+(`<script type="text/plain" data-pbc-cenas>`) may be used if one embed gets too long: the blocks are read in
+page order and areas and types of work with the same name are merged. The instructions must never contain
+the text `</script>` (it would end the block).
 
 Units are defined in `PBC_SETTINGS.units` (page footer code): `price` (text after the price), `qty` (word after
 the amount; singular/plural), `hint` (help shown on a ticked row), `visits` (price × amount × visits) and
-`monthly` (summed separately as a monthly fee). An unknown unit still works and shows as written.
+`monthly` (summed separately as a monthly fee). An unknown unit still shows as written and is reported as an
+error (no visits, no monthly fee).
+
+If the calculator code cannot start (a typo in `PBC_SETTINGS`, the table or its `<div data-pbc>` deleted),
+the page puts the two Webflow forms back in place (`html.pbc-off`), and the services list buttons go to them.
 
 ## How it calculates
 
@@ -79,8 +86,8 @@ The plain request form sends `Pakalpojums`, `vards`, `telefons`, `epasts`, `zina
 - **Remontdarbi:** the workbook has two price sheets that differ on 7 rows (tiling, ceiling painting,
   plasterboard ceilings, board painting, concrete floors, click parquet). The calculator uses the first sheet,
   "Darbu cenas 2026"; the summary sheet's averages match the other one. Confirm with the client.
-- Names: 65 spelling and punctuation fixes (`RENAME` in `tools/calc_data.py`; `calc_verify.py -v` lists them).
-  Prices and units are unchanged.
+- Names: 75 spelling and punctuation fixes (`RENAME` and the dash rule in `tools/calc_data.py`;
+  `calc_verify.py -v` lists them). Prices and units are unchanged.
 - Four maintenance notes quoted other companies' price lists (Rīgas Meži, Valmieras Namsaimnieks); reworded
   without the names (`NOTE` in `calc_data.py`).
 - Left out: "Ziemas ārkārtas darbi / brīvdienu piemaksa" (a coefficient 1–2, not a price); the maintenance note
@@ -108,8 +115,9 @@ After editing prices in Webflow, copy the embed's code back into `cenas.html` (a
 2. Bloka augšā ir instrukcija. Katra rinda ir viens darbs:
    `NO | CENA | LĪDZ | MĒRV. | DARBS`. Mainiet tikai skaitļus pirmajās trīs kolonnās: zemāko cenu, ieteicamo
    cenu (to kalkulators rāda kā galveno) un augstāko cenu. Decimāldaļu var rakstīt ar punktu vai komatu.
-3. Saglabājiet (Save) un publicējiet (Publish). Pārbaudiet lapu adresē …webflow.io: ja kādā rindā ir kļūda,
-   virs kalkulatora parādās sarkans lodziņš ar rindas numuru, un šī rinda netiek rādīta.
+3. Spiediet **Save & Close**, tad **Publish**. Pārbaudiet lapu adresē
+   `…webflow.io/pakalpojumi?pbc-check`: ja kādā rindā ir kļūda, virs kalkulatora parādās sarkans lodziņš ar
+   rindas numuru un iemeslu, un šī rinda netiek rādīta.
 4. Jaunu darbu pievieno, nokopējot rindu; jaunu darbu veidu – ar rindu `--- Nosaukums`. Pakalpojumu saraksta
    pogas atver kalkulatoru pie darbu veida pēc nosaukuma (lapas kods, `services`), tāpēc, pārdēvējot darbu
    veidu, nomainiet nosaukumu arī tur.

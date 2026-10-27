@@ -895,7 +895,7 @@
   {
    "area": "buvnieciba",
    "group": "Guļbūve, nojumes, terases",
-   "name": "Guļbaļķu sienas izbūve (Guļbūvju būvniecībā)",
+   "name": "Guļbaļķu sienas izbūve (guļbūvju būvniecībā)",
    "unit": "m2",
    "frm": 30.0,
    "price": 45.0,
@@ -1320,7 +1320,7 @@
   {
    "area": "buvnieciba",
    "group": "Jumts",
-   "name": "Bitumeņa apakšklāja ieklāšana",
+   "name": "Bitumena apakšklāja ieklāšana",
    "unit": "m2",
    "frm": 2.5,
    "price": 4.0,
@@ -1337,7 +1337,7 @@
   {
    "area": "buvnieciba",
    "group": "Jumts",
-   "name": "Bitumeņa dakstiņu montāža",
+   "name": "Bitumena dakstiņu montāža",
    "unit": "m2",
    "frm": 10.0,
    "price": 15.0,
@@ -1626,7 +1626,7 @@
   {
    "area": "buvnieciba",
    "group": "Jumts",
-   "name": "Jumta siltināšana - mansarda",
+   "name": "Jumta siltināšana – mansarda",
    "unit": "m2",
    "frm": 8.0,
    "price": 12.0,
@@ -4635,7 +4635,7 @@
   {
    "area": "metalapstrade",
    "group": "Žogi, vārti un sētiņas",
-   "name": "Vienkāršs metāla žogs — izgatavošana un montāža",
+   "name": "Vienkāršs metāla žogs – izgatavošana un montāža",
    "unit": "m",
    "frm": 90.0,
    "price": 120.0,
@@ -4652,7 +4652,7 @@
   {
    "area": "metalapstrade",
    "group": "Žogi, vārti un sētiņas",
-   "name": "Metāla žoga sekcija — izgatavošana bez montāžas",
+   "name": "Metāla žoga sekcija – izgatavošana bez montāžas",
    "unit": "m2",
    "frm": 65.0,
    "price": 95.0,
@@ -4703,7 +4703,7 @@
   {
    "area": "metalapstrade",
    "group": "Žogi, vārti un sētiņas",
-   "name": "Veramie metāla vārti — izgatavošana",
+   "name": "Veramie metāla vārti – izgatavošana",
    "unit": "kompl",
    "frm": 450.0,
    "price": 850.0,
@@ -4720,7 +4720,7 @@
   {
    "area": "metalapstrade",
    "group": "Žogi, vārti un sētiņas",
-   "name": "Bīdāmie metāla vārti — izgatavošana",
+   "name": "Bīdāmie metāla vārti – izgatavošana",
    "unit": "kompl",
    "frm": 850.0,
    "price": 1450.0,
@@ -4771,7 +4771,7 @@
   {
    "area": "metalapstrade",
    "group": "Margas, balkoni un kāpnes",
-   "name": "Kāpņu margas — izgatavošana un montāža",
+   "name": "Kāpņu margas – izgatavošana un montāža",
    "unit": "m",
    "frm": 80.0,
    "price": 115.0,
@@ -4788,7 +4788,7 @@
   {
    "area": "metalapstrade",
    "group": "Margas, balkoni un kāpnes",
-   "name": "Balkona / terases margas — izgatavošana un montāža",
+   "name": "Balkona / terases margas – izgatavošana un montāža",
    "unit": "m",
    "frm": 90.0,
    "price": 125.0,
@@ -5643,7 +5643,7 @@
    "frm": 20.0,
    "price": 35.0,
    "to": 55.0,
-   "note": "Vienkāršai detaļu apstrādei; sarežģītas jig/šablona prasības sadārdzina.",
+   "note": "Vienkāršai detaļu apstrādei; sarežģītas šablona prasības sadārdzina.",
    "source": {
     "file": "kokapstrade-2026.xlsx",
     "sheet": "Kokapstrādes cenas",
@@ -6238,7 +6238,7 @@
    "frm": 0.25,
    "price": 1.5,
    "to": 4.0,
-   "note": "Cena atkarīga no apauguma blīvuma, stumbru diametra un vai jāizņem saknes.",
+   "note": "Cena atkarīga no apauguma blīvuma, stumbru diametra un no tā, vai jāizņem saknes.",
    "source": {
     "file": "apsaimniekosana-2026.xlsx",
     "sheet": "Uzturēšanas darbu cenas",
