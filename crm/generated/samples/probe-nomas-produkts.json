@@ -1,0 +1,37 @@
+{
+  "triggerType": "form_submission",
+  "payload": {
+    "name": "Tehnikas nomas pieprasījums",
+    "siteId": "6adf4142414584038f9dbb34",
+    "data": {
+      "vards": "Test Person (TESTS)",
+      "telefons": "+371 26 518 131",
+      "datums": "Test value",
+      "ilgums": "6 h",
+      "produkts": "Ekskavators-iekrāvējs",
+      "form_key": "nomas-produkts",
+      "purpose": "Tehnikas noma",
+      "subject": "Noma: Ekskavators-iekrāvējs, Test value",
+      "page_path": "/nomas-produkts/ekskavators-iekravejs",
+      "prev_path": "",
+      "site_host": "probuild-group.webflow.io",
+      "page_lang": "lv",
+      "phone_e164": "+37126518131",
+      "date_iso": "",
+      "utm_source": "probe",
+      "utm_medium": "",
+      "utm_campaign": "ghl",
+      "utm_term": "",
+      "utm_content": "",
+      "referrer_host": "",
+      "channel": "probe"
+    },
+    "schema": [],
+    "submittedAt": "2026-10-27T18:03:15.000Z",
+    "id": "000000000000000000000006",
+    "formId": "000000000000000000000000",
+    "formElementId": "f722b463-050e-f37c-ca3b-cbe6ed38bd20",
+    "pageId": "000000000000000000000000",
+    "publishedPath": "/nomas-produkts/ekskavators-iekravejs"
+  }
+}

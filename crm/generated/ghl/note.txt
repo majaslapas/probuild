@@ -1,0 +1,32 @@
+Vārds: {{inboundWebhookRequest.payload.data.vards}}
+Telefons (kā ievadīts): {{inboundWebhookRequest.payload.data.telefons}}
+E-pasts: {{inboundWebhookRequest.payload.data.epasts}}
+Objekta adrese vai pilsēta: {{inboundWebhookRequest.payload.data.vieta}}
+Ziņa: {{inboundWebhookRequest.payload.data.zina}}
+Kalkulatora aprēķins: {{inboundWebhookRequest.payload.data.aprekins}}
+Aprēķina jomas: {{inboundWebhookRequest.payload.data.aprekins_joma}}
+Aprēķina darbu skaits: {{inboundWebhookRequest.payload.data.aprekins_darbi}}
+Aprēķina summa (€): {{inboundWebhookRequest.payload.data.aprekins_summa}}
+Aprēķins no (€): {{inboundWebhookRequest.payload.data.aprekins_no}}
+Aprēķins līdz (€): {{inboundWebhookRequest.payload.data.aprekins_lidz}}
+Ikmēneša maksa (€): {{inboundWebhookRequest.payload.data.aprekins_menesi}}
+Pakalpojums: {{inboundWebhookRequest.payload.data.pakalpojums}}
+Interese: {{inboundWebhookRequest.payload.data.interese}}
+Nomas sākums: {{inboundWebhookRequest.payload.data.no}}
+Nomas beigas: {{inboundWebhookRequest.payload.data.lidz}}
+Vēlamais datums: {{inboundWebhookRequest.payload.data.datums}}
+Nomas ilgums: {{inboundWebhookRequest.payload.data.ilgums}}
+Tehnika: {{inboundWebhookRequest.payload.data.produkts}}
+Projekts: {{inboundWebhookRequest.payload.data.projekts}}
+
+Mērķis: {{inboundWebhookRequest.payload.data.purpose}}
+Forma: {{inboundWebhookRequest.payload.data.form_key}}
+Lapa: {{inboundWebhookRequest.payload.data.site_host}}{{inboundWebhookRequest.payload.data.page_path}}
+No lapas: {{inboundWebhookRequest.payload.data.prev_path}}
+Lapas valoda: {{inboundWebhookRequest.payload.data.page_lang}}
+Avots: {{inboundWebhookRequest.payload.data.channel}}
+Atsauces vietne: {{inboundWebhookRequest.payload.data.referrer_host}}
+UTM: {{inboundWebhookRequest.payload.data.utm_source}} / {{inboundWebhookRequest.payload.data.utm_medium}} / {{inboundWebhookRequest.payload.data.utm_campaign}} / {{inboundWebhookRequest.payload.data.utm_term}} / {{inboundWebhookRequest.payload.data.utm_content}}
+Iesniegts: {{inboundWebhookRequest.payload.submittedAt}}
+Webflow iesnieguma ID: {{inboundWebhookRequest.payload.id}}
+Webflow formas ID: {{inboundWebhookRequest.payload.formId}}

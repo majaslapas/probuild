@@ -1,0 +1,1 @@
+Jauns pieteikums: {{inboundWebhookRequest.payload.data.subject}} — {{inboundWebhookRequest.payload.data.vards}} ({{inboundWebhookRequest.payload.data.site_host}})

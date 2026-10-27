@@ -1,0 +1,153 @@
+{
+  "_readme": "ProBuild Group: Webflow forms → one Webflow webhook → GHL Inbound Webhook workflow. Schema: webflow-ghl-integration skill, references/config.md. Values marked in crm/README.md as 'to confirm' are defaults until the client confirms them.",
+  "project": "probuild-group",
+  "level": "full",
+  "language": "lv",
+  "webflow": {
+    "site_id": "6adf4142414584038f9dbb34",
+    "staging_url": "https://probuild-group.webflow.io",
+    "production_url": ""
+  },
+  "hook_file": "~/.config/webcrm/probuild-group/ghl-hook",
+  "test_phone": "+371 26 518 131",
+  "ghl": {
+    "workflow": "Mājaslapa → Pieteikumi",
+    "folder": "Mājaslapas pieteikums",
+    "pipeline": "Mājaslapas pieteikumi",
+    "stage": "Jauns pieteikums",
+    "tag_all": "majaslapa",
+    "tag_form_prefix": "forma-",
+    "notify": "Custom email: probuildlatvia@gmail.com"
+  },
+  "script": {
+    "phone": {
+      "country": "371",
+      "nationalLength": 8,
+      "nationalStart": "[2689]",
+      "trunkPrefix": ""
+    },
+    "date": {
+      "order": "dmy"
+    },
+    "unknown_channel": "tiešs / nezināms"
+  },
+  "picks": [],
+  "fields": {
+    "vards": {"label": "Vārds", "role": "first_name", "required": true},
+    "telefons": {"label": "Telefons", "role": "phone", "type": "tel", "required": true},
+    "epasts": {"label": "E-pasts", "role": "email", "type": "email"},
+    "zina": {"label": "Ziņa", "role": "message", "type": "multiline"},
+    "vieta": {"label": "Objekta adrese vai pilsēta"},
+    "pakalpojums": {
+      "label": "Pakalpojums",
+      "role": "service",
+      "type": "select",
+      "options": [
+        "Pamatu būvniecība", "Jumta darbi", "Fasādes darbi", "Inženiertīklu un komunikāciju izbūve",
+        "Ēku renovācija un rekonstrukcija", "Remonta un apdares darbi", "Demontāža un konstrukciju nojaukšana",
+        "Kokapstrāde", "Metālapstrāde", "Ēku apsaimniekošana un uzturēšana", "Drenāžas un meliorācijas darbi",
+        "Apzaļumošana un labiekārtošana", "Būvgružu izvešana un utilizācija", "Koku zāģēšana un apauguma novākšana"
+      ]
+    },
+    "interese": {
+      "label": "Interese",
+      "role": "service",
+      "type": "radio",
+      "options": ["Būvniecība", "Remonts un apdare", "Teritorija", "Apsaimniekošana", "Tehnikas noma", "Cits"]
+    },
+    "no": {"label": "Nomas sākums", "type": "date"},
+    "lidz": {"label": "Nomas beigas", "type": "date"},
+    "datums": {"label": "Vēlamais datums", "type": "date"},
+    "ilgums": {"label": "Nomas ilgums"},
+    "produkts": {"label": "Tehnika"},
+    "projekts": {"label": "Projekts"},
+    "aprekins": {"label": "Kalkulatora aprēķins", "type": "multiline"},
+    "aprekins_joma": {"label": "Aprēķina jomas"},
+    "aprekins_darbi": {"label": "Aprēķina darbu skaits", "type": "number"},
+    "aprekins_summa": {"label": "Aprēķina summa (€)", "type": "number"},
+    "aprekins_no": {"label": "Aprēķins no (€)", "type": "number"},
+    "aprekins_lidz": {"label": "Aprēķins līdz (€)", "type": "number"},
+    "aprekins_menesi": {"label": "Ikmēneša maksa (€)", "type": "number"}
+  },
+  "forms": [
+    {
+      "element_id": "dd2304bf-c927-eda7-8438-babe29a04994",
+      "name": "Kalkulators",
+      "key": "kalkulators",
+      "fields": ["vards", "telefons", "epasts", "vieta", "zina", "aprekins", "aprekins_joma", "aprekins_darbi",
+                 "aprekins_summa", "aprekins_no", "aprekins_lidz", "aprekins_menesi"],
+      "purpose": "Cenas piedāvājums (kalkulators)",
+      "subject": "Cenas piedāvājums: {aprekins_joma}, ≈ {aprekins_summa} €|Cenas piedāvājums: {aprekins_joma}|Cenas piedāvājuma pieprasījums",
+      "check_page": "/pakalpojumi",
+      "pages": ["/pakalpojumi"],
+      "test_values": {
+        "vieta": "Salaspils",
+        "aprekins": "ProBuild cenu kalkulators: aptuvenais aprēķins\n\nBūvniecība › Jumts\n• Latojums: 150 m² × 7 €/m² = 1 050 € (675 – 1 650 €)\n\nKopā: ≈ 1 050 € (diapazons 675 – 1 650 €)",
+        "aprekins_joma": "Būvniecība",
+        "aprekins_darbi": "1",
+        "aprekins_summa": "1050",
+        "aprekins_no": "675",
+        "aprekins_lidz": "1650",
+        "aprekins_menesi": ""
+      }
+    },
+    {
+      "element_id": "dd2304bf-c927-eda7-8438-babe29a049e5",
+      "name": "Pakalpojuma pieteikums",
+      "key": "pakalpojuma-pieteikums",
+      "fields": ["pakalpojums", "vards", "telefons", "epasts", "zina"],
+      "published": {"pakalpojums": "Pakalpojums"},
+      "purpose": "{service}|Pakalpojuma pieteikums",
+      "subject": "Pieteikums: {service}|Pakalpojuma pieteikums",
+      "check_page": "/pakalpojumi",
+      "pages": ["/pakalpojumi"]
+    },
+    {
+      "element_id": "4d10121b-a9de-c7da-8368-dcad032a656a",
+      "name": "Kontaktforma",
+      "key": "kontaktforma",
+      "fields": ["interese", "vards", "telefons", "epasts", "zina"],
+      "purpose": "{service}|Jautājums",
+      "subject": "Kontaktforma: {service}|Jautājums no mājaslapas",
+      "check_page": "/kontakti",
+      "pages": ["/kontakti"],
+      "test_values": {"interese": "Remonts un apdare"}
+    },
+    {
+      "element_id": "e86c52af-94a3-9432-bf15-ea2220226664",
+      "name": "Nomas pieprasījums",
+      "key": "nomas-pieprasijums",
+      "fields": ["vards", "telefons", "no", "lidz", "zina"],
+      "published": {"vards": "Vārds", "telefons": "Telefons", "no": "No", "lidz": "Līdz"},
+      "purpose": "Tehnikas noma",
+      "subject": "Tehnikas noma no {no}|Tehnikas noma",
+      "check_page": "/noma",
+      "pages": ["/noma"]
+    },
+    {
+      "element_id": "f722b463-050e-f37c-ca3b-cbe6ed38bd20",
+      "name": "Tehnikas nomas pieprasījums",
+      "published_name": "Nomas pieprasījums",
+      "key": "nomas-produkts",
+      "fields": ["vards", "telefons", "datums", "ilgums", "produkts"],
+      "published": {"vards": "Vārds", "telefons": "Telefons", "produkts": "Produkts"},
+      "purpose": "Tehnikas noma",
+      "subject": "Noma: {produkts}, {datums}|Noma: {produkts}|Tehnikas noma",
+      "check_page": "/nomas-produkts/ekskavators-iekravejs",
+      "pages": ["/nomas-produkts/ekskavators-iekravejs", "/nomas-produkts/pasizgazejs"],
+      "test_values": {"produkts": "Ekskavators-iekrāvējs", "ilgums": "6 h"}
+    },
+    {
+      "element_id": "b8fd0538-e508-3c03-e0ae-0791d216d596",
+      "name": "Līdzīgs projekts",
+      "key": "lidzigs-projekts",
+      "fields": ["vards", "telefons", "epasts", "zina", "projekts"],
+      "published": {"vards": "Vārds", "telefons": "Telefons", "epasts": "E-pasts", "projekts": "Projekts"},
+      "purpose": "Līdzīgs projekts",
+      "subject": "Līdzīgs projekts: {projekts}|Līdzīgs projekts",
+      "check_page": "/projekts/fasades-atjaunosana",
+      "pages": ["/projekts/fasades-atjaunosana", "/projekts/koka-karkasa-privatmaja"],
+      "test_values": {"projekts": "Fasādes atjaunošana"}
+    }
+  ]
+}

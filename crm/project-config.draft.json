@@ -34,30 +34,38 @@
   "picks": [],
   "fields": {
     "vards": {
-      "label": "vards",
+      "label": "Vārds",
       "type": "text",
       "role": "first_name",
       "required": true
     },
     "telefons": {
-      "label": "telefons",
+      "label": "Telefons",
       "type": "tel",
       "role": "phone",
       "required": true
     },
     "epasts": {
-      "label": "epasts",
+      "label": "E-pasts",
       "type": "email",
       "role": "email"
+    },
+    "zina": {
+      "label": "Jūsu iecere",
+      "type": "multiline",
+      "role": "message"
+    },
+    "datums": {
+      "label": "Datums",
+      "type": "date"
+    },
+    "ilgums": {
+      "label": "Aptuvenais ilgums",
+      "type": "text"
     },
     "vieta": {
       "label": "Objekta adrese vai pilsēta (nav obligāta)",
       "type": "text"
-    },
-    "zina": {
-      "label": "Komentārs (nav obligāts)",
-      "type": "multiline",
-      "role": "message"
     },
     "interese": {
       "label": "interese",
@@ -65,16 +73,6 @@
       "options": [
         "Cits"
       ]
-    },
-    "first_name": {
-      "label": "Vārds",
-      "type": "text",
-      "role": "first_name"
-    },
-    "phone": {
-      "label": "Telefons",
-      "type": "tel",
-      "role": "phone"
     },
     "no": {
       "label": "No",
@@ -84,7 +82,7 @@
       "label": "Līdz",
       "type": "date"
     },
-    "service": {
+    "pakalpojums": {
       "label": "Pakalpojums",
       "type": "select",
       "role": "service",
@@ -104,9 +102,86 @@
         "Būvgružu izvešana un utilizācija",
         "Koku zāģēšana un apauguma novākšana"
       ]
+    },
+    "first_name": {
+      "label": "Vards",
+      "type": "text",
+      "role": "first_name"
+    },
+    "service": {
+      "label": "Pakalpojums",
+      "type": "select",
+      "role": "service",
+      "options": [
+        "Būvniecība",
+        "Remonts",
+        "Noma"
+      ]
+    },
+    "message": {
+      "label": "Zina",
+      "type": "multiline",
+      "role": "message"
+    },
+    "consent": {
+      "label": "Piekrītu privātuma politikai",
+      "type": "checkbox",
+      "role": "consent"
     }
   },
   "forms": [
+    {
+      "element_id": "b8fd0538-e508-3c03-e0ae-0791d216d596",
+      "name": "Līdzīgs projekts",
+      "published_name": "Līdzīgs projekts",
+      "key": "lidzigs-projekts",
+      "fields": [
+        "vards",
+        "telefons",
+        "epasts",
+        "zina"
+      ],
+      "published": {
+        "vards": "vards",
+        "telefons": "telefons",
+        "epasts": "epasts",
+        "zina": "zina"
+      },
+      "purpose": "REVIEW",
+      "subject": "REVIEW",
+      "opportunity": true,
+      "check_page": "/projekts/fasades-atjaunosana",
+      "pages": [
+        "/projekts/fasades-atjaunosana",
+        "/projekts/koka-karkasa-privatmaja"
+      ]
+    },
+    {
+      "element_id": "f722b463-050e-f37c-ca3b-cbe6ed38bd20",
+      "name": "Tehnikas nomas pieprasījums",
+      "published_name": "Tehnikas nomas pieprasījums",
+      "key": "tehnikas-nomas-pieprasijums",
+      "fields": [
+        "vards",
+        "telefons",
+        "datums",
+        "ilgums"
+      ],
+      "published": {
+        "vards": "vards",
+        "telefons": "telefons",
+        "datums": "datums",
+        "ilgums": "ilgums"
+      },
+      "purpose": "REVIEW",
+      "subject": "REVIEW",
+      "opportunity": true,
+      "check_page": "/nomas-produkts/ekskavators-iekravejs",
+      "pages": [
+        "/nomas-produkts/ekskavators-iekravejs",
+        "/nomas-produkts/pasizgazejs"
+      ]
+    },
     {
       "element_id": "dd2304bf-c927-eda7-8438-babe29a04994",
       "name": "Kalkulators",
@@ -172,17 +247,17 @@
       "published_name": "Nomas pieprasījums",
       "key": "nomas-pieprasijums",
       "fields": [
-        "first_name",
-        "phone",
+        "vards",
+        "telefons",
         "no",
         "lidz",
         "zina"
       ],
       "published": {
-        "first_name": "Vārds",
-        "phone": "Telefons",
-        "no": "No",
-        "lidz": "Līdz",
+        "vards": "vards",
+        "telefons": "telefons",
+        "no": "no",
+        "lidz": "lidz",
         "zina": "zina"
       },
       "purpose": "REVIEW",
@@ -199,14 +274,14 @@
       "published_name": "Pakalpojuma pieteikums",
       "key": "pakalpojuma-pieteikums",
       "fields": [
-        "service",
+        "pakalpojums",
         "vards",
         "telefons",
         "epasts",
         "zina"
       ],
       "published": {
-        "service": "Pakalpojums",
+        "pakalpojums": "pakalpojums",
         "vards": "vards",
         "telefons": "telefons",
         "epasts": "epasts",
@@ -218,6 +293,31 @@
       "check_page": "/pakalpojumi",
       "pages": [
         "/pakalpojumi"
+      ]
+    },
+    {
+      "element_id": "d6034131-2140-1c34-0373-e5700dfad24b",
+      "name": "Stila paraugs",
+      "published_name": "Stila paraugs",
+      "key": "stila-paraugs",
+      "fields": [
+        "first_name",
+        "service",
+        "message",
+        "consent"
+      ],
+      "published": {
+        "first_name": "Vards",
+        "service": "Pakalpojums",
+        "message": "Zina",
+        "consent": "Piekrītu privātuma politikai"
+      },
+      "purpose": "REVIEW",
+      "subject": "REVIEW",
+      "opportunity": true,
+      "check_page": "/style-guide",
+      "pages": [
+        "/style-guide"
       ]
     }
   ]

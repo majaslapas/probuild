@@ -1,0 +1,1 @@
+{{inboundWebhookRequest.payload.data.subject}} — {{inboundWebhookRequest.payload.data.vards}}

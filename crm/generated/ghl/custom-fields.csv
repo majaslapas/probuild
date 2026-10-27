@@ -1,0 +1,26 @@
+object,folder,field name,GHL type,filled from,notes
+opportunity,Mājaslapas pieteikums,Forma,Single line,{{inboundWebhookRequest.payload.data.form_key}},also the dynamic form tag
+opportunity,Mājaslapas pieteikums,Mērķis,Single line,{{inboundWebhookRequest.payload.data.purpose}},same as Opportunity Source; a field filters more easily
+opportunity,Mājaslapas pieteikums,Lapa,Single line,{{inboundWebhookRequest.payload.data.page_path}},
+opportunity,Mājaslapas pieteikums,Objekta adrese vai pilsēta,Single line,{{inboundWebhookRequest.payload.data.vieta}},
+opportunity,Mājaslapas pieteikums,Ziņa,Multi line,{{inboundWebhookRequest.payload.data.zina}},
+opportunity,Mājaslapas pieteikums,Kalkulatora aprēķins,Multi line,{{inboundWebhookRequest.payload.data.aprekins}},
+opportunity,Mājaslapas pieteikums,Aprēķina jomas,Single line,{{inboundWebhookRequest.payload.data.aprekins_joma}},
+opportunity,Mājaslapas pieteikums,Aprēķina darbu skaits,Number,{{inboundWebhookRequest.payload.data.aprekins_darbi}},"in the action: ⋮ → Dynamic, then pick the value"
+opportunity,Mājaslapas pieteikums,Aprēķina summa (€),Number,{{inboundWebhookRequest.payload.data.aprekins_summa}},"in the action: ⋮ → Dynamic, then pick the value"
+opportunity,Mājaslapas pieteikums,Aprēķins no (€),Number,{{inboundWebhookRequest.payload.data.aprekins_no}},"in the action: ⋮ → Dynamic, then pick the value"
+opportunity,Mājaslapas pieteikums,Aprēķins līdz (€),Number,{{inboundWebhookRequest.payload.data.aprekins_lidz}},"in the action: ⋮ → Dynamic, then pick the value"
+opportunity,Mājaslapas pieteikums,Ikmēneša maksa (€),Number,{{inboundWebhookRequest.payload.data.aprekins_menesi}},"in the action: ⋮ → Dynamic, then pick the value"
+opportunity,Mājaslapas pieteikums,Pakalpojums,Single line,{{inboundWebhookRequest.payload.data.pakalpojums}},
+opportunity,Mājaslapas pieteikums,Interese,Single line,{{inboundWebhookRequest.payload.data.interese}},
+opportunity,Mājaslapas pieteikums,Nomas sākums,Date,{{inboundWebhookRequest.payload.data.no}},
+opportunity,Mājaslapas pieteikums,Nomas beigas,Date,{{inboundWebhookRequest.payload.data.lidz}},
+opportunity,Mājaslapas pieteikums,Vēlamais datums,Date,{{inboundWebhookRequest.payload.data.datums}},
+opportunity,Mājaslapas pieteikums,Nomas ilgums,Single line,{{inboundWebhookRequest.payload.data.ilgums}},
+opportunity,Mājaslapas pieteikums,Tehnika,Single line,{{inboundWebhookRequest.payload.data.produkts}},
+opportunity,Mājaslapas pieteikums,Projekts,Single line,{{inboundWebhookRequest.payload.data.projekts}},
+opportunity,Mājaslapas pieteikums,Avots,Single line,{{inboundWebhookRequest.payload.data.channel}},utm_source / google-ads / meta-ads / referring site / unknown
+opportunity,Mājaslapas pieteikums,UTM source,Single line,{{inboundWebhookRequest.payload.data.utm_source}},
+opportunity,Mājaslapas pieteikums,UTM medium,Single line,{{inboundWebhookRequest.payload.data.utm_medium}},
+opportunity,Mājaslapas pieteikums,UTM campaign,Single line,{{inboundWebhookRequest.payload.data.utm_campaign}},
+opportunity,Mājaslapas pieteikums,Webflow iesnieguma ID,Single line,{{inboundWebhookRequest.payload.id}},equals Webflow's stored submission ID — use it to reconcile

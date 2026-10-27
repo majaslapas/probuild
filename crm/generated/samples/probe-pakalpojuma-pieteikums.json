@@ -1,0 +1,37 @@
+{
+  "triggerType": "form_submission",
+  "payload": {
+    "name": "Pakalpojuma pieteikums",
+    "siteId": "6adf4142414584038f9dbb34",
+    "data": {
+      "pakalpojums": "Pamatu būvniecība",
+      "vards": "Test Person (TESTS)",
+      "telefons": "+371 26 518 131",
+      "epasts": "probe+tests@example.com",
+      "zina": "TESTS — integration check, please ignore. ā ē ī ū č ģ ķ ļ ņ š ž",
+      "form_key": "pakalpojuma-pieteikums",
+      "purpose": "Pamatu būvniecība",
+      "subject": "Pieteikums: Pamatu būvniecība",
+      "page_path": "/pakalpojumi",
+      "prev_path": "",
+      "site_host": "probuild-group.webflow.io",
+      "page_lang": "lv",
+      "phone_e164": "+37126518131",
+      "date_iso": "",
+      "utm_source": "probe",
+      "utm_medium": "",
+      "utm_campaign": "ghl",
+      "utm_term": "",
+      "utm_content": "",
+      "referrer_host": "",
+      "channel": "probe"
+    },
+    "schema": [],
+    "submittedAt": "2026-10-27T18:03:15.000Z",
+    "id": "000000000000000000000003",
+    "formId": "000000000000000000000000",
+    "formElementId": "dd2304bf-c927-eda7-8438-babe29a049e5",
+    "pageId": "000000000000000000000000",
+    "publishedPath": "/pakalpojumi"
+  }
+}

@@ -3,14 +3,181 @@
     "/",
     "/kontakti",
     "/noma",
+    "/nomas-produkts/ekskavators-iekravejs",
+    "/nomas-produkts/pasizgazejs",
     "/pakalpojumi",
+    "/pakalpojums/jumta-darbi",
     "/par-mums",
-    "/projekti"
+    "/projekti",
+    "/projekts/fasades-atjaunosana",
+    "/projekts/koka-karkasa-privatmaja",
+    "/style-guide"
   ],
   "langs": [
     "en"
   ],
   "forms": [
+    {
+      "element_id": "b8fd0538-e508-3c03-e0ae-0791d216d596",
+      "name": "Līdzīgs projekts",
+      "dom_id": "wf-form-L-dz-gs-projekts",
+      "action": "",
+      "method": "post",
+      "crm_key": "",
+      "turnstile": false,
+      "pages": [
+        "/projekts/fasades-atjaunosana",
+        "/projekts/koka-karkasa-privatmaja"
+      ],
+      "fields": [
+        {
+          "name": "vards",
+          "data_name": "vards",
+          "dom_id": "lidzigs-projekts-vards",
+          "type": "text",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "Vārds",
+          "role": "first_name"
+        },
+        {
+          "name": "telefons",
+          "data_name": "telefons",
+          "dom_id": "lidzigs-projekts-telefons",
+          "type": "tel",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "Telefons",
+          "role": "phone"
+        },
+        {
+          "name": "epasts",
+          "data_name": "epasts",
+          "dom_id": "lidzigs-projekts-epasts",
+          "type": "email",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "E-pasts",
+          "role": "email"
+        },
+        {
+          "name": "zina",
+          "data_name": "zina",
+          "dom_id": "lidzigs-projekts-zina",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Piem., karkasa māja 140 m², Ķekava, 2027…",
+          "value": "",
+          "label": "Jūsu iecere",
+          "role": "message"
+        }
+      ],
+      "hidden": [
+        {
+          "name": "projekts",
+          "data_name": "projekts",
+          "dom_id": "",
+          "type": "hidden",
+          "required": false,
+          "placeholder": "",
+          "value": "",
+          "label": ""
+        }
+      ],
+      "code_refs": [],
+      "langs": [
+        "en"
+      ],
+      "identical_on_all_pages": true
+    },
+    {
+      "element_id": "f722b463-050e-f37c-ca3b-cbe6ed38bd20",
+      "name": "Tehnikas nomas pieprasījums",
+      "dom_id": "wf-form-Tehnikas-nomas-piepras-jums",
+      "action": "",
+      "method": "post",
+      "crm_key": "",
+      "turnstile": false,
+      "pages": [
+        "/nomas-produkts/ekskavators-iekravejs",
+        "/nomas-produkts/pasizgazejs"
+      ],
+      "fields": [
+        {
+          "name": "vards",
+          "data_name": "vards",
+          "dom_id": "tehnikas-noma-vards",
+          "type": "text",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "Vārds",
+          "role": "first_name"
+        },
+        {
+          "name": "telefons",
+          "data_name": "telefons",
+          "dom_id": "tehnikas-noma-telefons",
+          "type": "tel",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "Telefons",
+          "role": "phone"
+        },
+        {
+          "name": "datums",
+          "data_name": "datums",
+          "dom_id": "tehnikas-noma-datums",
+          "type": "date",
+          "required": false,
+          "placeholder": "Example text",
+          "value": "",
+          "label": "Datums",
+          "role": ""
+        },
+        {
+          "name": "ilgums",
+          "data_name": "ilgums",
+          "dom_id": "tehnikas-noma-ilgums",
+          "type": "text",
+          "required": false,
+          "placeholder": "Piem., 6 h…",
+          "value": "",
+          "label": "Aptuvenais ilgums",
+          "role": ""
+        }
+      ],
+      "hidden": [
+        {
+          "name": "produkts",
+          "data_name": "produkts",
+          "dom_id": "",
+          "type": "hidden",
+          "required": false,
+          "placeholder": "",
+          "value": "",
+          "label": ""
+        }
+      ],
+      "code_refs": [
+        {
+          "field": "datums",
+          "ref": "datums",
+          "pages": [
+            "/nomas-produkts/ekskavators-iekravejs",
+            "/nomas-produkts/pasizgazejs"
+          ]
+        }
+      ],
+      "langs": [
+        "en"
+      ],
+      "identical_on_all_pages": true
+    },
     {
       "element_id": "dd2304bf-c927-eda7-8438-babe29a04994",
       "name": "Kalkulators",
@@ -31,7 +198,7 @@
           "required": true,
           "placeholder": "Example text",
           "value": "",
-          "label": "vards",
+          "label": "Vārds",
           "role": "first_name"
         },
         {
@@ -42,7 +209,7 @@
           "required": true,
           "placeholder": "Example text",
           "value": "",
-          "label": "telefons",
+          "label": "Telefons",
           "role": "phone"
         },
         {
@@ -53,7 +220,7 @@
           "required": false,
           "placeholder": "Example text",
           "value": "",
-          "label": "epasts",
+          "label": "E-pasts (nav obligāts)",
           "role": "email"
         },
         {
@@ -190,7 +357,7 @@
           "required": true,
           "placeholder": "Example text",
           "value": "",
-          "label": "vards",
+          "label": "Vārds",
           "role": "first_name"
         },
         {
@@ -201,7 +368,7 @@
           "required": true,
           "placeholder": "Example text",
           "value": "",
-          "label": "telefons",
+          "label": "Telefons",
           "role": "phone"
         },
         {
@@ -212,7 +379,7 @@
           "required": false,
           "placeholder": "Example text",
           "value": "",
-          "label": "epasts",
+          "label": "E-pasts",
           "role": "email"
         },
         {
@@ -223,7 +390,7 @@
           "required": false,
           "placeholder": "Piem., pamati privātmājai, ~120 m², Salaspils, pavasarī…",
           "value": "",
-          "label": "zina",
+          "label": "Ziņa",
           "role": "message"
         }
       ],
@@ -255,8 +422,8 @@
       ],
       "fields": [
         {
-          "name": "Vārds",
-          "data_name": "Vārds",
+          "name": "vards",
+          "data_name": "vards",
           "dom_id": "nomas-pieprasijums-vards",
           "type": "text",
           "required": false,
@@ -266,8 +433,8 @@
           "role": "first_name"
         },
         {
-          "name": "Telefons",
-          "data_name": "Telefons",
+          "name": "telefons",
+          "data_name": "telefons",
           "dom_id": "nomas-pieprasijums-telefons",
           "type": "tel",
           "required": false,
@@ -277,8 +444,8 @@
           "role": "phone"
         },
         {
-          "name": "No",
-          "data_name": "No",
+          "name": "no",
+          "data_name": "no",
           "dom_id": "nomas-pieprasijums-no",
           "type": "date",
           "required": false,
@@ -288,8 +455,8 @@
           "role": ""
         },
         {
-          "name": "Līdz",
-          "data_name": "Līdz",
+          "name": "lidz",
+          "data_name": "lidz",
           "dom_id": "nomas-pieprasijums-lidz",
           "type": "date",
           "required": false,
@@ -306,12 +473,20 @@
           "required": false,
           "placeholder": "Piem., traktors ar kausu, Salaspils…",
           "value": "",
-          "label": "zina",
+          "label": "Ko vēlaties nomāt?",
           "role": "message"
         }
       ],
       "hidden": [],
-      "code_refs": [],
+      "code_refs": [
+        {
+          "field": "no",
+          "ref": "no",
+          "pages": [
+            "/noma"
+          ]
+        }
+      ],
       "langs": [
         "en"
       ],
@@ -330,9 +505,9 @@
       ],
       "fields": [
         {
-          "name": "Pakalpojums",
-          "data_name": "Pakalpojums",
-          "dom_id": "Pakalpojums",
+          "name": "pakalpojums",
+          "data_name": "pakalpojums",
+          "dom_id": "pieteikuma-forma-pakalpojums",
           "type": "select",
           "required": false,
           "placeholder": "",
@@ -364,7 +539,7 @@
           "required": true,
           "placeholder": "Example text",
           "value": "",
-          "label": "vards",
+          "label": "Vārds",
           "role": "first_name"
         },
         {
@@ -375,7 +550,7 @@
           "required": true,
           "placeholder": "Example text",
           "value": "",
-          "label": "telefons",
+          "label": "Telefons",
           "role": "phone"
         },
         {
@@ -386,7 +561,7 @@
           "required": false,
           "placeholder": "Example text",
           "value": "",
-          "label": "epasts",
+          "label": "E-pasts (nav obligāts)",
           "role": "email"
         },
         {
@@ -397,8 +572,85 @@
           "required": false,
           "placeholder": "Piem., pamati privātmājai, Salaspils, pavasarī…",
           "value": "",
-          "label": "zina",
+          "label": "Jūsu iecere",
           "role": "message"
+        }
+      ],
+      "hidden": [],
+      "code_refs": [
+        {
+          "field": "pakalpojums",
+          "ref": "pakalpojums",
+          "pages": [
+            "/pakalpojumi"
+          ]
+        }
+      ],
+      "langs": [
+        "en"
+      ],
+      "identical_on_all_pages": true
+    },
+    {
+      "element_id": "d6034131-2140-1c34-0373-e5700dfad24b",
+      "name": "Stila paraugs",
+      "dom_id": "wf-form-Stila-paraugs",
+      "action": "",
+      "method": "post",
+      "crm_key": "",
+      "turnstile": false,
+      "pages": [
+        "/style-guide"
+      ],
+      "fields": [
+        {
+          "name": "Vards",
+          "data_name": "Vards",
+          "dom_id": "sg-name",
+          "type": "text",
+          "required": false,
+          "placeholder": "Jūsu vārds",
+          "value": "",
+          "label": "Vards",
+          "role": "first_name"
+        },
+        {
+          "name": "Pakalpojums",
+          "data_name": "Pakalpojums",
+          "dom_id": "Pakalpojums",
+          "type": "select",
+          "required": false,
+          "placeholder": "",
+          "value": "",
+          "label": "Pakalpojums",
+          "options": [
+            "Būvniecība",
+            "Remonts",
+            "Noma"
+          ],
+          "role": "service"
+        },
+        {
+          "name": "Zina",
+          "data_name": "Zina",
+          "dom_id": "sg-msg",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Īsi aprakstiet darbu",
+          "value": "",
+          "label": "Zina",
+          "role": "message"
+        },
+        {
+          "name": "Piekrītu privātuma politikai",
+          "data_name": "Piekrītu privātuma politikai",
+          "dom_id": "sg-agree",
+          "type": "checkbox",
+          "required": false,
+          "placeholder": "",
+          "value": "",
+          "label": "Piekrītu privātuma politikai",
+          "role": "consent"
         }
       ],
       "hidden": [],
