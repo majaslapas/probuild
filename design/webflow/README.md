@@ -57,19 +57,23 @@ Every list sorts by `seciba` (lowest first). Empty optional fields hide their bl
 
 ## Brand pattern and motion (2026-10-27)
 
-The pattern is built from the logo's rising bars (mark F), kept brutalist: two to five thick bars of equal width whose slanted tops share one roof line at the mark's slope (0.6, about 31°), so each bar is a step taller than the last. Bars take the colour of the surface they rise from (the black panel, the orange section, the footer black, the darker orange of an orange card). Where they cover a photo they are partly transparent (80–85% black). Uses:
+The pattern follows the client's references: a bold block of **three bars** with slanted tops on one roof line (slope 0.34), sitting flush in the bottom-right corner of a card or photo and covering about two thirds of it. The block is a translucent tint, so it takes the colour of what it sits on: lighter or darker orange on orange cards, lighter grey on dark cards, a white or dark glass over photos.
 
-| Use | Where | How |
+| Use | Where | Tone |
 |---|---|---|
-| Bars rising from an edge | Sākums: 3 bars from the hero stats panel into the photo (≥1240px), 4 orange bars from the orange section into the black above, 4 bars from the footer into the call-to-action photo (≥992px). Noma and Projekti: 3 dark bars on the filter divider (≥768px) | `.brand-bars` element (below) |
-| Background | Footer on every page: 4 tone-on-tone bars behind the links | `.brand-bars.is-footer` in the Footer component |
-| Photo cutout | Sākums about photo, Pakalpojumi "Viens partneris" photo, Par mums values photo, project header photo: the top-left corner opens into 3 bars | CSS mask on the class, `--pb-cut` |
-| Orange card glyph | Kontakti "Zvanīt", Pakalpojumi contact card, Par mums "Strādāsim kopā": 3 darker-orange bars | `::after` mask, `--pb-glyph` |
-| List marker | "Cenā iekļauts" lists (Pakalpojumi and the service template): 2 bars | `::before` mask, `--pb-mark` |
+| Overlay block on orange cards | Kontakti "Zvanīt", Pakalpojumi contact card, Par mums "100+" (lighter); Par mums orange values and "Strādāsim kopā" (darker) | white 28% / black 20% |
+| Overlay block on dark cards | Kontakti and Pakalpojumi dark contact cards, Par mums black values and story blocks | white 12% |
+| Overlay block on photos | Sākums hero and call to action, Sākums about photo, Par mums hero photos (white); Pakalpojumi "Viens partneris" photo, project header photo (dark) | white 20–50% / black 60% |
+| Bars rising from an edge | Sākums: 3 orange bars from the orange section into the black above (scroll-driven) | orange |
+| Background | Footer on every page: 3 big bars behind the links | white 7% |
+| Divider mark | Noma and Projekti filter divider (≥768px) | white 14% |
+| List marker | "Cenā iekļauts" lists | orange |
 
-**`.brand-bars` elements** are empty divs in the Designer (class `brand-bars` + `is-hero`, `is-edge`, `is-cta`, `is-rule` or `is-footer`). `site.js` adds the bars. Attributes: `data-bars` (how many, 2–5) and `data-bars-scrub` (grow with the scroll instead of rising once). Size, colour and position per variant are custom properties in `site/site-head.css` (`--bb-w` bar width, `--bb-gap`, `--bb-base` height of the first bar, `--bb-color`). To move one, move or delete the div; to add one, copy an existing div and give it a position in the site head CSS.
+The overlay blocks are pure CSS (`::after` with the `--pb-block` mask) on the classes listed in `site/site-head.css`; each host sets its tint with `--pb-tone`. To add the block to another card or photo, add its class to the two selector lists there and give it a `--pb-tone`.
 
-`tools/bars.py` regenerates the three mask SVGs (`pattern/`) and their data URIs.
+**`.brand-bars` elements** (the edge, footer and divider bars) are empty divs in the Designer (class `brand-bars` + `is-edge`, `is-rule` or `is-footer`). `site.js` adds the bars. Attributes: `data-bars` (2–5) and `data-bars-scrub` (grow with the scroll). Size and colour per variant are custom properties in the site head (`--bb-w`, `--bb-gap`, `--bb-base`, `--bb-color`).
+
+`tools/bars.py` regenerates the block and marker SVGs (`pattern/`) and their data URIs.
 
 **Motion** (all in `site.js` and the site head, nothing in Webflow Interactions):
 

@@ -1,13 +1,13 @@
 """Rising-bars brand pattern, from logo mark F: equal-width bars whose slanted tops share one
-roof line at the mark's slope (0.6, about 31 deg), so each bar is taller than the last.
-Writes the SVGs used as CSS masks (photo cutout, orange-card glyph, list marker) and bars.json
-with the CSS-ready data URIs that go into site/site-head.css (--pb-cut, --pb-glyph, --pb-mark).
+roof line (slope 0.34, about 19 deg, as in the client's references), so each bar is taller than the last.
+Writes the SVGs used as CSS masks (the 3-bar overlay block and the list marker) and bars.json
+with the CSS-ready data URIs that go into site/site-head.css (--pb-block, --pb-mark).
 
     python3 bars.py   # run from an output folder
 """
 import json, urllib.parse
 
-SLOPE = 0.6
+SLOPE = 0.34
 
 def bar(x, w, top_right, base):
     # polygon: bottom-left, top-left (lower), top-right, bottom-right
@@ -27,12 +27,10 @@ def uri(s):
     return 'url("data:image/svg+xml,' + urllib.parse.quote(s, safe=' =:/"<>.,-').replace('"', "'") + '")'
 
 out = {
-    # Photo cutout: 3 thick bars and a trailing gap; the photo continues full height to the right.
-    'cut': group(3, 48, 14, 132, trail_gap=True),
-    # Orange cards: 3 thick bars rising from the bottom edge, tone on tone.
-    'glyph': group(3, 22, 8, 72),
+    # Overlay block: 3 bars flush right and bottom, as in the references (block 100 x 79).
+    'block': group(3, 31, 3.5, 79),
     # List marker: 2 bars (3 small bars read as a phone-signal icon).
-    'mark': group(2, 5, 2, 14),
+    'mark': group(2, 5, 2, 12),
 }
 for k, (W, H, d) in out.items():
     open(f'{k}.svg', 'w').write(svg(W, H, d))
