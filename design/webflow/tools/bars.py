@@ -1,7 +1,7 @@
 """Rising-bars brand pattern, from logo mark F: equal-width bars whose slanted tops share one
 roof line (slope 0.34, about 19 deg, as in the client's references), so each bar is taller than the last.
-Writes the SVGs used as CSS masks (the 3-bar overlay block and the list marker) and bars.json
-with the CSS-ready data URIs that go into site/site-head.css (--pb-block, --pb-mark).
+Writes the SVG used as a CSS mask for the list marker and bars.json
+with the CSS-ready data URIs that go into site/site-head.css (--pb-mark). The pattern itself is built from Webflow elements (pattern-bars)..
 
     python3 bars.py   # run from an output folder
 """
@@ -27,8 +27,6 @@ def uri(s):
     return 'url("data:image/svg+xml,' + urllib.parse.quote(s, safe=' =:/"<>.,-').replace('"', "'") + '")'
 
 out = {
-    # Overlay block: 3 bars flush right and bottom, as in the references (block 100 x 79).
-    'block': group(3, 31, 3.5, 79),
     # List marker: 2 bars (3 small bars read as a phone-signal icon).
     'mark': group(2, 5, 2, 12),
 }

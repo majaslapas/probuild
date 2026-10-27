@@ -237,29 +237,18 @@
     });
   });
 
-  // Motion and brand bars. Each empty .brand-bars element gets data-bars thick bars here; the site
-  // head CSS sets their size, colour and heights on one roof line. data-bars-scrub = the bars grow
-  // with the scroll instead of rising once.
+  // Motion. Brand pattern: .pattern-bars elements (two bars, built and styled in the Designer) slide up
+  // from their edge when they come into view; with data-bars-scrub they follow the scroll instead.
   (function () {
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var vh = function () { return window.innerHeight || document.documentElement.clientHeight; };
-    $$('.brand-bars').forEach(function (el) {
-      if (el.querySelector('.brand-bars_bar')) return;
-      var n = Math.max(2, Math.min(5, +el.getAttribute('data-bars') || 3));
-      for (var i = 0; i < n; i++) {
-        var b = document.createElement('i');
-        b.className = 'brand-bars_bar';
-        b.style.setProperty('--i', i);
-        b.style.setProperty('--t', (i / (n - 1)).toFixed(3));
-        el.appendChild(b);
-      }
-      el.setAttribute('aria-hidden', 'true');
-      if (el.hasAttribute('data-bars-scrub')) el.classList.add('is-scrub');
+    if (reduce || !('IntersectionObserver' in window)) return;
+    var bars = $$('.pattern-bars');
+    bars.forEach(function (el) {
+      if (el.hasAttribute('data-bars-scrub')) { el.classList.add('is-scrub'); return; }
+      var r = el.getBoundingClientRect();
+      if (r.top < vh() && r.bottom > 0) el.classList.add('is-in'); // on screen at load: shown as is
     });
-    if (reduce || !('IntersectionObserver' in window)) {
-      $$('.brand-bars').forEach(function (el) { el.classList.add('is-in'); el.style.setProperty('--p', 1); });
-      return;
-    }
     document.documentElement.classList.add('pb-motion');
 
     // Reveals: whatever enters the screen together rises in, staggered left to right, top to bottom.
@@ -296,15 +285,12 @@
       io.observe(el);
     });
 
-    // Bars rise when they come into view; scrub bars grow with the scroll position.
+    // Pattern bars rise when they come into view; scrub bars follow the scroll position.
     var barIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); barIo.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -10% 0px' });
-    var scrub = [];
-    $$('.brand-bars').forEach(function (el) {
-      if (el.classList.contains('is-scrub')) scrub.push(el); else barIo.observe(el);
-    });
-    scrub.forEach(function (el) { el.classList.add('is-in'); });
+    var scrub = bars.filter(function (el) { return el.classList.contains('is-scrub'); });
+    bars.forEach(function (el) { if (!el.classList.contains('is-scrub') && !el.classList.contains('is-in')) barIo.observe(el); });
 
     // Counters: whole numbers (with an optional +) count up the first time they are seen.
     var countIo = new IntersectionObserver(function (entries) {
@@ -343,7 +329,10 @@
       });
       scrub.forEach(function (el) {
         var r = el.getBoundingClientRect(), p = (h - r.bottom) / (h * 0.4);
-        el.style.setProperty('--p', Math.max(0, Math.min(1, p)).toFixed(3));
+        $$('.pattern-bars_bar', el).forEach(function (b, i) {
+          var t = Math.max(0, Math.min(1, (p - i * 0.35) / 0.65));
+          b.style.translate = '0 ' + ((1 - t) * 101).toFixed(1) + '%';
+        });
       });
     }
     function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }

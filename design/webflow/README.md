@@ -57,28 +57,26 @@ Every list sorts by `seciba` (lowest first). Empty optional fields hide their bl
 
 ## Brand pattern and motion (2026-10-27)
 
-The pattern follows the client's references: a bold block of **three bars** with slanted tops on one roof line (slope 0.34), sitting flush in the bottom-right corner of a card or photo and covering about two thirds of it. The block is a translucent tint, so it takes the colour of what it sits on: lighter or darker orange on orange cards, lighter grey on dark cards, a white or dark glass over photos.
+The pattern is **two bold bars** with slanted tops, in the bottom-right corner of a card or photo, as a translucent tint of whatever is underneath. It is built from **regular Webflow elements**, so it can be edited, moved, copied or deleted in the Designer:
 
-| Use | Where | Tone |
-|---|---|---|
-| Overlay block on orange cards | Kontakti "Zvanīt", Pakalpojumi contact card, Par mums "100+" (lighter); Par mums orange values and "Strādāsim kopā" (darker) | white 28% / black 20% |
-| Overlay block on dark cards | Kontakti and Pakalpojumi dark contact cards, Par mums black values and story blocks | white 12% |
-| Overlay block on photos | Sākums hero and call to action, Sākums about photo, Par mums hero photos (white); Pakalpojumi "Viens partneris" photo, project header photo (dark) | white 20–50% / black 60% |
-| Bars rising from an edge | Sākums: 3 orange bars from the orange section into the black above (scroll-driven) | orange |
-| Background | Footer on every page: 3 big bars behind the links | white 7% |
-| Divider mark | Noma and Projekti filter divider (≥768px) | white 14% |
-| List marker | "Cenā iekļauts" lists | orange |
+```
+pattern-bars                      (div, absolute, bottom-right, overflow hidden)
+  pattern-bars_bar is-first       (left bar, 68% high)
+  pattern-bars_bar is-second      (right bar, full height)
+```
 
-The overlay blocks are pure CSS (`::after` with the `--pb-block` mask) on the classes listed in `site/site-head.css`; each host sets its tint with `--pb-tone`. To add the block to another card or photo, add its class to the two selector lists there and give it a `--pb-tone`.
+- **Shape:** each bar is a rectangle with Transform → Skew Y −19° (origin bottom-right), which slants its top; the wrapper clips the bottom. Change the bar width, heights or skew on the classes.
+- **Size of the block** (combo on `pattern-bars`): default 60% × 86% of the card; `is-wide` 46% × 72% (Sākums hero); `is-tall` 46% × 96% (Sākums call to action); `is-photo` (above the photo instead of behind content); `is-edge` 18 × 8 rem, sits on top of its section (Sākums orange section, `data-bars-scrub` makes it follow the scroll); `is-footer` 30 rem wide; `is-rule` 6.5 × 5 rem (Noma/Projekti divider, hidden on phones). Tablet/phone sizes are set on the breakpoints.
+- **Tone** (combo on each bar, after `is-first` / `is-second`): default white 28% (orange cards), `is-dark` black 20%, `is-subtle` white 12% (dark cards), `is-glass` white 20%, `is-strong` white 50% (light photos), `is-shade` black 60% (busy photos), `is-orange`, `is-faint` white 7% (footer), `is-line` white 14%.
+- **Where:** Kontakti contact cards; Pakalpojumi contact cards and "Viens partneris" photo; Par mums "100+" card, hero photos, value cards, story blocks and "Strādāsim kopā"; Sākums hero, about photo, orange section edge and call to action; the project page header photo; Noma and Projekti filter dividers; the Footer component.
+- **To add one:** copy an existing `pattern-bars` element into a card or photo. The card needs `position: relative` and `overflow: hidden`; for cards listed in the site head CSS that is already set (with `isolation: isolate`, so a `z-index: -1` block stays behind the text). For a new card, add its class to that list or set those three properties on it.
 
-**`.brand-bars` elements** (the edge, footer and divider bars) are empty divs in the Designer (class `brand-bars` + `is-edge`, `is-rule` or `is-footer`). `site.js` adds the bars. Attributes: `data-bars` (2–5) and `data-bars-scrub` (grow with the scroll). Size and colour per variant are custom properties in the site head (`--bb-w`, `--bb-gap`, `--bb-base`, `--bb-color`).
-
-`tools/bars.py` regenerates the block and marker SVGs (`pattern/`) and their data URIs.
+The site head CSS only keeps the hosts clipping and stacking, plus the list marker (`--pb-mark`, regenerate with `tools/bars.py`).
 
 **Motion** (all in `site.js` and the site head, nothing in Webflow Interactions):
 
 - Sections, cards and footer columns below the first screen rise in as they enter, staggered in reading order. Content already on screen at load is never hidden, and nothing is hidden when the script doesn't run.
-- Bars rise from the ground when seen; `data-bars-scrub` bars follow the scroll.
+- Pattern bars slide up from their edge when seen (bars already on screen at load are shown as they are); `data-bars-scrub` bars follow the scroll.
 - Whole numbers ("17+", "100+", "14") count up once when seen.
 - The hero, call-to-action and Par mums photos drift slightly slower than the page.
 - Buttons press in (scale 0.97); arrows nudge on hover; orange-card glyphs lift on hover; filter changes bring the remaining cards back in.
