@@ -40,37 +40,11 @@
     });
   });
 
-  // Cost calculator (.calc_panel): work type [data-calc-option] with data-min/max/note (€/m²),
-  // area stepper [data-calc-step] + range [data-calc-range], mode toggle [data-calc-toggle]
-  // between the two forms [data-calc-mode]. Hidden [data-calc-field] inputs carry the estimate.
+  // Pakalpojumi hero panel (.calc_panel): [data-calc-toggle] switches between the price
+  // calculator (code embeds, see calculator/README.md) and the plain request form; both carry
+  // [data-calc-mode]. The calculator itself is self-contained and exposes window.pbCalc.
   var panel = document.querySelector('.calc_panel');
   if (panel) {
-    var calc = { i: 0, area: 120 };
-    var opts = $$('[data-calc-option]', panel);
-    var range = panel.querySelector('[data-calc-range]');
-    var fmt = function (n) { return new Intl.NumberFormat('lv-LV').format(n); };
-    var clamp = function (v) { return Math.max(10, Math.min(400, v)); };
-    var put = function (sel, v) { var e = panel.querySelector(sel); if (e) e.textContent = v; };
-    var field = function (k, v) { var e = panel.querySelector('[data-calc-field="' + k + '"]'); if (e) e.value = v; };
-    var render = function () {
-      var o = opts[calc.i];
-      opts.forEach(function (b, j) {
-        b.classList.toggle('is-active', j === calc.i);
-        b.setAttribute('aria-pressed', j === calc.i ? 'true' : 'false');
-      });
-      var total = fmt(o.dataset.min * calc.area) + ' – ' + fmt(o.dataset.max * calc.area) + ' €';
-      put('[data-calc-area]', calc.area + ' m²');
-      put('[data-calc-total]', total);
-      put('[data-calc-note]', o.dataset.note);
-      if (range) range.value = calc.area;
-      field('type', o.textContent.trim());
-      field('total', total);
-    };
-    opts.forEach(function (b, j) { b.addEventListener('click', function () { calc.i = j; render(); }); });
-    $$('[data-calc-step]', panel).forEach(function (b) {
-      b.addEventListener('click', function () { calc.area = clamp(calc.area + Number(b.dataset.calcStep)); render(); });
-    });
-    if (range) range.addEventListener('input', function () { calc.area = clamp(Number(range.value)); render(); });
     var toggles = $$('[data-calc-toggle]', panel);
     var setMode = function (m) {
       toggles.forEach(function (t) {
@@ -78,26 +52,35 @@
         t.classList.toggle('is-active', on);
         t.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
+      // form blocks get an explicit block (Webflow hides them while the captcha loads);
+      // the calculator keeps its own display
       $$('[data-calc-mode]', panel).forEach(function (f) {
-        (f.closest('.w-form') || f).style.display = f.dataset.calcMode === m ? 'block' : 'none';
+        var box = f.closest('.w-form');
+        (box || f).style.display = f.dataset.calcMode === m ? (box ? 'block' : '') : 'none';
       });
     };
     toggles.forEach(function (t) { t.addEventListener('click', function () { setMode(t.dataset.calcToggle); }); });
-    // "Aprēķināt / Pieteikties" buttons in the services list: data-calc-apply = Kalkulatora veids
-    // (empty → request form with the service preselected), data-service = service name.
+    // Buttons in the services list (data-service = service name): services the calculator
+    // knows (PBC_SETTINGS.services) open it at their works, others open the request form.
     $$('[data-service]').forEach(function (b) {
-      var n = b.getAttribute('data-calc-apply');
-      var inCalc = n !== null && n !== '' && opts[Number(n)];
+      var inCalc = window.pbCalc && window.pbCalc.has(b.dataset.service);
       b.textContent = inCalc ? 'Aprēķināt un pieteikties' : 'Pieteikties šim pakalpojumam';
       b.addEventListener('click', function () {
-        if (inCalc) { calc.i = Number(n); render(); setMode('calc'); return; }
+        if (inCalc) { setMode('calc'); window.pbCalc.show(b.dataset.service); return; }
         setMode('form');
         var sel = panel.querySelector('select');
         if (sel) sel.value = b.dataset.service;
       });
     });
-    render();
     setMode('calc');
+  }
+
+  // Service pages: the calculator button opens the calculator at this service's works.
+  if (/^\/pakalpojums\//.test(location.pathname)) {
+    var svcName = document.querySelector('h1');
+    $$('a[href="/pakalpojumi#kalkulators"]').forEach(function (a) {
+      if (svcName) a.setAttribute('href', '/pakalpojumi?pakalpojums=' + encodeURIComponent(svcName.textContent.trim()) + '#kalkulators');
+    });
   }
 
   // CMS request forms: the hidden [data-product-name] input carries the page's item name (h1).

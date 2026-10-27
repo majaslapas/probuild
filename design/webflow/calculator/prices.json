@@ -1,0 +1,6574 @@
+{
+ "areas": [
+  {
+   "id": "buvnieciba",
+   "order": 1,
+   "name": "Būvniecība",
+   "file": "buvniecibas-tabula-2026.xlsx",
+   "sheet": "Darbu cenas 2026",
+   "drive": "būvniecības tabula 2026 pilna tabula.xlsx"
+  },
+  {
+   "id": "remontdarbi",
+   "order": 2,
+   "name": "Remontdarbi",
+   "file": "remontdarbi-2026.xlsx",
+   "sheet": "Darbu cenas 2026",
+   "drive": "remontdarbi_2026_parbaudita_tabula.xlsx"
+  },
+  {
+   "id": "metalapstrade",
+   "order": 3,
+   "name": "Metālapstrāde",
+   "file": "metalapstrade-2026.xlsx",
+   "sheet": "Metālapstrādes cenas",
+   "drive": "metalapstrades_pakalpojumi_2026.xlsx"
+  },
+  {
+   "id": "kokapstrade",
+   "order": 4,
+   "name": "Kokapstrāde",
+   "file": "kokapstrade-2026.xlsx",
+   "sheet": "Kokapstrādes cenas",
+   "drive": "kokapstrades_pakalpojumi_2026.xlsx"
+  },
+  {
+   "id": "apsaimniekosana",
+   "order": 5,
+   "name": "Apsaimniekošana",
+   "file": "apsaimniekosana-2026.xlsx",
+   "sheet": "Uzturēšanas darbu cenas",
+   "drive": "majas_apsaimniekosana_un_teritorijas_uzturesana_2026.xlsx"
+  }
+ ],
+ "items": [
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Sagatavošanas darbi, zemes darbi, pamatu nospraušana",
+   "unit": "m2",
+   "frm": 2.5,
+   "price": 4.0,
+   "to": 7.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 2,
+    "name": "Sagatavošanas darbi, zemes darbi, pamatu nospraušana.",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Zemes rakšana ar traktortehniku pamatiem (universālais ekskavators)",
+   "unit": "h",
+   "frm": 40.0,
+   "price": 55.0,
+   "to": 75.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 3,
+    "name": "Zemes rakšana ar traktortehniku pamatiem (universālais ekskavators)",
+    "unit": "Stunda"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Zemes darbi",
+   "unit": "m3",
+   "frm": 35.0,
+   "price": 55.0,
+   "to": 80.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 4,
+    "name": "Zemes darbi",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Šķembu pabēršana zem pamatiem un grīdām",
+   "unit": "m2",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 5,
+    "name": "Šķembu pabēršana zem pamatiem un grīdām",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Pamatnes (pēdas) sagatavošana",
+   "unit": "m",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 6,
+    "name": "Pamatnes-pēdas sagatvošana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Veidņu izgatavošana, armatūras uzstādīšana, betona ieliešana",
+   "unit": "m3",
+   "frm": 70.0,
+   "price": 95.0,
+   "to": 130.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 7,
+    "name": "Veidņu izgatavošana, armatūras uzstādīšana, betona ieliešana",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Veidņu uzstādīšana un noņemšana no pamatu pēdas",
+   "unit": "m",
+   "frm": 12.0,
+   "price": 18.0,
+   "to": 28.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 8,
+    "name": "Veidņu uzstadīšana un noņemšana no pamatu pēdas",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Gatavo veidņu montāža (piem. PERI-DOKA)",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 20.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 9,
+    "name": "Gatavo veidņu montāža (piem. PERI-DOKA)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Veidņu izgatavošana no dēļiem, finiera",
+   "unit": "m2",
+   "frm": 15.0,
+   "price": 22.0,
+   "to": 35.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 10,
+    "name": "Veidņu izgatavošana no dēļiem, finiera",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Armatūras uzstādīšana, betona ieliešana",
+   "unit": "m3",
+   "frm": 40.0,
+   "price": 55.0,
+   "to": 75.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 11,
+    "name": "Armatūras uzstādīšana, betona ieliešana",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Horizontālā pamatu hidroizolācija",
+   "unit": "m2",
+   "frm": 6.0,
+   "price": 9.0,
+   "to": 15.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 12,
+    "name": "Horizontālā pamatu hidroizolācija",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Pamatu vertikālā un horizontālā hidroizolācija",
+   "unit": "m2",
+   "frm": 6.0,
+   "price": 9.0,
+   "to": 15.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 13,
+    "name": "Pamatu vertikālā un horizontāla hidroizolācija",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Pamatu siltināšana",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 20.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 14,
+    "name": "Pamatu siltināšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Izlīdzinošā monolītā betona josla uz pamatiem",
+   "unit": "m",
+   "frm": 18.0,
+   "price": 25.0,
+   "to": 40.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 15,
+    "name": "Izlīdzinošā monolītā betona josla uz pamatiem",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Pamatu bloku uzstādīšana",
+   "unit": "gab",
+   "frm": 12.0,
+   "price": 18.0,
+   "to": 28.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 16,
+    "name": "Pamatu bloku uzstādīšana",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Pamatu izveide no FIBO, KIWI blokiem 5 MPa",
+   "unit": "m3",
+   "frm": 40.0,
+   "price": 55.0,
+   "to": 75.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 17,
+    "name": "Pamatu izveide no FIBO,KIWI blokiem 5Mpa",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Monolītie aizbetonējumi starp pamatu blokiem",
+   "unit": "m3",
+   "frm": 45.0,
+   "price": 65.0,
+   "to": 90.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 18,
+    "name": "Monolītie aizbetonējumi starp pamatu blokiem",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Pārseguma paneļu uzstādīšana",
+   "unit": "gab",
+   "frm": 35.0,
+   "price": 55.0,
+   "to": 85.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 19,
+    "name": "Pārseguma paneļu uzstādīšana",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Betona elementu griešana",
+   "unit": "m",
+   "frm": 12.0,
+   "price": 20.0,
+   "to": 35.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 20,
+    "name": "Betona elementu griešana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Tehnisko caurumu izgatavošana",
+   "unit": "gab",
+   "frm": 25.0,
+   "price": 45.0,
+   "to": 80.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 21,
+    "name": "Tehnisko caurumu izgatavošana",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Monolīta pārseguma izveide ar armēšanu",
+   "unit": "m2",
+   "frm": 30.0,
+   "price": 45.0,
+   "to": 65.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 22,
+    "name": "Monolīta pārseguma izveide ar armēšanu",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Monolītie betona pamati zem stabiem",
+   "unit": "gab",
+   "frm": 50.0,
+   "price": 75.0,
+   "to": 110.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 23,
+    "name": "Monolītie betona pamati zem stabiem",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Pakāpienu betonēšana (līdz 2,5 m garumā)",
+   "unit": "gab",
+   "frm": 80.0,
+   "price": 120.0,
+   "to": 180.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 24,
+    "name": "Pakāpienu betonēšana (līdz 2,5m garumā)",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Pamati",
+   "name": "Objekta apsardze – videonovērošana",
+   "unit": "diena",
+   "frm": 30.0,
+   "price": 45.0,
+   "to": 70.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 25,
+    "name": "Objektu apsardze - videonovērošana",
+    "unit": "Diena"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Sastatņu uzstādīšana",
+   "unit": "m2",
+   "frm": 4.0,
+   "price": 6.0,
+   "to": 9.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 26,
+    "name": "Sastatņu uzstādīšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Ķieģeļu sienas mūrēšana b=51",
+   "unit": "m3",
+   "frm": 70.0,
+   "price": 100.0,
+   "to": 140.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 27,
+    "name": "Ķieģeļu sienas mūrēšana b=51",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Ventilācijas kanāla / dūmvada izgatavošana",
+   "unit": "m kanāls",
+   "frm": 55.0,
+   "price": 80.0,
+   "to": 120.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 28,
+    "name": "Ventilācijas kanāla-dūmvada izgatavošana",
+    "unit": "kanals – t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Gāzbetona bloku mūrēšana (AEROC, ROCLITE)",
+   "unit": "m3",
+   "frm": 45.0,
+   "price": 65.0,
+   "to": 90.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 29,
+    "name": "Gāzbetona bloku mūrēšana,AEROC,ROCLITE",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Keramzīta bloku mūrēšana (FIBO)",
+   "unit": "m3",
+   "frm": 50.0,
+   "price": 70.0,
+   "to": 95.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 30,
+    "name": "Keramzīta bloku mūrēšana, FIBO",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Koka karkasa sienas izbūve",
+   "unit": "m2",
+   "frm": 18.0,
+   "price": 25.0,
+   "to": 38.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 31,
+    "name": "Koka karkasa sienas izbūve",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Kokšķiedras plāksnes montāža",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 20.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 32,
+    "name": "kokšķiedras plāksnes montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Kokšķiedras plāksnes montāža (griesti)",
+   "unit": "m2",
+   "frm": 10.0,
+   "price": 15.0,
+   "to": 24.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 33,
+    "name": "kokšķiedras plāksnes montāža (griesti)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Sienas siltināšana ar minerālvati",
+   "unit": "m2",
+   "frm": 6.0,
+   "price": 10.0,
+   "to": 16.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 34,
+    "name": "Sienas siltinašana ar mineralvati",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Tvaika izolācijas ieklāšana",
+   "unit": "m2",
+   "frm": 3.0,
+   "price": 5.0,
+   "to": 8.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 35,
+    "name": "Tvaika izolācijas ieklāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Sendviča paneļi ar metāla karkasa izveidi",
+   "unit": "m2",
+   "frm": 15.0,
+   "price": 22.0,
+   "to": 35.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 36,
+    "name": "SANDVICH paneļi ar metala karkasa izveide",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Monolītās betona sienas izbūve",
+   "unit": "m3",
+   "frm": 70.0,
+   "price": 100.0,
+   "to": 140.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 37,
+    "name": "Monolītās betona sienas izbūve",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Monolītās betona sienas slīpēšana",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 38,
+    "name": "Monolītās betona sienas slīpēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Ailu pārsedzes izgatavošana no monolītā betona",
+   "unit": "m",
+   "frm": 25.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 39,
+    "name": "Ailu pārsedzes izgatavošana no monolītā betona",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Ailu pārsedzes montāža",
+   "unit": "gab",
+   "frm": 30.0,
+   "price": 45.0,
+   "to": 70.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 40,
+    "name": "Ailu pārsedzes montāža",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Izlīdzinošās monolītās betona joslas izveidošana ar siltināšanu",
+   "unit": "m",
+   "frm": 7.0,
+   "price": 12.0,
+   "to": 20.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 41,
+    "name": "Izlīdzinošās monolītās betona joslas izveidošana ar siltināšanu",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Nesošās kolonnas izgatavošana",
+   "unit": "m",
+   "frm": 55.0,
+   "price": 80.0,
+   "to": 115.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 42,
+    "name": "Nesošās kolonnas izgatavošana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Nesošās kolonnas montāža",
+   "unit": "gab",
+   "frm": 50.0,
+   "price": 80.0,
+   "to": 120.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 43,
+    "name": "Nesošās kolonnas montāža",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Tehnisko kanālu urbšana betonā",
+   "unit": "gab",
+   "frm": 25.0,
+   "price": 45.0,
+   "to": 80.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 44,
+    "name": "Tehnisko kanālu urbšana betonā",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Metāla siju uzstādīšana",
+   "unit": "t",
+   "frm": 120.0,
+   "price": 180.0,
+   "to": 280.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 45,
+    "name": "Metāla siju uzstādīšana",
+    "unit": "T"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Sienas",
+   "name": "Metināšanas darbi",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 35.0,
+   "to": 50.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 46,
+    "name": "Metināšanas darbi",
+    "unit": "Stunda"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Guļbūve, nojumes, terases",
+   "name": "Terases dēļu montāža (lineāri)",
+   "unit": "m2",
+   "frm": 15.0,
+   "price": 22.0,
+   "to": 32.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 47,
+    "name": "Terases dēļus montāža (lienāli)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Guļbūve, nojumes, terases",
+   "name": "Terases dēļu montāža (eglīte)",
+   "unit": "m2",
+   "frm": 20.0,
+   "price": 28.0,
+   "to": 40.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 48,
+    "name": "Terases dēļus montāža (eglīte)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Guļbūve, nojumes, terases",
+   "name": "Koka karkasa nojumes būvniecība (auto novietošanai, lapene)",
+   "unit": "m2",
+   "frm": 30.0,
+   "price": 45.0,
+   "to": 65.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 49,
+    "name": "Koka karkasa nojumes būvniecība (auto novietošanai, lapene)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Guļbūve, nojumes, terases",
+   "name": "Koka margas izgatavošana",
+   "unit": "m",
+   "frm": 22.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 50,
+    "name": "Koka margas izgatavošana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Guļbūve, nojumes, terases",
+   "name": "Koka stabu montāža",
+   "unit": "gab",
+   "frm": 20.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 51,
+    "name": "Koka stabus montāža",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Guļbūve, nojumes, terases",
+   "name": "Guļbaļķu sienas izbūve (Guļbūvju būvniecībā)",
+   "unit": "m2",
+   "frm": 30.0,
+   "price": 45.0,
+   "to": 65.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 52,
+    "name": "Guļbaļķu sienas izbūve (Guļbūvju būvniecībā)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Guļbūve, nojumes, terases",
+   "name": "Guļbūves logu vai durvju ailes izveide",
+   "unit": "m2",
+   "frm": 20.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 53,
+    "name": "Guļbūves logu vai durvju ailes izveide",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Guļbūve, nojumes, terases",
+   "name": "Guļbaļķu sienas slīpēšana",
+   "unit": "m2",
+   "frm": 6.0,
+   "price": 10.0,
+   "to": 16.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 54,
+    "name": "Guļbaļķu sienas slīpēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Guļbūve, nojumes, terases",
+   "name": "Guļbūves sienas apstrāde ar linsēklu eļļu",
+   "unit": "m2",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 12.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 55,
+    "name": "Guļbūves sienas apstrāde ar liņeļļu",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Guļbūve, nojumes, terases",
+   "name": "Guļbūves sienas balināšana",
+   "unit": "m2",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 12.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 56,
+    "name": "Guļbūves sienas balināšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Grīdas",
+   "name": "Koka pārseguma siju montāža",
+   "unit": "m2",
+   "frm": 14.0,
+   "price": 20.0,
+   "to": 30.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 57,
+    "name": "Koka pārseguma siju montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Grīdas",
+   "name": "Melnās grīdas izbūve",
+   "unit": "m2",
+   "frm": 10.0,
+   "price": 15.0,
+   "to": 23.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 58,
+    "name": "Melnās grīdas izbūve",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Grīdas",
+   "name": "Grīdas siltināšana ar minerālvati",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 20.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 59,
+    "name": "Grīdas siltināšana ar minerālvati",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Grīdas",
+   "name": "Grīdas siju uzstādīšana",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 18.0,
+   "to": 28.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 60,
+    "name": "Grīdas siju uzstādīšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Grīdas",
+   "name": "Finiera vai OSB3 montāža uz grīdas",
+   "unit": "m2",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 61,
+    "name": "Finiera vai OSB3 montāža uz grīdas",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Grīdas",
+   "name": "Grīdas dēļu ieklāšana",
+   "unit": "m2",
+   "frm": 10.0,
+   "price": 15.0,
+   "to": 24.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 62,
+    "name": "Grīdas dēļu ieklāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Grīdas",
+   "name": "Betona grīdas izveide ar armatūras sietu",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 18.0,
+   "to": 28.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 63,
+    "name": "Betona grīdas izveide ar armatūras sietu",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Grīdas",
+   "name": "Grīdas izveidošana no sausā betona ESTRICH (tikai darbs)",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 64,
+    "name": "Grīdas izveidošana no sausā betona ESTRICH (tikai darbs)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Grīdas",
+   "name": "Hidroizolācijas darbi",
+   "unit": "m2",
+   "frm": 6.0,
+   "price": 9.0,
+   "to": 15.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 65,
+    "name": "Hidroizolācijas darbi",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Grīdas",
+   "name": "Siltās grīdas ierīkošana (ūdens apsilde)",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 18.0,
+   "to": 28.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 66,
+    "name": "Siltās grīdas ierikošana (Ūdens apsildamā)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Grīdas",
+   "name": "Siltās grīdas ierīkošana (elektriskā)",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 20.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 67,
+    "name": "Siltas grīdas ierikošana(Elektriskā)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Šīfera demontāža bez utilizācijas",
+   "unit": "m2",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 68,
+    "name": "Šīfera demontāža bez utilizācijas",
+    "unit": "м2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Jumtu siltumizolācija ar ISOPLAAT paneļiem",
+   "unit": "m2",
+   "frm": 6.0,
+   "price": 10.0,
+   "to": 16.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 69,
+    "name": "Jumtu siltumizolācija ar ISOPLAAT paneļiem",
+    "unit": "м2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Mūrlatas uzstādīšana",
+   "unit": "m",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 70,
+    "name": "Mūrlatas uzstādīšana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Jumta koka konstrukciju (spāres) montāža",
+   "unit": "m2",
+   "frm": 20.0,
+   "price": 28.0,
+   "to": 40.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 71,
+    "name": "Jumta koka konstrukciju (spāres) montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Cirtainu jumta spāru izgatavošana",
+   "unit": "gab",
+   "frm": 30.0,
+   "price": 45.0,
+   "to": 65.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 72,
+    "name": "Cirtainu jumta spāru izgatavošana",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Pretkondensāta plēves ieklāšana",
+   "unit": "m2",
+   "frm": 2.5,
+   "price": 3.5,
+   "to": 5.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 73,
+    "name": "Pretkondensāta plēves ieklāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Latojums",
+   "unit": "m2",
+   "frm": 4.5,
+   "price": 7.0,
+   "to": 11.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 74,
+    "name": "Latojums",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "OSB plāksnes montāža",
+   "unit": "m2",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 75,
+    "name": "OSB plāksnes montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Kausējamā ruberoīda uzklāšana (2 kārtas)",
+   "unit": "m2",
+   "frm": 9.0,
+   "price": 14.0,
+   "to": 20.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 76,
+    "name": "Uzklāt kausējamo ruberoīdu (2-kārtas)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Bitumeņa apakšklāja ieklāšana",
+   "unit": "m2",
+   "frm": 2.5,
+   "price": 4.0,
+   "to": 6.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 77,
+    "name": "Bitumeņa apakšklāja ieklāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Bitumeņa dakstiņu montāža",
+   "unit": "m2",
+   "frm": 10.0,
+   "price": 15.0,
+   "to": 23.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 78,
+    "name": "Bitumeņa dakstiņu montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Skaidu jumta klāšana",
+   "unit": "m2",
+   "frm": 22.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 79,
+    "name": "skaidu jumtu klāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Metāla dakstiņu montāža",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 80,
+    "name": "Metāla dakstiņu montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Māla vai polimēra dakstiņu montāža",
+   "unit": "m2",
+   "frm": 14.0,
+   "price": 20.0,
+   "to": 30.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 81,
+    "name": "Māla vai polimēra dakstiņu montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Valcprofila montāža",
+   "unit": "m2",
+   "frm": 15.0,
+   "price": 22.0,
+   "to": 33.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 82,
+    "name": "Valcprofila montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Bezasbesta šīfera montāža",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 83,
+    "name": "Bezasbesta šīfera montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Jumta logu montāža (VELUX, FAKRO)",
+   "unit": "gab",
+   "frm": 65.0,
+   "price": 100.0,
+   "to": 150.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 84,
+    "name": "Jumta logu montāža “VELUX, FAKRO”",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Sniega barjeras montāža",
+   "unit": "m",
+   "frm": 6.0,
+   "price": 10.0,
+   "to": 15.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 85,
+    "name": "Sniega barjeras montāža",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Ūdens noteksistēmas uzstādīšana",
+   "unit": "m",
+   "frm": 6.0,
+   "price": 10.0,
+   "to": 16.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 86,
+    "name": "Ūdens noteksistēmas uzstādīšana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Dūmvadu apdare",
+   "unit": "gab",
+   "frm": 100.0,
+   "price": 180.0,
+   "to": 300.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 87,
+    "name": "Dūmvadu apdare",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Jumta pakāpienu uzstādīšana",
+   "unit": "gab",
+   "frm": 9.0,
+   "price": 15.0,
+   "to": 22.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 88,
+    "name": "Jumta pakāpienu uzstādīšana",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Ventilācijas kanālu uzstādīšana (deflektors)",
+   "unit": "gab",
+   "frm": 20.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 89,
+    "name": "Ventilācijas kanālu uzstādīšana (deflektors)",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Zibensnovedēja uzstādīšana",
+   "unit": "m",
+   "frm": 7.0,
+   "price": 12.0,
+   "to": 20.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 90,
+    "name": "Zibensnovedēja uzstādīšana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Jumta vējmalas uzstādīšana",
+   "unit": "gab",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 20.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 91,
+    "name": "Jumta vējmalas uzstādīšana",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Skārda lāseņa uzstādīšana",
+   "unit": "m",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 92,
+    "name": "Skārda lāseņa uzstādīšana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Jumta kores montāža",
+   "unit": "m",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 93,
+    "name": "Jumta kores montāža",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Dūmvada mūrēšana ar šuvju izšuvošanu",
+   "unit": "m kanāls",
+   "frm": 80.0,
+   "price": 120.0,
+   "to": 180.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 94,
+    "name": "Dūmvada mūrēšana ar šuvju izšuvošanu",
+    "unit": "t/m / kanālam"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Jumts",
+   "name": "Jumta siltināšana - mansarda",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 20.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 95,
+    "name": "Jumta siltināšana - mansarda",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Putupolistirola montāža",
+   "unit": "m2",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 12.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 96,
+    "name": "Putupolistirola montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Akmens vates montāža",
+   "unit": "m2",
+   "frm": 6.0,
+   "price": 10.0,
+   "to": 15.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 97,
+    "name": "Akmens vates montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "CEWOOD paneļu montāža",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 18.0,
+   "to": 28.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 98,
+    "name": "CEWOOD paneļu montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Profilu ar sietu montāža uz fasādes",
+   "unit": "m",
+   "frm": 4.0,
+   "price": 7.0,
+   "to": 11.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 99,
+    "name": "Profilu ar sietu montāža uz fasādes",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Zemapmetuma stikla šķiedras sieta līmēšana – armēšana",
+   "unit": "m2",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 12.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 100,
+    "name": "Zemapmetuma stikla šķiedras sieta līmēšana – armēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Gruntēšana ar kvarca grunti",
+   "unit": "m2",
+   "frm": 1.5,
+   "price": 2.5,
+   "to": 4.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 101,
+    "name": "Gruntēšana ar kvarca grunti",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Dekoratīvais apmetums",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 102,
+    "name": "Dekoratīvais apmetums",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Fasādes špaktelēšana",
+   "unit": "m2",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 103,
+    "name": "Fasādes špaktelēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Loga ailes apdare",
+   "unit": "m",
+   "frm": 6.0,
+   "price": 10.0,
+   "to": 16.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 104,
+    "name": "Loga ailes apdare",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Dekoratīvo elementu montāža",
+   "unit": "m",
+   "frm": 10.0,
+   "price": 18.0,
+   "to": 30.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 105,
+    "name": "Dekoratīvos elementu montāža",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Fasādes apdare ar dekoratīvajām ķieģeļflīzēm",
+   "unit": "m2",
+   "frm": 20.0,
+   "price": 30.0,
+   "to": 45.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 106,
+    "name": "Fasādes apdare ar dekoratīvajām ķieģeļflīzēm",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Fasādes apmūrēšana ar ķieģeli ar šuvju izšuvošanu",
+   "unit": "m2",
+   "frm": 30.0,
+   "price": 45.0,
+   "to": 65.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 107,
+    "name": "Fasādes apmūrēšana ar ķieģeli ar šuvju izšuvošanu",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Fasādes krāsošana 2 kārtās",
+   "unit": "m2",
+   "frm": 4.0,
+   "price": 6.0,
+   "to": 9.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 108,
+    "name": "Fasādes krāsošana 2 kārtās",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Ventilējamās fasādes ar spundēto dēļu apdari",
+   "unit": "m2",
+   "frm": 18.0,
+   "price": 28.0,
+   "to": 42.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 109,
+    "name": "Ventilējamās fasādes ar spundēto dēļu apdari",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Sendviča paneļi (montāžas darbi)",
+   "unit": "m2",
+   "frm": 15.0,
+   "price": 22.0,
+   "to": 35.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 110,
+    "name": "Sendviča paneļi (montāžas darbi)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Apdare ar plastikāta dēļiem (SAIDINGS)",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 111,
+    "name": "Apdare ar plastikāta dēļiem SAIDINGS",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Apdares dēļu BLOCKHOUSE montāža",
+   "unit": "m2",
+   "frm": 10.0,
+   "price": 15.0,
+   "to": 23.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 112,
+    "name": "Apdares dēļu BLOCKHOUSE montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Vecās dekoratīvās apdares daļēja renovācija",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 15.0,
+   "to": 25.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 113,
+    "name": "Vecās dekoratīvās apdares renovācija, daļēja",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Vēja kārbas karkasa izveide",
+   "unit": "m",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 114,
+    "name": "Vēja kārbas karkasa izveide",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Vēja kārbas apdare ar spundētiem dēļiem un krāsošana 2 kārtās",
+   "unit": "m",
+   "frm": 12.0,
+   "price": 18.0,
+   "to": 28.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 115,
+    "name": "Vēja kārbas apdare ar spundētiem dēļiem +2 kārtas krāsošana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Vēja kārbas apdare ar PVC SAIDING dēļiem",
+   "unit": "m",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 116,
+    "name": "Vēja kārbas apdare ar PVC SAIDING dēļiem",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Cokola apdare ar dolomītu",
+   "unit": "m2",
+   "frm": 22.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 117,
+    "name": "Cokola apdare ar dolomītu",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Fasāde",
+   "name": "Cokola apdare ar minerīta plātnēm",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 18.0,
+   "to": 28.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 118,
+    "name": "Cokola apdare ar minerīta plātnēm",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Apzaļumošana un labiekārtošana",
+   "name": "Vecā bruģa klājuma demontāža",
+   "unit": "m2",
+   "frm": 4.0,
+   "price": 7.0,
+   "to": 11.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 119,
+    "name": "Vecās bruģa klājuma demontāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Apzaļumošana un labiekārtošana",
+   "name": "Zemes rakšana ar rokām b=20 cm celiņu izveidošanai",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 120,
+    "name": "Zemes rakšana ar rokām b=20 cm celiņu izveidošanai",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Apzaļumošana un labiekārtošana",
+   "name": "Šķembu vai sīkšķembu pabēršana un blietēšana",
+   "unit": "m2",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 121,
+    "name": "Šķembu vai sīkšķembu pabēršana un blietēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Apzaļumošana un labiekārtošana",
+   "name": "Bruģa ieklāšana",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 18.0,
+   "to": 27.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 122,
+    "name": "Bruģa ieklāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Apzaļumošana un labiekārtošana",
+   "name": "Trotuāra plāksnes ieklāšana",
+   "unit": "m2",
+   "frm": 10.0,
+   "price": 15.0,
+   "to": 23.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 123,
+    "name": "Trotuāra plāksnes ieklāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Apzaļumošana un labiekārtošana",
+   "name": "Trotuāra apmales uzstādīšana",
+   "unit": "m",
+   "frm": 6.0,
+   "price": 10.0,
+   "to": 15.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 124,
+    "name": "Trotuāra apmales uzstādīšana",
+    "unit": "m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Apzaļumošana un labiekārtošana",
+   "name": "Pakāpienu izgatavošana no bruģa",
+   "unit": "m",
+   "frm": 22.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 125,
+    "name": "Pakāpienu izgatavošana no bruģa",
+    "unit": "t\\m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Apzaļumošana un labiekārtošana",
+   "name": "Zemes līdzināšana ar traktortehniku",
+   "unit": "h",
+   "frm": 40.0,
+   "price": 55.0,
+   "to": 75.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 126,
+    "name": "Zemes līdzināšana + traktortehnikas pakalpojumi (zemes līdzināšana)",
+    "unit": "Stunda"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Apzaļumošana un labiekārtošana",
+   "name": "Melnzemes blīvēšana",
+   "unit": "m2",
+   "frm": 2.0,
+   "price": 3.0,
+   "to": 5.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 127,
+    "name": "Melnzemes blīvēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Apzaļumošana un labiekārtošana",
+   "name": "Zāles stādīšana",
+   "unit": "m2",
+   "frm": 2.0,
+   "price": 3.0,
+   "to": 5.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 128,
+    "name": "Zāles stādīšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Apzaļumošana un labiekārtošana",
+   "name": "Ģeotekstila ieklāšana",
+   "unit": "m2",
+   "frm": 1.5,
+   "price": 2.5,
+   "to": 4.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 129,
+    "name": "Ģeotekstila ieklāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Apzaļumošana un labiekārtošana",
+   "name": "Koku stādīšana",
+   "unit": "gab",
+   "frm": 20.0,
+   "price": 35.0,
+   "to": 60.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 130,
+    "name": "Koku stādīšana",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Žogi",
+   "name": "Gatavu betona žoga stabu uzstādīšana (betonēšana)",
+   "unit": "gab",
+   "frm": 22.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 131,
+    "name": "Gatavu betona žoga stabu uzstādīšana (betonēšana)",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Žogi",
+   "name": "Pasētas posma uzstādīšana",
+   "unit": "gab",
+   "frm": 15.0,
+   "price": 25.0,
+   "to": 40.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 132,
+    "name": "Pasētas posma uzstādīšana",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Žogi",
+   "name": "Gatava žoga posma uzstādīšana",
+   "unit": "m",
+   "frm": 10.0,
+   "price": 15.0,
+   "to": 23.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 133,
+    "name": "Gatava žoga posma uzstādīšana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Žogi",
+   "name": "Koka žoga izgatavošana no dēļiem",
+   "unit": "m2",
+   "frm": 16.0,
+   "price": 25.0,
+   "to": 38.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 134,
+    "name": "Kokā žoga izgatavošana no dēļiem",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Žogi",
+   "name": "Metāla stabu uzstādīšana",
+   "unit": "gab",
+   "frm": 15.0,
+   "price": 25.0,
+   "to": 40.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 135,
+    "name": "Metāla stabu uzstādīšana",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Žogi",
+   "name": "Žoga sieta montāža",
+   "unit": "m",
+   "frm": 5.0,
+   "price": 8.0,
+   "to": 12.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 136,
+    "name": "Žoga sieta montāža",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Žogi",
+   "name": "Vārtu uzstādīšana mašīnas iebraukšanai",
+   "unit": "gab",
+   "frm": 100.0,
+   "price": 180.0,
+   "to": 280.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 137,
+    "name": "Vārtu uzstādīšana mašīnas iebraukšanai",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Žogi",
+   "name": "Gājēju vārtu uzstādīšana",
+   "unit": "gab",
+   "frm": 50.0,
+   "price": 80.0,
+   "to": 130.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 138,
+    "name": "Gājēju vārtu uzstādīšana",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Žogi",
+   "name": "Monolītā betona pamatu izveide ķieģeļu žogam",
+   "unit": "m",
+   "frm": 30.0,
+   "price": 45.0,
+   "to": 65.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 139,
+    "name": "Monolītā betona pamatu izveide ķieģelu žogam",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Komunikācijas",
+   "name": "Drenāžas sistēmas ieklāšana",
+   "unit": "m",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 140,
+    "name": "Drenāžas sistēmas ieklāšana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Komunikācijas",
+   "name": "Kanalizācijas septika uzstādīšana",
+   "unit": "kompl",
+   "frm": 150.0,
+   "price": 250.0,
+   "to": 400.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 141,
+    "name": "Kanalizācijas septika uzstādīšana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Komunikācijas",
+   "name": "Revīzijas akas uzstādīšana",
+   "unit": "kompl",
+   "frm": 60.0,
+   "price": 100.0,
+   "to": 160.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 142,
+    "name": "Revīzijas akas uzstādīšana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Komunikācijas",
+   "name": "Elektriskā kabeļa ieguldīšana ne vairāk kā 90 cm dziļumā",
+   "unit": "m",
+   "frm": 3.0,
+   "price": 5.0,
+   "to": 8.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 143,
+    "name": "Elektriskā kabeļa ieguldīšana ne vairāk kā 90cm dziļumā",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "buvnieciba",
+   "group": "Komunikācijas",
+   "name": "Būvgružu iznešana",
+   "unit": "m3",
+   "frm": 15.0,
+   "price": 25.0,
+   "to": 40.0,
+   "note": "",
+   "source": {
+    "file": "buvniecibas-tabula-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 144,
+    "name": "Būvgružu iznēšana",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Laukakmeņu mūrēšanas darbi",
+   "unit": "h",
+   "frm": 18.0,
+   "price": 25.0,
+   "to": 32.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 2,
+    "name": "Laukakmeņu mūrēšanas darbi",
+    "unit": "St"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Veco ķieģeļu mūrēšana (mākslinieciskā mūrēšana)",
+   "unit": "h",
+   "frm": 22.0,
+   "price": 30.0,
+   "to": 38.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 3,
+    "name": "Veco ķieģeļu mūrēšana - makslinieka mūrēšana",
+    "unit": "St"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Daļējs sienas apmetums",
+   "unit": "m2",
+   "frm": 10.0,
+   "price": 14.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 4,
+    "name": "Daļējs sienas apmetums",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Visas sienas apmetums (rokas darbs)",
+   "unit": "m2",
+   "frm": 10.0,
+   "price": 13.0,
+   "to": 16.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 5,
+    "name": "Visas sienas apmetums (rokas darbs)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Plaisu apstrāde",
+   "unit": "m",
+   "frm": 4.0,
+   "price": 6.5,
+   "to": 9.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 6,
+    "name": "Plaisu apstrāde",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Gruntēšana",
+   "unit": "m2",
+   "frm": 1.0,
+   "price": 2.0,
+   "to": 3.5,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 7,
+    "name": "Gruntēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Vecās apdares noņemšana (tapetes, krāsa u. c.)",
+   "unit": "m2",
+   "frm": 4.5,
+   "price": 7.0,
+   "to": 10.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 8,
+    "name": "Vecās apdares noņemšana, tapetes, krāsa utt…",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Sienas špaktelēšana",
+   "unit": "m2",
+   "frm": 6.5,
+   "price": 9.0,
+   "to": 14.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 9,
+    "name": "Sienas špaktelēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Špaktelēšana LED apgaismojumam",
+   "unit": "m2",
+   "frm": 14.0,
+   "price": 20.0,
+   "to": 26.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 10,
+    "name": "Špaktelēšana priekš LED apgaismojumam",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Slīpēšana",
+   "unit": "m2",
+   "frm": 3.0,
+   "price": 4.5,
+   "to": 6.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 11,
+    "name": "Slīpēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Stiklšķiedras sieta uzlīmēšana",
+   "unit": "m2",
+   "frm": 7.5,
+   "price": 9.0,
+   "to": 12.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 12,
+    "name": "Stiklašķiedras sieta uzlīmēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Dekoratīvā krāsošana ar Venēcijas apmetuma imitācijas krāsām",
+   "unit": "m2",
+   "frm": 20.0,
+   "price": 29.0,
+   "to": 38.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 13,
+    "name": "Dekoratīva krāsošana ar venecianka imitācijas krāsam",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Krāsošana 2 kārtās",
+   "unit": "m2",
+   "frm": 4.0,
+   "price": 6.0,
+   "to": 9.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 14,
+    "name": "Krāsošana 2 kārtās",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Lamināta līmēšana uz sienām",
+   "unit": "m2",
+   "frm": 16.0,
+   "price": 22.5,
+   "to": 29.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 15,
+    "name": "Lamināta līmēšana uz sienām",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Stūru uzstādīšana (iekšējie un ārējie)",
+   "unit": "gab",
+   "frm": 3.0,
+   "price": 5.0,
+   "to": 7.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 16,
+    "name": "Stūru uzstādīšana ( iekšējais un ārējais )",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Vinila tapešu līmēšana",
+   "unit": "m2",
+   "frm": 4.0,
+   "price": 8.0,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 17,
+    "name": "Vinila tapešu līmēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Stiklšķiedras tapešu līmēšana",
+   "unit": "m2",
+   "frm": 7.0,
+   "price": 9.5,
+   "to": 12.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 18,
+    "name": "Stiklšķiedras tapešu līmēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "PVC plēves līmēšana",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 18.5,
+   "to": 25.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 19,
+    "name": "PVC plēves līmēšana (tips",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Šķidro tapešu uzklāšana",
+   "unit": "m2",
+   "frm": 10.0,
+   "price": 14.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 20,
+    "name": "Šķidro tapešu uzklāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Foto tapešu līmēšana",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 18.5,
+   "to": 25.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 21,
+    "name": "Foto tapešu līmēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Šķidro tapešu apdare ar aizsarglaku",
+   "unit": "m2",
+   "frm": 3.0,
+   "price": 5.0,
+   "to": 7.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 22,
+    "name": "Šķidro tapešu apdare ar aizsarglaku",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "OSB3 plāksnes montāža (sienas)",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 11.5,
+   "to": 15.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 23,
+    "name": "OSB3 plāksnes montāža (sienas)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Reģipša līmēšana uz sienām",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 10.0,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 24,
+    "name": "Reģipša līmēšana uz sienām",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Ģipškartona montāža (bez profiliem)",
+   "unit": "m2",
+   "frm": 3.0,
+   "price": 4.0,
+   "to": 5.5,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 25,
+    "name": "Ģipškartona montāža (bez profiliem)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Metāla karkasa izveide ģipškartonam",
+   "unit": "m2",
+   "frm": 7.0,
+   "price": 10.0,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 26,
+    "name": "Metāla karkasa izveide gipškartonam",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Reģipša arkas izveide līdz 1600 mm",
+   "unit": "m2",
+   "frm": 30.0,
+   "price": 42.5,
+   "to": 55.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 27,
+    "name": "Reģipša arkas izveide līdz 1600mm",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "LED karnīze no reģipša ar krāsošanu",
+   "unit": "m2",
+   "frm": 28.0,
+   "price": 38.0,
+   "to": 48.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 28,
+    "name": "LED karnīze no reģipša ar krāsošanu",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Dekoratīvā kārba no ģipškartona",
+   "unit": "m2",
+   "frm": 18.0,
+   "price": 26.5,
+   "to": 35.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 29,
+    "name": "Dekoratīvā kārba no ģipškartona",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Ģipškartona starpsienu izveide",
+   "unit": "m2",
+   "frm": 18.0,
+   "price": 25.0,
+   "to": 32.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 30,
+    "name": "Gipškartona starpsienu izveide",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Ķieģeļu starpsienas mūrēšana",
+   "unit": "m2",
+   "frm": 28.0,
+   "price": 38.0,
+   "to": 48.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 31,
+    "name": "Ķieģeļu starpsienas mūrēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Koka latojuma izbūve",
+   "unit": "m2",
+   "frm": 7.0,
+   "price": 10.5,
+   "to": 14.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 32,
+    "name": "Koka latojuma izbūve",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Spundēto dēļu apšuvums sienām",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 17.0,
+   "to": 22.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 33,
+    "name": "Spundēto dēļu apšuvums sienām",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Spundēto dēļu apšuvuma krāsošana 2 reizes",
+   "unit": "m2",
+   "frm": 5.0,
+   "price": 7.5,
+   "to": 10.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 34,
+    "name": "Spundēto dēļu apšuvuma krāsošana 2 reizes",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Sienu flīzešana",
+   "unit": "m2",
+   "frm": 35.0,
+   "price": 45.0,
+   "to": 100.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 35,
+    "name": "Sienu flīzešana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sienas",
+   "name": "Grīdlistes izgatavošana no flīzēm",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 18.0,
+   "to": 24.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 36,
+    "name": "Grīdlistes izgatavošana no flīzem",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Vecās apdares noņemšana (tapetes, krāsa u. c.)",
+   "unit": "m2",
+   "frm": 4.5,
+   "price": 7.0,
+   "to": 10.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 37,
+    "name": "Vecās apdares noņemšana, tapetes, krāsa utt…",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Daļējs apmetums",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 17.0,
+   "to": 22.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 38,
+    "name": "Daļējs apmetums",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Apmetums",
+   "unit": "m2",
+   "frm": 16.0,
+   "price": 20.5,
+   "to": 25.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 39,
+    "name": "Apmetums",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Plaisu apstrāde",
+   "unit": "m",
+   "frm": 4.0,
+   "price": 6.5,
+   "to": 9.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 40,
+    "name": "Plaisu apstrāde",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Stiklšķiedras sieta uzlīmēšana",
+   "unit": "m2",
+   "frm": 7.5,
+   "price": 9.0,
+   "to": 12.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 41,
+    "name": "Stiklašķiedras sieta uzlīmēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Špaktelēšanas darbi",
+   "unit": "m2",
+   "frm": 7.0,
+   "price": 11.5,
+   "to": 16.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 42,
+    "name": "Špaktelešanas darbi",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Slīpēšana",
+   "unit": "m2",
+   "frm": 3.0,
+   "price": 4.5,
+   "to": 6.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 43,
+    "name": "Slīpēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Gruntēšana",
+   "unit": "m2",
+   "frm": 1.0,
+   "price": 2.0,
+   "to": 3.5,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 44,
+    "name": "Gruntēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Krāsošana 2 kārtās",
+   "unit": "m2",
+   "frm": 6.0,
+   "price": 7.5,
+   "to": 9.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 45,
+    "name": "Krāsošana 2 kārtās",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Tapešu līmēšana",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 11.0,
+   "to": 14.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 46,
+    "name": "Tapešu līmēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Griestu balsināšana",
+   "unit": "m2",
+   "frm": 4.0,
+   "price": 5.5,
+   "to": 7.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 47,
+    "name": "Griestu balsināšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Piekaramie griesti (Armstrong)",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 17.0,
+   "to": 22.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 48,
+    "name": "Piekaramie griesti (Armstrong)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Iestiepto griestu montāža",
+   "unit": "m2",
+   "frm": 24.0,
+   "price": 28.0,
+   "to": 32.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 49,
+    "name": "Iestiepto griestu montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Ģipškartona daudzlīmeņu griestu ierīkošana ar metāla karkasa izveidošanu",
+   "unit": "m2",
+   "frm": 25.0,
+   "price": 33.0,
+   "to": 40.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 50,
+    "name": "Gipškartona daudzlīmeņu griestu ierīkošana ar metāla karkasa izveidošanu",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Aizkaru nišas izveide no reģipša + krāsošana",
+   "unit": "m",
+   "frm": 28.0,
+   "price": 34.0,
+   "to": 40.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 51,
+    "name": "Aizkaru nišas izveide no reģipša + krāsošana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Ģipškartona griestu ierīkošana ar metāla karkasa izveidošanu",
+   "unit": "m2",
+   "frm": 14.0,
+   "price": 16.0,
+   "to": 30.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 52,
+    "name": "Gipškartona griestu ierīkošana ar metāla karkasa izveidošanu",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Griestu līstes montāža",
+   "unit": "m",
+   "frm": 5.5,
+   "price": 7.0,
+   "to": 9.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 53,
+    "name": "Griestu līstes montāža",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Dekoratīvo plākšņu montāža",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 13.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 54,
+    "name": "Dekoratīvo plākšņu montāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Ģipša dekoratīvo elementu uzstādīšana",
+   "unit": "m",
+   "frm": 10.0,
+   "price": 16.0,
+   "to": 22.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 55,
+    "name": "Ģipša dekoratīvo elementu uzstādīšana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Koka latojuma izbūve (griesti)",
+   "unit": "m2",
+   "frm": 7.0,
+   "price": 10.5,
+   "to": 14.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 56,
+    "name": "Koka latojuma izbūve (griesti)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Griestu apšūšana ar spundētajiem dēļiem",
+   "unit": "m2",
+   "frm": 14.0,
+   "price": 19.5,
+   "to": 25.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 57,
+    "name": "Griestu apšūšana ar spundētajiem dēļiem",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "Spundēto dēļu apšuvuma krāsošana 2 reizes",
+   "unit": "m2",
+   "frm": 7.0,
+   "price": 9.0,
+   "to": 10.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 58,
+    "name": "Spundēto dēļu apšuvuma krāsošana 2 reizes",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Griesti",
+   "name": "OSB3 plāksnes montāža (griesti)",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 11.5,
+   "to": 15.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 59,
+    "name": "OSB3 plāksnes montāža (griesti)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Grīdas koka konstrukcijas izlīdzināšana",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 18.5,
+   "to": 25.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 60,
+    "name": "Grīdas koka konstrukcijas izlīdzināšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Vecās apdares noņemšana (linolejs, krāsa u. c.)",
+   "unit": "m2",
+   "frm": 4.5,
+   "price": 7.0,
+   "to": 10.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 61,
+    "name": "Vecās apdares noņemšana - linolejs, krāsa, utt…",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Betona grīdas līdz 5 cm un armēšana (siltajām grīdām)",
+   "unit": "m2",
+   "frm": 13.0,
+   "price": 16.0,
+   "to": 25.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 62,
+    "name": "Betona grīdas līdz 5cm, un armēšana(siltām grīdām)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Pašizlīdzinošās grīdas ierīkošana (sagatavošana, gruntēšana, ieliešana)",
+   "unit": "m2",
+   "frm": 1.5,
+   "price": 2.5,
+   "to": 3.5,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 63,
+    "name": "Pašizlīdzinošo grīdu ierīkošana, sagatavošana, gruntēšana, ieliešana.",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Hidroizolācijas darbi",
+   "unit": "m2",
+   "frm": 6.5,
+   "price": 9.0,
+   "to": 15.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 64,
+    "name": "Hidroizolācijas darbi",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Hidroizolācijas darbi ar stiklšķiedras hidroizolu",
+   "unit": "m2",
+   "frm": 10.0,
+   "price": 14.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 65,
+    "name": "Hidroizolācijas darbi ar stiklšķiedra-hidroizolu",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Siltās grīdas ierīkošana",
+   "unit": "m2",
+   "frm": 12.0,
+   "price": 18.0,
+   "to": 28.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 66,
+    "name": "Siltās grīdas ierīkošana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "OSB3 plāksnes montāža (grīda)",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 11.5,
+   "to": 15.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 67,
+    "name": "OSB3 plāksnes montāža (grīda)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Ūdensizturīga finiera montāža",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 12.0,
+   "to": 16.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 68,
+    "name": "Ūdensizturīgs finieris (montažas darbi)",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Trīsslāņu vairogparketa ieklāšana ar click sistēmu",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 11.0,
+   "to": 16.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 69,
+    "name": "Trīsslāņu vairogparketa ieklāšana ar click sistēmu",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Lamināta apakšklāja ieklāšana",
+   "unit": "m2",
+   "frm": 1.0,
+   "price": 2.0,
+   "to": 4.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 70,
+    "name": "Lamināta apakšklāja ieklāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Lamināta ieklāšana",
+   "unit": "m2",
+   "frm": 7.0,
+   "price": 10.0,
+   "to": 15.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 71,
+    "name": "Lamināta ieklāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Parketa dēlīšu grīdas ieklāšana",
+   "unit": "m2",
+   "frm": 18.0,
+   "price": 28.0,
+   "to": 35.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 72,
+    "name": "Parketa dēlīšu grīdas ieklāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Grīdas špaktelēšana un slīpēšana",
+   "unit": "m2",
+   "frm": 3.0,
+   "price": 4.5,
+   "to": 6.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 73,
+    "name": "Grīdas špaktelēšana un slīpēšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Parketa lakošana, 3 kārtas",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 11.5,
+   "to": 15.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 74,
+    "name": "Parketa lakošana, 3 kārtas",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Linoleja un mīksto grīdas segumu ieklāšana",
+   "unit": "m2",
+   "frm": 6.0,
+   "price": 10.0,
+   "to": 14.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 75,
+    "name": "Linoleja un mīksto grīdas segumu ieklāšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Grīdas flīzešana",
+   "unit": "m2",
+   "frm": 35.0,
+   "price": 45.0,
+   "to": 100.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 76,
+    "name": "Grīdas flīzešana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Starpistabas sliekšņu uzstādīšana",
+   "unit": "m",
+   "frm": 8.0,
+   "price": 13.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 77,
+    "name": "Starpistabas sliekšņu uzstādīšana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Grīdlīstes montāža (PVC)",
+   "unit": "m",
+   "frm": 3.5,
+   "price": 6.0,
+   "to": 8.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 78,
+    "name": "Grīdlīstes montāža (PVC)",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Grīda",
+   "name": "Grīdlīstes uzstādīšana",
+   "unit": "m",
+   "frm": 4.5,
+   "price": 8.0,
+   "to": 11.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 79,
+    "name": "Grīdlīstes uzstādīšana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Elektroinstalācijas darbi",
+   "name": "Vadu kanālu štrobēšana, kabeļu ieguldīšana un kanālu aizpildīšana",
+   "unit": "m",
+   "frm": 5.0,
+   "price": 6.5,
+   "to": 8.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 80,
+    "name": "Vadu kanālu štrobēšana, kabeļu ieguldīšana un kanālu aizpildīšanu",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Elektroinstalācijas darbi",
+   "name": "Kabeļu ieguldīšana (bez štrobēšanas)",
+   "unit": "m",
+   "frm": 2.5,
+   "price": 4.0,
+   "to": 6.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 81,
+    "name": "Kabeļu ieguldīšana (bez štrobēšana)",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Elektroinstalācijas darbi",
+   "name": "LED lentes montāža",
+   "unit": "m",
+   "frm": 8.0,
+   "price": 14.0,
+   "to": 20.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 82,
+    "name": "LED lentas montāža darbi",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Elektroinstalācijas darbi",
+   "name": "Jauna elektrības punkta ierīkošana",
+   "unit": "kompl",
+   "frm": 20.0,
+   "price": 32.5,
+   "to": 45.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 83,
+    "name": "Jauna elektrības punkta ierīkošana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Elektroinstalācijas darbi",
+   "name": "Rozetes vai slēdža nomaiņa esošā vietā",
+   "unit": "kompl",
+   "frm": 8.0,
+   "price": 13.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 84,
+    "name": "Rozetes vai slēdža nomaiņa esošā vietā",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Elektroinstalācijas darbi",
+   "name": "Gaismas ķermeņa montāža (piekaramajos griestos)",
+   "unit": "kompl",
+   "frm": 10.0,
+   "price": 15.0,
+   "to": 20.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 85,
+    "name": "Gaismas ķermeņa montāža (piekaramajos griestos)",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Elektroinstalācijas darbi",
+   "name": "Interneta, TV, telefona u. c. vadu instalācija",
+   "unit": "m",
+   "frm": 2.0,
+   "price": 3.0,
+   "to": 4.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 86,
+    "name": "Interneta, TV, telefona u.c. vadu instalācija",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Elektroinstalācijas darbi",
+   "name": "Lustras / gaismekļa uzstādīšana un pieslēgšana esošai elektroinstalācijai",
+   "unit": "kompl",
+   "frm": 20.0,
+   "price": 32.5,
+   "to": 45.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 87,
+    "name": "Lustras/gaismekļa uzstāīšana un pieslēgšana esošai elektroinstalācijai",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Elektroinstalācijas darbi",
+   "name": "Elektrisko dvieļu žāvētāja montāža",
+   "unit": "kompl",
+   "frm": 35.0,
+   "price": 50.0,
+   "to": 65.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 88,
+    "name": "Elektrisko dvieļu žāvētāja montāža",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Elektroinstalācijas darbi",
+   "name": "Iebūvēto gaismas ķermeņu uzstādīšana",
+   "unit": "kompl",
+   "frm": 10.0,
+   "price": 14.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 89,
+    "name": "Iebūvēto gaismas ķermeņu uzstādīšana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Elektroinstalācijas darbi",
+   "name": "Sadales skapja uzstādīšana un pieslēgšana",
+   "unit": "kompl",
+   "frm": 140.0,
+   "price": 230.0,
+   "to": 320.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 90,
+    "name": "Sadales skapja uzstādīšana un pieslēgšana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Duškabīnes demontāža",
+   "unit": "kompl",
+   "frm": 20.0,
+   "price": 30.0,
+   "to": 40.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 91,
+    "name": "Duškabīnes demontāža",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Vecās santehnikas demontāža",
+   "unit": "gab",
+   "frm": 20.0,
+   "price": 60.0,
+   "to": 100.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 92,
+    "name": "Vecās santehnikas demontāža",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Kanalizācijas stāvvadu montāža",
+   "unit": "m",
+   "frm": 25.0,
+   "price": 32.5,
+   "to": 40.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 93,
+    "name": "Kanalizācijas stāvvadu montāža",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Ūdens cauruļu ierīkošana",
+   "unit": "m",
+   "frm": 10.0,
+   "price": 17.0,
+   "to": 24.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 94,
+    "name": "Ūdens cauruļu ierīkošana",
+    "unit": "t\\m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Dvieļu žāvētāja maiņa",
+   "unit": "gab",
+   "frm": 95.0,
+   "price": 132.5,
+   "to": 170.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 95,
+    "name": "Dvieļu žāvētāja maiņa",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Vannas uzstādīšana + pieslēgšana",
+   "unit": "kompl",
+   "frm": 130.0,
+   "price": 165.0,
+   "to": 200.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 96,
+    "name": "Vannas uzstādīšana + pieslēgšana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Duškabīnes ar paliktni uzstādīšana",
+   "unit": "kompl",
+   "frm": 110.0,
+   "price": 165.0,
+   "to": 220.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 97,
+    "name": "Duškabīnes ar paliktni uzstādīšana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Piekaramā tualetes poda uzstādīšana",
+   "unit": "kompl",
+   "frm": 150.0,
+   "price": 180.0,
+   "to": 210.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 98,
+    "name": "Piekaramā tualetes poda uzstādīšana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "WC poda ar skalojamo kasti montāža",
+   "unit": "kompl",
+   "frm": 45.0,
+   "price": 77.5,
+   "to": 110.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 99,
+    "name": "WC poda ar skalojamo kasti montāža",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Dušas trapu uzstādīšana",
+   "unit": "kompl",
+   "frm": 50.0,
+   "price": 90.0,
+   "to": 150.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 100,
+    "name": "Dušas trapu uzstādīšana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Sienas gāzes katla uzstādīšana",
+   "unit": "kompl",
+   "frm": 250.0,
+   "price": 450.0,
+   "to": 650.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 101,
+    "name": "sienas gāzes katla uzstādīšana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Roku mazgātnes montāža (izlietne, kāja, sifons)",
+   "unit": "kompl",
+   "frm": 45.0,
+   "price": 72.5,
+   "to": 100.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 102,
+    "name": "Roku mazgātnes montāža (izlietne, kāja, sifons)",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Jaucējkrāna montāža",
+   "unit": "kompl",
+   "frm": 25.0,
+   "price": 40.0,
+   "to": 60.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 103,
+    "name": "Jaucējkrāna montāža",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Cauruļu montāža",
+   "unit": "m",
+   "frm": 8.0,
+   "price": 16.0,
+   "to": 24.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 104,
+    "name": "Cauruļu montāža",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Apkures radiatoru nomaiņa (demontāža un montāža)",
+   "unit": "kompl",
+   "frm": 100.0,
+   "price": 125.0,
+   "to": 150.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 105,
+    "name": "Apkures radiātoru nomaiņa montāža/demontāža",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Santehniskie darbi",
+   "name": "Veco flīžu noņemšana",
+   "unit": "m2",
+   "frm": 8.0,
+   "price": 10.5,
+   "to": 13.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 106,
+    "name": "Veco flīžu noņemšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Logi un durvis",
+   "name": "Iekšdurvju montāža",
+   "unit": "kompl",
+   "frm": 75.0,
+   "price": 110.0,
+   "to": 160.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 107,
+    "name": "Iekšdurvju montāža",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Logi un durvis",
+   "name": "Durvju demontāža",
+   "unit": "gab",
+   "frm": 18.0,
+   "price": 29.0,
+   "to": 40.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 108,
+    "name": "Durvju demontāža",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Logi un durvis",
+   "name": "Durvju un logu renovācija",
+   "unit": "kompl",
+   "frm": 70.0,
+   "price": 145.0,
+   "to": 220.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 109,
+    "name": "Durvju un logu renovācija",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Logi un durvis",
+   "name": "PVC logu uzstādīšana",
+   "unit": "m2",
+   "frm": 35.0,
+   "price": 55.0,
+   "to": 80.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 110,
+    "name": "PVC logu uzstādīšana",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Logi un durvis",
+   "name": "Apmaļu uzstādīšana durvīm",
+   "unit": "m",
+   "frm": 5.0,
+   "price": 7.5,
+   "to": 10.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 111,
+    "name": "Apmaļu uzstādīšana durvīm",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Logi un durvis",
+   "name": "Palodžu uzstādīšana",
+   "unit": "m",
+   "frm": 8.0,
+   "price": 13.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 112,
+    "name": "Palodžu uzstādīšana",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Logi un durvis",
+   "name": "Logu aiļu apdare",
+   "unit": "m",
+   "frm": 12.0,
+   "price": 18.5,
+   "to": 25.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 113,
+    "name": "Logu aiļu apdare",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sadzīves tehnikas uzstādīšana un pieslēgšana",
+   "name": "Veļas mašīnas uzstādīšana",
+   "unit": "kompl",
+   "frm": 30.0,
+   "price": 50.0,
+   "to": 75.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 114,
+    "name": "Veļas mašīnas uzstādīšana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sadzīves tehnikas uzstādīšana un pieslēgšana",
+   "name": "Boilera uzstādīšana",
+   "unit": "kompl",
+   "frm": 80.0,
+   "price": 130.0,
+   "to": 180.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 115,
+    "name": "Boilera uzstādīšana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sadzīves tehnikas uzstādīšana un pieslēgšana",
+   "name": "Trauku mazgāšanas mašīnas uzstādīšana un pieslēgšana",
+   "unit": "kompl",
+   "frm": 50.0,
+   "price": 65.0,
+   "to": 80.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 116,
+    "name": "Trauku mazgāšanas mašīnas uzstādīšana un pieslēgšana",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Sadzīves tehnikas uzstādīšana un pieslēgšana",
+   "name": "Tvaika nosūcēju montāža",
+   "unit": "kompl",
+   "frm": 35.0,
+   "price": 65.0,
+   "to": 110.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 117,
+    "name": "Tvaika nosūcēju montāža",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Demontāžas darbi",
+   "name": "Ģipškartona starpsienas demontāža",
+   "unit": "m2",
+   "frm": 5.0,
+   "price": 10.0,
+   "to": 18.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 118,
+    "name": "Ģipškartona starpsienas demontāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Demontāžas darbi",
+   "name": "Ģipškartona demontāža",
+   "unit": "m2",
+   "frm": 4.0,
+   "price": 7.0,
+   "to": 12.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 119,
+    "name": "Ģipškartona demontāža",
+    "unit": "m2"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Demontāžas darbi",
+   "name": "Sienu demontāža (ķieģeļi, gāzbetons, keramzīta bloki)",
+   "unit": "m3",
+   "frm": 70.0,
+   "price": 110.0,
+   "to": 180.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 120,
+    "name": "Sienu demontāža (ķieģeļi, gāzbetons, keramzīta bloki)",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Demontāžas darbi",
+   "name": "Koka konstrukciju demontāža",
+   "unit": "m3",
+   "frm": 45.0,
+   "price": 72.5,
+   "to": 100.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 121,
+    "name": "Koka konstrukciju demontāža",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Demontāžas darbi",
+   "name": "Betona sienu, pamatu demontāža",
+   "unit": "m3",
+   "frm": 180.0,
+   "price": 280.0,
+   "to": 450.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 122,
+    "name": "Betona sienu, pamatu demontāža",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Demontāžas darbi",
+   "name": "Darbs ar grunti, izlīdzināšana pēc demontāžas",
+   "unit": "m3",
+   "frm": 18.0,
+   "price": 29.0,
+   "to": 40.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 123,
+    "name": "Darbs ar grunti, izlīdzināšana pēc demontāžas",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Demontāžas darbi",
+   "name": "Būvgružu iznešana",
+   "unit": "m3",
+   "frm": 20.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 124,
+    "name": "Būvgružu iznēšana",
+    "unit": "m3"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Mēbeļu un virtuves izgatavošana un montāža",
+   "name": "Meistara izbraukšana uz mērījumiem",
+   "unit": "gab",
+   "frm": 25.0,
+   "price": 42.5,
+   "to": 60.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 125,
+    "name": "Meistara izbraukšana uz mērījumiem",
+    "unit": "gab"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Mēbeļu un virtuves izgatavošana un montāža",
+   "name": "Virtuves mēbeļu projektu izstrāde",
+   "unit": "kompl",
+   "frm": 150.0,
+   "price": 300.0,
+   "to": 450.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 126,
+    "name": "Virtuves mēbeļu projektu izstrāde",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Mēbeļu un virtuves izgatavošana un montāža",
+   "name": "Zīmējumu izstrāde bīdāmajam skapim",
+   "unit": "kompl",
+   "frm": 80.0,
+   "price": 150.0,
+   "to": 220.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 127,
+    "name": "Zimejumu izstrāde bīdāmajam skapim",
+    "unit": "kompl"
+   }
+  },
+  {
+   "area": "remontdarbi",
+   "group": "Mēbeļu un virtuves izgatavošana un montāža",
+   "name": "Moduļu virtuves mēbeļu montāža (apakšējā rinda)",
+   "unit": "m",
+   "frm": 45.0,
+   "price": 70.0,
+   "to": 95.0,
+   "note": "",
+   "source": {
+    "file": "remontdarbi-2026.xlsx",
+    "sheet": "Darbu cenas 2026",
+    "row": 128,
+    "name": "Moduļu virtuves mēbeļu montāža (apakšējā rinda)",
+    "unit": "t/m"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Žogi, vārti un sētiņas",
+   "name": "Vienkāršs metāla žogs — izgatavošana un montāža",
+   "unit": "m",
+   "frm": 90.0,
+   "price": 120.0,
+   "to": 190.0,
+   "note": "Parasts krāsots tērauds; cena var ietvert sekcijas un montāžu, bet ne vienmēr stabus, pamatus vai demontāžu.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 2,
+    "name": "Vienkāršs metāla žogs — izgatavošana un montāža",
+    "unit": "m"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Žogi, vārti un sētiņas",
+   "name": "Metāla žoga sekcija — izgatavošana bez montāžas",
+   "unit": "m2",
+   "frm": 65.0,
+   "price": 95.0,
+   "to": 150.0,
+   "note": "Cena atkarīga no profiliem, stieņu soļa, raksta, tērauda biezuma un apdares.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 3,
+    "name": "Metāla žoga sekcija — izgatavošana bez montāžas",
+    "unit": "m²"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Žogi, vārti un sētiņas",
+   "name": "Dekoratīvs / kalts metāla žogs",
+   "unit": "m",
+   "frm": 130.0,
+   "price": 190.0,
+   "to": 320.0,
+   "note": "Sarežģīts raksts, kalumi un nestandarta elementi sadārdzina izgatavošanu.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 4,
+    "name": "Dekoratīvs / kalts metāla žogs",
+    "unit": "m"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Žogi, vārti un sētiņas",
+   "name": "Metāla sētiņa / zema norobežojoša sekcija",
+   "unit": "m",
+   "frm": 55.0,
+   "price": 85.0,
+   "to": 140.0,
+   "note": "Vienkārša konstrukcija, parasti zemāka un vieglāka par pilna augstuma žogu.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 5,
+    "name": "Metāla sētiņa / zema norobežojoša sekcija",
+    "unit": "m"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Žogi, vārti un sētiņas",
+   "name": "Veramie metāla vārti — izgatavošana",
+   "unit": "kompl",
+   "frm": 450.0,
+   "price": 850.0,
+   "to": 1600.0,
+   "note": "Cena atkarīga no ailes platuma, vārtu svara, pildījuma, eņģēm un slēdzenes; automātika atsevišķi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 6,
+    "name": "Veramie metāla vārti — izgatavošana",
+    "unit": "komplekts"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Žogi, vārti un sētiņas",
+   "name": "Bīdāmie metāla vārti — izgatavošana",
+   "unit": "kompl",
+   "frm": 850.0,
+   "price": 1450.0,
+   "to": 2600.0,
+   "note": "Parasti bez automātikas, pamata un elektroinstalācijas; sliedes/konsoles atkarīgas no sistēmas.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 7,
+    "name": "Bīdāmie metāla vārti — izgatavošana",
+    "unit": "komplekts"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Žogi, vārti un sētiņas",
+   "name": "Gājēju vārtiņi",
+   "unit": "gab",
+   "frm": 180.0,
+   "price": 320.0,
+   "to": 600.0,
+   "note": "Rāmis, pildījums, eņģes un slēdzene; stabu un pamatu izmaksas var būt atsevišķi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 8,
+    "name": "Gājēju vārtiņi",
+    "unit": "gab."
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Žogi, vārti un sētiņas",
+   "name": "Vārtu automātikas uzstādīšana",
+   "unit": "kompl",
+   "frm": 180.0,
+   "price": 350.0,
+   "to": 650.0,
+   "note": "Automātikas komplekta cena parasti atsevišķi; elektrības pievads un pamatu darbi nav iekļauti.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 9,
+    "name": "Vārtu automātikas uzstādīšana",
+    "unit": "komplekts"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Margas, balkoni un kāpnes",
+   "name": "Kāpņu margas — izgatavošana un montāža",
+   "unit": "m",
+   "frm": 80.0,
+   "price": 115.0,
+   "to": 180.0,
+   "note": "Krāsots tērauds, standarta profils; sarežģīta ģeometrija un stiprinājumi var palielināt cenu.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 10,
+    "name": "Kāpņu margas — izgatavošana un montāža",
+    "unit": "m"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Margas, balkoni un kāpnes",
+   "name": "Balkona / terases margas — izgatavošana un montāža",
+   "unit": "m",
+   "frm": 90.0,
+   "price": 125.0,
+   "to": 200.0,
+   "note": "Atkarīgs no augstuma, stiprinājuma, pildījuma, piekļuves un korozijas aizsardzības.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 11,
+    "name": "Balkona / terases margas — izgatavošana un montāža",
+    "unit": "m"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Margas, balkoni un kāpnes",
+   "name": "Nerūsējošā tērauda margas",
+   "unit": "m",
+   "frm": 150.0,
+   "price": 210.0,
+   "to": 320.0,
+   "note": "AISI 304/316; stikla pildījums un sarežģīti savienojumi parasti sadārdzina.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 12,
+    "name": "Nerūsējošā tērauda margas",
+    "unit": "m"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Margas, balkoni un kāpnes",
+   "name": "Franču balkona metāla margas",
+   "unit": "gab",
+   "frm": 180.0,
+   "price": 300.0,
+   "to": 550.0,
+   "note": "Cena atkarīga no ailes izmēra, stiprinājuma veida, pildījuma un apdares; montāža jāprecizē.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 13,
+    "name": "Franču balkona metāla margas",
+    "unit": "gab."
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Margas, balkoni un kāpnes",
+   "name": "Margu remonts / stiprinājumu atjaunošana",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 40.0,
+   "to": 65.0,
+   "note": "Mazs remonts; materiāli, piekļuve augstumā un izbraukums var tikt rēķināti atsevišķi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 14,
+    "name": "Margu remonts / stiprinājumu atjaunošana",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Metināšana un remonts",
+   "name": "Metinātāja darbs darbnīcā",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 40.0,
+   "to": 60.0,
+   "note": "Parasts tērauds; sagatavošana un materiāls atsevišķi, ja nav noteikts citādi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 15,
+    "name": "Metinātāja darbs darbnīcā",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Metināšana un remonts",
+   "name": "Metinātājs ar izbraukumu uz objektu",
+   "unit": "h",
+   "frm": 35.0,
+   "price": 50.0,
+   "to": 75.0,
+   "note": "Var būt minimālā izsaukuma maksa un ceļa izdevumi; darbi augstumā vai sarežģītā piekļuvē dārgāki.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 16,
+    "name": "Metinātājs ar izbraukumu uz objektu",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Metināšana un remonts",
+   "name": "Neliels metināšanas remonts",
+   "unit": "gab",
+   "frm": 30.0,
+   "price": 60.0,
+   "to": 150.0,
+   "note": "Vārtu eņģe, kronšteins, plaisa vai līdzīgs lokāls remonts; cena pēc apskates.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 17,
+    "name": "Neliels metināšanas remonts",
+    "unit": "gab."
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Metināšana un remonts",
+   "name": "MIG/MAG metināšana sērijveida detaļām",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 38.0,
+   "to": 55.0,
+   "note": "Cena atkarīga no šuves garuma, biezuma, pozīcijas, sagatavošanas un apjoma.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 18,
+    "name": "MIG/MAG metināšana sērijveida detaļām",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Metināšana un remonts",
+   "name": "TIG metināšana nerūsējošajam tēraudam / alumīnijam",
+   "unit": "h",
+   "frm": 35.0,
+   "price": 50.0,
+   "to": 75.0,
+   "note": "Precīzāks darbs; materiāla sagatavošana, piedevas un apdares prasības var būt atsevišķi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 19,
+    "name": "TIG metināšana nerūsējošajam tēraudam / alumīnijam",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Metināšana un remonts",
+   "name": "Metināšanas šuvju slīpēšana un apdare",
+   "unit": "h",
+   "frm": 22.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "Atkarīgs no piekļuves, šuves garuma un prasītās vizuālās kvalitātes.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 20,
+    "name": "Metināšanas šuvju slīpēšana un apdare",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Metāla izstrādājumi un konstrukcijas",
+   "name": "Vienkāršs metāla kronšteins / turētājs",
+   "unit": "gab",
+   "frm": 15.0,
+   "price": 35.0,
+   "to": 90.0,
+   "note": "Materiāls, caurumi, griezumi un apdare var mainīt cenu; vienas vienības izgatavošana parasti dārgāka.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 21,
+    "name": "Vienkāršs metāla kronšteins / turētājs",
+    "unit": "gab."
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Metāla izstrādājumi un konstrukcijas",
+   "name": "Metāla rāmis / neliela konstrukcija",
+   "unit": "kg",
+   "frm": 3.0,
+   "price": 5.0,
+   "to": 9.0,
+   "note": "Cena par izgatavošanas darbu; materiāls, cinkošana/krāsošana un montāža jāprecizē atsevišķi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 22,
+    "name": "Metāla rāmis / neliela konstrukcija",
+    "unit": "kg"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Metāla izstrādājumi un konstrukcijas",
+   "name": "Metāla galds, statīvs vai plaukta rāmis",
+   "unit": "gab",
+   "frm": 120.0,
+   "price": 250.0,
+   "to": 600.0,
+   "note": "Bez koka/stikla virsmas un bez sarežģīta dizaina; apdare var būt atsevišķi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 23,
+    "name": "Metāla galds, statīvs vai plaukta rāmis",
+    "unit": "gab."
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Metāla izstrādājumi un konstrukcijas",
+   "name": "Metāla kāpņu karkass",
+   "unit": "kompl",
+   "frm": 900.0,
+   "price": 1700.0,
+   "to": 3500.0,
+   "note": "Cena atkarīga no stāvu augstuma, slīpuma, slodzes, stiprinājumiem un projekta; pakāpieni atsevišķi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 24,
+    "name": "Metāla kāpņu karkass",
+    "unit": "komplekts"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Metāla izstrādājumi un konstrukcijas",
+   "name": "Nojumes / pergolas metāla karkass",
+   "unit": "m2",
+   "frm": 90.0,
+   "price": 150.0,
+   "to": 260.0,
+   "note": "Pamatā karkasa izgatavošana un/vai montāža; jumta segums, pamati un projektēšana var būt atsevišķi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 25,
+    "name": "Nojumes / pergolas metāla karkass",
+    "unit": "m²"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Metāla izstrādājumi un konstrukcijas",
+   "name": "Nestandarta metāla izstrādājuma projektēšana / rasējums",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 40.0,
+   "to": 65.0,
+   "note": "Cena par projektēšanas vai rasēšanas darbu; aprēķini un sertificēta projekta daļa var maksāt vairāk.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 26,
+    "name": "Nestandarta metāla izstrādājuma projektēšana / rasējums",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Griešana un mehāniskā apstrāde",
+   "name": "Metāla griešana ar leņķa slīpmašīnu / lentzāģi",
+   "unit": "griezums",
+   "frm": 2.0,
+   "price": 5.0,
+   "to": 12.0,
+   "note": "Vienkāršs griezums; biezums, materiāls un nostiprināšana ietekmē cenu.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 27,
+    "name": "Metāla griešana ar leņķa slīpmašīnu / lentzāģi",
+    "unit": "griezums"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Griešana un mehāniskā apstrāde",
+   "name": "Plazmas / lāzergriešana",
+   "unit": "h",
+   "frm": 35.0,
+   "price": 60.0,
+   "to": 100.0,
+   "note": "Daudzi izpildītāji cenu nosaka pēc faila, materiāla, biezuma un griezuma metriem; materiāls atsevišķi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 28,
+    "name": "Plazmas / lāzergriešana",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Griešana un mehāniskā apstrāde",
+   "name": "Urbšana, vītņošana, caurumu izveide",
+   "unit": "gab",
+   "frm": 2.0,
+   "price": 5.0,
+   "to": 15.0,
+   "note": "Atkarīgs no diametra, materiāla biezuma un vajadzīgās precizitātes.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 29,
+    "name": "Urbšana, vītņošana, caurumu izveide",
+    "unit": "gab."
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Griešana un mehāniskā apstrāde",
+   "name": "Metāla locīšana / valcēšana",
+   "unit": "h",
+   "frm": 30.0,
+   "price": 50.0,
+   "to": 85.0,
+   "note": "Atkarīga no loksnes biezuma, detaļas garuma, instrumenta sagatavošanas un sērijas.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 30,
+    "name": "Metāla locīšana / valcēšana",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Virsmas aizsardzība un apdare",
+   "name": "Metāla izstrādājuma gruntēšana un krāsošana",
+   "unit": "m2",
+   "frm": 18.0,
+   "price": 28.0,
+   "to": 45.0,
+   "note": "Virsmas sagatavošana, rūsas noņemšana un krāsas sistēma būtiski ietekmē cenu.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 31,
+    "name": "Metāla izstrādājuma gruntēšana un krāsošana",
+    "unit": "m²"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Virsmas aizsardzība un apdare",
+   "name": "Pulverkrāsošana",
+   "unit": "m2",
+   "frm": 20.0,
+   "price": 32.0,
+   "to": 50.0,
+   "note": "Atkarīga no detaļu izmēriem, krāsas, priekšapstrādes un minimālās partijas maksas.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 32,
+    "name": "Pulverkrāsošana",
+    "unit": "m²"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Virsmas aizsardzība un apdare",
+   "name": "Karstā cinkošana",
+   "unit": "kg",
+   "frm": 1.2,
+   "price": 2.0,
+   "to": 3.5,
+   "note": "Minimālā partijas maksa, transportēšana un detaļu ģeometrija var būtiski mainīt izmaksas.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 33,
+    "name": "Karstā cinkošana",
+    "unit": "kg"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Demontāža un utilizācija",
+   "name": "Metāla žoga demontāža",
+   "unit": "m",
+   "frm": 8.0,
+   "price": 15.0,
+   "to": 28.0,
+   "note": "Neietver betona pamatu izlaušanu, dziļu stabu izcelšanu vai metāla aizvešanu, ja nav norādīts citādi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 34,
+    "name": "Metāla žoga demontāža",
+    "unit": "m"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Demontāža un utilizācija",
+   "name": "Metāla vārtu / vārtiņu demontāža",
+   "unit": "kompl",
+   "frm": 50.0,
+   "price": 100.0,
+   "to": 220.0,
+   "note": "Atkarīgs no svara, eņģēm, stiprinājumiem, elektrības un nepieciešamās tehnikas.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 35,
+    "name": "Metāla vārtu / vārtiņu demontāža",
+    "unit": "komplekts"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Demontāža un utilizācija",
+   "name": "Metāla margu demontāža",
+   "unit": "m",
+   "frm": 10.0,
+   "price": 20.0,
+   "to": 40.0,
+   "note": "Neietver fasādes/betona remontu pēc demontāžas; darbs augstumā var būt dārgāks.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 36,
+    "name": "Metāla margu demontāža",
+    "unit": "m"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Demontāža un utilizācija",
+   "name": "Metāla konstrukciju griešana un demontāža",
+   "unit": "h",
+   "frm": 30.0,
+   "price": 50.0,
+   "to": 80.0,
+   "note": "Bīstamība, konstrukcijas svars, augstums un piekļuve nosaka likmi; nepieciešams objekta novērtējums.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 37,
+    "name": "Metāla konstrukciju griešana un demontāža",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Demontāža un utilizācija",
+   "name": "Metāllūžņu savākšana un iekraušana",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 40.0,
+   "to": 65.0,
+   "note": "Cena par darbu; metāllūžņu vērtība, transports un utilizācijas nosacījumi jāuzskaita atsevišķi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 38,
+    "name": "Metāllūžņu savākšana un iekraušana",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Demontāža un utilizācija",
+   "name": "Metāllūžņu aizvešana ar transportu",
+   "unit": "brauciens",
+   "frm": 50.0,
+   "price": 100.0,
+   "to": 220.0,
+   "note": "Atkarīgs no attāluma, svara, iekraušanas, piekļuves un transportlīdzekļa; iespējams atsevišķs svars/tonnas tarifs.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 39,
+    "name": "Metāllūžņu aizvešana ar transportu",
+    "unit": "brauciens"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Demontāža un utilizācija",
+   "name": "Metāllūžņu nodošana / utilizācija",
+   "unit": "t",
+   "frm": -150.0,
+   "price": 0.0,
+   "to": 180.0,
+   "note": "Orientējošs norēķinu diapazons: dažādiem metāliem var būt samaksa par lūžņiem vai maksa par apstrādi; cena atkarīga no metāla veida, tīrības un aktuālās iepirkuma cenas.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 40,
+    "name": "Metāllūžņu nodošana / utilizācija",
+    "unit": "t"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Demontāža un utilizācija",
+   "name": "Būvniecības metāla atkritumu šķirošana",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 38.0,
+   "to": 60.0,
+   "note": "Nesajauktus metālus šķirot vieglāk; bīstami vai piesārņoti materiāli jāvērtē atsevišķi.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 41,
+    "name": "Būvniecības metāla atkritumu šķirošana",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Izbraukums un palīgdarbi",
+   "name": "Meistara / montāžas brigādes izbraukums",
+   "unit": "izbraukums",
+   "frm": 25.0,
+   "price": 45.0,
+   "to": 90.0,
+   "note": "Var būt atsevišķi no darba stundām; attālums un transporta vajadzības maina cenu.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 42,
+    "name": "Meistara / montāžas brigādes izbraukums",
+    "unit": "izbraukums"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Izbraukums un palīgdarbi",
+   "name": "Uzmērīšana objektā un sākotnējā tāme",
+   "unit": "reize",
+   "frm": 0.0,
+   "price": 35.0,
+   "to": 100.0,
+   "note": "Daži uzņēmumi uzmērīšanu iekļauj pasūtījumā; attālos objektos var piemērot maksu.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 43,
+    "name": "Uzmērīšana objektā un sākotnējā tāme",
+    "unit": "reize"
+   }
+  },
+  {
+   "area": "metalapstrade",
+   "group": "Izbraukums un palīgdarbi",
+   "name": "Materiālu piegāde un izstrādājuma montāža",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 40.0,
+   "to": 65.0,
+   "note": "Materiālu un celtņa/manipulatora izmaksas atsevišķi; smagiem elementiem vajadzīga tehnika.",
+   "source": {
+    "file": "metalapstrade-2026.xlsx",
+    "sheet": "Metālapstrādes cenas",
+    "row": 44,
+    "name": "Materiālu piegāde un izstrādājuma montāža",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Zāģēšana un sagatavošana",
+   "name": "Apaļkoku sazāģēšana dēļos uz vietas / zāģētavā",
+   "unit": "m3 izejm.",
+   "frm": 35.0,
+   "price": 55.0,
+   "to": 85.0,
+   "note": "Atkarīgs no baļķu diametra, garuma, koksnes sugas, iekārtas un apjoma; transports atsevišķi.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 2,
+    "name": "Apaļkoku sazāģēšana dēļos uz vietas / zāģētavā",
+    "unit": "m³ izejmateriāla"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Zāģēšana un sagatavošana",
+   "name": "Dēļu, brusas vai plātnes garināšana",
+   "unit": "griezums",
+   "frm": 1.0,
+   "price": 2.5,
+   "to": 6.0,
+   "note": "Vienkāršs taisns griezums; liela izmēra detaļām vai sērijai cena var mainīties.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 3,
+    "name": "Dēļu, brusas vai plātnes garināšana",
+    "unit": "griezums"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Zāģēšana un sagatavošana",
+   "name": "Garenzāģēšana / pārzāģēšana pēc izmēra",
+   "unit": "m",
+   "frm": 1.5,
+   "price": 3.0,
+   "to": 7.0,
+   "note": "Atkarīgs no biezuma, garuma, materiāla nostiprināšanas un atgriezumu daudzuma.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 4,
+    "name": "Garenzāģēšana / pārzāģēšana pēc izmēra",
+    "unit": "m"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Zāģēšana un sagatavošana",
+   "name": "Formātu zāģēšana plātņu materiāliem",
+   "unit": "h",
+   "frm": 20.0,
+   "price": 30.0,
+   "to": 45.0,
+   "note": "Saplākšņa, MDF, skaidu plātnes izzāģēšana; materiāls nav iekļauts.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 5,
+    "name": "Formātu zāģēšana plātņu materiāliem",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Zāģēšana un sagatavošana",
+   "name": "Detaļu kalibrēšana / biezuma izlīdzināšana",
+   "unit": "m3",
+   "frm": 40.0,
+   "price": 65.0,
+   "to": 100.0,
+   "note": "Ja iespējams, cenu nosaka pēc apjoma un vajadzīgās precizitātes.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 6,
+    "name": "Detaļu kalibrēšana / biezuma izlīdzināšana",
+    "unit": "m³"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Ēvelēšana un profili",
+   "name": "Ēvelēšana 1–2 pusēs",
+   "unit": "m3",
+   "frm": 35.0,
+   "price": 55.0,
+   "to": 85.0,
+   "note": "Atkarīgs no sagatavju izmēriem, koksnes kvalitātes un pasūtījuma apjoma.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 7,
+    "name": "Ēvelēšana 1–2 pusēs",
+    "unit": "m³"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Ēvelēšana un profili",
+   "name": "Ēvelēšana 3–4 pusēs / kalibrēšana",
+   "unit": "m3",
+   "frm": 55.0,
+   "price": 85.0,
+   "to": 130.0,
+   "note": "Vienkāršai dimensiju ēvelēšanai; nestandarta profili dārgāki.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 8,
+    "name": "Ēvelēšana 3–4 pusēs / kalibrēšana",
+    "unit": "m³"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Ēvelēšana un profili",
+   "name": "Nestandarta profila izgatavošana un ēvelēšana",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 40.0,
+   "to": 65.0,
+   "note": "Profilnaži, sagatavošana un iestatīšana var tikt rēķināti atsevišķi.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 9,
+    "name": "Nestandarta profila izgatavošana un ēvelēšana",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Ēvelēšana un profili",
+   "name": "Malu noapaļošana / fāzēšana",
+   "unit": "m",
+   "frm": 0.5,
+   "price": 1.5,
+   "to": 3.5,
+   "note": "Atkarīgs no profila un detaļas izmēra; parasti bez slīpēšanas.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 10,
+    "name": "Malu noapaļošana / fāzēšana",
+    "unit": "m"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Žāvēšana un impregnēšana",
+   "name": "Koksnes žāvēšana kaltē",
+   "unit": "m3",
+   "frm": 35.0,
+   "price": 55.0,
+   "to": 90.0,
+   "note": "Cena atkarīga no sugas, sākuma mitruma, gala mitruma, partijas un cikla ilguma.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 11,
+    "name": "Koksnes žāvēšana kaltē",
+    "unit": "m³"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Žāvēšana un impregnēšana",
+   "name": "Antiseptizēšana / impregnēšana vannā",
+   "unit": "m3",
+   "frm": 10.0,
+   "price": 15.0,
+   "to": 25.0,
+   "note": "Nav tas pats, kas spiediena impregnēšana; līdzekļa un transporta nosacījumi jāprecizē.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 12,
+    "name": "Antiseptizēšana / impregnēšana vannā",
+    "unit": "m³"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Žāvēšana un impregnēšana",
+   "name": "Spiediena impregnēšana",
+   "unit": "m3",
+   "frm": 25.0,
+   "price": 45.0,
+   "to": 75.0,
+   "note": "Atkarīga no koksnes sugas, izmēriem, impregnēšanas klases un partijas.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 13,
+    "name": "Spiediena impregnēšana",
+    "unit": "m³"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "CNC un precīzā apstrāde",
+   "name": "CNC frēzēšana 2D detaļām",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "Materiāls un faila sagatavošana parasti atsevišķi; atkārtotas sērijas var būt lētākas.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 14,
+    "name": "CNC frēzēšana 2D detaļām",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "CNC un precīzā apstrāde",
+   "name": "CNC 3D frēzēšana / reljefs",
+   "unit": "h",
+   "frm": 35.0,
+   "price": 50.0,
+   "to": 75.0,
+   "note": "Atkarīgs no reljefa sarežģītības, frēzes ceļa un apdares prasībām.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 15,
+    "name": "CNC 3D frēzēšana / reljefs",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "CNC un precīzā apstrāde",
+   "name": "CNC programmas / rasējuma sagatavošana",
+   "unit": "h",
+   "frm": 20.0,
+   "price": 30.0,
+   "to": 45.0,
+   "note": "Ja nav sagatavota DXF/DWG/STEP faila, modelēšana var būt atsevišķa pozīcija.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 16,
+    "name": "CNC programmas / rasējuma sagatavošana",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "CNC un precīzā apstrāde",
+   "name": "CNC gravēšana / personalizēšana",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 40.0,
+   "to": 60.0,
+   "note": "Minimālā pasūtījuma maksa iespējama; cenu ietekmē detaļu skaits un dizaina sagatavošana.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 17,
+    "name": "CNC gravēšana / personalizēšana",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "CNC un precīzā apstrāde",
+   "name": "Urbšana, gropēšana vai ligzdu frēzēšana",
+   "unit": "h",
+   "frm": 20.0,
+   "price": 35.0,
+   "to": 55.0,
+   "note": "Vienkāršai detaļu apstrādei; sarežģītas jig/šablona prasības sadārdzina.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 18,
+    "name": "Urbšana, gropēšana vai ligzdu frēzēšana",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Slīpēšana un apdare",
+   "name": "Masīvkoka/plātņu detaļu slīpēšana",
+   "unit": "m2",
+   "frm": 6.0,
+   "price": 9.0,
+   "to": 14.0,
+   "note": "Atkarīgs no sākotnējās virsmas, koksnes, malu daudzuma un nepieciešamās gluduma klases.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 19,
+    "name": "Masīvkoka/plātņu detaļu slīpēšana",
+    "unit": "m²"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Slīpēšana un apdare",
+   "name": "Beicēšana / tonēšana",
+   "unit": "m2",
+   "frm": 6.0,
+   "price": 9.0,
+   "to": 14.0,
+   "note": "Beice un izmēģinājuma paraugs var būt atsevišķi.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 20,
+    "name": "Beicēšana / tonēšana",
+    "unit": "m²"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Slīpēšana un apdare",
+   "name": "Lakošana",
+   "unit": "m2",
+   "frm": 14.0,
+   "price": 20.0,
+   "to": 30.0,
+   "note": "Viena vai vairākas kārtas, starpslīpēšana un materiāls var mainīt cenu.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 21,
+    "name": "Lakošana",
+    "unit": "m²"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Slīpēšana un apdare",
+   "name": "Krāsošana (MDF, masīvkoks, saplāksnis)",
+   "unit": "m2",
+   "frm": 14.0,
+   "price": 24.0,
+   "to": 40.0,
+   "note": "Sagatavošana, grunts, krāsas veids un detaļu ģeometrija būtiski ietekmē cenu; minimālais pasūtījums iespējams.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 22,
+    "name": "Krāsošana (MDF, masīvkoks, saplāksnis)",
+    "unit": "m²"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Slīpēšana un apdare",
+   "name": "Eļļošana",
+   "unit": "m2",
+   "frm": 20.0,
+   "price": 27.0,
+   "to": 38.0,
+   "note": "Atkarīgs no eļļas, kārtu skaita un virsmas sagatavošanas.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 23,
+    "name": "Eļļošana",
+    "unit": "m²"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Slīpēšana un apdare",
+   "name": "Malu līmēšana plātņu detaļām",
+   "unit": "m",
+   "frm": 1.5,
+   "price": 3.0,
+   "to": 5.5,
+   "note": "Malu lentes veids, biezums, detaļas skaits un sagatavošana ietekmē cenu.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 24,
+    "name": "Malu līmēšana plātņu detaļām",
+    "unit": "m"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Galdniecība un izgatavošana",
+   "name": "Vienkāršas individuālas detaļas izgatavošana",
+   "unit": "gab",
+   "frm": 15.0,
+   "price": 35.0,
+   "to": 90.0,
+   "note": "Darbs bez materiāla; cena var būt augstāka, ja vajadzīgs rasējums, šablons vai sarežģīta pielaide.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 25,
+    "name": "Vienkāršas individuālas detaļas izgatavošana",
+    "unit": "gab."
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Galdniecība un izgatavošana",
+   "name": "Mēbeļu detaļu sērijas apstrāde",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 40.0,
+   "to": 65.0,
+   "note": "Lielākam vienādu detaļu daudzumam vienības cena parasti krītas; materiāls atsevišķi.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 26,
+    "name": "Mēbeļu detaļu sērijas apstrāde",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Galdniecība un izgatavošana",
+   "name": "Līmēta koka plātne / panelis pēc pasūtījuma",
+   "unit": "m2",
+   "frm": 60.0,
+   "price": 110.0,
+   "to": 190.0,
+   "note": "Materiāla suga, lamelu platums, biezums, līmēšana un kalibrēšana nosaka cenu; šeit norādīts apstrādes un izgatavošanas orientieris, nevis universāla materiāla cena.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 27,
+    "name": "Līmēta koka plātne / panelis pēc pasūtījuma",
+    "unit": "m²"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Galdniecība un izgatavošana",
+   "name": "Koka kāpņu pakāpiena izgatavošana (bez montāžas)",
+   "unit": "gab",
+   "frm": 45.0,
+   "price": 90.0,
+   "to": 180.0,
+   "note": "Atkarīgs no koksnes sugas, izmēra, līmēta vai masīva materiāla un apdares.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 28,
+    "name": "Koka kāpņu pakāpiena izgatavošana (bez montāžas)",
+    "unit": "gab."
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Galdniecība un izgatavošana",
+   "name": "Galda virsmas izgatavošana pēc izmēra",
+   "unit": "m2",
+   "frm": 90.0,
+   "price": 160.0,
+   "to": 280.0,
+   "note": "Materiāls, biezums, malu profils, līmējums un apdare var būtiski mainīt cenu.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 29,
+    "name": "Galda virsmas izgatavošana pēc izmēra",
+    "unit": "m²"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Galdniecība un izgatavošana",
+   "name": "Koka detaļu remonts / pielāgošana",
+   "unit": "h",
+   "frm": 20.0,
+   "price": 30.0,
+   "to": 50.0,
+   "note": "Minimālā pasūtījuma maksa vai transporta izmaksas var tikt piemērotas.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 30,
+    "name": "Koka detaļu remonts / pielāgošana",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Finierēšana un plātņu apstrāde",
+   "name": "Finierēšana / finiera uzklāšana",
+   "unit": "m2",
+   "frm": 20.0,
+   "price": 35.0,
+   "to": 60.0,
+   "note": "Finieris, līme, presēšana, malu apstrāde un detaļu izmērs var būt atsevišķi.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 31,
+    "name": "Finierēšana / finiera uzklāšana",
+    "unit": "m²"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Finierēšana un plātņu apstrāde",
+   "name": "Plātņu malu apstrāde un piegriešana komplektā",
+   "unit": "gab",
+   "frm": 3.0,
+   "price": 7.0,
+   "to": 15.0,
+   "note": "Cena par detaļu; sarežģīta ģeometrija un neliela sērija var sadārdzināt.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 32,
+    "name": "Plātņu malu apstrāde un piegriešana komplektā",
+    "unit": "gab."
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Piegāde un palīgdarbi",
+   "name": "Materiāla pieņemšana, šķirošana un komplektēšana",
+   "unit": "h",
+   "frm": 18.0,
+   "price": 25.0,
+   "to": 40.0,
+   "note": "Atkarīgs no detaļu skaita, marķēšanas, iepakošanas un uzglabāšanas.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 33,
+    "name": "Materiāla pieņemšana, šķirošana un komplektēšana",
+    "unit": "stundā"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Piegāde un palīgdarbi",
+   "name": "Iepakošana / aizsargiepakojums",
+   "unit": "pasūtījums",
+   "frm": 10.0,
+   "price": 25.0,
+   "to": 70.0,
+   "note": "Nestandarta vai trauslām detaļām vairāk; piegāde nav iekļauta.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 34,
+    "name": "Iepakošana / aizsargiepakojums",
+    "unit": "pasūtījums"
+   }
+  },
+  {
+   "area": "kokapstrade",
+   "group": "Piegāde un palīgdarbi",
+   "name": "Piegāde ar furgonu pilsētā",
+   "unit": "brauciens",
+   "frm": 25.0,
+   "price": 45.0,
+   "to": 90.0,
+   "note": "Atkarīgs no attāluma, izmēriem, iekraušanas/izkraušanas un nepieciešamās palīdzības.",
+   "source": {
+    "file": "kokapstrade-2026.xlsx",
+    "sheet": "Kokapstrādes cenas",
+    "row": 35,
+    "name": "Piegāde ar furgonu pilsētā",
+    "unit": "brauciens"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Apsaimniekošana",
+   "name": "Daudzdzīvokļu mājas pārvaldīšana un apsaimniekošana",
+   "unit": "m2 mēnesī",
+   "frm": 0.25,
+   "price": 0.35,
+   "to": 0.5,
+   "note": "Orientieris par ēkas pārvaldīšanu un ikdienas apsaimniekošanu; remontu uzkrājums parasti jāuzrāda atsevišķi.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 2,
+    "name": "Daudzdzīvokļu mājas pārvaldīšana un apsaimniekošana",
+    "unit": "EUR/m² mēnesī"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Apsaimniekošana",
+   "name": "Remontdarbu uzkrājums",
+   "unit": "m2 mēnesī",
+   "frm": 0.05,
+   "price": 0.1,
+   "to": 0.25,
+   "note": "Atsevišķs uzkrājums nākotnes remontiem; nav tas pats, kas apsaimniekošanas maksa.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 3,
+    "name": "Remontdarbu uzkrājums",
+    "unit": "EUR/m² mēnesī"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Apsaimniekošana",
+   "name": "Privātmājas / neliela īpašuma ikmēneša tehniskā apsekošana",
+   "unit": "mēnesī",
+   "frm": 40.0,
+   "price": 75.0,
+   "to": 150.0,
+   "note": "Periodiska vizuāla apsekošana, sīku defektu fiksēšana; remonti un avārijas izsaukumi atsevišķi.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 4,
+    "name": "Privātmājas / neliela īpašuma ikmēneša tehniskā apsekošana",
+    "unit": "EUR/mēnesī"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Apsaimniekošana",
+   "name": "Saimniecības darbu meistars",
+   "unit": "h",
+   "frm": 20.0,
+   "price": 30.0,
+   "to": 45.0,
+   "note": "Sīki remonti un ikdienas saimniecības darbi; materiāli un izbraukums atsevišķi.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 5,
+    "name": "Saimniecības darbu meistars",
+    "unit": "EUR/stundā"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Apsaimniekošana",
+   "name": "Avārijas izsaukums ārpus darba laika",
+   "unit": "izsaukums",
+   "frm": 50.0,
+   "price": 90.0,
+   "to": 180.0,
+   "note": "Pirms darba sākšanas jāvienojas par izsaukuma maksu, stundas likmi un materiāliem.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 6,
+    "name": "Avārijas izsaukums ārpus darba laika",
+    "unit": "EUR/izsaukums"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koplietošanas telpas",
+   "name": "Kāpņu telpas uzkopšana nelielā mājā",
+   "unit": "reize",
+   "frm": 20.0,
+   "price": 35.0,
+   "to": 60.0,
+   "note": "Atkarīgs no stāvu skaita, platības, biežuma un logu/ieejas zonas uzkopšanas.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 7,
+    "name": "Kāpņu telpas uzkopšana nelielā mājā",
+    "unit": "EUR/reize"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koplietošanas telpas",
+   "name": "Koplietošanas telpu uzkopšana",
+   "unit": "m2 reizē",
+   "frm": 0.5,
+   "price": 0.9,
+   "to": 1.5,
+   "note": "Grīdas un virsmu uzkopšana; logu mazgāšana un sanitāro telpu dziļā tīrīšana atsevišķi.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 8,
+    "name": "Koplietošanas telpu uzkopšana",
+    "unit": "EUR/m²/reize"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koplietošanas telpas",
+   "name": "Logu mazgāšana koplietošanas telpās",
+   "unit": "m2",
+   "frm": 2.0,
+   "price": 4.0,
+   "to": 7.0,
+   "note": "Pieejami logi; augstuma darbi, sarežģīta piekļuve un rāmju dziļā tīrīšana var sadārdzināt.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 9,
+    "name": "Logu mazgāšana koplietošanas telpās",
+    "unit": "EUR/m²"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koplietošanas telpas",
+   "name": "Lapu savākšana un sakraušana maisos",
+   "unit": "h",
+   "frm": 20.0,
+   "price": 30.0,
+   "to": 45.0,
+   "note": "Maisi un izvešana nav iekļauti, ja nav atsevišķi norādīts.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 10,
+    "name": "Lapu savākšana un sakraušana maisos",
+    "unit": "EUR/stundā"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Teritorijas uzturēšana",
+   "name": "Zāles pļaušana ar mulčēšanu, bez savākšanas",
+   "unit": "m2 reizē",
+   "frm": 0.03,
+   "price": 0.07,
+   "to": 0.1,
+   "note": "Lielāka, regulāri kopta teritorija; minimālā izbraukuma maksa var būt spēkā.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 11,
+    "name": "Zāles pļaušana ar mulčēšanu, bez savākšanas",
+    "unit": "EUR/m²/reize"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Teritorijas uzturēšana",
+   "name": "Zāles pļaušana ar zāles savākšanu",
+   "unit": "m2 reizē",
+   "frm": 0.08,
+   "price": 0.12,
+   "to": 0.15,
+   "note": "Pļaušana un zāles savākšana; izvešana atsevišķi, ja nav norādīts.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 12,
+    "name": "Zāles pļaušana ar zāles savākšanu",
+    "unit": "EUR/m²/reize"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Teritorijas uzturēšana",
+   "name": "Pļaušana ar trimmeri / grūti pieejamas vietas",
+   "unit": "m2 reizē",
+   "frm": 0.05,
+   "price": 0.08,
+   "to": 0.12,
+   "note": "Nogāzes, ap kokiem, gar žogiem; gara zāle un aizaugums var sadārdzināt.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 13,
+    "name": "Pļaušana ar trimmeri / grūti pieejamas vietas",
+    "unit": "EUR/m²/reize"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Teritorijas uzturēšana",
+   "name": "Zāles pļaušana ar trimmeri vai krūmgriezi",
+   "unit": "h",
+   "frm": 22.55,
+   "price": 27.29,
+   "to": 35.0,
+   "note": "Darbinieks un trimmeris; transports un izvešana atsevišķi.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 14,
+    "name": "Zāles pļaušana ar trimmeri vai krūmgriezi",
+    "unit": "EUR/stundā"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Teritorijas uzturēšana",
+   "name": "Mehanizēta pļaušana ar traktoru / raideri",
+   "unit": "h",
+   "frm": 38.25,
+   "price": 46.28,
+   "to": 60.0,
+   "note": "Lielākām teritorijām; piekļuve, slīpums un gara zāle ietekmē cenu.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 15,
+    "name": "Mehanizēta pļaušana ar traktoru / raideri",
+    "unit": "EUR/stundā"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Teritorijas uzturēšana",
+   "name": "Aizaugušas teritorijas pļaušana",
+   "unit": "m2 reizē",
+   "frm": 0.1,
+   "price": 0.18,
+   "to": 0.35,
+   "note": "Neiekopta zāle, nezāles, nelīdzenumi; pirms darbu pasūtīšanas vajadzīga fotogrāfija/apsekošana.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 16,
+    "name": "Aizaugušas teritorijas pļaušana",
+    "unit": "EUR/m²/reize"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Teritorijas uzturēšana",
+   "name": "Dzīvžoga apgriešana līdz ~2 m",
+   "unit": "m",
+   "frm": 1.3,
+   "price": 3.0,
+   "to": 6.0,
+   "note": "Atkarīgs no dzīvžoga platuma, blīvuma un atgriezumu savākšanas.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 17,
+    "name": "Dzīvžoga apgriešana līdz ~2 m",
+    "unit": "EUR/tekošais m"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Teritorijas uzturēšana",
+   "name": "Krūmu cirpšana / formēšana",
+   "unit": "h",
+   "frm": 21.86,
+   "price": 26.45,
+   "to": 35.0,
+   "note": "Nelieli krūmi un formēšana; zaru savākšana/šķeldošana var būt atsevišķi.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 18,
+    "name": "Krūmu cirpšana / formēšana",
+    "unit": "EUR/stundā"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Teritorijas uzturēšana",
+   "name": "Krūmu un apauguma izzāģēšana",
+   "unit": "m2",
+   "frm": 0.25,
+   "price": 1.5,
+   "to": 4.0,
+   "note": "Cena atkarīga no apauguma blīvuma, stumbru diametra un vai jāizņem saknes.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 19,
+    "name": "Krūmu un apauguma izzāģēšana",
+    "unit": "EUR/m²"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Zaru apzāģēšana / vainaga kopšana mazam kokam",
+   "unit": "koks",
+   "frm": 50.0,
+   "price": 90.0,
+   "to": 150.0,
+   "note": "Cena atkarīga no augstuma, piekļuves, zaru daudzuma un savākšanas.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 20,
+    "name": "Zaru apzāģēšana / vainaga kopšana mazam kokam",
+    "unit": "EUR/koks"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Vidēja koka nozāģēšana brīvā piekļuvē",
+   "unit": "koks",
+   "frm": 80.0,
+   "price": 150.0,
+   "to": 250.0,
+   "note": "Bez īpaši sarežģītas nolaišanas; celma frēzēšana un zaru izvešana atsevišķi.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 21,
+    "name": "Vidēja koka nozāģēšana brīvā piekļuvē",
+    "unit": "EUR/koks"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Koka nozāģēšana, stumbra diametrs 4–10 cm",
+   "unit": "koks",
+   "frm": 30.85,
+   "price": 37.33,
+   "to": 60.02,
+   "note": "Darba laikā brīvi pieejamā vietā; sarežģītos apstākļos dārgāk.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 22,
+    "name": "Koka nozāģēšana, stumbra diametrs 4–10 cm",
+    "unit": "EUR/koks"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Koka nozāģēšana, stumbra diametrs 11–20 cm",
+   "unit": "koks",
+   "frm": 42.05,
+   "price": 50.88,
+   "to": 75.0,
+   "note": "Brīvi pieejamā vietā; augstākā cena – sarežģītākai piekļuvei.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 23,
+    "name": "Koka nozāģēšana, stumbra diametrs 11–20 cm",
+    "unit": "EUR/koks"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Koka nozāģēšana, stumbra diametrs 21–30 cm",
+   "unit": "koks",
+   "frm": 103.93,
+   "price": 125.76,
+   "to": 180.12,
+   "note": "Brīvi pieejamā vietā; sarežģītos apstākļos dārgāk.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 24,
+    "name": "Koka nozāģēšana, stumbra diametrs 21–30 cm",
+    "unit": "EUR/koks"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Bīstama koka zāģēšana pa daļām",
+   "unit": "koks",
+   "frm": 100.0,
+   "price": 250.0,
+   "to": 600.0,
+   "note": "Pie ēkas, vadiem, žoga vai bīstama koka; nepieciešams arborista novērtējums, pacēlājs/virves var sadārdzināt.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 25,
+    "name": "Bīstama koka zāģēšana pa daļām",
+    "unit": "EUR/koks"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Celma frēzēšana",
+   "unit": "h",
+   "frm": 44.87,
+   "price": 54.29,
+   "to": 75.0,
+   "note": "Tehnikas darba stunda; mazam celmam iespējama minimālā maksa.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 26,
+    "name": "Celma frēzēšana",
+    "unit": "EUR/stundā"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Celma frēzēšana / izraušana",
+   "unit": "celms",
+   "frm": 35.0,
+   "price": 65.0,
+   "to": 150.0,
+   "note": "Par nelielu celmu; diametrs, saknes, akmeņi un piekļuve būtiski maina cenu.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 27,
+    "name": "Celma frēzēšana / izraušana",
+    "unit": "EUR/celms"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Zaru šķeldošana ar vienu darbinieku",
+   "unit": "h",
+   "frm": 51.84,
+   "price": 62.73,
+   "to": 80.02,
+   "note": "Tehnikas stunda; šķeldas izvešana nav iekļauta, ja nav atsevišķi saskaņota.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 28,
+    "name": "Zaru šķeldošana ar vienu darbinieku",
+    "unit": "EUR/stundā"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Zaru šķeldošana ar diviem darbiniekiem",
+   "unit": "h",
+   "frm": 66.13,
+   "price": 80.02,
+   "to": 100.0,
+   "note": "Tehnikas un divu darbinieku stunda; transports papildus.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 29,
+    "name": "Zaru šķeldošana ar diviem darbiniekiem",
+    "unit": "EUR/stundā"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Zaru / koksnes savākšana un izvešana",
+   "unit": "m3",
+   "frm": 25.0,
+   "price": 35.0,
+   "to": 60.0,
+   "note": "Atkarīgs no zaru apjoma, sakraušanas un attāluma; minimālā pasūtījuma summa var būt spēkā.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 30,
+    "name": "Zaru / koksnes savākšana un izvešana",
+    "unit": "EUR/m³"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Zaru / koksnes sasmalcināšana",
+   "unit": "m3",
+   "frm": 50.0,
+   "price": 60.0,
+   "to": 90.0,
+   "note": "Cena atkarīga no diametra, apjoma un tehnikas piekļuves.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 31,
+    "name": "Zaru / koksnes sasmalcināšana",
+    "unit": "EUR/m³"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Nokrituša koka sazāģēšana un savākšana",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 45.0,
+   "to": 90.0,
+   "note": "Atkarīgs no koka izmēra, saspriegojuma un riska; izvešana atsevišķi.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 32,
+    "name": "Nokrituša koka sazāģēšana un savākšana",
+    "unit": "EUR/stundā"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Koku darbi",
+   "name": "Zemes gabala attīrīšana no krūmiem un stādījumiem",
+   "unit": "m2",
+   "frm": 0.25,
+   "price": 1.5,
+   "to": 4.0,
+   "note": "Vienkāršs aizaugums pret blīvu apaugumu; sakņu izraušana, celmi un izvešana atsevišķi.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 33,
+    "name": "Zemes gabala attīrīšana no krūmiem un stādījumiem",
+    "unit": "EUR/m²"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Sezonālie darbi",
+   "name": "Lapu savākšana un izvešana",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 40.0,
+   "to": 65.0,
+   "note": "Savākšana un sakraušana; transporta un utilizācijas maksa atsevišķi, ja nav norādīts.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 34,
+    "name": "Lapu savākšana un izvešana",
+    "unit": "EUR/stundā"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Sezonālie darbi",
+   "name": "Sniega tīrīšana no celiņiem un ieejas",
+   "unit": "h",
+   "frm": 25.0,
+   "price": 40.0,
+   "to": 60.0,
+   "note": "Rokas darbs; sāls/smilts, transports un darbs ārpus darba laika atsevišķi.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 35,
+    "name": "Sniega tīrīšana no celiņiem un ieejas",
+    "unit": "EUR/stundā"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Sezonālie darbi",
+   "name": "Noteku tīrīšana no lapām",
+   "unit": "m",
+   "frm": 3.0,
+   "price": 6.0,
+   "to": 12.0,
+   "note": "Cena atkarīga no augstuma, jumta slīpuma, piekļuves un atkritumu savākšanas.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 36,
+    "name": "Noteku tīrīšana no lapām",
+    "unit": "EUR/m"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Sezonālie darbi",
+   "name": "Bruģa / cieto segumu mazgāšana",
+   "unit": "m2",
+   "frm": 1.0,
+   "price": 2.5,
+   "to": 5.0,
+   "note": "Atkarīga no netīrības, laukuma, ūdens pieejamības un šuvju smilts atjaunošanas.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 37,
+    "name": "Bruģa / cieto segumu mazgāšana",
+    "unit": "EUR/m²"
+   }
+  },
+  {
+   "area": "apsaimniekosana",
+   "group": "Sezonālie darbi",
+   "name": "Teritorijas pavasara/rudens ģenerālsakopšana",
+   "unit": "objekts",
+   "frm": 120.0,
+   "price": 220.0,
+   "to": 450.0,
+   "note": "Lapu, zaru un sīko atkritumu savākšana; lielas platības un izvešana papildus.",
+   "source": {
+    "file": "apsaimniekosana-2026.xlsx",
+    "sheet": "Uzturēšanas darbu cenas",
+    "row": 38,
+    "name": "Teritorijas pavasara/rudens ģenerālsakopšana",
+    "unit": "EUR/objekts"
+   }
+  }
+ ]
+}
