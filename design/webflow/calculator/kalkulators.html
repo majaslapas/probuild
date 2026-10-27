@@ -1,42 +1,84 @@
-<div class="pbc" data-pbc data-calc-mode="calc">
-  <noscript><p>Kalkulatoram vajadzīgs JavaScript. Precīzu cenas piedāvājumu var pieprasīt pa tālruni +371 26 518 131.</p></noscript>
-</div>
 <script>
 /* ==========================================================================
-   PROBUILD CENU KALKULATORS
-   Cenas ir atsevišķos Code Embed elementos „Cenas: …” (pa vienam katrai jomai).
-   Šeit var labot tekstus, mērvienības un pakalpojumu saites. Zem iestatījumiem
-   ir kalkulatora kods, to labot nevajag.
+   PROBUILD CENU KALKULATORS · KODS (lapas Pakalpojumi kods pirms </body>)
+   Cenas NAV šeit: tās ir lapā, Code Embed blokā „Kalkulators · CENAS”.
+   Šeit var labot tekstus, mērvienības un pakalpojumu saites. Zem tiem ir
+   kalkulatora kods, to labot nevajag.
    ========================================================================== */
 window.PBC_SETTINGS = {
   title: 'Aprēķiniet darbu izmaksas',
   intro: 'Izvēlieties darbus un norādiet apjomu. Aptuveno cenu redzēsiet uzreiz, bet precīzu cenas piedāvājumu sagatavosim jums.',
-  areaLabel: 'Joma',
-  worksLabel: 'Darbi un apjoms',
-  search: 'Meklēt darbu, piem. flīzēšana',
+  quietLead: 'Nezināt apjomus?',
+  quietBtn: 'Pieteikums bez aprēķina',
+  listEndLead: 'Neatradāt vajadzīgo darbu vai nezināt apjomus?',
+  notFoundLead: 'Nezināt, kā darbu nosaukt?',
+  searchLabel: 'Meklēt darbu visās jomās',
+  search: 'piem. flīzēšana',
+  searchClear: 'Notīrīt meklēšanu',
+  searchTitle: 'Meklēšanas rezultāti',
+  found: 'Atrasti darbi: {n}',
+  notFound: 'Pēc „{q}” nekas netika atrasts.',
+  notFoundHint: 'Pamēģiniet citu vārdu, piem. „flīzes”, „jumts” vai „žogs”, vai izvēlieties jomu.',
+  navLabel: 'Jomas un darbu veidi',
+  navTitle: 'Ko plānojat?',
+  navHint: 'Izvēlieties jomu un darbu veidu',
+  groupsLabel: 'Darbu veidi',
+  back: 'Visas jomas',
+  worksHint: 'Cenas par vienu mērvienību. Atzīmējiet darbu un ierakstiet apjomu.',
+  worksHintPhone: 'Atveriet darbu veidu un atzīmējiet vajadzīgos darbus.',
+  next: 'Tālāk',
+  qtyLabel: 'Apjoms',
+  visitsLabel: 'Cik reizes',
+  visitsAria: 'Reizes',
+  less: 'mazāk',
+  more: 'vairāk',
+  sumEmpty: 'Norādiet apjomu',
+  resultTitle: 'Jūsu aprēķins',
   resultLabel: 'Aptuvenās izmaksas',
+  rangeLabel: 'Iespējamais diapazons',
+  monthLabel: '+ ikmēneša maksa',
   resultEmpty: 'Atzīmējiet darbus sarakstā, un aprēķins parādīsies šeit.',
+  resultNoQty: 'Norādiet izvēlēto darbu apjomu.',
+  howTitle: 'Kā tas notiek',
+  how: ['Izvēlieties, ko plānojat: jomu un darbu veidu.', 'Atzīmējiet darbus un ierakstiet apjomu, piemēram, m² vai metrus.', 'Nosūtiet aprēķinu – precīzu cenas piedāvājumu sagatavosim pēc objekta apskates.'],
+  tip: 'Padoms: ierakstiet apjomu tieši darba rindā – darbs tiks atzīmēts pats.',
+  clear: 'Notīrīt',
+  clearConfirm: 'Notīrīt visu?',
+  cleared: 'Izvēle notīrīta.',
+  remove: 'Noņemt',
+  goto: 'rādīt sarakstā',
   cta: 'Saņemt precīzu cenas piedāvājumu',
   ctaHint: 'Vispirms atzīmējiet vismaz vienu darbu.',
   ctaNote: 'Bez saistībām. Precīzu cenu nosakām pēc objekta apskates.',
   generalNote: 'Cenas ir orientējošas 2026. gada aplēses, nevis saistošs piedāvājums.',
+  dockLabel: 'Aprēķina kopsavilkums',
+  dockNote: 'Aptuveni, bez materiāliem',
+  dockOpen: 'Skatīt aprēķinu',
+  dockOpenShort: 'Aprēķins',
+  closeSum: 'Aizvērt aprēķinu',
+  close: 'Aizvērt',
+  offerIntro: 'Aprēķins tiks pievienots pieprasījumam. Sazināsimies tuvākajā darba dienā un pēc objekta apskates sagatavosim precīzu cenas piedāvājumu.',
+  editCalc: 'Labot aprēķinu',
+  worksFold: 'Izvēlētie darbi ({n})',
+  requestIntro: 'Aprakstiet, kas jādara. Sazināsimies, precizēsim apjomus un sagatavosim cenas piedāvājumu.',
+  unavailable: 'Kalkulators šobrīd nav pieejams. Precīzu cenas piedāvājumu var pieprasīt pa tālruni +371 26 518 131.',
   // Ja lapā nav formas ar atribūtu data-pbc-form, poga ved uz šo adresi.
   fallbackUrl: '/kontakti',
 
-  // Mērvienības, ko izmanto cenu rindās. price: teksts aiz cenas; qty: teksts aiz daudzuma
-  // (viens vārds vai [vienskaitlis, daudzskaitlis]); visits: cenu reizina arī ar reižu skaitu;
-  // monthly: ikmēneša maksa (rāda atsevišķi no vienreizējiem darbiem).
+  // Mērvienības (kolonna MĒRV. cenu tabulā). price: teksts aiz cenas; qty: teksts aiz
+  // daudzuma (viens vārds vai [vienskaitlis, daudzskaitlis]); hint: paskaidrojums pie
+  // atzīmēta darba; visits: cenu reizina arī ar reižu skaitu; monthly: ikmēneša maksa.
   units: {
-    'm2':         { price: '€/m²', qty: 'm²' },
-    'm3':         { price: '€/m³', qty: 'm³' },
-    'm3 izejm.':  { price: '€/m³ izejmateriāla', qty: 'm³' },
-    'm':          { price: '€/tek. m', qty: 'tek. m' },
-    'm kanāls':   { price: '€/tek. m kanālam', qty: 'tek. m' },
-    'h':          { price: '€/h', qty: 'h' },
-    'gab':        { price: '€/gab.', qty: 'gab.' },
-    'kompl':      { price: '€/kompl.', qty: 'kompl.' },
-    't':          { price: '€/t', qty: 't' },
-    'kg':         { price: '€/kg', qty: 'kg' },
+    'm2':         { price: '€/m²', qty: 'm²', hint: 'm² ir platība: garums × platums, piem. 4 m × 5 m = 20 m².' },
+    'm3':         { price: '€/m³', qty: 'm³', hint: 'm³ ir tilpums: garums × platums × augstums vai dziļums.' },
+    'm3 izejm.':  { price: '€/m³ izejmateriāla', qty: 'm³', hint: 'Izejmateriāla tilpums kubikmetros.' },
+    'm':          { price: '€/tek. m', qty: 'tek. m', hint: 'Tekošie metri: garums metros, piem. žoga vai notekas garums.' },
+    'm kanāls':   { price: '€/tek. m kanālam', qty: 'tek. m', hint: 'Kanāla garums metros.' },
+    'h':          { price: '€/h', qty: 'h', hint: 'Darba stundas. Ja nezināt, ierakstiet aptuveni – precizēsim.' },
+    'gab':        { price: '€/gab.', qty: 'gab.', hint: 'Skaits gabalos.' },
+    'kompl':      { price: '€/kompl.', qty: 'kompl.', hint: 'Skaits komplektos.' },
+    't':          { price: '€/t', qty: 't', hint: 'Svars tonnās.' },
+    'kg':         { price: '€/kg', qty: 'kg', hint: 'Svars kilogramos.' },
     'diena':      { price: '€/diena', qty: ['diena', 'dienas'] },
     'reize':      { price: '€/reize', qty: ['reize', 'reizes'] },
     'brauciens':  { price: '€/brauciens', qty: ['brauciens', 'braucieni'] },
@@ -47,138 +89,210 @@ window.PBC_SETTINGS = {
     'celms':      { price: '€/celms', qty: ['celms', 'celmi'] },
     'objekts':    { price: '€/objekts', qty: ['objekts', 'objekti'] },
     'izsaukums':  { price: '€/izsaukums', qty: ['izsaukums', 'izsaukumi'] },
-    'm2 reizē':   { price: '€/m² reizē', qty: 'm²', visits: true },
-    'm2 mēnesī':  { price: '€/m² mēnesī', qty: 'm²', monthly: true },
-    'mēnesī':     { price: '€ mēnesī', qty: ['objekts', 'objekti'], monthly: true }
+    'm2 reizē':   { price: '€/m² reizē', qty: 'm²', visits: true, hint: 'Platība m² un cik reizes darbu veikt, piem. pļaušana 10 reizes sezonā.' },
+    'm2 mēnesī':  { price: '€/m² mēnesī', qty: 'm²', monthly: true, hint: 'Ikmēneša maksa par m². To skaitām atsevišķi no vienreizējiem darbiem.' },
+    'mēnesī':     { price: '€ mēnesī', qty: ['objekts', 'objekti'], monthly: true, hint: 'Ikmēneša maksa. To skaitām atsevišķi no vienreizējiem darbiem.' }
   },
 
   // Pakalpojumu saraksta pogas un pakalpojumu lapas atver kalkulatoru šajā vietā:
-  // 'jomas id > grupas nosaukums' (jomas id ir rakstīts katrā „Cenas: …” blokā).
+  // 'Joma > Darbu veids' (kā cenu tabulā virsrakstos === un ---).
   services: {
-    'Pamatu būvniecība': 'buvnieciba > Pamati',
-    'Jumta darbi': 'buvnieciba > Jumts',
-    'Fasādes darbi': 'buvnieciba > Fasāde',
-    'Inženiertīklu un komunikāciju izbūve': 'buvnieciba > Komunikācijas',
-    'Drenāžas un meliorācijas darbi': 'buvnieciba > Komunikācijas',
-    'Apzaļumošana un labiekārtošana': 'buvnieciba > Apzaļumošana un labiekārtošana',
-    'Ēku renovācija un rekonstrukcija': 'remontdarbi > Sienas',
-    'Remonta un apdares darbi': 'remontdarbi > Sienas',
-    'Demontāža un konstrukciju nojaukšana': 'remontdarbi > Demontāžas darbi',
-    'Būvgružu izvešana un utilizācija': 'remontdarbi > Demontāžas darbi',
-    'Metālapstrāde': 'metalapstrade',
-    'Kokapstrāde': 'kokapstrade',
-    'Ēku apsaimniekošana un uzturēšana': 'apsaimniekosana > Apsaimniekošana',
-    'Koku zāģēšana un apauguma novākšana': 'apsaimniekosana > Koku darbi'
+    'Pamatu būvniecība': 'Būvniecība > Pamati',
+    'Jumta darbi': 'Būvniecība > Jumts',
+    'Fasādes darbi': 'Būvniecība > Fasāde',
+    'Inženiertīklu un komunikāciju izbūve': 'Būvniecība > Komunikācijas',
+    'Drenāžas un meliorācijas darbi': 'Būvniecība > Komunikācijas',
+    'Apzaļumošana un labiekārtošana': 'Būvniecība > Apzaļumošana un labiekārtošana',
+    'Ēku renovācija un rekonstrukcija': 'Remontdarbi > Sienas',
+    'Remonta un apdares darbi': 'Remontdarbi > Sienas',
+    'Demontāža un konstrukciju nojaukšana': 'Remontdarbi > Demontāžas darbi',
+    'Būvgružu izvešana un utilizācija': 'Remontdarbi > Demontāžas darbi',
+    'Metālapstrāde': 'Metālapstrāde',
+    'Kokapstrāde': 'Kokapstrāde',
+    'Ēku apsaimniekošana un uzturēšana': 'Apsaimniekošana > Apsaimniekošana',
+    'Koku zāģēšana un apauguma novākšana': 'Apsaimniekošana > Koku darbi'
   }
 };
 
 /* ====== Kalkulatora kods (labot nevajag) ================================= */
 (function () {
   'use strict';
-  var S = window.PBC_SETTINGS, UNITS = S.units, api = null, pending = null;
-  // Other scripts and links: pbCalc.show('Jumta darbi') or ?pakalpojums=Jumta%20darbi
+  var S = window.PBC_SETTINGS || {}, UNITS = S.units || {}, SVC = S.services || {};
+  var html = document.documentElement, api = null, queue = [], moved = [];
+  var NB = String.fromCharCode(160);
+  var fold = function (s) { return String(s || '').toLowerCase().normalize('NFD').replace(/\p{M}/gu, ''); };
+  var warn = function (m) { console.warn('[Kalkulators] ' + m); };
+  // Other scripts and links: pbCalc.show('Jumta darbi'), pbCalc.request('Kokapstrāde'), ?pakalpojums=…
   window.pbCalc = {
-    has: function (name) { return !!S.services[name]; },
-    show: function (name) { if (api) return api.show(name); pending = name; return true; },
-    reset: function () { if (api) api.reset(); }
+    has: function (n) { return !!SVC[n] || !!(api && api.resolve(n)); },
+    show: function (t, o) { if (api) return api.show(t, o); queue.push(['show', t, o]); return true; },
+    reset: function () { if (api) api.reset(); },
+    request: function (n) { if (api) api.request(n); else queue.push(['request', n]); }
   };
-  // Keeps the request form hidden until the visitor asks for the offer (see the CSS).
-  document.documentElement.classList.add('pbc-on');
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-  else init();
+  html.classList.add('pbc-on');
+  function off() {
+    html.classList.remove('pbc-on'); html.classList.add('pbc-off');
+    moved.forEach(function (m) { m[1].insertBefore(m[0], m[2]); });
+    var r = document.querySelector('[data-pbc]');
+    if (r) r.innerHTML = '<p class="pbc_intro">' + (S.unavailable || '') + '</p>';
+  }
+  function run() { try { init(); } catch (e) { console.error('[Kalkulators]', e); off(); } }
+  if (document.querySelector('[data-pbc]')) run(); else document.addEventListener('DOMContentLoaded', run);
+
+  // The price table: <script type="text/plain" data-pbc-cenas> blocks (see the block's own instructions).
+  function readTables() {
+    var areas = [], byId = {}, errors = [];
+    var num = function (s) {
+      s = s.replace(/[\s€]/g, '').replace(',', '.').replace('−', '-');
+      return /^-?\d+(\.\d+)?$/.test(s) ? Number(s) : NaN;
+    };
+    [].forEach.call(document.querySelectorAll('[data-pbc-cenas]'), function (block, bi) {
+      var area = null, group = null, done = false;
+      block.textContent.split(/\r?\n/).forEach(function (raw, li) {
+        var s = raw.trim(), m;
+        var fail = function (why) { errors.push((bi ? bi + 1 + '. bloka ' : '') + (li + 1) + '. rindā: ' + why + '\n   ' + s); };
+        if (done || !s || s.charAt(0) === '#') return;
+        if ((m = /^={3,}\s*(.*?)\s*=*$/.exec(s))) {
+          if (!m[1]) return;
+          if (fold(m[1]) === 'beigas') { done = true; return; }
+          var id = fold(m[1]).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+          if (!byId[id]) areas.push(byId[id] = { id: id, name: m[1], intro: '', note: '', short: '', groups: [] });
+          area = byId[id]; group = null;
+          return;
+        }
+        if (!area) return;
+        if ((m = /^-{3,}\s*(.*?)\s*-*$/.exec(s))) {
+          if (m[1]) area.groups.push(group = { name: m[1], items: [] });
+          return;
+        }
+        if (s.indexOf('|') < 0) {
+          m = /^(apraksts|piezime|isa piezime)\s*:/.exec(fold(s));
+          if (m) area[{ apraksts: 'intro', piezime: 'note' }[m[1]] || 'short'] = s.slice(s.indexOf(':') + 1).trim();
+          else fail('nav saprotama rinda (starp kolonnām jābūt svītrai |)');
+          return;
+        }
+        if (!group) return fail('darbs pirms grupas virsraksta „--- …”');
+        var c = s.split('|').map(function (x) { return x.trim(); });
+        if (c.length < 5 || !c[4]) return fail('jābūt kolonnām NO | CENA | LĪDZ | MĒRV. | DARBS');
+        var lo = num(c[0]), mid = num(c[1]), hi = num(c[2]);
+        if (isNaN(lo) || isNaN(mid) || isNaN(hi)) return fail('cenai jābūt skaitlim, piem. 12.5');
+        if (!(lo <= mid && mid <= hi)) fail('jābūt NO ≤ CENA ≤ LĪDZ (rinda tomēr ir rādīta)');
+        group.items.push({ name: c[4], unitKey: c[3], from: lo, price: mid, to: hi, note: c.slice(5).join(' | ') });
+      });
+    });
+    areas.forEach(function (a) { a.groups = a.groups.filter(function (g) { return g.items.length; }); });
+    return { areas: areas.filter(function (a) { return a.groups.length; }), errors: errors };
+  }
 
   function init() {
     var root = document.querySelector('[data-pbc]');
     if (!root || root.hasAttribute('data-pbc-ready')) return;
     root.setAttribute('data-pbc-ready', '');
 
-    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var finePointer = window.matchMedia && matchMedia('(pointer: fine)').matches;
-    var nf0 = new Intl.NumberFormat('lv-LV', { maximumFractionDigits: 0, useGrouping: 'always' });
-    var nf2 = new Intl.NumberFormat('lv-LV', { minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: 'always' });
-    var nfq = new Intl.NumberFormat('lv-LV', { maximumFractionDigits: 2, useGrouping: false });
+    var mq = function (q) { return window.matchMedia(q); };
+    var mW = mq('(min-width:75em)'), mS = mq('(min-width:56.25em)'), mP = mq('(max-width:37.49em)'), mFine = mq('(pointer:fine)'), mRed = mq('(prefers-reduced-motion:reduce)');
+    var L = function () { return mW.matches ? 'W' : mS.matches ? 'S' : mP.matches ? 'P' : 'N'; };
+    var flow = function () { return !mS.matches; };
+    var nf = function (o) { return new Intl.NumberFormat('lv-LV', o); };
+    var nf0 = nf({ maximumFractionDigits: 0, useGrouping: 'always' }), nf2 = nf({ minimumFractionDigits: 2, maximumFractionDigits: 2, useGrouping: 'always' }), nfq = nf({ maximumFractionDigits: 2, useGrouping: false });
     var minus = function (s) { return s.replace('-', '−'); };
-    var money = function (n) {
-      var r = Math.round(n * 100) / 100;
-      return minus(Math.abs(r) >= 100 || r === Math.round(r) ? nf0.format(Math.round(r)) : nf2.format(r)) + ' €';
-    };
+    var num0 = function (n) { var r = Math.round(n * 100) / 100; return minus(Math.abs(r) >= 100 || r === Math.round(r) ? nf0.format(Math.round(r)) : nf2.format(r)); };
+    var money = function (n) { return num0(n) + NB + '€'; };
     var rate = function (n) { return minus(n === Math.round(n) ? nf0.format(n) : nf2.format(n)); };
-    var esc = function (s) {
-      return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
-    };
-    var fold = function (s) { return String(s).toLowerCase().normalize('NFD').replace(/\p{M}/gu, ''); };
-    var word = function (forms, n) {
-      if (typeof forms === 'string') return forms;
-      var i = Math.abs(Math.round(n));
-      return i % 10 === 1 && i % 100 !== 11 ? forms[0] : forms[1];
-    };
+    var rng = function (lo, hi, f, sp) { return lo === hi ? f(lo) : f(lo) + (sp || lo < 0 ? ' – ' : '–') + f(hi); };
+    var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+    var fill = function (s, o) { return String(s).replace(/\{(\w)\}/g, function (x, k) { return o[k]; }); };
+    var word = function (f, n) { if (typeof f === 'string') return f; var i = Math.abs(Math.round(n)); return i % 10 === 1 && i % 100 !== 11 ? f[0] : f[1]; };
+    var cnt = function (n, f) { return n + ' ' + word(f, n); };
+    var DARBI = ['darbs', 'darbi'], VEIDI = ['darbu veids', 'darbu veidi'], IZV = ['izvēlēts', 'izvēlēti'], REIZES = ['reize', 'reizes'];
+    var sr = function (s) { return '<span class="pbc_sr">' + s + '</span>'; };
+    var badge = function (n) { return n ? '<span class="pbc_badge">' + sr(', izvēlēti: ') + n + '</span>' : ''; };
+    var countH = function (n) { return '<span class="pbc_count">' + sr(', darbi: ') + n + '</span>'; };
+    var svg = function (d) { return '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; };
+    var IC = { search: svg('<circle cx="8.5" cy="8.5" r="5.75"/><path d="m13 13 4.5 4.5"/>'), right: svg('<path d="m8 5 5 5-5 5"/>'), down: svg('<path d="m5 8 5 5 5-5"/>'), back: svg('<path d="M16 10H4m5-5-5 5 5 5"/>'), next: svg('<path d="M4 10h12m-5-5 5 5-5 5"/>') };
+    var $ = function (s, r) { return (r || root).querySelector(s); };
+    var $$ = function (s, r) { return [].slice.call((r || root).querySelectorAll(s)); };
 
-    // Price data from the „Cenas: …” embeds
-    var AREAS = [], ITEMS = {};
-    (window.PBC_DATA || []).slice().sort(function (a, b) { return (a.order || 99) - (b.order || 99); }).forEach(function (a) {
-      var area = { id: a.id, name: a.name, intro: a.intro || '', note: a.note || '', groups: [] };
-      (a.groups || []).forEach(function (g, gi) {
-        var group = { name: g.group, area: area, items: [] };
-        (g.items || []).forEach(function (r, ii) {
-          var it = { id: a.id + '.' + gi + '.' + ii, area: area, group: group, name: String(r[0]), unitKey: r[1],
-            from: Number(r[2]), price: Number(r[3]), to: Number(r[4]), note: r[5] ? String(r[5]) : '' };
-          it.unit = UNITS[r[1]];
-          if (!it.unit) {
-            console.warn('[Kalkulators] Nezināma mērvienība „' + r[1] + '”: ' + it.name);
-            it.unit = { price: '€/' + r[1], qty: String(r[1]) };
-          }
-          if (isNaN(it.from) || isNaN(it.price) || isNaN(it.to)) { console.warn('[Kalkulators] Cena nav skaitlis: ' + it.name); return; }
-          if (!(it.from <= it.price && it.price <= it.to)) console.warn('[Kalkulators] Jābūt: cena no ≤ ieteicamā ≤ cena līdz: ' + it.name);
-          it.key = fold(it.name + ' ' + group.name + ' ' + area.name);
-          group.items.push(it);
+    // Data
+    var tab = readTables(), AREAS = tab.areas, ITEMS = {};
+    tab.errors.forEach(warn);
+    AREAS.forEach(function (a, ai) {
+      a.i = ai;
+      a.groups.forEach(function (g, gi) {
+        g.i = gi; g.area = a;
+        g.items.forEach(function (it, ii) {
+          it.id = ai + '-' + gi + '-' + ii; it.area = a; it.group = g;
+          if (!UNITS[it.unitKey]) { warn('Nezināma mērvienība „' + it.unitKey + '”: ' + it.name); UNITS[it.unitKey] = { price: '€/' + it.unitKey, qty: it.unitKey }; }
+          it.unit = UNITS[it.unitKey];
+          it.key = fold(it.name + ' ' + g.name + ' ' + a.name);
           ITEMS[it.id] = it;
         });
-        if (group.items.length) area.groups.push(group);
       });
-      if (area.groups.length) AREAS.push(area);
     });
-    if (!AREAS.length) {
-      document.documentElement.classList.remove('pbc-on');
-      root.innerHTML = '<p class="pbc_intro">Kalkulators šobrīd nav pieejams. Precīzu cenas piedāvājumu var pieprasīt pa tālruni +371 26 518 131.</p>';
-      return;
-    }
+    if (!AREAS.length) return off();
 
-    var st = { a: 0, g: 0, q: '' };
-    var picked = {}, order = [], lastQty = {};
+    // State
+    var st = { a: 0, g: 0, o: -1, q: '', stems: [], view: 'areas', prev: null };
+    var lastG = {}, picked = {}, order = [], lastQty = {}, linesKey = null;
+    var area = function () { return AREAS[st.a]; };
+    var countIn = function (test) { return order.filter(function (id) { return test(ITEMS[id]); }).length; };
+    var countA = function (a) { return countIn(function (it) { return it.area === a; }); };
+    var countG = function (g) { return countIn(function (it) { return it.group === g; }); };
 
-    // The Webflow form that sends the request: hidden until the visitor asks for the offer.
-    var formEl = document.querySelector('[data-pbc-form]');
-    var formBlock = formEl && (formEl.closest('.w-form') || formEl);
-    var form = formEl && (formEl.tagName === 'FORM' ? formEl : formEl.querySelector('form'));
+    // Forms (native Webflow form blocks, moved into the dialogs)
+    var block = function (sel) { var el = document.querySelector(sel); return el && (el.closest('.w-form') || el); };
+    var offerBlock = block('[data-pbc-form]'), reqBlock = block('[data-pbc-request]');
+    var form = offerBlock && (offerBlock.tagName === 'FORM' ? offerBlock : offerBlock.querySelector('form'));
 
-    var icon = {
-      search: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.75"/><path d="m13 13 4.5 4.5" stroke-linecap="round"/></svg>',
-      arrow: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 10h11m-4.5-5 5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    var X = function (lbl) { return '<button type="button" class="pbc_x" data-close aria-label="' + esc(lbl) + '">×</button>'; };
+    var dlgHead = function (id, t) { return '<div class="pbc_dlg-h"><h2 id="' + id + '">' + esc(t) + '</h2>' + X(S.close) + '</div>'; };
+    var quiet = function (lead, pill) {
+      return (lead ? '<span>' + esc(lead) + '</span> ' : '') + '<button type="button" class="' + (pill ? 'pbc_pill' : 'pbc_link') + '" data-request>' + esc(S.quietBtn) + '</button>';
     };
-    root.innerHTML =
-      '<div class="pbc_head"><h2 class="pbc_title">' + esc(S.title) + '</h2><p class="pbc_intro">' + esc(S.intro) + '</p></div>' +
-      '<div class="pbc_step"><div class="pbc_label" id="pbc-l1"><span class="pbc_num">1</span>' + esc(S.areaLabel) + '</div>' +
-        '<div class="pbc_pills" role="group" aria-labelledby="pbc-l1" data-areas></div><p class="pbc_area-intro" data-area-intro></p></div>' +
-      '<div class="pbc_step" data-works><div class="pbc_label" id="pbc-l2"><span class="pbc_num">2</span>' + esc(S.worksLabel) + '</div>' +
-        '<div class="pbc_search">' + icon.search + '<input class="pbc_search-input" type="search" enterkeyhint="search" autocomplete="off" ' +
-          'aria-label="Meklēt darbu" placeholder="' + esc(S.search) + '" data-search><button type="button" class="pbc_clear" aria-label="Notīrīt meklēšanu" data-clear hidden>×</button></div>' +
-        '<div class="pbc_pills is-small" role="group" aria-label="Darbu grupa" data-groups></div>' +
-        '<p class="pbc_found" data-found hidden></p>' +
-        '<ul class="pbc_list" role="list" aria-labelledby="pbc-l2" data-list></ul></div>' +
-      '<div class="pbc_result" data-result></div>' +
-      '<div class="pbc_bar" data-bar aria-hidden="true"><span class="pbc_bar-total" data-bar-total></span><span class="pbc_bar-count" data-bar-count></span>' +
-        '<button type="button" class="pbc_bar-btn" tabindex="-1" data-to-result>Skatīt aprēķinu</button></div>' +
+    var errBox = tab.errors.length && (/webflow\.io$/.test(location.hostname) || /pbc-check/.test(location.search))
+      ? '<div class="pbc_err" role="alert"><b>Cenu tabulā ir kļūdas (šo redz tikai …webflow.io adresē):</b>\n' + esc(tab.errors.join('\n')) + '</div>' : '';
+    root.innerHTML = errBox +
+      '<header class="pbc_head"><div><h2 class="pbc_title">' + esc(S.title) + '</h2><p class="pbc_intro">' + esc(S.intro) + '</p></div><p class="pbc_quiet">' + quiet(S.quietLead, 1) + '</p></header>' +
+      '<div class="pbc_ws" id="pbc-ws">' +
+        '<nav class="pbc_nav" aria-label="' + esc(S.navLabel) + '">' +
+          '<div class="pbc_search" role="search"><label for="pbc-q">' + esc(S.searchLabel) + '</label><div class="pbc_field">' + IC.search +
+            '<input class="pbc_q" id="pbc-q" type="search" autocomplete="off" enterkeyhint="search" placeholder="' + esc(S.search) + '">' +
+            '<button type="button" class="pbc_clear" data-clear aria-label="' + esc(S.searchClear) + '" hidden>×</button></div></div>' +
+          '<div class="pbc_nav-h"><h3 id="pbc-nav-title" tabindex="-1">' + esc(S.navTitle) + '</h3><p>' + esc(S.navHint) + '</p>' +
+            '<ul class="pbc_areas" role="list" data-areas></ul></div>' +
+          '<div class="pbc_groups"><p class="pbc_glabel" id="pbc-gl">' + esc(S.groupsLabel) + '</p><ul role="list" aria-labelledby="pbc-gl" data-groups></ul></div>' +
+        '</nav>' +
+        '<section class="pbc_works" aria-labelledby="pbc-works-title"><div class="pbc_wh" data-wh></div><div class="pbc_sets" data-sets></div><div class="pbc_wf" data-wf></div></section>' +
+        '<aside class="pbc_sum" aria-labelledby="pbc-sum-title" data-sum>' +
+          '<div class="pbc_sum-h"><h3 id="pbc-sum-title">' + esc(S.resultTitle) + '</h3><span class="pbc_sum-n" data-sum-n></span>' +
+            '<button type="button" class="pbc_link" data-clearall hidden>' + esc(S.clear) + '</button>' + X(S.closeSum) + '</div>' +
+          '<div class="pbc_sum-b"><div class="pbc_tot" data-tot></div><ul class="pbc_lines" role="list" data-lines></ul><div class="pbc_how" data-how></div></div>' +
+          '<div class="pbc_foot"><button type="button" class="pbc_cta" data-cta aria-describedby="pbc-cta-n">' + esc(S.cta) + '</button>' +
+            '<p class="pbc_cta-n" id="pbc-cta-n" data-cta-n></p><p class="pbc_quiet-in">' + quiet() + '</p></div>' +
+        '</aside>' +
+      '</div>' +
+      '<div class="pbc_dock" role="region" aria-label="' + esc(S.dockLabel) + '" data-dock hidden>' +
+        '<div class="pbc_dock-m"><span class="pbc_dock-t" data-dt></span><span class="pbc_dock-i" data-di></span><span class="pbc_dock-n" data-dn></span></div>' +
+        '<button type="button" class="pbc_pill pbc_dock-o" data-open-sum aria-haspopup="dialog"><span class="pbc_dock-l">' + esc(S.dockOpen) + '</span><span class="pbc_dock-s">' + esc(S.dockOpenShort) + ' <span class="pbc_badge" data-dc></span></span></button>' +
+        '<button type="button" class="pbc_cta" data-cta>' + esc(S.cta) + '</button>' +
+      '</div>' +
+      '<dialog class="pbc_dlg is-sum" aria-labelledby="pbc-sum-title"><div class="pbc_dlg-in" data-sumhost></div></dialog>' +
+      '<dialog class="pbc_dlg is-offer" aria-labelledby="pbc-offer-title"><div class="pbc_dlg-in">' + dlgHead('pbc-offer-title', S.cta) +
+        '<p class="pbc_dlg-i">' + esc(S.offerIntro) + '</p><section class="pbc_recap" aria-labelledby="pbc-recap-title" data-recap></section><div class="pbc_host" data-offerhost></div></div></dialog>' +
+      '<dialog class="pbc_dlg is-req" aria-labelledby="pbc-req-title"><div class="pbc_dlg-in">' + dlgHead('pbc-req-title', S.quietBtn) +
+        '<p class="pbc_dlg-i">' + esc(S.requestIntro) + '</p><div class="pbc_host" data-reqhost></div></div></dialog>' +
       '<p class="pbc_sr" aria-live="polite" data-status></p>';
-    var $ = function (s) { return root.querySelector(s); };
-    var el = { areas: $('[data-areas]'), areaIntro: $('[data-area-intro]'), groups: $('[data-groups]'), list: $('[data-list]'),
-      search: $('[data-search]'), clear: $('[data-clear]'), found: $('[data-found]'), result: $('[data-result]'),
-      bar: $('[data-bar]'), works: $('[data-works]'), status: $('[data-status]') };
-    // The floating total lives in <body>: a transformed ancestor (the panel's entrance
-    // animation) would otherwise pin position:fixed to the panel instead of the screen.
-    document.body.appendChild(el.bar);
-    el.bar.addEventListener('click', function (e) {
-      if (e.target.closest('[data-to-result]')) scrollToEl(el.result, $('[data-cta]'));
-    });
+
+    var el = { ws: $('.pbc_ws'), q: $('#pbc-q'), clear: $('[data-clear]'), areas: $('[data-areas]'), groups: $('[data-groups]'), wh: $('[data-wh]'), sets: $('[data-sets]'), wf: $('[data-wf]'),
+      sum: $('[data-sum]'), sumN: $('[data-sum-n]'), tot: $('[data-tot]'), lines: $('[data-lines]'), how: $('[data-how]'), ctaN: $('[data-cta-n]'), clearAll: $('[data-clearall]'),
+      dock: $('[data-dock]'), status: $('[data-status]'), dSum: $('.pbc_dlg.is-sum'), dOffer: $('.pbc_dlg.is-offer'), dReq: $('.pbc_dlg.is-req'), recap: $('[data-recap]') };
+    // #kalkulators lands on the workspace frame
+    var old = document.getElementById('kalkulators');
+    if (old) old.removeAttribute('id');
+    el.ws.id = 'kalkulators';
+    var host = function (b, h) { if (b) { moved.push([b, b.parentNode, b.nextSibling]); h.appendChild(b); } };
+    host(offerBlock, $('[data-offerhost]'));
+    host(reqBlock, $('[data-reqhost]'));
 
     // Totals
     function line(id) {
@@ -192,190 +306,248 @@ window.PBC_SETTINGS = {
         var b = l.it.unit.monthly ? t.month : t.once;
         b.lo += l.lo; b.mid += l.mid; b.hi += l.hi; b.n++;
       });
+      t.main = t.once.n ? t.once : t.month; t.monthOnly = !t.once.n && t.month.n > 0;
       return t;
     }
-    var countIn = function (test) { return order.filter(function (id) { return test(ITEMS[id]); }).length; };
-    var range = function (lo, hi, sep) { return lo === hi ? money(lo) : money(lo).replace(' €', '') + (sep || '–') + money(hi); };
+    var used = function () { return AREAS.filter(function (a) { return countA(a) > 0; }); };
     var qtyText = function (it, p) {
       var s = nfq.format(p.q) + ' ' + word(it.unit.qty, p.q);
-      return it.unit.visits ? s + ' × ' + nfq.format(p.v) + ' ' + word(['reize', 'reizes'], p.v) : s;
+      return it.unit.visits ? s + ' × ' + nfq.format(p.v) + ' ' + word(REIZES, p.v) : s;
     };
+    var lsum = function (l) { return l.n > 0 ? money(l.mid) + (l.it.unit.monthly ? '/mēn.' : '') : '—'; };
 
-    // Step 1 and the group pills
-    function pill(attr, i, label, count, on) {
-      return '<button type="button" class="pbc_pill" ' + attr + '="' + i + '" aria-pressed="' + on + '">' + esc(label) +
-        (count ? '<span class="pbc_badge" aria-label="izvēlēti ' + count + '">' + count + '</span>' : '') + '</button>';
+    // Navigation (rail and phone cards)
+    el.areas.innerHTML = AREAS.map(function (a, i) {
+      var n = a.groups.reduce(function (s, g) { return s + g.items.length; }, 0);
+      return '<li><button type="button" class="pbc_area" data-area="' + i + '" aria-describedby="pbc-ai-' + i + '"><span class="pbc_area-n">' + esc(a.name) + '</span>' +
+        '<span data-ab="' + i + '"></span>' + countH(n) + IC.right.replace('<svg', '<svg class="pbc_chev"') +
+        '<span class="pbc_area-i" id="pbc-ai-' + i + '">' + esc(a.intro) + '</span><span class="pbc_area-m">' + cnt(n, DARBI) + ' · ' + cnt(a.groups.length, VEIDI) + '</span></button></li>';
+    }).join('');
+    function renderGroups() {
+      var a = area();
+      el.groups.innerHTML = a.groups.map(function (g, i) {
+        return '<li><button type="button" class="pbc_grp" data-group="' + i + '"><span>' + esc(g.name) + '</span><span data-gb="' + a.i + '-' + i + '"></span>' + countH(g.items.length) + '</button></li>';
+      }).join('');
     }
-    function renderPills() {
-      var area = AREAS[st.a];
-      el.areas.innerHTML = AREAS.map(function (a, i) {
-        return pill('data-area', i, a.name, countIn(function (it) { return it.area === a; }), !st.q && i === st.a);
-      }).join('');
-      el.areaIntro.textContent = area.intro;
-      el.groups.innerHTML = area.groups.map(function (g, i) {
-        return pill('data-group', i, g.name, countIn(function (it) { return it.group === g; }), i === st.g);
-      }).join('');
-      el.groups.hidden = !!st.q;
+    function marks() {
+      $$('.pbc_area').forEach(function (b, i) { b.setAttribute('aria-current', !st.q && i === st.a ? 'true' : 'false'); });
+      $$('.pbc_grp').forEach(function (b, i) { b.setAttribute('aria-current', !st.q && i === st.g ? 'true' : 'false'); });
+      var cur = $('.pbc_grp[aria-current=true]'), list = el.groups;
+      if (cur && list.scrollHeight > list.clientHeight) {
+        var top = cur.offsetTop - list.offsetTop;
+        if (top < list.scrollTop || top + cur.offsetHeight > list.scrollTop + list.clientHeight) list.scrollTop = top - list.clientHeight / 2 + cur.offsetHeight / 2;
+      }
+    }
+    function badges() {
+      $$('[data-ab]').forEach(function (s) { s.innerHTML = badge(countA(AREAS[+s.getAttribute('data-ab')])); });
+      $$('[data-gb]').forEach(function (s) { var k = s.getAttribute('data-gb').split('-'); s.innerHTML = badge(countG(AREAS[k[0]].groups[k[1]])); });
+      var m = $('[data-meta]');
+      if (m) m.textContent = metaText();
+    }
+    function metaText() {
+      if (st.q) return fill(S.found, { n: hits().length });
+      var a = area(), g = a.groups[st.g];
+      if (flow()) return cnt(a.groups.length, VEIDI) + ' · ' + cnt(a.groups.reduce(function (s, x) { return s + x.items.length; }, 0), DARBI);
+      var k = countG(g);
+      return cnt(g.items.length, DARBI) + (k ? ' · ' + word(IZV, k) + ' ' + k : '');
     }
 
-    // Step 2: the work list (one group, or search results across all areas)
+    // Works
+    function stems(q) {
+      return q.split(' ').filter(Boolean).map(function (w) {
+        var m = w.length >= 4 && /(as|es|is|us|os|am|em|im|um|a|e|i|u|s)$/.exec(w);
+        return m && w.length - m[0].length >= 3 ? w.slice(0, -m[0].length) : w;
+      });
+    }
+    function hits() {
+      return Object.keys(ITEMS).map(function (k) { return ITEMS[k]; }).filter(function (it) {
+        return st.stems.every(function (w) { return it.key.indexOf(w) >= 0; });
+      });
+    }
     function mark(name) {
       if (!st.q) return esc(name);
-      var f = fold(name), hits = [];
-      st.q.split(' ').forEach(function (w) {
-        var i = f.indexOf(w);
-        if (w && i >= 0) hits.push([i, i + w.length]);
-      });
-      hits.sort(function (a, b) { return a[0] - b[0]; });
-      var out = '', pos = 0;
-      hits.forEach(function (h) {
+      var f = fold(name), hs = [], out = '', pos = 0;
+      st.stems.forEach(function (w) { var i = f.indexOf(w); if (i >= 0) hs.push([i, i + w.length]); });
+      hs.sort(function (a, b) { return a[0] - b[0]; }).forEach(function (h) {
         if (h[0] < pos) return;
         out += esc(name.slice(pos, h[0])) + '<mark>' + esc(name.slice(h[0], h[1])) + '</mark>';
         pos = h[1];
       });
       return out + esc(name.slice(pos));
     }
-    function stepper(it, k, val, unit, label) {
-      return '<span class="pbc_qty"><button type="button" class="pbc_step-btn" data-step="-1" data-k="' + k + '" aria-label="' + esc(label) + ': mazāk">−</button>' +
-        '<input class="pbc_qty-input" data-k="' + k + '" inputmode="decimal" autocomplete="off" value="' + nfq.format(val) + '" aria-label="' + esc(label + ', ' + it.name) + '">' +
-        '<span class="pbc_qty-unit" data-unit="' + k + '">' + esc(unit) + '</span>' +
-        '<button type="button" class="pbc_step-btn" data-step="1" data-k="' + k + '" aria-label="' + esc(label) + ': vairāk">+</button></span>';
+    function priceHTML(it) {
+      var p = it.unit.price.replace('tek. m', 'tek.' + NB + 'm'), i = p.indexOf(' '), head = i < 0 ? p : p.slice(0, i);
+      return '<span class="pbc_pr"><b>' + rate(it.price) + NB + '€</b>' + esc(head.slice(1)) + '</span>' + (i < 0 ? '' : esc(p.slice(i))) +
+        (it.from !== it.to ? '<span class="pbc_range">' + sr('diapazons ') + rng(it.from, it.to, rate) + NB + '€</span>' : '');
     }
-    function moreHTML(it) {
-      var p = picked[it.id];
-      if (!p) return '';
-      var h = '<div class="pbc_qty-row">' + stepper(it, 'q', p.q, word(it.unit.qty, p.q), 'Daudzums');
-      if (it.unit.visits) h += '<span class="pbc_times" aria-hidden="true">×</span>' + stepper(it, 'v', p.v, word(['reize', 'reizes'], p.v), 'Reizes');
-      h += '<span class="pbc_item-sum" data-sum></span></div>';
-      if (it.note) h += '<p class="pbc_item-note">' + esc(it.note) + '</p>';
-      return h;
+    function amt(it, k) {
+      var p = picked[it.id], v = k === 'q', n = p ? p[k] : 0, lbl = v ? S.qtyLabel : S.visitsAria;
+      var unit = word(v ? it.unit.qty : REIZES, n);
+      var b = function (d, t) { return '<button type="button" class="pbc_step" data-step="' + d + '" data-k="' + k + '" aria-label="' + esc(lbl + ': ' + t) + '">' + (d < 0 ? '−' : '+') + '</button>'; };
+      return '<span class="pbc_amt-w">' + (it.unit.visits ? '<span class="pbc_amt-l" aria-hidden="true">' + esc(v ? S.qtyLabel : S.visitsLabel) + '</span>' : '') +
+        '<span class="pbc_amt' + (v ? '' : ' is-v') + '">' + b(-1, S.less) +
+        '<input class="pbc_in" data-k="' + k + '" inputmode="decimal" autocomplete="off" value="' + (p ? nfq.format(n) : '') + '" aria-label="' +
+          esc((v ? lbl + ' (' + word(it.unit.qty, 2) + ')' : lbl) + ', ' + it.name) + '">' +
+        '<span class="pbc_unit" data-u="' + k + '">' + esc(unit) + '</span>' + b(1, S.more) + '</span></span>';
     }
-    function itemHTML(it) {
-      var on = !!picked[it.id];
-      var meta = st.q ? it.area.name + ' › ' + it.group.name : (it.from === it.to ? '' : 'Diapazons ' + rate(it.from) + '–' + rate(it.to) + ' ' + it.unit.price);
-      return '<li class="pbc_item' + (on ? ' is-on' : '') + '" data-id="' + it.id + '">' +
-        '<label class="pbc_item-main"><input type="checkbox" class="pbc_check"' + (on ? ' checked' : '') + '><span class="pbc_box" aria-hidden="true"></span>' +
-        '<span class="pbc_item-text"><span class="pbc_item-name">' + mark(it.name) + '</span>' + (meta ? '<span class="pbc_item-meta">' + esc(meta) + '</span>' : '') + '</span>' +
-        '<span class="pbc_item-price">' + rate(it.price) + ' ' + esc(it.unit.price) + '</span></label>' +
-        '<div class="pbc_item-more"><div class="pbc_item-inner">' + moreHTML(it) + '</div></div></li>';
+    function rowHTML(it) {
+      var on = !!picked[it.id], d = it.id;
+      return '<li class="pbc_row' + (on ? ' is-on' : '') + '" data-id="' + d + '"><label class="pbc_row-main">' +
+        '<input type="checkbox" class="pbc_check"' + (on ? ' checked' : '') + ' aria-labelledby="pbc-n-' + d + '" aria-describedby="pbc-p-' + d + (it.note ? ' pbc-o-' + d : '') + '">' +
+        '<span class="pbc_box" aria-hidden="true"></span><span class="pbc_name" id="pbc-n-' + d + '">' + mark(it.name) + '</span>' +
+        '<span class="pbc_price" id="pbc-p-' + d + '">' + priceHTML(it) + '</span>' +
+        (it.note ? '<span class="pbc_note" id="pbc-o-' + d + '">' + esc(it.note) + '</span>' : '') +
+        (it.unit.hint ? '<span class="pbc_hint">' + esc(it.unit.hint) + '</span>' : '') +
+        '</label><div class="pbc_qty' + (it.unit.visits ? ' is-v' : '') + '">' + amt(it, 'q') + (it.unit.visits ? amt(it, 'v') : '') + '<span class="pbc_rsum" data-rs></span></div></li>';
     }
-    function visibleItems() {
-      if (!st.q) return AREAS[st.a].groups[st.g].items;
-      var words = st.q.split(' ').filter(Boolean), out = [];
-      AREAS.forEach(function (a) { a.groups.forEach(function (g) { g.items.forEach(function (it) {
-        if (words.every(function (w) { return it.key.indexOf(w) >= 0; })) out.push(it);
-      }); }); });
-      return out;
+    var list = function (items, id) { return '<ul class="pbc_list" role="list"' + (id ? ' id="' + id + '"' : '') + '>' + items.map(rowHTML).join('') + '</ul>'; };
+    function nextOf(ai, gi) {
+      if (gi + 1 < AREAS[ai].groups.length) return [ai, gi + 1];
+      return ai + 1 < AREAS.length ? [ai + 1, 0] : null;
     }
-    function renderList() {
-      var items = visibleItems();
-      el.found.hidden = !st.q;
-      el.found.textContent = items.length ? 'Atrasti darbi: ' + items.length : 'Nekas netika atrasts. Pamēģiniet citu vārdu vai izvēlieties jomu.';
-      el.list.hidden = !items.length;
-      el.list.innerHTML = items.map(itemHTML).join('');
-      el.list.scrollTop = 0;
-      items.forEach(function (it) { if (picked[it.id]) updateRow(it.id); });
+    function renderWorks() {
+      var a = area(), g = a.groups[st.g], h = '', sets = '', foot = '';
+      if (st.q) {
+        var found = hits(), by = [];
+        found.forEach(function (it) { if (by.indexOf(it.group) < 0) by.push(it.group); });
+        h = '<div class="pbc_wt"><h3 id="pbc-works-title" tabindex="-1">' + esc(S.searchTitle) + '</h3><span class="pbc_meta" data-meta></span></div>' +
+          '<button type="button" class="pbc_link" data-clear>' + esc(S.searchClear) + '</button>';
+        sets = by.map(function (gr) {
+          var its = found.filter(function (it) { return it.group === gr; });
+          return '<section class="pbc_set"><h4 class="pbc_set-h is-static"><span>' + esc(gr.area.name) + '</span> › ' + esc(gr.name) + ' <small>' + word(['atrasts', 'atrasti'], its.length) + ' ' + its.length + '</small></h4>' + list(its) + '</section>';
+        }).join('');
+        if (!found.length) sets = '<div class="pbc_none"><b>' + esc(fill(S.notFound, { q: el.q.value.trim() })) + '</b><p>' + esc(S.notFoundHint) + '</p><p>' + quiet(S.notFoundLead) + '</p></div>';
+        else foot = '<p>' + quiet(S.listEndLead) + '</p>';
+      } else if (flow()) {
+        h = '<button type="button" class="pbc_pill pbc_back" data-back>' + IC.back + esc(S.back) + '</button>' +
+          '<div class="pbc_wt"><h3 id="pbc-works-title" tabindex="-1">' + esc(a.name) + '</h3><span data-ab="' + a.i + '"></span><span class="pbc_meta" data-meta></span></div>' +
+          '<p class="pbc_wh-hint">' + esc(S.worksHintPhone) + '</p><p class="pbc_wh-note">' + esc(a.note) + '</p>';
+        sets = a.groups.map(function (gr, i) {
+          var open = i === st.o, lid = 'pbc-l-' + a.i + '-' + i;
+          return '<section class="pbc_set' + (open ? ' is-open' : '') + '"><h4 class="pbc_set-h"><button type="button" class="pbc_acc" data-acc="' + i + '" aria-expanded="' + open + '" aria-controls="' + lid + '">' +
+            '<span class="pbc_acc-n">' + esc(gr.name) + '<small>' + sr(', ') + cnt(gr.items.length, DARBI) + '</small></span><span data-gb="' + a.i + '-' + i + '"></span>' + IC.down + '</button></h4>' +
+            (open ? list(gr.items, lid) : '<ul id="' + lid + '" hidden></ul>') + '</section>';
+        }).join('');
+        foot = '<p>' + quiet(S.listEndLead) + '</p>';
+      } else {
+        var nx = nextOf(st.a, st.g);
+        h = '<p class="pbc_crumb">' + esc(a.name) + '</p><div class="pbc_wt"><h3 id="pbc-works-title" tabindex="-1">' + esc(g.name) + '</h3><span class="pbc_meta" data-meta></span></div>' +
+          '<p class="pbc_wh-intro">' + esc(a.intro) + '</p><p class="pbc_wh-hint">' + esc(S.worksHint) + '</p><p class="pbc_wh-note">' + esc(a.short || a.note) + '</p>';
+        sets = '<section class="pbc_set">' + list(g.items) + '</section>';
+        foot = '<p>' + quiet(S.listEndLead) + '</p>' + (nx ? '<button type="button" class="pbc_pill" data-next>' + esc(S.next + ': ' + (nx[0] === st.a ? '' : AREAS[nx[0]].name + ' › ') + AREAS[nx[0]].groups[nx[1]].name) + IC.next + '</button>' : '');
+      }
+      el.wh.innerHTML = h; el.sets.innerHTML = sets; el.wf.innerHTML = foot;
+      el.wf.hidden = !foot;
+      order.forEach(rowSum);
+      badges(); marks(); pad();
     }
-    function rowOf(id) { return el.list.querySelector('[data-id="' + id + '"]'); }
-    function updateRow(id) {
-      var li = rowOf(id), it = ITEMS[id], p = picked[id];
-      if (!li || !p) return;
-      var l = line(id), sum = li.querySelector('[data-sum]');
-      if (sum) sum.textContent = l.n > 0 ? '≈ ' + money(l.mid) + (it.unit.monthly ? ' mēnesī' : '') : 'Norādiet apjomu';
-      var u = li.querySelector('[data-unit="q"]');
-      if (u) u.textContent = word(it.unit.qty, p.q);
-      var v = li.querySelector('[data-unit="v"]');
-      if (v) v.textContent = word(['reize', 'reizes'], p.v);
+    function rowSum(id) {
+      var li = $('.pbc_sets [data-id="' + id + '"]');
+      if (!li || !picked[id]) return;
+      var l = line(id), s = li.querySelector('[data-rs]');
+      s.textContent = l.n > 0 ? '≈ ' + money(l.mid) + (l.it.unit.monthly ? ' /mēn.' : '') : S.sumEmpty;
+      s.classList.toggle('is-zero', !(l.n > 0));
     }
 
-    // Result
-    var usedAreas = function () {
-      return AREAS.filter(function (a) { return order.some(function (id) { return ITEMS[id].area === a; }); });
-    };
-    function linesHTML(t) {
-      var h = '', many = usedAreas().length > 1;
+    // Summary
+    function notesHTML(t, shortOk) {
+      var u = used(), many = u.length > 1, list = u.length ? u : [area()];
+      return '<div class="pbc_notes">' + list.map(function (a) {
+        var two = shortOk && a.short && a.short !== a.note;
+        return a.note ? '<p>' + (many ? '<b>' + esc(a.name) + ':</b> ' : '') + (two ? '<span class="is-short">' + esc(a.short) + '</span><span class="is-full">' : '<span>') + esc(a.note) + '</span></p>' : '';
+      }).join('') + '<p>' + esc(S.generalNote) + '</p></div>';
+    }
+    function totHTML(t, shortOk) {
+      var m = t.main, any = order.length > 0, h = '<p class="pbc_tot-l">' + esc(S.resultLabel) + '</p>';
+      if (!any || !m.n) h += '<p class="pbc_total is-empty">—' + NB + '€</p><p class="pbc_rng">' + esc(any ? S.resultNoQty : S.resultEmpty) + '</p>';
+      else {
+        var mo = t.monthOnly ? '<i> mēnesī</i>' : '';
+        h += '<p class="pbc_total"><small>≈</small> ' + money(m.mid) + mo + '</p><p class="pbc_rng">' + esc(S.rangeLabel) + ' <b>' + rng(m.lo, m.hi, num0, 1) + NB + '€' + (t.monthOnly ? ' mēnesī' : '') + '</b></p>';
+        if (t.once.n && t.month.n) h += '<p class="pbc_mon">' + esc(S.monthLabel) + ' <b>≈ ' + money(t.month.mid) + '</b> (' + rng(t.month.lo, t.month.hi, num0, 1) + NB + '€)</p>';
+      }
+      return h + notesHTML(t, shortOk);
+    }
+    function renderLines(t) {
+      var h = '';
       AREAS.forEach(function (a) {
         var ls = t.lines.filter(function (l) { return l.it.area === a; });
         if (!ls.length) return;
-        if (many) h += '<li class="pbc_lines-area">' + esc(a.name) + '</li>';
+        h += '<li class="pbc_line-a"><span>' + esc(a.name) + '</span><span data-sub="' + a.i + '"></span></li>';
         ls.forEach(function (l) {
-          h += '<li class="pbc_line"><button type="button" class="pbc_line-name" data-goto="' + l.it.id + '">' + esc(l.it.name) +
-            '<span class="pbc_line-qty">' + esc(qtyText(l.it, l.p)) + '</span></button>' +
-            '<span class="pbc_line-sum">' + (l.n > 0 ? money(l.mid) + (l.it.unit.monthly ? '/mēn.' : '') : '—') + '</span>' +
-            '<button type="button" class="pbc_remove" data-remove="' + l.it.id + '" aria-label="Noņemt: ' + esc(l.it.name) + '">×</button></li>';
+          var it = l.it, p = l.p;
+          h += '<li class="pbc_line" data-id="' + it.id + '"><button type="button" class="pbc_line-n" data-goto aria-label="' + esc(it.name + ': ' + S.goto) + '">' + esc(it.name) + '</button>' +
+            '<span class="pbc_lsum" data-ls></span><div class="pbc_lq">' +
+            '<input class="pbc_in" data-k="q" inputmode="decimal" autocomplete="off" value="' + nfq.format(p.q) + '" aria-label="' + esc(S.qtyLabel + ' (' + word(it.unit.qty, 2) + '), ' + it.name) + '"><span class="pbc_unit" data-u="q">' + esc(word(it.unit.qty, p.q)) + '</span>' +
+            (it.unit.visits ? '<span class="pbc_amt is-v">× <input class="pbc_in" data-k="v" inputmode="decimal" autocomplete="off" value="' + nfq.format(p.v) + '" aria-label="' + esc(S.visitsAria + ', ' + it.name) + '"> <span class="pbc_unit" data-u="v">' + word(REIZES, p.v) + '</span></span>' : '') +
+            '<span class="pbc_rate">× ' + rate(it.price) + ' ' + esc(it.unit.price) + '</span>' +
+            '<button type="button" class="pbc_rm" data-remove aria-label="' + esc(S.remove + ': ' + it.name) + '">×</button></div></li>';
         });
       });
-      return h;
+      el.lines.innerHTML = h;
     }
-    function renderResult() {
-      var t = totals(), any = order.length > 0, main = t.once.n ? t.once : t.month, monthOnly = !t.once.n && t.month.n;
-      var used = usedAreas();
-      var notes = used.map(function (a) { return (used.length > 1 ? a.name + ': ' : '') + a.note; });
-      var h = '<div class="pbc_result-label">' + esc(S.resultLabel) + '</div>';
-      if (!any) {
-        h += '<p class="pbc_total is-empty">— €</p><p class="pbc_range">' + esc(S.resultEmpty) + '</p>';
-      } else if (!main.n) {
-        h += '<p class="pbc_total is-empty">— €</p><p class="pbc_range">Norādiet izvēlēto darbu apjomu.</p>';
-      } else {
-        h += '<p class="pbc_total">≈ ' + money(main.mid) + (monthOnly ? '<span class="pbc_total-unit"> mēnesī</span>' : '') + '</p>' +
-          '<p class="pbc_range">Iespējamais diapazons ' + range(main.lo, main.hi, ' – ') + (monthOnly ? ' mēnesī' : '') + '</p>';
-        if (t.once.n && t.month.n) h += '<p class="pbc_month">+ ikmēneša maksa ≈ ' + money(t.month.mid) + ' <span>(' + range(t.month.lo, t.month.hi, ' – ') + ')</span></p>';
-      }
-      if (any) h += '<ul class="pbc_lines" role="list">' + linesHTML(t) + '</ul>';
-      if (notes.length) h += '<p class="pbc_note">' + notes.map(esc).join('<br>') + '</p>';
-      h += '<p class="pbc_note">' + esc(S.generalNote) + '</p>' +
-        '<button type="button" class="pbc_cta" data-cta aria-disabled="' + !any + '">' + esc(S.cta) + icon.arrow + '</button>' +
-        '<p class="pbc_cta-note" data-cta-note>' + esc(any ? S.ctaNote : S.ctaHint) + '</p>';
-      el.result.innerHTML = h;
-      renderBar(t, main, monthOnly);
+    function renderSum() {
+      var t = totals(), any = order.length > 0, u = used();
+      var key = order.join();
+      if (key !== linesKey) { linesKey = key; renderLines(t); }
+      t.lines.forEach(function (l) {
+        $$('[data-id="' + l.it.id + '"] [data-ls]').forEach(function (s) { s.textContent = lsum(l); });
+      });
+      u.forEach(function (a) {
+        var ls = t.lines.filter(function (l) { return l.it.area === a && l.n > 0; }), o = 0, mth = 0;
+        ls.forEach(function (l) { if (l.it.unit.monthly) mth += l.mid; else o += l.mid; });
+        var s = $('[data-sub="' + a.i + '"]');
+        if (s) s.textContent = mth && o ? money(o) + ' + ' + money(mth) + '/mēn.' : mth ? money(mth) + '/mēn.' : ls.length ? money(o) : '';
+      });
+      el.sum.classList.toggle('is-many', u.length > 1);
+      el.tot.innerHTML = totHTML(t, 1);
+      el.lines.hidden = !any; el.how.hidden = any;
+      el.sumN.textContent = any ? cnt(order.length, DARBI) : '';
+      el.clearAll.hidden = !any;
+      $$('[data-cta]').forEach(function (b) { b.setAttribute('aria-disabled', any ? 'false' : 'true'); });
+      el.ctaN.textContent = any ? S.ctaNote : S.ctaHint;
+      el.ctaN.classList.remove('is-alert');
+      renderDock(t);
       writeFields(t);
-      announce(any && main.n ? S.resultLabel + ' ' + money(main.mid) + (monthOnly ? ' mēnesī' : '') + ', izvēlēti darbi: ' + order.length : '');
+      if (el.dOffer.open) renderRecap(t);
+      announce(!any ? '' : t.main.n ? S.resultLabel + ' ' + money(t.main.mid) + (t.monthOnly ? ' mēnesī' : '') + ', izvēlēti darbi: ' + order.length : 'Izvēlēti darbi: ' + order.length + ', apjoms nav norādīts');
     }
-    var announceTimer;
-    function announce(msg) {
-      clearTimeout(announceTimer);
-      announceTimer = setTimeout(function () { el.status.textContent = msg; }, 900);
+    el.how.innerHTML = '<h4>' + esc(S.howTitle) + '</h4><ol>' + (S.how || []).map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ol><p class="pbc_tip">' + esc(S.tip) + '</p><p>' + quiet() + '</p>';
+    function renderDock(t) {
+      var any = order.length > 0, m = t.main, d = el.dock;
+      var was = d.hidden;
+      d.hidden = !any;
+      if (!any) { if (!was) pad(); return; }
+      $('[data-dt]').textContent = m.n ? '≈ ' + money(m.mid) + (t.monthOnly ? ' mēnesī' : '') : '—' + NB + '€';
+      $('[data-di]').textContent = cnt(order.length, DARBI) + (m.n ? ' · ' + rng(m.lo, m.hi, num0) + NB + '€' : '') + (t.once.n && t.month.n ? ' · + ' + money(t.month.mid) + '/mēn.' : '');
+      $('[data-dn]').textContent = (t.once.n && t.month.n && mP.matches ? '+ ' + money(t.month.mid) + '/mēn. · ' : '') + S.dockNote;
+      $('[data-dc]').textContent = order.length;
+      if (was) pad();
     }
-
-    // Floating total while the list is on screen and the result is not
-    var seen = { works: false, result: false, form: false };
-    function renderBar(t, main, monthOnly) {
-      var on = order.length > 0 && main.n > 0 && seen.works && !seen.result && !seen.form;
-      el.bar.classList.toggle('is-shown', on);
-      el.bar.querySelector('[data-to-result]').tabIndex = on ? 0 : -1;
-      el.bar.setAttribute('aria-hidden', on ? 'false' : 'true');
-      if (!main) return;
-      el.bar.querySelector('[data-bar-total]').textContent = main.n ? '≈ ' + money(main.mid) + (monthOnly ? '/mēn.' : '') : '';
-      el.bar.querySelector('[data-bar-count]').textContent = 'darbi: ' + order.length;
+    function renderRecap(t) {
+      var open = !flow() ? ' open' : '';
+      el.recap.innerHTML = '<h3 id="pbc-recap-title">' + esc(S.resultTitle) + '</h3><div class="pbc_tot">' + totHTML(t) + '</div>' +
+        '<details' + open + '><summary>' + esc(fill(S.worksFold, { n: order.length })) + '</summary><ul role="list">' + t.lines.map(function (l) {
+          return '<li><span>' + esc(l.it.name) + '</span><b>' + lsum(l) + '</b><small>' + esc(qtyText(l.it, l.p)) + '</small></li>';
+        }).join('') + '</ul></details><button type="button" class="pbc_pill" data-edit>' + esc(S.editCalc) + '</button>';
     }
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) {
-          var k = e.target === el.works ? 'works' : e.target === el.result ? 'result' : 'form';
-          seen[k] = e.isIntersecting;
-        });
-        var t = totals(), main = t.once.n ? t.once : t.month;
-        renderBar(t, main, !t.once.n && t.month.n);
-      });
-      io.observe(el.works); io.observe(el.result);
-      if (formBlock) io.observe(formBlock);
+    var timer;
+    function announce(msg, now) {
+      clearTimeout(timer);
+      timer = setTimeout(function () { el.status.textContent = msg; }, now ? 50 : 900);
     }
 
     // Hidden fields sent with the Webflow form (field names are the keys the CRM maps)
-    function summary(t) {
+    function summaryText(t) {
       var out = ['ProBuild cenu kalkulators: aptuvenais aprēķins'], last = '';
-      t.lines.slice().sort(function (a, b) {
-        return AREAS.indexOf(a.it.area) - AREAS.indexOf(b.it.area) || a.it.area.groups.indexOf(a.it.group) - b.it.area.groups.indexOf(b.it.group);
-      }).forEach(function (l) {
+      t.lines.slice().sort(function (a, b) { return a.it.area.i - b.it.area.i || a.it.group.i - b.it.group.i; }).forEach(function (l) {
         var head = l.it.area.name + ' › ' + l.it.group.name;
         if (head !== last) { out.push('', head); last = head; }
-        var per = l.it.unit.monthly ? ' mēnesī' : '';
         out.push('• ' + l.it.name + ': ' + qtyText(l.it, l.p) + ' × ' + rate(l.it.price) + ' ' + l.it.unit.price +
-          (l.n > 0 ? ' = ' + money(l.mid) + per + ' (' + range(l.lo, l.hi) + ')' : ' (apjoms nav norādīts)'));
+          (l.n > 0 ? ' = ' + money(l.mid) + (l.it.unit.monthly ? ' mēnesī' : '') + ' (' + rng(l.lo, l.hi, num0) + NB + '€)' : ' (apjoms nav norādīts)'));
       });
       out.push('');
-      if (t.once.n) out.push('Kopā: ≈ ' + money(t.once.mid) + ' (diapazons ' + range(t.once.lo, t.once.hi) + ')');
-      if (t.month.n) out.push('Ikmēneša maksa: ≈ ' + money(t.month.mid) + ' (diapazons ' + range(t.month.lo, t.month.hi) + ')');
+      if (t.once.n) out.push('Kopā: ≈ ' + money(t.once.mid) + ' (diapazons ' + rng(t.once.lo, t.once.hi, num0) + NB + '€)');
+      if (t.month.n) out.push('Ikmēneša maksa: ≈ ' + money(t.month.mid) + ' (diapazons ' + rng(t.month.lo, t.month.hi, num0) + NB + '€)');
       out.push(S.generalNote);
       return out.join('\n');
     }
@@ -384,10 +556,7 @@ window.PBC_SETTINGS = {
       if (!f) {
         f = document.createElement(name === 'aprekins' ? 'textarea' : 'input');
         if (f.tagName === 'INPUT') f.type = 'hidden'; else f.hidden = true;
-        f.name = name;
-        f.setAttribute('data-name', name);
-        f.setAttribute('aria-hidden', 'true');
-        f.tabIndex = -1;
+        f.name = name; f.setAttribute('data-name', name); f.setAttribute('aria-hidden', 'true'); f.tabIndex = -1;
         form.appendChild(f);
       }
       f.value = value;
@@ -395,241 +564,332 @@ window.PBC_SETTINGS = {
     function writeFields(t) {
       if (!form) return;
       t = t || totals();
-      setField('aprekins', order.length ? summary(t) : '');
-      setField('aprekins_joma', usedAreas().map(function (a) { return a.name; }).join(', '));
+      var w = function (n) { return String(Math.round(n)); };
+      setField('aprekins', order.length ? summaryText(t) : '');
+      setField('aprekins_joma', used().map(function (a) { return a.name; }).join(', '));
       setField('aprekins_darbi', String(order.length));
-      setField('aprekins_summa', t.once.n ? String(Math.round(t.once.mid)) : '');
-      setField('aprekins_no', t.once.n ? String(Math.round(t.once.lo)) : '');
-      setField('aprekins_lidz', t.once.n ? String(Math.round(t.once.hi)) : '');
-      setField('aprekins_menesi', t.month.n ? String(Math.round(t.month.mid)) : '');
+      setField('aprekins_summa', t.once.n ? w(t.once.mid) : '');
+      setField('aprekins_no', t.once.n ? w(t.once.lo) : '');
+      setField('aprekins_lidz', t.once.n ? w(t.once.hi) : '');
+      setField('aprekins_menesi', t.month.n ? w(t.month.mid) : '');
     }
     if (form) form.addEventListener('submit', function () { writeFields(); }, true);
 
-    // State changes
-    function renderAll() { renderPills(); renderList(); renderResult(); }
-    function refresh(id) { updateRow(id); renderPills(); renderResult(); }
-    function toggle(id, on) {
+    // Picks and amounts
+    function syncRow(id) {
+      var li = $('.pbc_sets [data-id="' + id + '"]'), on = !!picked[id];
+      if (!li) return;
+      li.classList.toggle('is-on', on);
+      li.querySelector('.pbc_check').checked = on;
+      $$('.pbc_in', li).forEach(function (i) { if (i !== document.activeElement) i.value = on ? nfq.format(picked[id][i.getAttribute('data-k')]) : ''; });
+      rowSum(id);
+    }
+    function toggle(id, on, k, n) {
       var it = ITEMS[id];
       if (on && !picked[id]) {
         picked[id] = { q: lastQty[it.unitKey] || 1, v: 1 };
+        if (k) picked[id][k] = k === 'v' ? Math.max(1, Math.round(n)) : Math.round(n * 100) / 100;
+        if (k === 'q' && n > 0) lastQty[it.unitKey] = picked[id].q;
         order.push(id);
       } else if (!on && picked[id]) {
         delete picked[id];
         order.splice(order.indexOf(id), 1);
-      }
-      var li = rowOf(id);
-      if (li) {
-        li.classList.toggle('is-on', !!picked[id]);
-        li.querySelector('.pbc_check').checked = !!picked[id];
-        if (picked[id]) li.querySelector('.pbc_item-inner').innerHTML = moreHTML(it);
-      }
-      refresh(id);
+      } else return;
+      syncRow(id); badges(); renderSum();
     }
     function parseNum(s) {
       var n = parseFloat(String(s).replace(/\s/g, '').replace(',', '.'));
       return isNaN(n) ? 0 : Math.min(Math.max(n, 0), 1e6);
     }
-    function setQty(id, k, n) {
-      var p = picked[id];
-      p[k] = Math.round(n * 100) / 100;
-      if (k === 'q' && p.q > 0) lastQty[ITEMS[id].unitKey] = p.q;
-      refresh(id);
+    function setQty(id, k, n, src) {
+      var p = picked[id], it = ITEMS[id];
+      p[k] = k === 'v' ? Math.max(1, Math.round(n)) : Math.round(n * 100) / 100;
+      if (k === 'q' && p.q > 0) lastQty[it.unitKey] = p.q;
+      $$('[data-id="' + id + '"] .pbc_in[data-k="' + k + '"]').forEach(function (i) { if (i !== src) i.value = nfq.format(p[k]); });
+      $$('[data-id="' + id + '"] [data-u="' + k + '"]').forEach(function (u) { u.textContent = k === 'q' ? word(it.unit.qty, p.q) : word(REIZES, p.v); });
+      rowSum(id); renderSum();
     }
-    function show(target) {
-      var m = String(target || '').split('>').map(function (s) { return s.trim(); });
-      var ai = AREAS.findIndex(function (a) { return a.id === m[0] || fold(a.name) === fold(m[0]); });
-      if (ai < 0) return false;
+
+    // Scrolling and focus (never under the navbar, a sticky header or the dock)
+    var topOff = function () { var v = parseFloat(getComputedStyle(html).getPropertyValue('--pbc-top')); return isNaN(v) ? 0 : v; };
+    function after(fn) {
+      if (!fn) return;
+      var done = false, go = function () { if (done) return; done = true; window.removeEventListener('scrollend', go); fn(); };
+      window.addEventListener('scrollend', go); setTimeout(go, 600);
+    }
+    function scrollY(y, fn) {
+      y = Math.max(0, Math.round(y));
+      if (Math.abs(y - window.scrollY) < 2 || mRed.matches) { window.scrollTo(0, y); if (fn) fn(); return; }
+      window.scrollTo({ top: y, behavior: 'smooth' }); after(fn);
+    }
+    var frameY = function () { return el.ws.getBoundingClientRect().top + window.scrollY - topOff() - 16; };
+    function toFrame(fn, force) { if (force || el.ws.getBoundingClientRect().top < topOff()) scrollY(frameY(), fn); else if (fn) fn(); }
+    function toOpen(fn) {
+      var h = $('.pbc_set.is-open > .pbc_set-h');
+      if (h) scrollY(h.parentNode.getBoundingClientRect().top + window.scrollY - topOff(), fn); else toFrame(fn, 1);
+    }
+    var focus = function (n) { if (n) n.focus({ preventScroll: true }); };
+    function pad() {
+      var t = topOff() + 8, b = 0, h = flow() && (st.view === 'works' || st.q) && $('.pbc_set.is-open > .pbc_set-h, .pbc_set-h.is-static');
+      if (h && getComputedStyle(h).position === 'sticky') t += h.offsetHeight;
+      if (!el.dock.hidden && el.dock.offsetHeight) b = el.dock.offsetHeight + (parseFloat(getComputedStyle(el.dock).bottom) || 0) + 8;
+      html.style.setProperty('--pbc-spt', t + 'px');
+      html.style.setProperty('--pbc-spb', b + 'px');
+    }
+
+    // Navigation actions
+    function setView(v) { st.view = v; root.setAttribute('data-view', v); }
+    function exitSearch() { if (!st.q) return; st.q = ''; st.stems = []; el.q.value = ''; el.clear.hidden = true; root.removeAttribute('data-mode'); if (st.prev) setView(st.prev); st.prev = null; }
+    function go(ai, gi, o, v) {
+      exitSearch();
+      if (v) setView(v);
+      if (ai !== st.a) { st.a = ai; renderGroups(); }
+      st.g = gi; lastG[ai] = gi; st.o = o;
+      renderWorks();
+    }
+    function search(v) {
+      var q = fold(v.trim().replace(/\s+/g, ' '));
+      el.clear.hidden = !v;
+      if (q.length < 2) { if (st.q) { exitSearch(); renderWorks(); } return; }
+      if (!st.q) { st.prev = st.view; setView('works'); root.setAttribute('data-mode', 'search'); }
+      st.q = q; st.stems = stems(q);
+      renderWorks();
+      var n = hits().length;
+      announce(n ? fill(S.found, { n: n }) : fill(S.notFound, { q: v.trim() }));
+    }
+    function resolve(t) {
+      t = SVC[t] || t;
+      var m = String(t || '').split('>').map(function (s) { return s.trim(); }), fa = fold(m[0]);
+      var ai = AREAS.findIndex(function (a) { return a.id === fa || fold(a.name) === fa; });
+      if (ai < 0) return null;
       var gi = m[1] ? AREAS[ai].groups.findIndex(function (g) { return fold(g.name) === fold(m[1]); }) : 0;
-      st.a = ai; st.g = Math.max(gi, 0); st.q = ''; el.search.value = ''; el.clear.hidden = true;
-      renderPills(); renderList();
+      return { a: ai, g: Math.max(gi, 0), ok: gi >= 0 };
+    }
+    function show(target, opts) {
+      var r = resolve(target);
+      if (!r) { warn('Nav atrasts: ' + target); return false; }
+      if (!r.ok) warn('Darbu veids nav atrasts, rādu pirmo: ' + target);
+      closeAll();
+      go(r.a, r.g, r.g, 'works');
+      var f = !(opts && opts.focus === false);
+      if (opts && opts.scroll === false) return true;
+      if (flow()) toOpen(f && function () { focus($('.pbc_set.is-open .pbc_acc')); });
+      else toFrame(f && function () { focus($('#pbc-works-title')); }, 1);
       return true;
     }
-    function goTo(id) {
+    function jump(id) {
       var it = ITEMS[id];
-      st.a = AREAS.indexOf(it.area); st.g = it.area.groups.indexOf(it.group); st.q = ''; el.search.value = ''; el.clear.hidden = true;
-      renderPills(); renderList();
-      var li = rowOf(id);
+      go(it.area.i, it.group.i, it.group.i, 'works');
+      var li = $('.pbc_sets [data-id="' + id + '"]');
       if (!li) return;
-      li.scrollIntoView({ block: 'nearest', behavior: reduce ? 'auto' : 'smooth' });
-      var inp = li.querySelector('.pbc_qty-input');
-      if (inp) inp.focus({ preventScroll: true });
+      var r = li.getBoundingClientRect();
+      scrollY(r.top + window.scrollY - (window.innerHeight - r.height) / 2, function () {
+        li.classList.remove('is-flash'); void li.offsetWidth; li.classList.add('is-flash');
+        var inp = li.querySelector('.pbc_in[data-k="q"]');
+        focus(inp && inp.offsetParent ? inp : li.querySelector('.pbc_check'));
+      });
     }
-    function scrollToEl(node, focusNode) {
-      node.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-      if (focusNode) setTimeout(function () { focusNode.focus({ preventScroll: true }); }, reduce ? 0 : 450);
+
+    // Dialogs (native <dialog>: focus trap, Escape, inert page)
+    var stack = [];
+    function topLayer() { return stack[stack.length - 1]; }
+    function openDlg(d, opener, target) {
+      d._op = opener || document.activeElement;
+      if (!d.open) { d.showModal(); stack.push(d); }
+      (topLayer() || root).appendChild(el.status);
+      focus(target);
     }
-    function openForm() {
+    [el.dSum, el.dOffer, el.dReq].forEach(function (d) {
+      d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+      d.addEventListener('close', function () {
+        stack.splice(stack.indexOf(d), 1);
+        if (d === el.dSum) el.ws.appendChild(el.sum);
+        (topLayer() || root).appendChild(el.status);
+        if (d._skip) { d._skip = false; return; }
+        var op = d._op;
+        if (op && op.isConnected && op.offsetParent !== null) focus(op);
+        else focus(!el.dock.hidden && el.dock.offsetParent ? $('[data-open-sum]') : $('.pbc_foot [data-cta]'));
+      });
+    });
+    function closeAll() { stack.slice().reverse().forEach(function (d) { d._skip = true; d.close(); }); }
+    function openSum(opener) {
+      el.dSum.firstChild.appendChild(el.sum);
+      openDlg(el.dSum, opener, $('.pbc_x', el.sum));
+    }
+    function openOffer(opener) {
       if (!order.length) {
-        var n = $('[data-cta-note]');
-        n.classList.remove('is-alert'); void n.offsetWidth; n.classList.add('is-alert');
+        el.ctaN.classList.remove('is-alert'); void el.ctaN.offsetWidth; el.ctaN.classList.add('is-alert');
+        announce(S.ctaHint, 1);
         return;
       }
-      if (!form) { window.location.href = S.fallbackUrl; return; }
-      writeFields();
-      formBlock.classList.add('pbc-is-open');
-      scrollToEl(formBlock, form.querySelector('input:not([type="hidden"]):not([type="submit"]), textarea, select'));
+      if (!form) { location.href = S.fallbackUrl; return; }
+      var t = totals();
+      writeFields(t); renderRecap(t);
+      openDlg(el.dOffer, opener, doneMsg(offerBlock) || $('input:not([type=hidden]):not([type=submit]), textarea, select', form));
+    }
+    function openRequest(name, opener) {
+      if (!reqBlock) { location.href = S.fallbackUrl; return; }
+      var sel = reqBlock.querySelector('select');
+      name = name || svcFor(st.a, st.g);
+      if (sel && name) [].some.call(sel.options, function (o) { if (fold(o.value || o.text) === fold(name) || fold(o.text) === fold(name)) { sel.value = o.value; return true; } });
+      openDlg(el.dReq, opener, doneMsg(reqBlock) || (sel && !sel.value ? sel : $('input:not([type=hidden]):not([type=submit]), textarea', reqBlock)));
+    }
+    function svcFor(ai, gi) {
+      var best = null;
+      Object.keys(SVC).some(function (n) {
+        var r = resolve(n);
+        if (!r || r.a !== ai) return false;
+        if (SVC[n].indexOf('>') >= 0 && r.ok && r.g === gi) { best = n; return true; }
+        if (!best && SVC[n].indexOf('>') < 0) best = n;
+        return false;
+      });
+      return best;
+    }
+    function doneMsg(b) {
+      var d = b && b.querySelector('.w-form-done');
+      return d && getComputedStyle(d).display !== 'none' ? d : null;
+    }
+    // Webflow shows its done message by inline style: move focus to it.
+    [offerBlock, reqBlock].forEach(function (b) {
+      var d = b && b.querySelector('.w-form-done');
+      if (!d || !window.MutationObserver) return;
+      d.classList.add('pbc_done'); d.tabIndex = -1;
+      new MutationObserver(function () { if (doneMsg(b) && b.closest('dialog[open]')) focus(d); }).observe(d, { attributes: true, attributeFilter: ['style'] });
+    });
+    function edit() {
+      el.dOffer._skip = true; el.dOffer.close();
+      var first = function () { return $('.pbc_lines .pbc_in'); };
+      if (el.dSum.open || L() === 'W') focus(first());
+      else { openSum($('[data-open-sum]')); focus(first()); }
     }
 
     // Events
-    var viaPointer = false;
-    root.addEventListener('pointerdown', function (e) { viaPointer = !!e.target.closest('.pbc_item-main'); });
+    var mouse = false;
+    root.addEventListener('pointerdown', function (e) { mouse = e.pointerType === 'mouse' && !!e.target.closest('.pbc_row-main'); });
     root.addEventListener('click', function (e) {
       var b = e.target.closest('button');
       if (!b || !root.contains(b)) return;
-      if (b.hasAttribute('data-area')) { st.a = +b.getAttribute('data-area'); st.g = 0; st.q = ''; el.search.value = ''; el.clear.hidden = true; renderPills(); renderList(); }
-      else if (b.hasAttribute('data-group')) { st.g = +b.getAttribute('data-group'); renderPills(); renderList(); }
-      else if (b.hasAttribute('data-clear')) { st.q = ''; el.search.value = ''; b.hidden = true; renderPills(); renderList(); el.search.focus(); }
+      var row = b.closest('[data-id]'), id = row && row.getAttribute('data-id'), a;
+      if (b.hasAttribute('data-area')) {
+        a = +b.getAttribute('data-area');
+        if (flow()) { go(a, lastG[a] || 0, -1, 'works'); toFrame(function () { focus($('#pbc-works-title')); }, 1); announce(AREAS[a].name + ': ' + cnt(AREAS[a].groups.length, VEIDI), 1); }
+        else { go(a, lastG[a] || 0, -1); toFrame(); announce(AREAS[a].name + ' › ' + area().groups[st.g].name + ': ' + cnt(area().groups[st.g].items.length, DARBI), 1); }
+      }
+      else if (b.hasAttribute('data-group')) { a = +b.getAttribute('data-group'); go(st.a, a, a); toFrame(); announce(area().groups[a].name + ': ' + cnt(area().groups[a].items.length, DARBI), 1); }
+      else if (b.hasAttribute('data-acc')) {
+        a = +b.getAttribute('data-acc');
+        var open = st.o !== a;
+        go(st.a, open ? a : st.g, open ? a : -1);
+        var nb = $('[data-acc="' + a + '"]');
+        focus(nb);
+        if (open) toOpen(); else scrollY(nb.getBoundingClientRect().top + window.scrollY - topOff() - 8);
+      }
+      else if (b.hasAttribute('data-back')) {
+        var left = st.a;
+        exitSearch(); setView('areas'); pad();
+        toFrame(function () { focus($('[data-area="' + left + '"]')); }, 1);
+      }
+      else if (b.hasAttribute('data-next')) {
+        var nx = nextOf(st.a, st.g);
+        if (nx) { go(nx[0], nx[1], nx[1]); toFrame(function () { focus($('#pbc-works-title')); }, 1); }
+      }
+      else if (b.hasAttribute('data-clear')) { exitSearch(); renderWorks(); focus(el.q); }
       else if (b.hasAttribute('data-step')) {
-        var id = b.closest('[data-id]').getAttribute('data-id'), k = b.getAttribute('data-k'), p = picked[id];
-        var n = Math.max(0, (p[k] || 0) + Number(b.getAttribute('data-step')));
-        if (k === 'v') n = Math.max(1, n);
-        setQty(id, k, n);
-        b.parentNode.querySelector('.pbc_qty-input').value = nfq.format(p[k]);
+        var k = b.getAttribute('data-k'), p = picked[id];
+        if (p) setQty(id, k, Math.max(k === 'v' ? 1 : 0, (p[k] || 0) + Number(b.getAttribute('data-step'))), null);
       }
       else if (b.hasAttribute('data-remove')) {
-        // keep keyboard focus in the list of lines: the next line's × after this one is removed
-        var rid = b.getAttribute('data-remove'), i = order.indexOf(rid), nextId = order[i + 1] || order[i - 1];
-        toggle(rid, false);
-        (nextId && el.result.querySelector('[data-remove="' + nextId + '"]') || $('[data-cta]')).focus();
+        var i = order.indexOf(id), nid = order[i + 1] || order[i - 1];
+        toggle(id, false);
+        focus(nid ? $('.pbc_lines [data-id="' + nid + '"] [data-remove]') : el.dSum.open ? $('.pbc_x', el.sum) : $('.pbc_foot [data-cta]'));
       }
-      else if (b.hasAttribute('data-goto')) goTo(b.getAttribute('data-goto'));
-      else if (b.hasAttribute('data-cta')) openForm();
+      else if (b.hasAttribute('data-goto')) { if (el.dSum.open) { el.dSum._skip = true; el.dSum.close(); } jump(id); }
+      else if (b.hasAttribute('data-cta')) openOffer(b);
+      else if (b.hasAttribute('data-open-sum')) openSum(b);
+      else if (b.hasAttribute('data-request')) openRequest(null, b);
+      else if (b.hasAttribute('data-edit')) edit();
+      else if (b.hasAttribute('data-close')) b.closest('dialog').close();
+      else if (b.hasAttribute('data-clearall')) {
+        if (!b.classList.contains('is-confirm')) {
+          b.classList.add('is-confirm'); b.textContent = S.clearConfirm;
+          setTimeout(function () { b.classList.remove('is-confirm'); b.textContent = S.clear; }, 4000);
+          return;
+        }
+        api.reset(); exitSearch(); renderWorks(); announce(S.cleared, 1);
+        focus(b.offsetParent ? b : $('.pbc_foot [data-cta]'));
+      }
     });
     root.addEventListener('change', function (e) {
       if (!e.target.classList.contains('pbc_check')) return;
       var id = e.target.closest('[data-id]').getAttribute('data-id');
       toggle(id, e.target.checked);
-      if (e.target.checked && viaPointer && finePointer) {
-        var inp = rowOf(id).querySelector('.pbc_qty-input');
-        if (inp) { inp.focus({ preventScroll: true }); inp.select(); }
+      if (e.target.checked && mouse && mFine.matches) {
+        var inp = e.target.closest('.pbc_row').querySelector('.pbc_in[data-k="q"]');
+        if (inp && inp.offsetParent) { focus(inp); inp.select(); }
       }
-      viaPointer = false;
+      mouse = false;
     });
     root.addEventListener('input', function (e) {
       var t = e.target;
-      if (t === el.search) {
-        st.q = fold(t.value.trim().replace(/\s+/g, ' '));
-        st.q = st.q.length >= 2 ? st.q : '';
-        el.clear.hidden = !t.value;
-        renderPills(); renderList();
-      } else if (t.classList.contains('pbc_qty-input')) {
-        var id = t.closest('[data-id]').getAttribute('data-id'), k = t.getAttribute('data-k');
-        setQty(id, k, parseNum(t.value));
-      }
+      if (t === el.q) return search(t.value);
+      if (!t.classList.contains('pbc_in')) return;
+      var id = t.closest('[data-id]').getAttribute('data-id'), k = t.getAttribute('data-k'), n = parseNum(t.value);
+      if (!picked[id]) { if (t.value.trim()) toggle(id, true, k, n); return; }
+      setQty(id, k, n, t);
     });
     root.addEventListener('focusout', function (e) {
       var t = e.target;
-      if (!t.classList || !t.classList.contains('pbc_qty-input')) return;
-      var li = t.closest('[data-id]'), p = li && picked[li.getAttribute('data-id')];
-      if (p) t.value = nfq.format(p[t.getAttribute('data-k')]);
+      if (!t.classList || !t.classList.contains('pbc_in')) return;
+      var p = picked[t.closest('[data-id]').getAttribute('data-id')];
+      t.value = p ? nfq.format(p[t.getAttribute('data-k')]) : '';
     });
     root.addEventListener('keydown', function (e) {
-      if (e.key !== 'Enter') return;
-      if (e.target === el.search) { e.preventDefault(); var first = el.list.querySelector('.pbc_check'); if (first) first.focus(); }
-      else if (e.target.classList.contains('pbc_qty-input')) { e.preventDefault(); e.target.blur(); }
+      var t = e.target;
+      if (t === el.q) {
+        if (e.key === 'Enter') { e.preventDefault(); focus($('.pbc_sets .pbc_check')); }
+        else if (e.key === 'Escape' && t.value) { e.preventDefault(); e.stopPropagation(); exitSearch(); renderWorks(); }
+        return;
+      }
+      if (e.key !== 'Enter' || !t.classList.contains('pbc_in')) return;
+      e.preventDefault();
+      var p = picked[t.closest('[data-id]').getAttribute('data-id')];
+      t.value = p ? nfq.format(p[t.getAttribute('data-k')]) : '';
+      var row = t.closest('.pbc_row'), nx = row && L() !== 'P' && row.nextElementSibling;
+      if (nx) focus(nx.querySelector('.pbc_in[data-k="q"]'));
     });
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('[data-pbc-show]');
+      if (!a) return;
+      e.preventDefault(); show(a.getAttribute('data-pbc-show'));
+    });
+    function relayout() {
+      if (mW.matches && el.dSum.open) el.dSum.close();
+      renderWorks(); renderDock(totals());
+    }
+    [mW, mS, mP].forEach(function (m) { if (m.addEventListener) m.addEventListener('change', relayout); else m.addListener(relayout); });
+    if (window.ResizeObserver) new ResizeObserver(pad).observe(el.dock);
 
     api = {
-      show: function (name) { return show(S.services[name] || name); },
-      reset: function () { order.slice().forEach(function (id) { toggle(id, false); }); }
+      resolve: resolve, show: show,
+      reset: function () { order.slice().forEach(function (id) { toggle(id, false); }); },
+      request: function (n) { openRequest(n, document.activeElement); }
     };
-    renderAll();
-    pending = pending || new URLSearchParams(window.location.search).get('pakalpojums');
-    if (pending) api.show(pending);
+    Object.keys(SVC).forEach(function (n) { var r = resolve(n); if (!r || !r.ok) warn('Pakalpojuma saite „' + n + '” norāda uz neesošu jomu vai darbu veidu: ' + SVC[n]); });
+
+    // First render, then links into the calculator
+    setView('areas');
+    renderGroups(); renderWorks(); renderSum();
+    var qs = new URLSearchParams(location.search), t = qs.get('pakalpojums'), g = qs.get('grupa');
+    if (t) show(g ? String(SVC[t] || t).split('>')[0] + ' > ' + g : t, { focus: false, scroll: false });
+    queue.forEach(function (c) { api[c[0]](c[1], c[2]); });
+    queue = [];
+    if (location.hash === '#kalkulators') {
+      var land = function () {
+        var o = flow() && $('.pbc_set.is-open');
+        window.scrollTo(0, Math.max(0, o ? o.getBoundingClientRect().top + window.scrollY - topOff() : frameY()));
+      };
+      requestAnimationFrame(land); window.addEventListener('load', land);
+    }
   }
 })();
 </script>
-<style>
-.pbc,.pbc_bar{--pbc-accent:var(--christine--primary,#f2600c);--pbc-accent-2:var(--christine--light,#f58f54);--pbc-bg:var(--neutral--darkest,#000);--pbc-panel:var(--neutral--darker,#191919);--pbc-line:var(--opacity--white-20,rgba(255,255,255,.2));--pbc-rule:rgba(255,255,255,.1);--pbc-text:var(--neutral--white,#fff);--pbc-muted:var(--neutral--light,#b2b2b2);--pbc-faint:var(--neutral--neutral,#7f7f7f);--pbc-body:var(--font--body,"Noto Sans",sans-serif);--pbc-mono:var(--font--heading,"Martian Mono",monospace);--pbc-ease:cubic-bezier(.23,1,.32,1)}
-.pbc{display:flex;flex-direction:column;gap:1.75rem;color:var(--pbc-text);font-family:var(--pbc-body);font-size:1rem;line-height:1.5}
-.pbc *,.pbc *::before,.pbc *::after,.pbc_bar,.pbc_bar *{box-sizing:border-box}
-.pbc [hidden]{display:none!important}
-.pbc button,.pbc_bar button{font-family:inherit;-webkit-tap-highlight-color:transparent}
-.pbc :focus-visible{outline:2px solid var(--pbc-accent-2);outline-offset:2px}
-.pbc-on [data-pbc-form]:not(.pbc-is-open){display:none!important}
-.pbc_title{margin:0;font-family:var(--pbc-mono);font-size:1.5rem;font-weight:500;line-height:1.4;letter-spacing:-.01em}
-.pbc_intro{margin:.5rem 0 0;color:var(--pbc-muted);font-size:.875rem;line-height:1.5}
-.pbc_step{display:flex;flex-direction:column;gap:.75rem}
-.pbc_label{display:flex;align-items:center;gap:.625rem;font-size:.875rem;font-weight:600;line-height:1.4}
-.pbc_num{display:flex;flex:none;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;border-radius:100px;background:var(--pbc-accent);color:#000;font-size:.75rem;font-weight:600}
-.pbc_pills{display:flex;flex-wrap:wrap;gap:.5rem}
-.pbc_pill{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;margin:0;padding:.5rem 1.125rem;border:1px solid var(--pbc-line);border-radius:100px;background:transparent;color:inherit;font-size:.9375rem;font-weight:600;line-height:1.2;cursor:pointer;touch-action:manipulation;transition:background-color .2s var(--pbc-ease),border-color .2s var(--pbc-ease),color .2s var(--pbc-ease)}
-.pbc_pill:active{transform:scale(.97)}
-.pbc_pill[aria-pressed="true"]{border-color:var(--pbc-accent);background:var(--pbc-accent);color:#000}
-.pbc_pills.is-small .pbc_pill{min-height:2.5rem;padding:.375rem .875rem;font-size:.8125rem}
-.pbc_badge{display:inline-flex;align-items:center;justify-content:center;min-width:1.375rem;height:1.375rem;padding:0 .375rem;border-radius:100px;background:var(--pbc-accent);color:#000;font-size:.75rem;font-weight:700;font-variant-numeric:tabular-nums}
-.pbc_pill[aria-pressed="true"] .pbc_badge{background:#000;color:var(--pbc-accent-2)}
-.pbc_area-intro,.pbc_found{margin:0;color:var(--pbc-muted);font-size:.8125rem;line-height:1.5}
-.pbc_search{position:relative}
-.pbc_search svg{position:absolute;top:50%;left:1rem;width:1.125rem;height:1.125rem;color:var(--pbc-faint);transform:translateY(-50%);pointer-events:none}
-.pbc_search-input{display:block;width:100%;min-height:3rem;margin:0;padding:.625rem 3rem .625rem 2.75rem;border:1px solid var(--pbc-line);border-radius:12px;background:var(--pbc-bg);color:inherit;font-family:inherit;font-size:1rem;line-height:1.5;-webkit-appearance:none;appearance:none;transition:border-color .2s}
-.pbc_search-input::placeholder{color:var(--pbc-faint)}
-.pbc_search-input::-webkit-search-cancel-button{-webkit-appearance:none;display:none}
-.pbc_search-input:focus{border-color:var(--pbc-accent);outline:none}
-.pbc_clear{position:absolute;top:50%;right:.375rem;width:2.25rem;height:2.25rem;margin:0;padding:0;border:0;border-radius:100px;background:transparent;color:var(--pbc-muted);font-size:1.375rem;line-height:1;cursor:pointer;transform:translateY(-50%)}
-.pbc_list{margin:0;padding:0;list-style:none;border:1px solid var(--pbc-line);border-radius:12px;background:var(--pbc-bg);overflow:hidden}
-.pbc_item{margin:0;border-top:1px solid var(--pbc-rule);transition:background-color .2s var(--pbc-ease)}
-.pbc_item:first-child{border-top:0}
-.pbc_item.is-on{background:rgba(242,96,12,.1)}
-.pbc_item-main{position:relative;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:start;gap:.75rem;margin:0;padding:.875rem 1rem;font-weight:400;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.pbc_check{position:absolute;top:1rem;left:1rem;width:1.25rem;height:1.25rem;margin:0;opacity:0;cursor:pointer}
-.pbc_box{display:block;width:1.25rem;height:1.25rem;margin-top:.0625rem;border:1.5px solid rgba(255,255,255,.4);border-radius:6px;background:transparent center/.875rem no-repeat;transition:background-color .15s,border-color .15s}
-.pbc_check:checked+.pbc_box{border-color:var(--pbc-accent);background-color:var(--pbc-accent);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m2.5 7.5 3 3 6-7'/%3E%3C/svg%3E")}
-.pbc_check:focus-visible+.pbc_box{outline:2px solid var(--pbc-accent-2);outline-offset:2px}
-.pbc_item-text{display:flex;flex-direction:column;gap:.125rem;min-width:0}
-.pbc_item-name{font-size:.9375rem;line-height:1.4;overflow-wrap:anywhere}
-.pbc_item-name mark{background:none;color:var(--pbc-accent-2);font-weight:600}
-.pbc_item-meta{color:var(--pbc-faint);font-size:.8125rem;line-height:1.4}
-.pbc_item-price{max-width:8.5rem;padding-top:.125rem;color:var(--pbc-muted);font-family:var(--pbc-mono);font-size:.8125rem;line-height:1.5;font-variant-numeric:tabular-nums;text-align:right}
-.pbc_item.is-on .pbc_item-price{color:var(--pbc-accent-2)}
-.pbc_item-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s var(--pbc-ease)}
-.pbc_item.is-on .pbc_item-more{grid-template-rows:1fr}
-.pbc_item-inner{min-height:0;overflow:hidden;visibility:hidden;transition:visibility 0s .3s}
-.pbc_item.is-on .pbc_item-inner{visibility:visible;transition-delay:0s}
-.pbc_qty-row{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .75rem;padding:0 1rem 1rem 3rem}
-.pbc_qty{display:inline-flex;align-items:center;padding:.1875rem;border:1px solid var(--pbc-line);border-radius:100px;background:var(--pbc-panel);transition:border-color .2s}
-.pbc_qty:focus-within{border-color:var(--pbc-accent)}
-.pbc_step-btn{display:flex;flex:none;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;margin:0;padding:0;border:0;border-radius:100px;background:transparent;color:inherit;font-size:1.125rem;line-height:1;cursor:pointer;touch-action:manipulation;transition:background-color .15s}
-.pbc_step-btn:active{background:rgba(255,255,255,.16)}
-.pbc_qty-input{width:4.25rem;height:2.25rem;margin:0;padding:0 .125rem;border:0;background:transparent;color:inherit;font-family:var(--pbc-mono);font-size:1rem;font-weight:500;font-variant-numeric:tabular-nums;text-align:right;-webkit-appearance:none;appearance:none}
-.pbc_qty-input:focus{outline:none}
-.pbc_qty-unit{min-width:1.75rem;padding:0 .25rem 0 .375rem;color:var(--pbc-muted);font-size:.875rem;white-space:nowrap}
-.pbc_times{color:var(--pbc-faint)}
-.pbc_item-sum{margin-left:auto;font-family:var(--pbc-mono);font-size:.875rem;font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
-.pbc_item-note{margin:-.25rem 0 0;padding:0 1rem 1rem 3rem;color:var(--pbc-faint);font-size:.8125rem;line-height:1.5}
-.pbc_result{display:flex;flex-direction:column;gap:.375rem;padding:1.25rem;border-radius:12px;background:var(--pbc-bg);scroll-margin-top:6rem}
-.pbc_result-label{color:var(--pbc-muted);font-size:.875rem}
-.pbc_total{margin:0;color:var(--pbc-accent-2);font-family:var(--pbc-mono);font-size:2rem;font-weight:500;line-height:1.3;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
-.pbc_total.is-empty{color:var(--pbc-faint)}
-.pbc_total-unit{font-size:1rem;letter-spacing:0}
-.pbc_range,.pbc_month{margin:0;color:var(--pbc-muted);font-size:.875rem;font-variant-numeric:tabular-nums}
-.pbc_month{color:var(--pbc-text)}
-.pbc_month span{color:var(--pbc-muted)}
-.pbc_lines{display:flex;flex-direction:column;margin:.75rem 0 .25rem;padding:0;list-style:none}
-.pbc_lines-area{margin:0;padding:.75rem 0 .375rem;color:var(--pbc-faint);font-size:.6875rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-.pbc_line{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:.5rem;margin:0;padding:.375rem 0;border-top:1px solid var(--pbc-rule)}
-.pbc_line-name{display:flex;flex-direction:column;gap:.125rem;margin:0;padding:.25rem 0;border:0;background:none;color:inherit;font-size:.875rem;line-height:1.4;text-align:left;cursor:pointer}
-.pbc_line-qty{color:var(--pbc-faint);font-size:.75rem}
-.pbc_line-sum{font-family:var(--pbc-mono);font-size:.8125rem;font-variant-numeric:tabular-nums;white-space:nowrap}
-.pbc_remove{display:flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;margin:0 -.5rem 0 0;padding:0;border:0;border-radius:100px;background:transparent;color:var(--pbc-faint);font-size:1.25rem;line-height:1;cursor:pointer}
-.pbc_note{margin:.5rem 0 0;color:var(--pbc-faint);font-size:.75rem;line-height:1.5}
-.pbc_cta{display:flex;align-items:center;justify-content:center;gap:.625rem;width:100%;min-height:3.25rem;margin:1rem 0 0;padding:.75rem 1.5rem;border:1px solid var(--pbc-accent);border-radius:100px;background:var(--pbc-accent);color:#000;font-size:1rem;font-weight:600;line-height:1.25;text-align:center;cursor:pointer;touch-action:manipulation;transition:transform .16s var(--pbc-ease),background-color .2s var(--pbc-ease),border-color .2s var(--pbc-ease),color .2s var(--pbc-ease)}
-.pbc_cta svg{flex:none;width:1.25rem;height:1.25rem;transition:transform .2s var(--pbc-ease)}
-.pbc_cta:active{transform:scale(.97)}
-.pbc_cta[aria-disabled="true"]{border-color:var(--pbc-line);background:transparent;color:var(--pbc-faint);cursor:not-allowed}
-.pbc_cta[aria-disabled="true"]:active{transform:none}
-.pbc_cta-note{margin:.5rem 0 0;color:var(--pbc-faint);font-size:.75rem;line-height:1.5;text-align:center}
-.pbc_cta-note.is-alert{color:var(--pbc-accent-2);animation:pbc-nudge .4s var(--pbc-ease)}
-@keyframes pbc-nudge{0%,100%{transform:none}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-.pbc_bar{position:fixed;z-index:60;color:var(--pbc-text);font-family:var(--pbc-body);line-height:1.5;bottom:max(1rem,env(safe-area-inset-bottom));left:50%;display:flex;align-items:center;gap:.875rem;width:min(28rem,calc(100% - 2rem));padding:.4375rem .4375rem .4375rem 1.25rem;border:1px solid var(--pbc-line);border-radius:100px;background:rgba(25,25,25,.94);box-shadow:0 16px 40px rgba(0,0,0,.55);visibility:hidden;transform:translate(-50%,calc(100% + 1.5rem));transition:transform .4s var(--pbc-ease),visibility 0s .4s;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
-.pbc_bar.is-shown{visibility:visible;transform:translate(-50%,0);transition-delay:0s}
-html:has(.w-webflow-badge) .pbc_bar{bottom:4rem}
-.pbc_bar-total{color:var(--pbc-accent-2);font-family:var(--pbc-mono);font-size:1.0625rem;font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
-.pbc_bar-count{color:var(--pbc-muted);font-size:.8125rem;white-space:nowrap}
-.pbc_bar-btn{min-height:2.75rem;margin:0 0 0 auto;padding:.5rem 1.125rem;border:0;border-radius:100px;background:var(--pbc-accent);color:#000;font-size:.875rem;font-weight:600;white-space:nowrap;cursor:pointer}
-.pbc_sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-@media (hover:hover){.pbc_pill:hover{border-color:rgba(255,255,255,.55)}.pbc_pill[aria-pressed="true"]:hover{border-color:var(--pbc-accent)}.pbc_item-main:hover{background:rgba(255,255,255,.04)}.pbc_item.is-on .pbc_item-main:hover{background:none}.pbc_step-btn:hover,.pbc_remove:hover,.pbc_clear:hover{background:rgba(255,255,255,.1);color:var(--pbc-text)}.pbc_line-name:hover{color:var(--pbc-accent-2)}.pbc_cta:hover{border-color:var(--pbc-accent-2);background:var(--pbc-accent-2)}.pbc_cta:hover svg{transform:translateX(3px)}.pbc_cta[aria-disabled="true"]:hover{border-color:var(--pbc-line);background:transparent}.pbc_cta[aria-disabled="true"]:hover svg{transform:none}}
-@media (min-width:768px){.pbc_list{max-height:30rem;overflow-y:auto;overscroll-behavior:contain;scrollbar-color:rgba(255,255,255,.25) transparent;scrollbar-width:thin}}
-@media (max-width:479px){.pbc_title{font-size:1.25rem}.pbc_item-main{grid-template-columns:auto minmax(0,1fr);row-gap:.25rem;padding:.875rem}.pbc_item-price{grid-column:2;max-width:none;padding-top:0;text-align:left}.pbc_check{left:.875rem}.pbc_qty-row,.pbc_item-note{padding-left:.875rem;padding-right:.875rem}.pbc_total{font-size:1.625rem}.pbc_bar-count{display:none}}
-@media (prefers-reduced-motion:reduce){.pbc *,.pbc_bar{transition:none!important;animation:none!important}}
-</style>

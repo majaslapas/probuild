@@ -72,7 +72,7 @@ def table():
             c = [x.strip() for x in s.split('|')]
             num = lambda x: float(x.replace(' ', '').replace(',', '.'))
             group['items'].append([c[4], c[3], num(c[0]), num(c[1]), num(c[2])] + c[5:6])
-        elif not re.match(r'^(Apraksts|Piezīme):', s):
+        elif not re.match(r'^(Apraksts|Piezīme|Īsā piezīme):', s):
             sys.exit('line %d not understood: %s' % (n, s))
     return areas
 

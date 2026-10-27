@@ -3037,7 +3037,7 @@
   {
    "area": "remontdarbi",
    "group": "Sienas",
-   "name": "Sienu flīzešana",
+   "name": "Sienu flīzēšana",
    "unit": "m2",
    "frm": 35.0,
    "price": 45.0,
@@ -3734,7 +3734,7 @@
   {
    "area": "remontdarbi",
    "group": "Grīda",
-   "name": "Grīdas flīzešana",
+   "name": "Grīdas flīzēšana",
    "unit": "m2",
    "frm": 35.0,
    "price": 45.0,

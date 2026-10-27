@@ -40,40 +40,23 @@
     });
   });
 
-  // Pakalpojumi hero panel (.calc_panel): [data-calc-toggle] switches between the price
-  // calculator (code embeds, see calculator/README.md) and the plain request form; both carry
-  // [data-calc-mode]. The calculator itself is self-contained and exposes window.pbCalc.
-  var panel = document.querySelector('.calc_panel');
-  if (panel) {
-    var toggles = $$('[data-calc-toggle]', panel);
-    var setMode = function (m) {
-      toggles.forEach(function (t) {
-        var on = t.dataset.calcToggle === m;
-        t.classList.toggle('is-active', on);
-        t.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
-      // form blocks get an explicit block (Webflow hides them while the captcha loads);
-      // the calculator keeps its own display
-      $$('[data-calc-mode]', panel).forEach(function (f) {
-        var box = f.closest('.w-form');
-        (box || f).style.display = f.dataset.calcMode === m ? (box ? 'block' : '') : 'none';
-      });
-    };
-    toggles.forEach(function (t) { t.addEventListener('click', function () { setMode(t.dataset.calcToggle); }); });
-    // Buttons in the services list (data-service = service name): services the calculator
-    // knows (PBC_SETTINGS.services) open it at their works, others open the request form.
+  // Services list buttons (data-service = service name): services the price calculator knows
+  // open it at their works, the others open its plain request form (calculator/README.md).
+  // The calculator's code runs after this script (page code), so this waits for the DOM.
+  var bindServices = function () {
     $$('[data-service]').forEach(function (b) {
       var inCalc = window.pbCalc && window.pbCalc.has(b.dataset.service);
       b.textContent = inCalc ? 'Aprēķināt un pieteikties' : 'Pieteikties šim pakalpojumam';
-      b.addEventListener('click', function () {
-        if (inCalc) { setMode('calc'); window.pbCalc.show(b.dataset.service); return; }
-        setMode('form');
-        var sel = panel.querySelector('select');
-        if (sel) sel.value = b.dataset.service;
+      b.addEventListener('click', function (e) {
+        if (!window.pbCalc) return;
+        e.preventDefault();
+        if (inCalc) window.pbCalc.show(b.dataset.service);
+        else window.pbCalc.request(b.dataset.service);
       });
     });
-    setMode('calc');
-  }
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindServices);
+  else bindServices();
 
   // Service pages: the calculator button opens the calculator at this service's works.
   if (/^\/pakalpojums\//.test(location.pathname)) {
@@ -261,7 +244,7 @@
       });
     }, { rootMargin: '0px 0px -8% 0px' });
     $$(targets).forEach(function (el) {
-      if (el.closest('.home-hero_component, .navbar_component')) return;
+      if (el.closest('.home-hero_component, .navbar_component, .pbc')) return;
       var r = el.getBoundingClientRect();
       if (r.top < vh() * 0.92 && r.bottom > 0) return; // already on screen: never hide it
       el.setAttribute('data-pb-reveal', '');

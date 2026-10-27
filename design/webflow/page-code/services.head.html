@@ -11,10 +11,9 @@ textarea.form_input{padding:.875rem 1rem;min-height:7rem;resize:vertical}
 .services-list_includes li{position:relative;padding-left:1.5rem;line-height:1.5;color:var(--neutral--lighter)}
 .services-list_includes li::before{content:"";position:absolute;left:0;top:.55em;width:.5rem;height:.5rem;border-radius:2px;background:var(--christine--primary)}
 .contacts_card.is-primary .contacts_icon{background:var(--neutral--darkest)}
-#kalkulators{scroll-margin-top:2rem}
 #pakalpojumi{scroll-margin-top:2rem}
 #kontakti{scroll-margin-top:2rem}
-@media (prefers-reduced-motion:no-preference){.services-hero_content>*{animation:rise .8s cubic-bezier(.23,1,.32,1) both}.calc_panel{animation:rise .8s cubic-bezier(.23,1,.32,1) both}.services-hero_content>*:nth-child(2){animation-delay:.08s}.services-hero_content>*:nth-child(3){animation-delay:.16s}.services-hero_content>*:nth-child(4){animation-delay:.24s}.calc_panel{animation-delay:.2s}.calc_mode{animation:swap .35s cubic-bezier(.23,1,.32,1) both}.services-list_panel{animation:open .3s cubic-bezier(.23,1,.32,1) both}}
+@media (prefers-reduced-motion:no-preference){.services-hero_content>*{animation:rise .8s cubic-bezier(.23,1,.32,1) both}.services-hero_content>*:nth-child(2){animation-delay:.08s}.services-hero_content>*:nth-child(3){animation-delay:.16s}.services-hero_content>*:nth-child(4){animation-delay:.24s}.services-list_panel{animation:open .3s cubic-bezier(.23,1,.32,1) both}}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 @keyframes open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 @keyframes swap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -24,5 +23,4 @@ textarea.form_input{padding:.875rem 1rem;min-height:7rem;resize:vertical}
 .calc_toggle-option{padding:0 .75rem}
 .calc_stepper{padding:0;line-height:1;flex-shrink:0}
 .calc_range{display:block;width:100%;accent-color:var(--christine--primary);margin-top:.75rem}
-.calc_panel > .w-form + .w-form{display:none}
 </style>

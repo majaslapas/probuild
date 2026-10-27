@@ -27,6 +27,7 @@ AREAS = [
          sheet='Darbu cenas 2026', drive='būvniecības tabula 2026 pilna tabula.xlsx',
          cols=dict(group=1, name=2, unit=3, price=4, range=5),
          intro='Jaunbūve un būvdarbi: pamati, sienas, jumts, fasāde, grīdas, žogi, teritorija un komunikācijas.',
+         short='Darba cenas bez materiāliem un PVN; cenu ietekmē objekts un apjoms.',
          note='Darba cenas bez materiāliem un PVN. Cenu var mainīt objekta atrašanās vieta, darbu apjoms, '
               'piekļuve, augstums, sagatavošana, tehnika un atkritumu izvešana.'),
     dict(id='remontdarbi', order=2, name='Remontdarbi', file='remontdarbi-2026.xlsx',
@@ -38,18 +39,21 @@ AREAS = [
          sheet='Metālapstrādes cenas', drive='metalapstrades_pakalpojumi_2026.xlsx',
          cols=dict(group=0, name=1, unit=2, frm=3, price=4, to=5, note=6),
          intro='Žogi, vārti, margas, metināšana, metāla konstrukcijas un to apdare.',
+         short='Darba cenas; materiāls, apdare un transports atsevišķi. PVN precizēsim piedāvājumā.',
          note='Darba cenas. Materiāls, pamati, stiprinājumi, furnitūra, automātika, apdare, transports '
               'un demontāža var būt atsevišķas pozīcijas. PVN precizēsim piedāvājumā.'),
     dict(id='kokapstrade', order=4, name='Kokapstrāde', file='kokapstrade-2026.xlsx',
          sheet='Kokapstrādes cenas', drive='kokapstrades_pakalpojumi_2026.xlsx',
          cols=dict(group=0, name=1, unit=2, frm=3, price=4, to=5, note=6),
          intro='Zāģēšana, ēvelēšana, žāvēšana, CNC apstrāde, apdare un galdniecība.',
+         short='Cenas bez kokmateriāla un furnitūras; PVN precizēsim piedāvājumā.',
          note='Pakalpojumu cenas bez kokmateriāla, MDF, saplākšņa, finiera un furnitūras. Minimālā '
               'pasūtījuma maksa, transports un steidzamība var būt atsevišķi. PVN precizēsim piedāvājumā.'),
     dict(id='apsaimniekosana', order=5, name='Apsaimniekošana', file='apsaimniekosana-2026.xlsx',
          sheet='Uzturēšanas darbu cenas', drive='majas_apsaimniekosana_un_teritorijas_uzturesana_2026.xlsx',
          cols=dict(group=0, name=1, unit=2, frm=3, price=4, to=5, note=6),
          intro='Ēku apsaimniekošana, uzkopšana, teritorijas uzturēšana, koku un sezonālie darbi.',
+         short='Plānošanas aplēses; daļa cenu ar PVN, daļa bez – precizēsim piedāvājumā.',
          note='Plānošanas aplēses. Var piemērot minimālo izbraukuma maksu, transportu un piemaksu par '
               'darbu ārpus darba laika (koeficients līdz 2). Daļa cenu ir ar PVN, daļa bez – precizēsim piedāvājumā.'),
 ]
@@ -145,6 +149,8 @@ RENAME = {
     'Logi un Durvis': 'Logi un durvis',
     'Sadzīves tehnika uzstādīšana un pieslēgšana': 'Sadzīves tehnikas uzstādīšana un pieslēgšana',
     'Mēbeļu un virtuves izgatavošana + montāža': 'Mēbeļu un virtuves izgatavošana un montāža',
+    'Sienu flīzešana': 'Sienu flīzēšana',
+    'Grīdas flīzešana': 'Grīdas flīzēšana',
 }
 
 # Customer-facing notes that quote another company's price list: same meaning, no names.
@@ -185,7 +191,8 @@ TABLE_HEAD = '''<script type="text/plain" data-pbc-cenas>
   · Jauns darbs: nokopējiet rindu vajadzīgajā grupā un nomainiet tekstu.
     Dzēst: izdzēsiet rindu. Paslēpt uz laiku: rindas sākumā ierakstiet #.
   · Jauna grupa sākas ar ---, piem. „--- Jumts”; jauna joma ar ===.
-    Jomas „Apraksts:” rāda zem jomas nosaukuma, „Piezīme:” pie kopsummas.
+    Jomas „Apraksts:” rāda zem jomas nosaukuma, „Piezīme:” pie kopsummas,
+    „Īsā piezīme:” (nav obligāta) pie kopsummas, ja izvēlēti darbi vairākās jomās.
   · Mērvienības: m2, m3, m (tekošais metrs), h (stunda), gab, kompl, t, kg,
     diena, reize, brauciens, izbraukums, pasūtījums, objekts, koks, celms.
     „m2 reizē” cenu reizina arī ar reižu skaitu; „m2 mēnesī” un „mēnesī” ir
@@ -259,7 +266,8 @@ def table(loaded):
     out = [TABLE_HEAD]
     for area, groups in loaded:
         out.append('\n\n=== %s %s\n' % (area['name'], '=' * max(3, 73 - len(area['name']))))
-        out.append('Apraksts: %s\nPiezīme: %s\n\n%s\n' % (area['intro'], area['note'], COLS + ' | PIEZĪME KLIENTAM' if any(
+        out.append('Apraksts: %s\nPiezīme: %s\n%s\n%s\n' % (area['intro'], area['note'],
+                   'Īsā piezīme: %s\n' % area['short'] if area.get('short') else '', COLS + ' | PIEZĪME KLIENTAM' if any(
             i['note'] for items in groups.values() for i in items) else COLS))
         for g, items in groups.items():
             out.append('\n--- %s\n' % g)
