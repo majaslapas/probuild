@@ -237,23 +237,20 @@
     });
   });
 
-  // Motion and brand bars. Each empty .brand-bars element gets its bars here; the site head CSS
-  // sets their heights on one roof line. data-bars = count, data-bars-accent = how many of the
-  // last bars are orange, data-bars-jump = how many step up a tier, data-bars-cap = how many carry
-  // a cap, data-bars-scrub = the bars grow with the scroll instead of rising once.
+  // Motion and brand bars. Each empty .brand-bars element gets data-bars thick bars here; the site
+  // head CSS sets their size, colour and heights on one roof line. data-bars-scrub = the bars grow
+  // with the scroll instead of rising once.
   (function () {
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var vh = function () { return window.innerHeight || document.documentElement.clientHeight; };
     $$('.brand-bars').forEach(function (el) {
       if (el.querySelector('.brand-bars_bar')) return;
-      var num = function (a) { return +el.getAttribute('data-bars-' + a) || 0; };
-      var n = +el.getAttribute('data-bars') || 6;
+      var n = Math.max(2, Math.min(5, +el.getAttribute('data-bars') || 3));
       for (var i = 0; i < n; i++) {
         var b = document.createElement('i');
-        b.className = 'brand-bars_bar' + (i >= n - num('accent') ? ' is-accent' : '') + (i >= n - num('cap') ? ' has-cap' : '');
+        b.className = 'brand-bars_bar';
         b.style.setProperty('--i', i);
-        b.style.setProperty('--t', (n > 1 ? i / (n - 1) : 1).toFixed(3));
-        if (i >= n - num('jump')) b.style.setProperty('--j', 1);
+        b.style.setProperty('--t', (i / (n - 1)).toFixed(3));
         el.appendChild(b);
       }
       el.setAttribute('aria-hidden', 'true');

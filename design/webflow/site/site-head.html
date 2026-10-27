@@ -32,37 +32,34 @@ button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .form_checkbox .w-form-label{cursor:pointer}
 /* Rich text used as layout (galleries, price rows): drop Webflow's clearfix grid/flex items */
 .w-richtext[class*="_"]::before,.w-richtext[class*="_"]::after{content:none;display:none}
-/* Brand pattern: rising bars from logo mark F. Equal bars whose slanted tops share one roof line at the
-   mark's slope (0.6, about 31deg); a "jump" steps the last bars up a tier and a "cap" floats over a bar, as in the logo. */
-:root{--pb-cut:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 132'><path d='M0 132L0 100.8L24 86.4L24 132ZM36 132L36 79.2L60 64.8L60 132ZM72 132L72 57.6L96 43.2L96 132ZM108 132L108 36L132 21.6L132 132ZM144 132L144 14.4L168 0L168 132Z'/></svg>");--pb-glyph:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 98 66'><path d='M0 66L0 58.8L14 50.4L14 66ZM21 66L21 46.2L35 37.8L35 66ZM42 66L42 33.6L56 25.2L56 66ZM63 66L63 21L77 12.6L77 66ZM84 66L84 8.4L98 0L98 66Z'/></svg>");--pb-mark:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'><path d='M0 14L0 7.2L5 4.2L5 14ZM7 14L7 3L12 0L12 14Z'/></svg>");--pb-ease:cubic-bezier(.23,1,.32,1);--pb-edge:max(5%,calc((100% - 80rem)/2))}
-.brand-bars{position:absolute;z-index:1;display:flex;align-items:flex-end;gap:var(--bb-gap);pointer-events:none;--bb-w:1.5rem;--bb-gap:.5rem;--bb-base:1rem;--bb-jump:0rem;--bb-color:#191919;--bb-accent:#f2600c;--bb-cap:#fff}
-.brand-bars_bar{position:relative;display:block;flex:none;width:var(--bb-w);height:calc(var(--bb-base) + var(--i,0)*(var(--bb-w) + var(--bb-gap))*.6 + var(--j,0)*var(--bb-jump));transform-origin:50% 100%}
-.brand-bars_bar::before,.brand-bars_bar.has-cap::after{content:"";position:absolute;left:0;right:0;background:var(--bb-color)}
-.brand-bars_bar::before{top:0;bottom:0;clip-path:polygon(0 calc(var(--bb-w)*.6),100% 0,100% 100%,0 100%)}
-.brand-bars_bar.is-accent::before{background:var(--bb-accent)}
-.brand-bars_bar.has-cap::after{bottom:calc(100% - var(--bb-w)*.24);height:calc(var(--bb-w)*1.55);background:var(--bb-cap);clip-path:polygon(0 calc(var(--bb-w)*.6),100% 0,100% calc(100% - var(--bb-w)*.6),0 100%)}
+/* Brand pattern: rising bars from logo mark F, brutalist. Two to five thick bars whose slanted tops share one
+   roof line at the mark's slope (0.6, about 31deg). Bars take the colour of the surface they rise from; over a
+   photo they are partly transparent. */
+:root{--pb-cut:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 186 132'><path d='M0 132L0 103.2L48 74.4L48 132ZM62 132L62 66L110 37.2L110 132ZM124 132L124 28.8L172 0L172 132Z'/></svg>");--pb-glyph:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 82 72'><path d='M0 72L0 49.2L22 36L22 72ZM30 72L30 31.2L52 18L52 72ZM60 72L60 13.2L82 0L82 72Z'/></svg>");--pb-mark:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 14'><path d='M0 14L0 7.2L5 4.2L5 14ZM7 14L7 3L12 0L12 14Z'/></svg>");--pb-ease:cubic-bezier(.23,1,.32,1);--pb-edge:max(5%,calc((100% - 80rem)/2))}
+.brand-bars{position:absolute;z-index:1;display:flex;align-items:flex-end;gap:var(--bb-gap);pointer-events:none;--bb-w:4rem;--bb-gap:1rem;--bb-base:1rem;--bb-color:#191919}
+.brand-bars_bar{display:block;flex:none;width:var(--bb-w);height:calc(var(--bb-base) + var(--i,0)*(var(--bb-w) + var(--bb-gap))*.6);background:var(--bb-color);clip-path:polygon(0 calc(var(--bb-w)*.6),100% 0,100% 100%,0 100%);transform-origin:50% 100%}
 .home-hero_bar,.section_home-about,.section_home-cta,.footer_component,.rental-list_tabs,.portfolio-list_filters{position:relative}
 .footer_content,.home-cta_wrapper-2{position:relative;z-index:2}
-/* Home hero: dark bars stand on the stats panel, the last two step up in orange under a white cap */
-.brand-bars.is-hero{bottom:100%;left:max(41%,34rem);--bb-w:1.25rem;--bb-base:1rem;--bb-jump:1.5rem;--bb-color:#000}
-/* Home about: the orange field rises into the black section above along the roof line */
-.brand-bars.is-edge{bottom:100%;right:var(--pb-edge);--bb-w:1.25rem;--bb-base:.5rem;--bb-color:#f2600c}
+/* Home hero: the black stats panel rises into the photo */
+.brand-bars.is-hero{bottom:100%;left:max(41%,34rem);--bb-w:3.5rem;--bb-gap:.75rem;--bb-base:2.5rem;--bb-color:rgba(0,0,0,.8)}
+/* Home about: the orange section rises into the black section above */
+.brand-bars.is-edge{bottom:100%;right:var(--pb-edge);--bb-w:4rem;--bb-gap:1rem;--bb-base:1rem;--bb-color:#f2600c}
 .home-services_wrapper{padding-bottom:13rem}
-/* Home call to action: the black footer rises into the photo, last bar in orange */
-.brand-bars.is-cta{bottom:0;right:var(--pb-edge);--bb-w:1.5rem;--bb-base:.75rem;--bb-color:#000}
-/* Noma, Projekti: a small mark standing on the filter divider */
-.brand-bars.is-rule{bottom:0;right:0;--bb-w:.75rem;--bb-gap:.375rem;--bb-base:.5rem;--bb-jump:1.25rem;--bb-color:#262626}
+/* Home call to action: the black footer rises into the photo */
+.brand-bars.is-cta{bottom:0;right:var(--pb-edge);--bb-w:4.5rem;--bb-gap:1rem;--bb-base:2rem;--bb-color:rgba(0,0,0,.85)}
+/* Noma, Projekti: three dark bars standing on the filter divider */
+.brand-bars.is-rule{bottom:0;right:0;--bb-w:2.5rem;--bb-gap:.5rem;--bb-base:1rem;--bb-color:#1a1a1a}
 /* Footer: tone-on-tone bars behind the links */
-.brand-bars.is-footer{bottom:0;right:var(--pb-edge);z-index:0;--bb-w:2.5rem;--bb-gap:1rem;--bb-base:3rem;--bb-color:#101010}
-@media (max-width:1199px){.brand-bars.is-hero{display:none}}
-@media (max-width:991px){.brand-bars.is-cta{display:none}.brand-bars.is-edge{--bb-w:1rem;--bb-gap:.375rem}.home-services_wrapper{padding-bottom:10rem}.brand-bars.is-footer{--bb-w:1.5rem;--bb-gap:.625rem;--bb-base:2rem}}
-@media (max-width:767px){.brand-bars.is-edge{--bb-w:.625rem;--bb-gap:.25rem}.home-services_wrapper{padding-bottom:7.5rem}.brand-bars.is-rule{display:none}.brand-bars.is-footer{--bb-w:1rem;--bb-gap:.5rem;--bb-base:1.5rem}}
-/* Cutout: the photo's top-left corner opens into rising bars */
-.home-about_img-main,.benefits_photo,.about-values_image,.project-header_image-wrapper{--cw:11.25rem;--ch:8.25rem;-webkit-mask:var(--pb-cut) 0 0/var(--cw) var(--ch) no-repeat,linear-gradient(#000 0 0) 100% 0/calc(100% - var(--cw)) 100% no-repeat,linear-gradient(#000 0 0) 0 100%/var(--cw) calc(100% - var(--ch)) no-repeat;mask:var(--pb-cut) 0 0/var(--cw) var(--ch) no-repeat,linear-gradient(#000 0 0) 100% 0/calc(100% - var(--cw)) 100% no-repeat,linear-gradient(#000 0 0) 0 100%/var(--cw) calc(100% - var(--ch)) no-repeat}
-@media (max-width:767px){.home-about_img-main,.benefits_photo,.about-values_image,.project-header_image-wrapper{--cw:7.5rem;--ch:5.5rem}}
-/* Orange cards: tone-on-tone bars rising from the bottom edge */
+.brand-bars.is-footer{bottom:0;right:var(--pb-edge);z-index:0;--bb-w:6rem;--bb-gap:1.5rem;--bb-base:4rem;--bb-color:#111}
+@media (max-width:1239px){.brand-bars.is-hero{display:none}}
+@media (max-width:991px){.brand-bars.is-cta{display:none}.brand-bars.is-edge{--bb-w:3rem;--bb-gap:.75rem}.home-services_wrapper{padding-bottom:10rem}.brand-bars.is-footer{--bb-w:3.5rem;--bb-gap:1rem;--bb-base:2.5rem}}
+@media (max-width:767px){.brand-bars.is-edge{--bb-w:1.75rem;--bb-gap:.5rem;--bb-base:.5rem}.home-services_wrapper{padding-bottom:7.5rem}.brand-bars.is-rule{display:none}.brand-bars.is-footer{--bb-w:2.5rem;--bb-gap:.75rem;--bb-base:2rem}}
+/* Cutout: the photo's top-left corner opens into three bars */
+.home-about_img-main,.benefits_photo,.about-values_image,.project-header_image-wrapper{--cw:12rem;--ch:8.5rem;-webkit-mask:var(--pb-cut) 0 0/var(--cw) var(--ch) no-repeat,linear-gradient(#000 0 0) 100% 0/calc(100% - var(--cw)) 100% no-repeat,linear-gradient(#000 0 0) 0 100%/var(--cw) calc(100% - var(--ch)) no-repeat;mask:var(--pb-cut) 0 0/var(--cw) var(--ch) no-repeat,linear-gradient(#000 0 0) 100% 0/calc(100% - var(--cw)) 100% no-repeat,linear-gradient(#000 0 0) 0 100%/var(--cw) calc(100% - var(--ch)) no-repeat}
+@media (max-width:767px){.home-about_img-main,.benefits_photo,.about-values_image,.project-header_image-wrapper{--cw:7.75rem;--ch:5.5rem}}
+/* Orange cards: three darker-orange bars rising from the bottom edge */
 .contact-channel.is-primary,.contacts_card.is-primary,.about-cta_panel{position:relative;overflow:hidden;isolation:isolate}
-.contact-channel.is-primary::after,.contacts_card.is-primary::after,.about-cta_panel::after{content:"";position:absolute;z-index:-1;right:1.5rem;bottom:0;width:6.125rem;height:4.125rem;background:#c14c09;-webkit-mask:var(--pb-glyph) 100% 100%/contain no-repeat;mask:var(--pb-glyph) 100% 100%/contain no-repeat;transform-origin:50% 100%;transition:transform .5s var(--pb-ease)}
+.contact-channel.is-primary::after,.contacts_card.is-primary::after,.about-cta_panel::after{content:"";position:absolute;z-index:-1;right:1.5rem;bottom:0;width:5.125rem;height:4.5rem;background:#c14c09;-webkit-mask:var(--pb-glyph) 100% 100%/contain no-repeat;mask:var(--pb-glyph) 100% 100%/contain no-repeat;transform-origin:50% 100%;transition:transform .5s var(--pb-ease)}
 @media (hover:hover) and (pointer:fine){.contact-channel.is-primary:hover::after,.contacts_card.is-primary:hover::after{transform:scaleY(1.15)}}
 /* List marker: two rising bars */
 .services-list_includes ul li::before,.service-detail_includes ul li::before{top:.3em;width:.5625rem;height:.6875rem;border-radius:0;background:var(--christine--primary);-webkit-mask:var(--pb-mark) 0 100%/contain no-repeat;mask:var(--pb-mark) 0 100%/contain no-repeat}

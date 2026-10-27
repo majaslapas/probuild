@@ -55,19 +55,19 @@ Every list sorts by `seciba` (lowest first). Empty optional fields hide their bl
 - **Galleries:** product thumbnails, the project photo lightbox (arrows, ←/→, Esc) and the YouTube modal.
 - **Forms:** removes Webflow's "Example Text" placeholders. Groups radio buttons by their Group Name and selects the first choice. Fills hidden `[data-product-name]` inputs from the page's h1.
 
-## Brand pattern and motion (2026-10-26, second pass)
+## Brand pattern and motion (2026-10-27)
 
-The pattern is built from the logo's rising bars (mark F): bars of equal width whose slanted tops share one roof line at the mark's slope (0.6, about 31°), so each bar is a step taller than the last. As in the logo, the last bars can step up a tier ("jump") and carry a floating cap. It is used in five ways:
+The pattern is built from the logo's rising bars (mark F), kept brutalist: two to five thick bars of equal width whose slanted tops share one roof line at the mark's slope (0.6, about 31°), so each bar is a step taller than the last. Bars take the colour of the surface they rise from (the black panel, the orange section, the footer black, the darker orange of an orange card). Where they cover a photo they are partly transparent (80–85% black). Uses:
 
 | Use | Where | How |
 |---|---|---|
-| Bars standing on an edge | Sākums: on the hero stats panel (≥1200px), the orange section rising into the black above, the footer black rising into the call-to-action photo (≥992px). Noma and Projekti: a small mark on the filter divider (≥768px) | `.brand-bars` element (below) |
-| Background | Footer on every page: tone-on-tone bars behind the links | `.brand-bars.is-footer` in the Footer component |
-| Photo cutout | Sākums about photo, Pakalpojumi "Viens partneris" photo, Par mums values photo, project header photo: the top-left corner opens into rising bars | CSS mask on the class, `--pb-cut` |
-| Orange card glyph | Kontakti "Zvanīt", Pakalpojumi contact card, Par mums "Strādāsim kopā" | `::after` mask, `--pb-glyph` |
-| List marker | "Cenā iekļauts" lists (Pakalpojumi and the service template) | `::before` mask, `--pb-mark` |
+| Bars rising from an edge | Sākums: 3 bars from the hero stats panel into the photo (≥1240px), 4 orange bars from the orange section into the black above, 4 bars from the footer into the call-to-action photo (≥992px). Noma and Projekti: 3 dark bars on the filter divider (≥768px) | `.brand-bars` element (below) |
+| Background | Footer on every page: 4 tone-on-tone bars behind the links | `.brand-bars.is-footer` in the Footer component |
+| Photo cutout | Sākums about photo, Pakalpojumi "Viens partneris" photo, Par mums values photo, project header photo: the top-left corner opens into 3 bars | CSS mask on the class, `--pb-cut` |
+| Orange card glyph | Kontakti "Zvanīt", Pakalpojumi contact card, Par mums "Strādāsim kopā": 3 darker-orange bars | `::after` mask, `--pb-glyph` |
+| List marker | "Cenā iekļauts" lists (Pakalpojumi and the service template): 2 bars | `::before` mask, `--pb-mark` |
 
-**`.brand-bars` elements** are empty divs in the Designer (class `brand-bars` + `is-hero`, `is-edge`, `is-cta`, `is-rule` or `is-footer`). `site.js` adds the bars. Attributes: `data-bars` (how many), `data-bars-accent` (how many of the last bars are orange), `data-bars-jump` (how many step up a tier), `data-bars-cap` (how many carry a cap), `data-bars-scrub` (grow with the scroll instead of rising once). Sizes, colours and positions per variant are custom properties in `site/site-head.css` (`--bb-w`, `--bb-gap`, `--bb-base`, `--bb-jump`, `--bb-color`). To move one, move or delete the div; to add one, copy an existing div and give it a position in the site head CSS.
+**`.brand-bars` elements** are empty divs in the Designer (class `brand-bars` + `is-hero`, `is-edge`, `is-cta`, `is-rule` or `is-footer`). `site.js` adds the bars. Attributes: `data-bars` (how many, 2–5) and `data-bars-scrub` (grow with the scroll instead of rising once). Size, colour and position per variant are custom properties in `site/site-head.css` (`--bb-w` bar width, `--bb-gap`, `--bb-base` height of the first bar, `--bb-color`). To move one, move or delete the div; to add one, copy an existing div and give it a position in the site head CSS.
 
 `tools/bars.py` regenerates the three mask SVGs (`pattern/`) and their data URIs.
 

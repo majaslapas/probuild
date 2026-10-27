@@ -27,10 +27,10 @@ def uri(s):
     return 'url("data:image/svg+xml,' + urllib.parse.quote(s, safe=' =:/"<>.,-').replace('"', "'") + '")'
 
 out = {
-    # Photo cutout: 5 bars and a trailing gap; the photo continues full height to the right.
-    'cut': group(5, 24, 12, 132, trail_gap=True),
-    # Orange cards: 5 bars rising from the bottom edge, tone on tone.
-    'glyph': group(5, 14, 7, 66),
+    # Photo cutout: 3 thick bars and a trailing gap; the photo continues full height to the right.
+    'cut': group(3, 48, 14, 132, trail_gap=True),
+    # Orange cards: 3 thick bars rising from the bottom edge, tone on tone.
+    'glyph': group(3, 22, 8, 72),
     # List marker: 2 bars (3 small bars read as a phone-signal icon).
     'mark': group(2, 5, 2, 14),
 }
