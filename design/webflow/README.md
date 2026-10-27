@@ -11,7 +11,7 @@ The Claude Design canvas pages, rebuilt in Webflow with Finsweet Client-First cl
 | Page | Slug | Canvas source | Notes |
 |---|---|---|---|
 | Sākums | `/` | `site-01-sakums` | Rental cards are a Nomas produkti Collection List (3 items, sorted by `seciba`) |
-| Pakalpojumi | `/pakalpojumi` | `site-02-pakalpojumi` | Calculator and request form; the services accordion is a Pakalpojumi Collection List with group tabs |
+| Pakalpojumi | `/pakalpojumi` | `site-02-pakalpojumi` | Price calculator from the client's price lists ([calculator/](calculator/README.md)) and request form; the services accordion is a Pakalpojumi Collection List with group tabs |
 | Noma | `/noma` | `site-03-noma` | Nomas produkti list with Tehnika / Instrumenti tabs |
 | Projekti | `/projekti` | `site-05-portfolio` | Projekti list; filter buttons are a Darba veidi Collection List |
 | Par mums | `/par-mums` | `site-07-par-mums` | Team from the Komanda collection |
@@ -32,7 +32,7 @@ The Navbar and Footer are Webflow components on every page. Komanda, Darba veidi
 | Projekti | `/projekts` | darba veids (ref), īss apraksts, termiņš, platība, darbu veids, cena, papildu punkts 1–3, detalizēts apraksts (rich text), titulbilde, **bilžu galerija** (rich text), YouTube video, secība |
 | Darba veidi | (redirect) | name, secība (filter order) |
 | Komanda | (redirect) | amats, apraksts, iniciāļi, bilde, telefons, secība |
-| Pakalpojumi | `/pakalpojums` | grupa (option: Būvniecība / Remonts un apdare / Teritorija un uzturēšana), cena no, apraksts, cenas (rich text: `label **value**` per paragraph), iekļauts (bullet list), piezīme, kalkulatora veids (0–5, empty opens the request form), titulbilde, **bilžu galerija** (rich text), secība |
+| Pakalpojumi | `/pakalpojums` | grupa (option: Būvniecība / Remonts un apdare / Teritorija un uzturēšana), cena no, apraksts, cenas (rich text: `label **value**` per paragraph), iekļauts (bullet list), piezīme, kalkulatora veids (no longer used: the calculator maps services by name), titulbilde, **bilžu galerija** (rich text), secība |
 
 Every list sorts by `seciba` (lowest first). Empty optional fields hide their block: facts, sections, stats, highlights, galleries and the video button.
 
@@ -50,7 +50,7 @@ Every list sorts by `seciba` (lowest first). Empty optional fields hide their bl
 
 - **Filters:** `[data-filter-group][data-filter]` tabs filter `[data-filter-value]` items inside `[data-filter-list]`, and `[data-filter-count]` shows the counts.
 - **Accordion:** `[data-accordion-trigger]` opens its `.services-list_item`, one at a time.
-- **Calculator:** `.calc_panel` with `[data-calc-option]` (`data-min`/`data-max`/`data-note` in €/m²), `[data-calc-step]`, `[data-calc-range]` and `[data-calc-toggle]` / `[data-calc-mode]`. Hidden `[data-calc-field]` inputs submit the work type and estimate with the form. Service buttons (`[data-service]`, `data-calc-apply` = Kalkulatora veids) preselect the calculator or the request form.
+- **Calculator panel:** `[data-calc-toggle]` switches the `.calc_panel` between the price calculator and the plain request form (`[data-calc-mode]`). Service buttons (`[data-service]`) open the calculator at that service's works (`window.pbCalc`), and the button on service pages links to `/pakalpojumi?pakalpojums=<name>#kalkulators`. The calculator itself is a set of Code Embeds: see [calculator/README.md](calculator/README.md).
 - **CMS card links:** `a[data-cms-slug]` becomes `data-cms-base + slug`, for example `/projekts/koka-karkasa-privatmaja`. The static href is the listing page.
 - **Galleries:** product thumbnails, the project photo lightbox (arrows, ←/→, Esc) and the YouTube modal.
 - **Forms:** removes Webflow's "Example Text" placeholders. Groups radio buttons by their Group Name and selects the first choice. Fills hidden `[data-product-name]` inputs from the page's h1.
@@ -104,7 +104,7 @@ The pipeline, run from a working folder that holds the canvas export (`canvas/pr
 4. `python3 prep.py conv/<prefix>.html build/<prefix>.sections.html "<loop selector>=<slot>"` splits the page into insert fragments. It cuts CMS loops into slots plus item templates and restructures forms for Webflow.
 5. `python3 wfbuild.py build …` / `commit …` produces the WHTML payloads. Each style is sent only once; `site/registry.json` tracks the classes that already exist in Webflow.
 6. `python3 pagecss.py <prefix>` builds the page head CSS (`page-code/`).
-7. Verification: `shot.mjs` (screenshots), `textdiff.py` (canvas vs published text), `filtertest.mjs`, `calctest.mjs`, `tpltest.mjs`, `overflow.mjs` (390px overflow), `finalcheck.mjs` (status, errors and links on every page) and `motioncheck.mjs` (motion on, nothing left hidden).
+7. Verification: `shot.mjs` (screenshots), `textdiff.py` (canvas vs published text), `filtertest.mjs`, `tpltest.mjs`, `overflow.mjs` (390px overflow), `finalcheck.mjs` (status, errors and links on every page) and `motioncheck.mjs` (motion on, nothing left hidden).
 
 `pages/` holds the converted markup and CSS for each page, `rendered/` the static canvas renders, and `styleguide/` the Style Guide, Navbar and Footer payloads. `screenshots/` has design vs Webflow comparisons, with the canvas on the left and Webflow on the right.
 

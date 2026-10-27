@@ -106,7 +106,7 @@ window.PBC_SETTINGS = {
     var esc = function (s) {
       return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
     };
-    var fold = function (s) { return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); };
+    var fold = function (s) { return String(s).toLowerCase().normalize('NFD').replace(/\p{M}/gu, ''); };
     var word = function (forms, n) {
       if (typeof forms === 'string') return forms;
       var i = Math.abs(Math.round(n));
@@ -173,6 +173,12 @@ window.PBC_SETTINGS = {
     var el = { areas: $('[data-areas]'), areaIntro: $('[data-area-intro]'), groups: $('[data-groups]'), list: $('[data-list]'),
       search: $('[data-search]'), clear: $('[data-clear]'), found: $('[data-found]'), result: $('[data-result]'),
       bar: $('[data-bar]'), works: $('[data-works]'), status: $('[data-status]') };
+    // The floating total lives in <body>: a transformed ancestor (the panel's entrance
+    // animation) would otherwise pin position:fixed to the panel instead of the screen.
+    document.body.appendChild(el.bar);
+    el.bar.addEventListener('click', function (e) {
+      if (e.target.closest('[data-to-result]')) scrollToEl(el.result, $('[data-cta]'));
+    });
 
     // Totals
     function line(id) {
@@ -488,7 +494,6 @@ window.PBC_SETTINGS = {
       }
       else if (b.hasAttribute('data-goto')) goTo(b.getAttribute('data-goto'));
       else if (b.hasAttribute('data-cta')) openForm();
-      else if (b.hasAttribute('data-to-result')) scrollToEl(el.result, $('[data-cta]'));
     });
     root.addEventListener('change', function (e) {
       if (!e.target.classList.contains('pbc_check')) return;
@@ -535,10 +540,11 @@ window.PBC_SETTINGS = {
 })();
 </script>
 <style>
-.pbc{--pbc-accent:var(--christine--primary,#f2600c);--pbc-accent-2:var(--christine--light,#f58f54);--pbc-bg:var(--neutral--darkest,#000);--pbc-panel:var(--neutral--darker,#191919);--pbc-line:var(--opacity--white-20,rgba(255,255,255,.2));--pbc-rule:rgba(255,255,255,.1);--pbc-text:var(--neutral--white,#fff);--pbc-muted:var(--neutral--light,#b2b2b2);--pbc-faint:var(--neutral--neutral,#7f7f7f);--pbc-body:var(--font--body,"Noto Sans",sans-serif);--pbc-mono:var(--font--heading,"Martian Mono",monospace);--pbc-ease:cubic-bezier(.23,1,.32,1);display:flex;flex-direction:column;gap:1.75rem;color:var(--pbc-text);font-family:var(--pbc-body);font-size:1rem;line-height:1.5}
-.pbc *,.pbc *::before,.pbc *::after{box-sizing:border-box}
+.pbc,.pbc_bar{--pbc-accent:var(--christine--primary,#f2600c);--pbc-accent-2:var(--christine--light,#f58f54);--pbc-bg:var(--neutral--darkest,#000);--pbc-panel:var(--neutral--darker,#191919);--pbc-line:var(--opacity--white-20,rgba(255,255,255,.2));--pbc-rule:rgba(255,255,255,.1);--pbc-text:var(--neutral--white,#fff);--pbc-muted:var(--neutral--light,#b2b2b2);--pbc-faint:var(--neutral--neutral,#7f7f7f);--pbc-body:var(--font--body,"Noto Sans",sans-serif);--pbc-mono:var(--font--heading,"Martian Mono",monospace);--pbc-ease:cubic-bezier(.23,1,.32,1)}
+.pbc{display:flex;flex-direction:column;gap:1.75rem;color:var(--pbc-text);font-family:var(--pbc-body);font-size:1rem;line-height:1.5}
+.pbc *,.pbc *::before,.pbc *::after,.pbc_bar,.pbc_bar *{box-sizing:border-box}
 .pbc [hidden]{display:none!important}
-.pbc button{font-family:inherit;-webkit-tap-highlight-color:transparent}
+.pbc button,.pbc_bar button{font-family:inherit;-webkit-tap-highlight-color:transparent}
 .pbc :focus-visible{outline:2px solid var(--pbc-accent-2);outline-offset:2px}
 .pbc-on [data-pbc-form]:not(.pbc-is-open){display:none!important}
 .pbc_title{margin:0;font-family:var(--pbc-mono);font-size:1.5rem;font-weight:500;line-height:1.4;letter-spacing:-.01em}
@@ -615,8 +621,9 @@ window.PBC_SETTINGS = {
 .pbc_cta-note{margin:.5rem 0 0;color:var(--pbc-faint);font-size:.75rem;line-height:1.5;text-align:center}
 .pbc_cta-note.is-alert{color:var(--pbc-accent-2);animation:pbc-nudge .4s var(--pbc-ease)}
 @keyframes pbc-nudge{0%,100%{transform:none}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
-.pbc_bar{position:fixed;z-index:60;bottom:max(1rem,env(safe-area-inset-bottom));left:50%;display:flex;align-items:center;gap:.875rem;width:min(28rem,calc(100% - 2rem));padding:.4375rem .4375rem .4375rem 1.25rem;border:1px solid var(--pbc-line);border-radius:100px;background:rgba(25,25,25,.94);box-shadow:0 16px 40px rgba(0,0,0,.55);visibility:hidden;transform:translate(-50%,calc(100% + 1.5rem));transition:transform .4s var(--pbc-ease),visibility 0s .4s;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.pbc_bar{position:fixed;z-index:60;color:var(--pbc-text);font-family:var(--pbc-body);line-height:1.5;bottom:max(1rem,env(safe-area-inset-bottom));left:50%;display:flex;align-items:center;gap:.875rem;width:min(28rem,calc(100% - 2rem));padding:.4375rem .4375rem .4375rem 1.25rem;border:1px solid var(--pbc-line);border-radius:100px;background:rgba(25,25,25,.94);box-shadow:0 16px 40px rgba(0,0,0,.55);visibility:hidden;transform:translate(-50%,calc(100% + 1.5rem));transition:transform .4s var(--pbc-ease),visibility 0s .4s;-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
 .pbc_bar.is-shown{visibility:visible;transform:translate(-50%,0);transition-delay:0s}
+html:has(.w-webflow-badge) .pbc_bar{bottom:4rem}
 .pbc_bar-total{color:var(--pbc-accent-2);font-family:var(--pbc-mono);font-size:1.0625rem;font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
 .pbc_bar-count{color:var(--pbc-muted);font-size:.8125rem;white-space:nowrap}
 .pbc_bar-btn{min-height:2.75rem;margin:0 0 0 auto;padding:.5rem 1.125rem;border:0;border-radius:100px;background:var(--pbc-accent);color:#000;font-size:.875rem;font-weight:600;white-space:nowrap;cursor:pointer}

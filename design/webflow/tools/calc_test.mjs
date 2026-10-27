@@ -196,6 +196,15 @@ const fields = (page) => page.$$eval('[data-pbc-form] [name^="aprekins"]', (f) =
   await page.focus('.pbc_item >> nth=1 >> .pbc_check');
   await page.keyboard.press('Space');
   ok(+(await fields(page)).aprekins_darbi === 2, 'Space on a focused work picks it');
+  // floating total: on screen while the list is in view, gone once the result is
+  await page.locator('.pbc_item.is-on').first().scrollIntoViewIfNeeded();
+  await page.waitForTimeout(700);
+  const bar = await page.evaluate(() => { const b = document.querySelector('[data-bar]'), r = b.getBoundingClientRect();
+    return { shown: b.classList.contains('is-shown'), inView: r.top > innerHeight / 2 && r.bottom <= innerHeight, total: b.querySelector('[data-bar-total]').textContent }; });
+  ok(bar.shown && bar.inView, 'floating total shows at the bottom of the screen: ' + bar.total);
+  await page.click('[data-to-result]');
+  await page.waitForTimeout(900);
+  ok(!(await page.evaluate(() => document.querySelector('[data-bar]').classList.contains('is-shown'))), 'its button scrolls to the result and the bar hides');
   await page.close();
 }
 
