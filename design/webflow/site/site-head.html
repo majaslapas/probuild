@@ -58,4 +58,12 @@ button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .button:active{transform:scale(.97)}
 @media (hover:hover) and (pointer:fine){.button:hover .icon-arrow{transform:translateX(3px)}}
 .pb-count{display:inline-block;font-variant-numeric:tabular-nums}
+/* Forms: spam-check status under the send button (site.js) */
+.form_check{margin:.75rem 0 0;font-size:.875rem;line-height:1.5;opacity:.8}
+.form_check.is-error{opacity:1;padding-left:.75rem;border-left:3px solid #f2600c}
+.form_check a,.form_check-retry{color:inherit;font:inherit;font-weight:600;text-decoration:underline;text-underline-offset:.15em;white-space:nowrap}
+.form_check-retry{padding:0;border:0;background:none;cursor:pointer}
+@media (pointer:coarse){.form_check.is-error{line-height:2}}
+.w-form [type=submit]:disabled{cursor:progress}
+.w-form.is-check-failed [type=submit]{opacity:.5;cursor:not-allowed}
 </style>

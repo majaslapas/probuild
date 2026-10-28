@@ -13,7 +13,7 @@ The ProBuild Webflow site is already connected on the Webflow side, and the GHL 
 ## Hard rules
 
 - **The Inbound Webhook URL is a secret.** Anyone who has it can create records. Never print it, type it, store it in files or commands, or show it in a legible screenshot. While the trigger panel is open, take screenshots at scale ≤ 0.35, or zoom into regions without the URL field. I copy it with the copy icon and paste it into Webflow myself.
-- Never submit website forms from code or by clicking Send in the browser tool. Turnstile blocks automated sign-ups anyway. I make every test sign-up in a normal browser.
+- Never submit website forms from code or by clicking Send in the browser tool. I make every test sign-up myself in a **normal browser window**: Chrome, Edge, Firefox or Safari, opened by me, not the browser you control. Webflow's spam check (Cloudflare Turnstile) never passes in a browser driven by a tool. There the send button stays disabled and the form shows „Drošības pārbaude neizdevās…“. That's expected, not a bug.
 - Don't touch the existing custom fields or pipelines. Recreating them changes keys.
 - Ask me before deleting anything, before adding a second webhook in Webflow, and before e-mailing any inbox other than probuildlatvia@gmail.com (that one is approved). Never publish the Webflow site to its production domain.
 

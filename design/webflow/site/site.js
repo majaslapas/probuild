@@ -77,6 +77,87 @@
     i.value = h ? h.textContent.trim() : document.title;
   });
 
+  // Webflow's spam check (Cloudflare Turnstile) keeps a form's send button disabled until it has a token
+  // and says nothing when the check fails (script blocked, strict privacy settings, a browser driven by a
+  // tool), so the button just does nothing. A line under the button says "checking" while it runs; on
+  // failure it says why and offers a retry and the phone and e-mail.
+  if (document.querySelector('[data-turnstile-sitekey]')) {
+    var tel = $$('a[href^="tel:"]').filter(function (a) { return /^\+?[\d ]+$/.test(a.textContent.trim()); })[0] || document.querySelector('a[href^="tel:"]');
+    var mail = document.querySelector('a[href^="mailto:"]');
+    var contact = function (a, isTel) {
+      var l = document.createElement('a');
+      l.href = a.getAttribute('href');
+      l.textContent = isTel && /^\+?[\d ]+$/.test(a.textContent.trim()) ? a.textContent.trim() : l.href.replace(/^\w+:/, '');
+      return l;
+    };
+    $$('.w-form form').forEach(function (form, k) {
+      var wrap = form.closest('.w-form'), btn = form.querySelector('[type="submit"]');
+      if (!btn) return;
+      var note = document.createElement('p'), seen = 0, until = 0, shown = '';
+      note.className = 'form_check'; note.id = 'form-check-' + k; note.hidden = true;
+      btn.insertAdjacentElement('afterend', note);
+      var token = function () { return form.querySelector('[name="cf-turnstile-response"]'); };
+      var retry = function () {
+        var t = token();
+        until = Date.now() + 20000;
+        try { window.turnstile.reset(t.id.replace(/_response$/, '')); } catch (e) { until = 0; }
+        update();
+        setTimeout(update, 20100);
+      };
+      function update() {
+        var t = token(), now = Date.now(), state = '';
+        if (btn.disabled && !(t && t.value)) {
+          var waiting = wrap.classList.contains('w-form-loading') || now < until;
+          state = waiting && !(seen && now - seen > 20000 && now >= until) ? 'wait' : 'fail';
+        }
+        wrap.classList.toggle('is-check-failed', state === 'fail');
+        if (state === shown) return;
+        shown = state;
+        note.setAttribute('aria-live', state === 'fail' ? 'polite' : 'off'); // read out failures only
+        note.hidden = !state;
+        note.classList.toggle('is-error', state === 'fail');
+        note.textContent = '';
+        if (state === 'wait') note.textContent = 'Notiek drošības pārbaude, poga būs pieejama pēc brīža…';
+        if (state === 'fail') {
+          var canRetry = window.turnstile && t;
+          note.appendChild(document.createTextNode(canRetry
+            ? 'Drošības pārbaude neizdevās, tāpēc pieteikumu nevar nosūtīt. '
+            : 'Drošības pārbaudi neizdevās ielādēt (to var bloķēt pārlūka paplašinājums), tāpēc pieteikumu nevar nosūtīt. '));
+          if (canRetry) {
+            var b = document.createElement('button');
+            b.type = 'button'; b.className = 'form_check-retry'; b.textContent = 'Mēģināt vēlreiz';
+            b.addEventListener('click', retry);
+            note.appendChild(b);
+            note.appendChild(document.createTextNode(' '));
+          }
+          var parts = [];
+          if (tel) parts.push(['zvaniet ', contact(tel, true)]);
+          if (mail) parts.push(['rakstiet ', contact(mail)]);
+          parts.forEach(function (p, i) {
+            note.appendChild(document.createTextNode((i ? ' vai ' : 'Vai ') + p[0]));
+            note.appendChild(p[1]);
+          });
+          if (parts.length) note.appendChild(document.createTextNode('.'));
+        }
+        if (state) btn.setAttribute('aria-describedby', note.id); else btn.removeAttribute('aria-describedby');
+      }
+      // During a retry Webflow touches the button only to enable it (passed) or disable it again (failed).
+      new MutationObserver(function () { if (until && btn.disabled) until = 0; update(); })
+        .observe(btn, { attributes: true, attributeFilter: ['disabled'] });
+      new MutationObserver(update).observe(wrap, { attributes: true, attributeFilter: ['class'] });
+      new MutationObserver(update).observe(form, { childList: true, subtree: true });
+      // A check that never answers (script never loads) counts as failed 20 s after the form is in view.
+      if ('IntersectionObserver' in window) {
+        var seenIo = new IntersectionObserver(function (en) {
+          if (!en[0].isIntersecting) return;
+          seenIo.disconnect(); seen = Date.now(); setTimeout(update, 20100);
+        });
+        seenIo.observe(form);
+      }
+      update();
+    });
+  }
+
   // Rich text galleries (Bilžu galerija): every <figure> with an image is a gallery item.
   var figsIn = function (sel) {
     return $$(sel + ' figure').filter(function (f) { return f.querySelector('img'); });

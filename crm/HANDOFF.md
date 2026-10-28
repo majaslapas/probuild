@@ -49,7 +49,8 @@ Chrome** — a cloud session cannot use the person's signed-in browser.
 
 ## Test end to end (after publishing)
 
-8. The person makes one real sign-up per form in a normal browser (Turnstile blocks automated ones), each with a
+8. The person makes one real sign-up per form in a normal browser window they open themselves, not the browser Claude
+   drives: Webflow's spam check (Turnstile) never passes there, and the form says „Drošības pārbaude neizdevās…“. Each with a
    **different e-mail** (`name+case@…`):
 
    | Case | Page | Expect |

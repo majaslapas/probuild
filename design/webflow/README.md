@@ -54,6 +54,7 @@ Every list sorts by `seciba` (lowest first). Empty optional fields hide their bl
 - **CMS card links:** `a[data-cms-slug]` becomes `data-cms-base + slug`, for example `/projekts/koka-karkasa-privatmaja`. The static href is the listing page.
 - **Galleries:** product thumbnails, the project photo lightbox (arrows, ←/→, Esc) and the YouTube modal.
 - **Forms:** removes Webflow's "Example Text" placeholders. Groups radio buttons by their Group Name and selects the first choice. Fills hidden `[data-product-name]` inputs from the page's h1.
+- **Spam check line (2026-10-28):** Webflow's spam protection (Cloudflare Turnstile, invisible) keeps every form's send button disabled until the visitor's browser passes the check. In a normal browser that takes 1–4 s after the form comes into view (in the calculator: after its dialog opens). When the check fails (blocked script, strict privacy settings, or a browser driven by a tool such as Claude's browser or a headless test), Webflow leaves the button disabled without a word. So `.form_check` under each button says „Notiek drošības pārbaude…“ while it runs, and on failure says why, offers „Mēģināt vēlreiz“ (`turnstile.reset`) and the phone and e-mail from the page. The styles are in the site head. Check it with `tools/formcheck.mjs pass|fail|real`, which swaps in Cloudflare's test keys in its own browser only and never sends a form.
 
 ## Brand pattern and motion (2026-10-27)
 
@@ -104,7 +105,7 @@ The pipeline, run from a working folder that holds the canvas export (`canvas/pr
 4. `python3 prep.py conv/<prefix>.html build/<prefix>.sections.html "<loop selector>=<slot>"` splits the page into insert fragments. It cuts CMS loops into slots plus item templates and restructures forms for Webflow.
 5. `python3 wfbuild.py build …` / `commit …` produces the WHTML payloads. Each style is sent only once; `site/registry.json` tracks the classes that already exist in Webflow.
 6. `python3 pagecss.py <prefix>` builds the page head CSS (`page-code/`).
-7. Verification: `shot.mjs` (screenshots), `textdiff.py` (canvas vs published text), `filtertest.mjs`, `tpltest.mjs`, `overflow.mjs` (390px overflow), `finalcheck.mjs` (status, errors and links on every page) and `motioncheck.mjs` (motion on, nothing left hidden).
+7. Verification: `shot.mjs` (screenshots), `textdiff.py` (canvas vs published text), `filtertest.mjs`, `tpltest.mjs`, `overflow.mjs` (390px overflow), `finalcheck.mjs` (status, errors and links on every page), `motioncheck.mjs` (motion on, nothing left hidden) and `formcheck.mjs` (every form's send button and spam-check line, never sends).
 
 `pages/` holds the converted markup and CSS for each page, `rendered/` the static canvas renders, and `styleguide/` the Style Guide, Navbar and Footer payloads. `screenshots/` has design vs Webflow comparisons, with the canvas on the left and Webflow on the right.
 
