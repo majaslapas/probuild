@@ -1,5 +1,7 @@
 # Hand-off: build the GHL side (needs a local session with a browser)
 
+Ready-to-paste prompt for that session: `crm/LOCAL-SESSION-PROMPT.md`.
+
 The Webflow side is finished on staging (`crm/README.md`). What is left happens in GoHighLevel's UI, signed in as
 the person, so it needs **the Claude desktop app (Code tab, built-in browser) or `claude` in a terminal with Claude in
 Chrome** — a cloud session cannot use the person's signed-in browser.
