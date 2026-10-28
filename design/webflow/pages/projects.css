@@ -1,4 +1,4 @@
-.portfolio-list_filter { min-height: 2.75rem; padding: 0 1.25rem; border-radius: 100px; border: 1px solid var(--opacity--white-20); background-color: transparent; color: var(--neutral--white); font-family: inherit; font-size: .9375rem; font-weight: 600; cursor: pointer; transition: background-color .2s,border-color .2s,color .2s,transform .16s cubic-bezier(.23,1,.32,1) }
+.portfolio-list_filter { min-height: 2.75rem; padding: 0 1.25rem; border-radius: 100px; border: 1px solid var(--opacity--white-20); background-color: transparent; color: var(--neutral--white); font-family: inherit; font-size: .9375rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: .5rem; transition: background-color .2s,border-color .2s,color .2s,transform .16s cubic-bezier(.23,1,.32,1) }
 .portfolio-list_filter:hover { border-color: var(--neutral--white) }
 .portfolio-list_filter.is-active { background-color: var(--neutral--white); border-color: var(--neutral--white); color: var(--neutral--darkest) }
 .portfolio-list_list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 3.5rem 2rem }
