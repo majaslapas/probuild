@@ -207,6 +207,7 @@
       "telefons": "",
       "no": "Test value",
       "lidz": "Test value",
+      "epasts": "probe+tests@example.com",
       "zina": "TESTS — integration check, please ignore. ā ē ī ū č ģ ķ ļ ņ š ž"
     },
     "fields": {
@@ -224,6 +225,10 @@
       },
       "lidz": {
         "type": "date",
+        "options": []
+      },
+      "epasts": {
+        "type": "email",
         "options": []
       },
       "zina": {
@@ -254,6 +259,7 @@
       "telefons": "",
       "datums": "Test value",
       "ilgums": "6 h",
+      "epasts": "probe+tests@example.com",
       "produkts": "Ekskavators-iekrāvējs"
     },
     "fields": {
@@ -271,6 +277,10 @@
       },
       "ilgums": {
         "type": "text",
+        "options": []
+      },
+      "epasts": {
+        "type": "email",
         "options": []
       },
       "produkts": {

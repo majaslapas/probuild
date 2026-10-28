@@ -10,8 +10,7 @@
     "/par-mums",
     "/projekti",
     "/projekts/fasades-atjaunosana",
-    "/projekts/koka-karkasa-privatmaja",
-    "/style-guide"
+    "/projekts/koka-karkasa-privatmaja"
   ],
   "langs": [
     "en"
@@ -149,6 +148,17 @@
           "value": "",
           "label": "Aptuvenais ilgums",
           "role": ""
+        },
+        {
+          "name": "epasts",
+          "data_name": "epasts",
+          "dom_id": "tehnikas-noma-e-pasts",
+          "type": "email",
+          "required": false,
+          "placeholder": "Example Text",
+          "value": "",
+          "label": "E-pasts",
+          "role": "email"
         }
       ],
       "hidden": [
@@ -466,6 +476,17 @@
           "role": ""
         },
         {
+          "name": "epasts",
+          "data_name": "epasts",
+          "dom_id": "nomas-pieprasijums-e-pasts",
+          "type": "email",
+          "required": false,
+          "placeholder": "Example Text",
+          "value": "",
+          "label": "E-pasts",
+          "role": "email"
+        },
+        {
           "name": "zina",
           "data_name": "zina",
           "dom_id": "nomas-pieprasijums-ko-velaties-nomat",
@@ -586,75 +607,6 @@
           ]
         }
       ],
-      "langs": [
-        "en"
-      ],
-      "identical_on_all_pages": true
-    },
-    {
-      "element_id": "d6034131-2140-1c34-0373-e5700dfad24b",
-      "name": "Stila paraugs",
-      "dom_id": "wf-form-Stila-paraugs",
-      "action": "",
-      "method": "post",
-      "crm_key": "",
-      "turnstile": false,
-      "pages": [
-        "/style-guide"
-      ],
-      "fields": [
-        {
-          "name": "Vards",
-          "data_name": "Vards",
-          "dom_id": "sg-name",
-          "type": "text",
-          "required": false,
-          "placeholder": "Jūsu vārds",
-          "value": "",
-          "label": "Vards",
-          "role": "first_name"
-        },
-        {
-          "name": "Pakalpojums",
-          "data_name": "Pakalpojums",
-          "dom_id": "Pakalpojums",
-          "type": "select",
-          "required": false,
-          "placeholder": "",
-          "value": "",
-          "label": "Pakalpojums",
-          "options": [
-            "Būvniecība",
-            "Remonts",
-            "Noma"
-          ],
-          "role": "service"
-        },
-        {
-          "name": "Zina",
-          "data_name": "Zina",
-          "dom_id": "sg-msg",
-          "type": "textarea",
-          "required": false,
-          "placeholder": "Īsi aprakstiet darbu",
-          "value": "",
-          "label": "Zina",
-          "role": "message"
-        },
-        {
-          "name": "Piekrītu privātuma politikai",
-          "data_name": "Piekrītu privātuma politikai",
-          "dom_id": "sg-agree",
-          "type": "checkbox",
-          "required": false,
-          "placeholder": "",
-          "value": "",
-          "label": "Piekrītu privātuma politikai",
-          "role": "consent"
-        }
-      ],
-      "hidden": [],
-      "code_refs": [],
       "langs": [
         "en"
       ],

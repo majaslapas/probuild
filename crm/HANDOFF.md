@@ -1,5 +1,17 @@
 # Hand-off: build the GHL side (needs a local session with a browser)
 
+## Status (2026-10-28): done
+
+- GHL workflow „Mājaslapa → Pieteikumi“ is built and published in the ProBuild sub-account (`LkU3HqQjzSJOBE4wFaGf`).
+- All six test cases (`kalkulators`, `pakalpojuma-pieteikums`, `kontaktforma`, `nomas-pieprasijums`,
+  `nomas-produkts`, `lidzigs-projekts`) passed end to end: site → Webflow → GHL.
+- Afterwards both rental forms gained an optional `epasts` field (E-pasts) on staging: „Nomas pieprasījums“ (/noma,
+  DOM id `nomas-pieprasijums-e-pasts`) and „Tehnikas nomas pieprasījums“ (/nomas-produkts/*, DOM id
+  `tehnikas-noma-e-pasts`). Config, inventory and `generated/` are updated; the site script did not change. GHL
+  needed no change because `epasts` was already mapped to the contact's e-mail.
+
+The steps below are kept as the record of how it was built.
+
 Ready-to-paste prompt for that session: `crm/LOCAL-SESSION-PROMPT.md`.
 
 The Webflow side is finished on staging (`crm/README.md`). What is left happens in GoHighLevel's UI, signed in as
