@@ -9,7 +9,6 @@
     "production_url": ""
   },
   "hook_file": "~/.config/webcrm/probuild-group/ghl-hook",
-  "test_phone": "+371 26 518 131",
   "ghl": {
     "workflow": "Mājaslapa → Pieteikumi",
     "folder": "Mājaslapas pieteikums",
@@ -117,6 +116,8 @@
       "element_id": "e86c52af-94a3-9432-bf15-ea2220226664",
       "name": "Nomas pieprasījums",
       "key": "nomas-pieprasijums",
+      "pipeline": "Tehnikas noma",
+      "stage": "Jauns pieprasījums",
       "fields": ["vards", "telefons", "no", "lidz", "zina"],
       "published": {"vards": "Vārds", "telefons": "Telefons", "no": "No", "lidz": "Līdz"},
       "purpose": "Tehnikas noma",
@@ -129,6 +130,8 @@
       "name": "Tehnikas nomas pieprasījums",
       "published_name": "Nomas pieprasījums",
       "key": "nomas-produkts",
+      "pipeline": "Tehnikas noma",
+      "stage": "Jauns pieprasījums",
       "fields": ["vards", "telefons", "datums", "ilgums", "produkts"],
       "published": {"vards": "Vārds", "telefons": "Telefons", "produkts": "Produkts"},
       "purpose": "Tehnikas noma",

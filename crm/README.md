@@ -8,12 +8,13 @@ filter) → one GHL workflow with an Inbound Webhook trigger → contact, tags, 
 | Part | State |
 |---|---|
 | Form inventory (`forms-inventory.md`) | done, 7 forms on 12 pages (CMS template pages included) |
-| Config (`project-config.json`), level **full**, Latvian texts | done; values marked *to confirm* below are defaults |
+| Config (`project-config.json`), level **full**, Latvian texts | done; decisions confirmed by the client (below) |
 | Generated artifacts (`generated/`) | done; `run_tests.sh`: 45 unit + 60 smoke checks pass |
 | Webflow field renames (`generated/webflow/renames.md`) | done on staging; labels now point at their fields on every form |
 | Site script (`generated/site-footer-crm.html`) | live on staging as the **first** block of the site footer, before `design/webflow/site/site.js`; copy of the whole live footer: `design/webflow/site/site-footer.live.html` |
 | Check of every live form with `webCrm.context` (no submit) | done: keys, purpose, subject, E.164 phone, page, language, channel/UTM correct |
-| GHL sub-account: custom fields, pipeline, workflow, probes, Webflow webhook, test sign-ups | **not started** — needs a session with a browser signed in to GHL (see `HANDOFF.md`) |
+| Style Guide page (sample form without phone/e-mail) | made a draft (2026-10-28), not published |
+| GHL sub-account: custom fields, pipelines, workflow, Webflow webhook, test sign-ups | **not started** — the ProBuild sub-account is not in the CRM connection yet, and the workflow needs a browser signed in to GHL (see `HANDOFF.md`) |
 
 ## Forms
 
@@ -26,24 +27,24 @@ filter) → one GHL workflow with an Inbound Webhook trigger → contact, tags, 
 | Tehnikas nomas pieprasījums | `nomas-produkts` | /nomas-produkts/* | Tehnikas noma | Noma: {machine}, {date} |
 | Līdzīgs projekts | `lidzigs-projekts` | /projekts/* | Līdzīgs projekts | Līdzīgs projekts: {project} |
 
-All six create a contact, the tags `majaslapa` + `forma-<key>`, one opportunity per sign-up in
-„Mājaslapas pieteikumi“ › „Jauns pieteikums“, a note and an e-mail to the team.
+All six create a contact, the tags `majaslapa` + `forma-<key>`, one opportunity per sign-up, a note and an e-mail to
+the team. The two rental forms go to the pipeline „Tehnikas noma“ › „Jauns pieprasījums“; the other four to
+„Mājaslapas pieteikumi“ › „Jauns pieteikums“ (the workflow's last If/else „Route“ picks the pipeline by `form_key`).
 
 The calculator's fields `aprekins` (the whole calculation as text), `aprekins_joma`, `aprekins_darbi`,
 `aprekins_summa`, `aprekins_no`, `aprekins_lidz`, `aprekins_menesi` are added to the form by the calculator code at
 runtime (not in the static HTML, so `check_forms.py` lists them as "missing" — expected). Opportunity value stays empty
 by default; `aprekins_summa` can be mapped to it if the team wants the estimate as the value.
 
-## Defaults to confirm with the client
+## Decisions (confirmed 2026-10-28)
 
-- Notification e-mail: `probuildlatvia@gmail.com` (the address on the site).
-- One pipeline „Mājaslapas pieteikumi“ (stage „Jauns pieteikums“) for all forms; rental could get its own pipeline.
-- All six forms create opportunities.
-- `test_phone` for probes: +371 26 518 131 (the business number on the site).
-- Consent: no marketing consent is collected; contacts get no marketing permission.
-- The **Style Guide** page has a sample form „Stila paraugs“ without phone/e-mail: it would reach GHL as `other` and fail
-  at Create contact. Make the Style Guide page a draft (or delete its sample form) before the Webflow webhook is
-  connected.
+- Notification e-mail: `probuildlatvia@gmail.com`.
+- Two pipelines: „Mājaslapas pieteikumi“ (calculator, service request, contact form, similar project) and
+  „Tehnikas noma“ (both rental forms).
+- All six forms create opportunities. No marketing consent is collected; contacts get no marketing permission.
+- Tests are real sign-ups only, sent from the staging site through Webflow to GHL: no synthetic probes, so no test
+  phone is stored (`test_phone` left out on purpose; `ghl-probe.sh` refuses the samples).
+- The Style Guide page is a draft, so its sample form cannot reach GHL.
 
 ## Known, harmless
 

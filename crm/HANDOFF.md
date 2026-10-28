@@ -5,53 +5,65 @@ the person, so it needs **the Claude desktop app (Code tab, built-in browser) or
 Chrome** — a cloud session cannot use the person's signed-in browser.
 
 - Repo: `majaslapas/probuild`, branch `claude/blissful-johnson-qbbstj`.
-- Skill: `webflow-ghl-integration` (steps 6–8 of its SKILL.md).
-- Read first: `crm/README.md`, `crm/project-config.json`, `crm/generated/ghl/workflow-spec.md`,
-  `crm/generated/ghl/custom-fields.csv`, and the skill's `references/ghl-ui.md` and `references/testing.md`.
+- Skill: `webflow-ghl-integration` (steps 6–8 of its SKILL.md), **real sign-up route** (no synthetic probes: the
+  client wants every test to go site → Webflow → GHL).
+- Read first: `crm/README.md` (decisions), `crm/project-config.json`, `crm/generated/ghl/workflow-spec.md`,
+  `crm/generated/ghl/custom-fields.csv`, and the skill's `references/ghl-ui.md` and `references/testing.md` §3.
+  The spec still mentions `ghl-probe.sh`; skip those lines, the steps below replace them.
 - Webflow site `6adf4142414584038f9dbb34`, staging https://probuild-group.webflow.io. Publish to staging only.
-- GHL: the **ProBuild** sub-account. (The CRM connector in the cloud session did not list it; it is not needed for the
-  UI build, but reconnect the connector if API checks are wanted.)
+- GHL: the **ProBuild** sub-account. The CRM connector in the cloud session did not list it (only 15 other
+  sub-accounts); not needed for the UI build, but reconnect the connector with ProBuild included if API checks
+  (`ghl-readout`-style reads) are wanted.
 
 ## Before starting
 
-1. Confirm the defaults in `crm/README.md` (notification e-mail, pipeline, test phone, Style Guide form). Change the
-   config and re-scaffold if any differ — never edit `generated/` by hand.
-2. Make the Style Guide page a draft (or remove its sample form) and publish staging.
-3. Count Webflow form submissions left on the site plan: the tests below use about 8.
+- Decisions are confirmed (README). Style Guide page is already a draft.
+- Count Webflow form submissions left on the site plan: the tests below use 7 (1 mapping reference + 6 cases).
 
 ## Build (Claude does the clicks; the person only signs in and copies the URL)
 
 1. Person signs in to GHL in the browser and opens the ProBuild sub-account.
 2. Settings → Custom Fields: create every row of `custom-fields.csv` in folder „Mājaslapas pieteikums“; open each after
    saving and check its key is ASCII.
-3. Opportunities → Pipelines: „Mājaslapas pieteikumi“, first stage „Jauns pieteikums“.
+3. Opportunities → Pipelines: „Mājaslapas pieteikumi“ (first stage „Jauns pieteikums“) and „Tehnikas noma“
+   (first stage „Jauns pieprasījums“).
 4. Automation → Workflows → new workflow „Mājaslapa → Pieteikumi“ → trigger **Inbound Webhook**.
    **Keep this panel open** until the trigger is saved (closing it discards the trigger and its URL).
-5. Person copies the webhook URL into a password manager and runs `scripts/save-hook-url.sh ~/.config/webcrm/probuild-group/ghl-hook`
-   (stores it from the clipboard). The URL is a secret: never in chat, files, commands or screenshots.
-6. With the person's OK (premium trigger runs are billed): `scripts/ghl-probe.sh crm/generated/samples/mapping-sample.json`,
-   then Mapping reference → that request → Save trigger.
-7. Actions in the order of `workflow-spec.md` §2 (If/else „Valid“ on siteId, Create contact, tags, Create opportunity
-   with duplicates enabled and the listed field mapping — Number fields via ⋮ → Dynamic —, note from `ghl/note.txt`,
-   internal notification with `ghl/email.html` in the </> source view). Settings per §3. Check the canvas for a stray
-   trigger, then **Publish**.
-8. With the person's OK: `ghl-probe.sh` each `samples/probe-*.json`, then the mapping sample again (must stop at
-   „Valid“). Check Execution logs, the contact (`scripts/ghl-readout.js`), opportunity fields, tags, note, e-mail.
-   The person deletes the probe records.
+5. Person copies the webhook URL (copy icon) into a password manager and pastes it into Webflow: Site settings →
+   Apps & integrations → Webhooks → Form submission → **no form filter**. The URL is a secret: never in chat, files,
+   commands or screenshots.
+6. **Mapping reference:** the person sends one real sign-up through the **calculator** on
+   https://probuild-group.webflow.io/pakalpojumi (it carries the most keys): tick 2 works in 2 areas, enter amounts,
+   „Saņemt precīzu cenas piedāvājumu“, fill name, phone, e-mail, address and a comment. In the trigger panel:
+   Mapping reference → Fetch sample requests / Check for new requests → pick it → **Save trigger**. A draft workflow
+   only records this request; it creates nothing.
+7. Actions in the order of `workflow-spec.md` §2: If/else „Valid“ (siteId), Create contact, tags, note, internal
+   notification (`ghl/email.html` in the </> source view, to probuildlatvia@gmail.com), and last the If/else „Route“
+   with one Create opportunity per pipeline (duplicates enabled, field mapping as listed; Number fields via ⋮ →
+   Dynamic). Keys the calculator sign-up did not carry (`pakalpojums`, `interese`, `no`, `lidz`, `datums`, `ilgums`,
+   `produkts`, `projekts`) are typed as `{{inboundWebhookRequest.payload.data.<key>}}`. Settings per §3. Check the
+   canvas for a stray trigger, then **Publish**.
 
-## Connect and test end to end
+## Test end to end (after publishing)
 
-9. Person adds the Webflow webhook: Webflow → Site settings → Apps & integrations → Webhooks → Form submission →
-   paste the URL (`pbcopy < ~/.config/webcrm/probuild-group/ghl-hook`), **no form filter**.
-10. Person makes one real test sign-up per form in a normal browser (Turnstile blocks automated ones), each with a
-    **different e-mail**: Kalkulators (pick 2 works in 2 areas first), Pakalpojuma pieteikums, Kontaktforma, Nomas
-    pieprasījums (/noma), Tehnikas nomas pieprasījums (/nomas-produkts/ekskavators-iekravejs), Līdzīgs projekts
-    (/projekts/fasades-atjaunosana).
-11. Check each run yourself (Execution logs → contact → readout): `payload.id` equals Webflow's submission ID; the
-    calculator opportunity has the whole `aprekins` text and the numbers.
+8. The person makes one real sign-up per form in a normal browser (Turnstile blocks automated ones), each with a
+   **different e-mail** (`name+case@…`):
+
+   | Case | Page | Expect |
+   |---|---|---|
+   | Kalkulators | /pakalpojumi → calculator → offer form | „Mājaslapas pieteikumi“; name „Cenas piedāvājums: … ≈ … €“; `aprekins` text and numbers filled |
+   | Pakalpojuma pieteikums | /pakalpojumi → „Pieteikums bez aprēķina“, pick a service | „Mājaslapas pieteikumi“; Source = the service |
+   | Kontaktforma | /kontakti, pick „Remonts un apdare“ (not the first chip) | „Mājaslapas pieteikumi“; Source = Remonts un apdare |
+   | Nomas pieprasījums | /noma with both dates | „Tehnikas noma“; dates not shifted |
+   | Tehnikas nomas pieprasījums | /nomas-produkts/ekskavators-iekravejs | „Tehnikas noma“; Tehnika = the machine |
+   | Līdzīgs projekts | /projekts/fasades-atjaunosana | „Mājaslapas pieteikumi“; Projekts = Fasādes atjaunošana |
+
+9. Check each run yourself: Execution logs (every action Executed) → the contact → fields, tags `majaslapa` +
+   `forma-<key>`, note without leftover `{{…}}`, opportunity in the right pipeline, e-mail arrived. `payload.id`
+   equals Webflow's submission ID. The person deletes the test records afterwards.
 
 ## Stop and ask before
 
-Publishing to the production domain, sending notification e-mails to real inboxes beyond the agreed address, touching
-shared GHL fields, deleting records. Then fill the skill's `assets/admin-handover.md`, `assets/client-guide.md` (LV)
-and `assets/go-live-checklist.md`.
+Publishing to the production domain, sending notification e-mails to any other inbox, touching shared GHL fields,
+deleting records. Then fill the skill's `assets/admin-handover.md`, `assets/client-guide.md` (LV) and
+`assets/go-live-checklist.md`.

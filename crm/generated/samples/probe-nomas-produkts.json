@@ -5,7 +5,7 @@
     "siteId": "6adf4142414584038f9dbb34",
     "data": {
       "vards": "Test Person (TESTS)",
-      "telefons": "+371 26 518 131",
+      "telefons": "REPLACE-with-the-client-own-business-phone",
       "datums": "Test value",
       "ilgums": "6 h",
       "produkts": "Ekskavators-iekrāvējs",
@@ -16,7 +16,7 @@
       "prev_path": "",
       "site_host": "probuild-group.webflow.io",
       "page_lang": "lv",
-      "phone_e164": "+37126518131",
+      "phone_e164": "",
       "date_iso": "",
       "utm_source": "probe",
       "utm_medium": "",
@@ -27,7 +27,7 @@
       "channel": "probe"
     },
     "schema": [],
-    "submittedAt": "2026-10-27T18:03:15.000Z",
+    "submittedAt": "2026-10-28T08:30:58.000Z",
     "id": "000000000000000000000006",
     "formId": "000000000000000000000000",
     "formElementId": "f722b463-050e-f37c-ca3b-cbe6ed38bd20",

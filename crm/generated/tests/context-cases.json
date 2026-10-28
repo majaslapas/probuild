@@ -6,7 +6,7 @@
     "referrer": "",
     "values": {
       "vards": "Test Person (TESTS)",
-      "telefons": "+371 26 518 131",
+      "telefons": "",
       "epasts": "probe+tests@example.com",
       "vieta": "Salaspils",
       "zina": "TESTS — integration check, please ignore. ā ē ī ū č ģ ķ ļ ņ š ž",
@@ -77,7 +77,7 @@
       "utm_source": "check",
       "channel": "check",
       "date_iso": "",
-      "phone_e164": "+37126518131"
+      "phone_e164": ""
     },
     "hidden_count": null
   },
@@ -89,7 +89,7 @@
     "values": {
       "pakalpojums": "Pamatu būvniecība",
       "vards": "Test Person (TESTS)",
-      "telefons": "+371 26 518 131",
+      "telefons": "",
       "epasts": "probe+tests@example.com",
       "zina": "TESTS — integration check, please ignore. ā ē ī ū č ģ ķ ļ ņ š ž"
     },
@@ -139,7 +139,7 @@
       "utm_source": "check",
       "channel": "check",
       "date_iso": "",
-      "phone_e164": "+37126518131"
+      "phone_e164": ""
     },
     "hidden_count": null
   },
@@ -151,7 +151,7 @@
     "values": {
       "interese": "Remonts un apdare",
       "vards": "Test Person (TESTS)",
-      "telefons": "+371 26 518 131",
+      "telefons": "",
       "epasts": "probe+tests@example.com",
       "zina": "TESTS — integration check, please ignore. ā ē ī ū č ģ ķ ļ ņ š ž"
     },
@@ -193,7 +193,7 @@
       "utm_source": "check",
       "channel": "check",
       "date_iso": "",
-      "phone_e164": "+37126518131"
+      "phone_e164": ""
     },
     "hidden_count": null
   },
@@ -204,7 +204,7 @@
     "referrer": "",
     "values": {
       "vards": "Test Person (TESTS)",
-      "telefons": "+371 26 518 131",
+      "telefons": "",
       "no": "Test value",
       "lidz": "Test value",
       "zina": "TESTS — integration check, please ignore. ā ē ī ū č ģ ķ ļ ņ š ž"
@@ -240,7 +240,7 @@
       "utm_source": "check",
       "channel": "check",
       "date_iso": "",
-      "phone_e164": "+37126518131"
+      "phone_e164": ""
     },
     "hidden_count": null
   },
@@ -251,7 +251,7 @@
     "referrer": "",
     "values": {
       "vards": "Test Person (TESTS)",
-      "telefons": "+371 26 518 131",
+      "telefons": "",
       "datums": "Test value",
       "ilgums": "6 h",
       "produkts": "Ekskavators-iekrāvējs"
@@ -287,7 +287,7 @@
       "utm_source": "check",
       "channel": "check",
       "date_iso": "",
-      "phone_e164": "+37126518131"
+      "phone_e164": ""
     },
     "hidden_count": null
   },
@@ -298,7 +298,7 @@
     "referrer": "",
     "values": {
       "vards": "Test Person (TESTS)",
-      "telefons": "+371 26 518 131",
+      "telefons": "",
       "epasts": "probe+tests@example.com",
       "zina": "TESTS — integration check, please ignore. ā ē ī ū č ģ ķ ļ ņ š ž",
       "projekts": "Fasādes atjaunošana"
@@ -334,7 +334,7 @@
       "utm_source": "check",
       "channel": "check",
       "date_iso": "",
-      "phone_e164": "+37126518131"
+      "phone_e164": ""
     },
     "hidden_count": null
   }

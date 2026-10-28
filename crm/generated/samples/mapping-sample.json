@@ -5,7 +5,7 @@
     "siteId": "mapping-sample",
     "data": {
       "vards": "Sample Person (TEST)",
-      "telefons": "+371 26 518 131",
+      "telefons": "+371 0000 0000",
       "epasts": "sample+tests@example.com",
       "vieta": "Salaspils",
       "zina": "TEST — field mapping sample, ā ē ī ū č ģ ķ ļ ņ š ž",
@@ -31,7 +31,7 @@
       "prev_path": "/",
       "site_host": "probuild-group.webflow.io",
       "page_lang": "lv",
-      "phone_e164": "+37126518131",
+      "phone_e164": "+37100000000",
       "date_iso": "2027-06-12",
       "utm_source": "sample",
       "utm_medium": "sample",
@@ -42,7 +42,7 @@
       "channel": "sample"
     },
     "schema": [],
-    "submittedAt": "2026-10-27T18:03:15.000Z",
+    "submittedAt": "2026-10-28T08:30:57.000Z",
     "id": "000000000000000000000001",
     "formId": "000000000000000000000000",
     "formElementId": "dd2304bf-c927-eda7-8438-babe29a04994",

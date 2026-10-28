@@ -6,7 +6,7 @@
     "data": {
       "interese": "Remonts un apdare",
       "vards": "Test Person (TESTS)",
-      "telefons": "+371 26 518 131",
+      "telefons": "REPLACE-with-the-client-own-business-phone",
       "epasts": "probe+tests@example.com",
       "zina": "TESTS — integration check, please ignore. ā ē ī ū č ģ ķ ļ ņ š ž",
       "form_key": "kontaktforma",
@@ -16,7 +16,7 @@
       "prev_path": "",
       "site_host": "probuild-group.webflow.io",
       "page_lang": "lv",
-      "phone_e164": "+37126518131",
+      "phone_e164": "",
       "date_iso": "",
       "utm_source": "probe",
       "utm_medium": "",
@@ -27,7 +27,7 @@
       "channel": "probe"
     },
     "schema": [],
-    "submittedAt": "2026-10-27T18:03:15.000Z",
+    "submittedAt": "2026-10-28T08:30:58.000Z",
     "id": "000000000000000000000004",
     "formId": "000000000000000000000000",
     "formElementId": "4d10121b-a9de-c7da-8368-dcad032a656a",
