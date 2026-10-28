@@ -208,9 +208,9 @@ const sum = (picks, k) => picks.reduce((s, [it, q, v]) => s + it[k] * q * (v || 
   ok(/≈/.test(await page.locator('.pbc_recap .pbc_total').textContent()) && (await fields(page)).aprekins_darbi === '1', 'offer recap and hidden fields filled');
   await page.keyboard.press('Escape');
   ok(await page.evaluate(() => !document.querySelector('.pbc_dlg.is-offer').open && document.activeElement.matches('.pbc_foot [data-cta]')), 'Escape closes the offer and returns focus to the CTA');
-  // request dialog pre-selects the service of the current type of work
-  await page.click('.pbc_head [data-request]');
-  ok(await page.evaluate(() => document.querySelector('.pbc_dlg.is-req').open && document.querySelector('.pbc_dlg.is-req select').value === 'Jumta darbi'), 'the request dialog from Būvniecība › Jumts pre-selects "Jumta darbi"');
+  // the page header's request link (data-pbc-ask) pre-selects the service of the current type of work
+  await page.click('[data-pbc-ask]');
+  ok(await page.evaluate(() => document.querySelector('.pbc_dlg.is-req').open && document.querySelector('.pbc_dlg.is-req select').value === 'Jumta darbi'), 'the header request link from Būvniecība › Jumts pre-selects "Jumta darbi"');
   await page.keyboard.press('Escape');
   await page.evaluate(() => window.pbCalc.request('Metālapstrāde'));
   ok(await page.evaluate(() => document.querySelector('.pbc_dlg.is-req select').value === 'Metālapstrāde'), 'pbCalc.request("Metālapstrāde") pre-selects it');
@@ -270,32 +270,28 @@ for (const [w, h] of [[1440, 900], [900, 1100], [390, 844]]) {
   await page.evaluate(() => window.pbCalc.show('buvnieciba > Jumts'));
   await page.waitForTimeout(700);
   ok(await page.evaluate(() => document.activeElement.id === 'pbc-works-title' && document.activeElement.textContent === 'Jumts'), 'pbCalc.show("buvnieciba > Jumts") focuses the works title');
-  const svc = page.locator('[data-service="Kokapstrāde"]');
-  if (await svc.count()) {
-    await svc.evaluate((b) => b.click()); await page.waitForTimeout(700);
-    ok((await page.locator('.pbc_area[aria-current="true"] .pbc_area-n').textContent()) === 'Kokapstrāde', 'a [data-service] button in the services list opens the calculator there');
-  }
   ok(!page.errors.length, 'no console warnings or errors' + (page.errors.length ? ': ' + page.errors.slice(0, 3).join(' | ') : ''));
   await page.context().close();
 }
 
-// 6b. A real tap on a services-list button, with motion on: the calculator opens at that area and
-// Webflow's own #anchor scrolling does not move the page afterwards.
+// 6b. A real tap on the page header's "Pieteikums bez aprēķina" link (data-pbc-ask), with motion on: the request
+// form opens with the current type of work's service picked, Webflow's own #anchor scrolling does not move the page,
+// and Escape returns focus to the link.
 for (const w of [1440, 390]) {
   const page = await open(w, w < 900 ? 844 : 900, '', { motion: true, touch: w < 900, mobile: w < 900 });
-  const item = page.locator('.services-list_item').filter({ has: page.locator('[data-service="Kokapstrāde"]') });
-  if (await item.count()) {
-    await item.locator('.services-list_trigger').click();
-    await page.waitForTimeout(600);
-    await item.locator('[data-service="Kokapstrāde"]').click();
-    await page.waitForTimeout(1500);
-    const a = await page.evaluate(() => ({ y: scrollY, area: (document.querySelector('.pbc_area[aria-current="true"] .pbc_area-n') || {}).textContent,
-      hash: location.hash, top: Math.round(document.querySelector(matchMedia('(min-width:56.25em)').matches ? '#pbc-works-title' : '.pbc_set.is-open').getBoundingClientRect().top), dlg: !!document.querySelector('.pbc_dlg[open]') }));
-    await page.waitForTimeout(800);
-    const y2 = await page.evaluate(() => scrollY);
-    ok(a.area === 'Kokapstrāde' && Math.abs(y2 - a.y) < 2 && !a.dlg, `${w}px: tapping "Kokapstrāde" in the services list opens the calculator there and the page stays put (${JSON.stringify(a)}, then y ${y2})`);
-    ok(w < 900 ? Math.abs(a.top) <= 3 : a.top >= -2 && a.top < 900 * 0.6, `${w}px: ${w < 900 ? 'the opened area is at the top' : 'its works title is in view'} (${a.top} px)`);
-  } else ok(false, 'services list item for Kokapstrāde not found');
+  const link = page.locator('.services-calc_head [data-pbc-ask]');
+  if (await link.count()) {
+    // the first page of a visit plays the intro; Playwright would scroll while the overlay covers the link
+    await page.waitForFunction(() => !document.querySelector('.pb-intro'), null, { timeout: 8000 });
+    const y0 = await page.evaluate(() => scrollY);
+    await link.click();
+    await page.waitForTimeout(1200);
+    const a = await page.evaluate(() => ({ y: scrollY, open: document.querySelector('.pbc_dlg.is-req').open, pick: document.querySelector('.pbc_dlg.is-req select').value }));
+    ok(a.open && a.pick === 'Pamatu būvniecība' && Math.abs(a.y - y0) < 2, `${w}px: the header link opens the request form with "Pamatu būvniecība" and the page stays put (${JSON.stringify(a)}, from y ${y0})`);
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(300);
+    ok(await page.evaluate(() => document.activeElement.matches('[data-pbc-ask]')), `${w}px: Escape returns focus to the header link`);
+  } else ok(false, 'header link [data-pbc-ask] not found');
   ok(!page.errors.length, `${w}px with motion: no console warnings or errors` + (page.errors.length ? ': ' + page.errors.slice(0, 3).join(' | ') : ''));
   await page.context().close();
 }

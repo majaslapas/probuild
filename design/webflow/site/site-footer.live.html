@@ -273,7 +273,7 @@
       return bars.appendChild(b);
     };
     document.body.appendChild(el);
-    var w = addBar(0).offsetWidth || 64, n = Math.ceil(window.innerWidth / (2 * w)) + 1; // bar, gap, bar… edge to edge
+    var w = addBar(0).offsetWidth || 72, n = Math.ceil(window.innerWidth / (1.5 * w)) + 1; // bar, half-bar gap, bar… edge to edge
     for (var i = 1; i < n; i++) addBar(i);
     if (logo) {
       var img = document.createElement('img');
@@ -599,7 +599,8 @@
       '.contacts_card', '.services-list_cms-item', '.rental-list_item', '.portfolio-list_item', '.about-story_block',
       '.about-stats_item', '.about-values_item', '.about-values_image', '.about-team_item', '.about-partners_logo',
       '.about-cta_panel', '.contact-partners img', '.project-header_image-wrapper', 'main section aside',
-      '.project-gallery_list figure', '.rental-product_accordion', '.footer_grid > *'
+      '.project-gallery_list figure', '.rental-product_accordion', '.footer_grid > *', '.services-process_step',
+      '.prices-factors_item', '.prices-faq_item', '.prices-cta_content > *'
     ].join(',');
     var io = new IntersectionObserver(function (entries) {
       var hits = entries.filter(function (e) { return e.isIntersecting; }).map(function (e) { return e.target; });

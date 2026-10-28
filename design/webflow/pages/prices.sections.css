@@ -1,0 +1,47 @@
+/* The WHTML builder drops a class list whose first class has no CSS: section_prices-hero, section_prices-factors,
+   section_prices-faq (and section_services-process) were created afterwards with position:relative and their
+   color-scheme combo, then applied with set_style. */
+/* @hero */
+.prices-hero_wrapper{padding-top:4.5rem;padding-bottom:3rem}
+.prices-hero_component{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:2rem 4rem;align-items:end}
+.prices-hero_content{display:flex;flex-direction:column;align-items:flex-start;gap:1.25rem}
+.prices-hero_text{margin:0;max-width:36rem}
+.prices-hero_note{margin:0;padding-left:.75rem;border-left:2px solid var(--christine--primary);color:var(--neutral--light)}
+.prices-hero_cta{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;gap:1rem;padding:2rem;border-radius:16px;background-color:var(--neutral--darker);border:1px solid var(--opacity--white-10)}
+.prices-hero_cta-title{margin:0;font-family:var(--font--heading);font-size:1.5rem;line-height:1.3;font-weight:500;letter-spacing:-0.02em}
+.prices-hero_cta-text{margin:0;max-width:28rem;color:var(--neutral--lighter);line-height:1.6}
+.prices-hero_actions{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem;padding-top:.5rem}
+.prices-hero_cta-note{margin:0;color:var(--neutral--light)}
+@media screen and (max-width: 991px){.prices-hero_wrapper{padding-top:4rem;padding-bottom:2.5rem}.prices-hero_component{grid-template-columns:minmax(0,1fr)}}
+@media screen and (max-width: 767px){.prices-hero_wrapper{padding-top:3rem;padding-bottom:2rem}.prices-hero_cta{padding:1.5rem}.prices-hero_cta-title{font-size:1.25rem}}
+/* @factors */
+.prices-factors_top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem 4rem;margin-bottom:3.5rem}
+.prices-factors_intro{margin:0;max-width:30rem}
+.prices-factors_grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2.5rem 2rem;margin:0;padding:0;list-style:none}
+.prices-factors_item{display:flex;flex-direction:column;gap:.75rem;padding-top:1.5rem;border-top:1px solid var(--opacity--white-20)}
+.prices-factors_key{margin-bottom:.75rem;font-family:var(--font--heading);font-size:1.5rem;line-height:1.2;font-weight:500;letter-spacing:-0.03em;color:var(--christine--light);white-space:nowrap}
+.prices-factors_text{margin:0;color:var(--neutral--lighter);line-height:1.6}
+.prices-factors_note{margin-top:3.5rem;margin-bottom:0;max-width:44rem;padding-left:.75rem;border-left:2px solid var(--christine--primary);color:var(--neutral--light);font-size:.9375rem;line-height:1.6}
+@media screen and (max-width: 991px){.prices-factors_grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media screen and (max-width: 767px){.prices-factors_top{margin-bottom:2.5rem}.prices-factors_grid{grid-template-columns:minmax(0,1fr);gap:2rem}.prices-factors_note{margin-top:2.5rem}}
+/* @faq */
+.prices-faq_component{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:2.5rem 5rem;align-items:start}
+.prices-faq_head{display:flex;flex-direction:column;align-items:flex-start;gap:1.25rem}
+.prices-faq_links{display:flex;flex-direction:column;align-items:flex-start;gap:.75rem;padding-top:.5rem}
+.prices-faq_link{padding-bottom:.125rem;border-bottom:1px solid var(--christine--primary);font-family:var(--font--heading);font-size:1rem;color:var(--neutral--white);text-decoration:none;transition:color .2s}
+.prices-faq_link:hover{color:var(--christine--light)}
+.prices-faq_list{display:flex;flex-direction:column;border-top:1px solid var(--opacity--white-20)}
+.prices-faq_item{border-bottom:1px solid var(--opacity--white-20)}
+.prices-faq_question{font-family:var(--font--heading);font-size:1.0625rem;line-height:1.4;font-weight:500}
+.prices-faq_answer{margin:0;max-width:42rem;padding-right:3rem;padding-bottom:1.5rem;color:var(--neutral--lighter);line-height:1.6}
+@media screen and (max-width: 991px){.prices-faq_component{grid-template-columns:minmax(0,1fr)}}
+@media screen and (max-width: 767px){.prices-faq_answer{padding-right:0}.prices-faq_question{font-size:1rem}}
+/* @cta */
+.section_prices-cta{position:relative;overflow:hidden}
+.prices-cta_content{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:1.25rem;max-width:40rem}
+.prices-cta_title{margin:0;font-family:var(--font--heading);font-size:3.75rem;line-height:1;font-weight:500;letter-spacing:-0.045em}
+.prices-cta_text{margin:0;max-width:34rem}
+.prices-cta_actions{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.75rem;padding-top:.5rem}
+.prices-cta_phone{padding-bottom:.125rem;border-bottom:1px solid currentColor;font-family:var(--font--heading);font-size:1rem;font-weight:500;color:var(--neutral--darkest);text-decoration:none}
+@media screen and (max-width: 991px){.prices-cta_title{font-size:3rem}}
+@media screen and (max-width: 767px){.prices-cta_title{font-size:2.5rem}}

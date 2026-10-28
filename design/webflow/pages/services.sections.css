@@ -1,0 +1,19 @@
+/* @head */
+.services-calc_head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.25rem 3rem;margin-bottom:2rem}
+.services-calc_intro{display:flex;flex-direction:column;align-items:flex-start;gap:.75rem;max-width:54rem}
+.services-calc_title{margin:0;font-family:var(--font--heading);font-size:2.75rem;line-height:1.1;font-weight:500;letter-spacing:-0.03em}
+.services-calc_text{margin:0;max-width:40rem;color:var(--neutral--light);font-size:1.125rem;line-height:1.55}
+.services-calc_links{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem}
+.services-calc_link{padding-bottom:.125rem;border-bottom:1px solid var(--christine--primary);color:var(--neutral--white);font-size:.9375rem;font-weight:600;text-decoration:none;transition:color .2s}
+.services-calc_link:hover{color:var(--christine--light)}
+@media screen and (max-width: 991px){.services-calc_title{font-size:2.5rem}}
+@media screen and (max-width: 767px){.services-calc_head{margin-bottom:1.5rem}.services-calc_title{font-size:2rem}.services-calc_text{font-size:1rem}}
+/* @process */
+.services-process_top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem 4rem;margin-bottom:3rem}
+.services-process_intro{margin:0;max-width:30rem}
+.services-process_list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:0;padding:0;list-style:none}
+.services-process_step{display:flex;flex-direction:column;gap:.75rem;padding:1.75rem;border-radius:16px;background-color:var(--neutral--darkest);border:1px solid var(--opacity--white-10)}
+.services-process_num{margin-bottom:1.5rem;font-family:var(--font--heading);font-size:2.5rem;line-height:1;font-weight:500;letter-spacing:-0.04em;color:var(--christine--primary)}
+.services-process_text{margin:0;color:var(--neutral--light);line-height:1.6}
+@media screen and (max-width: 991px){.services-process_list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media screen and (max-width: 767px){.services-process_top{margin-bottom:2rem}.services-process_list{grid-template-columns:minmax(0,1fr)}.services-process_step{padding:1.5rem}.services-process_num{margin-bottom:1rem;font-size:2rem}}

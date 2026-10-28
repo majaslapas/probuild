@@ -6,8 +6,9 @@
    kalkulatora kods, to labot nevajag.
    ========================================================================== */
 window.PBC_SETTINGS = {
-  title: 'Aprēķiniet darbu izmaksas',
-  intro: 'Izvēlieties darbus un norādiet apjomu. Aptuveno cenu redzēsiet uzreiz, bet precīzu cenas piedāvājumu sagatavosim jums.',
+  // Virsraksts un ievads ir pašā lapā (Webflow), kalkulatora augšā. Ja te ieraksta tekstu, kalkulators parāda arī savu virsrakstu.
+  title: '',
+  intro: '',
   quietLead: 'Nezināt apjomus?',
   quietBtn: 'Pieteikums bez aprēķina',
   listEndLead: 'Neatradāt vajadzīgo darbu vai nezināt apjomus?',
@@ -303,7 +304,7 @@ window.PBC_SETTINGS = {
       return (lead ? '<span>' + esc(lead) + '</span> ' : '') + '<button type="button" class="' + (pill ? 'pbc_pill' : 'pbc_link') + '" data-request>' + esc(S.quietBtn) + '</button>';
     };
     root.innerHTML = errHTML(tab.errors) +
-      '<header class="pbc_head"><div><h2 class="pbc_title">' + esc(S.title) + '</h2><p class="pbc_intro">' + esc(S.intro) + '</p></div><p class="pbc_quiet">' + quiet(S.quietLead, 1) + '</p></header>' +
+      (S.title ? '<header class="pbc_head"><div><h2 class="pbc_title">' + esc(S.title) + '</h2><p class="pbc_intro">' + esc(S.intro) + '</p></div><p class="pbc_quiet">' + quiet(S.quietLead, 1) + '</p></header>' : '') +
       '<div class="pbc_ws" id="pbc-ws">' +
         '<nav class="pbc_nav" aria-label="' + esc(S.navLabel) + '">' +
           '<div class="pbc_search" role="search"><label for="pbc-q">' + esc(S.searchLabel) + '</label><div class="pbc_field">' + IC.search +
@@ -971,10 +972,14 @@ window.PBC_SETTINGS = {
       var row = t.closest('.pbc_row'), nx = row && L() !== 'P' && row.nextElementSibling;
       if (nx) focus(nx.querySelector('.pbc_in[data-k="q"]'));
     });
+    // Links anywhere on the page: data-pbc-show="Jumta darbi" opens those works, data-pbc-ask (optionally with a
+    // service name) opens the plain request form. Without the calculator they stay ordinary links.
     document.addEventListener('click', function (e) {
-      var a = e.target.closest && e.target.closest('[data-pbc-show]');
+      var a = e.target.closest && e.target.closest('[data-pbc-show], [data-pbc-ask]');
       if (!a) return;
-      e.preventDefault(); e.stopPropagation(); show(a.getAttribute('data-pbc-show'));
+      e.preventDefault(); e.stopPropagation();
+      if (a.hasAttribute('data-pbc-ask')) openRequest(a.getAttribute('data-pbc-ask') || null, a);
+      else show(a.getAttribute('data-pbc-show'));
     }, true);
     function relayout() {
       if (mW.matches && el.dSum.open) el.dSum.close();

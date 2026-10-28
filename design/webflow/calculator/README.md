@@ -1,6 +1,6 @@
 # Price calculator (Pakalpojumi)
 
-The calculator has its own section under the Pakalpojumi hero (`#kalkulators`). Visitors pick works in five
+The calculator is the first section of Pakalpojumi (`#kalkulators`), under the page's own short header (`services-calc_head`: heading, one line, "Pieteikums bez aprēķina" and "Pakalpojumu cenas" links). Visitors pick works in five
 areas, enter amounts and see an approximate total with its range. To get a precise price offer they open the
 offer form, which sends their contact details together with the calculation.
 
@@ -15,7 +15,7 @@ Prices come from the client's five 2026 price workbooks (Google Drive, copies in
 | same section → Form "Pakalpojuma pieteikums" (`data-pbc-request`) | the plain request form ("Pieteikums bez aprēķina") | Webflow form |
 | Page settings → Custom code → Inside `<head>` | page CSS and the calculator's styles | `dist/page-head.html` (= `../page-code/services.head.html` + `kalkulators-stils.html`) |
 | Page settings → Custom code → Before `</body>` | texts, units and service links (`PBC_SETTINGS`, readable) and the calculator code (minified) | `dist/page-footer.html`, built from `kalkulators.html` |
-| Site settings → Custom code → Footer | the site script; its `[data-service]` buttons call `pbCalc.show` / `pbCalc.request` | `../site/site.js` |
+| Site settings → Custom code → Footer | the site script; `[data-service]` buttons (none on the site at the moment) call `pbCalc.show` / `pbCalc.request` | `../site/site.js` |
 
 Webflow allows at most 50 000 characters per Code Embed and per custom code block. `tools/calc_build.mjs`
 prints how much room is left in each.
@@ -47,7 +47,7 @@ the amount; singular/plural), `hint` (help shown on a ticked row), `visits` (pri
 error (no visits, no monthly fee).
 
 If the calculator code cannot start (a typo in `PBC_SETTINGS`, the table or its `<div data-pbc>` deleted),
-the page puts the two Webflow forms back in place (`html.pbc-off`), and the services list buttons go to them.
+the page puts the two Webflow forms back in place (`html.pbc-off`), and `data-pbc-ask` links stay ordinary links to `#kalkulators`.
 
 ## How it calculates
 
@@ -77,9 +77,12 @@ The plain request form sends `Pakalpojums`, `vards`, `telefons`, `epasts`, `zina
 - `?pakalpojums=<service name | area | 'Area > Type of work'>` and optional `&grupa=<type of work>`;
   with `#kalkulators` the page lands on the calculator. Service pages link here (site.js).
 - `window.pbCalc`: `has(name)`, `show(target)`, `reset()`, `request(name)` (opens the plain request form with
-  that service selected). `PBC_SETTINGS.services` maps the services list names to `Area > Type of work`;
+  that service selected). `PBC_SETTINGS.services` maps the service names (CMS Pakalpojumi) to `Area > Type of work`;
   a name that no longer resolves is logged at load.
-- Any link with `data-pbc-show="…"` opens that target.
+- Any link with `data-pbc-show="…"` opens that target; any link with `data-pbc-ask` opens the plain request form (with
+  `data-pbc-ask="<service>"` that service is selected, empty: the service of the type of work on screen).
+- `PBC_SETTINGS.title` / `intro` are empty: the heading is part of the page. Text there brings back the calculator's own
+  header.
 
 ## Changes made to the client's data
 
@@ -118,8 +121,8 @@ After editing prices in Webflow, copy the embed's code back into `cenas.html` (a
 3. Spiediet **Save & Close**, tad **Publish**. Pārbaudiet lapu adresē
    `…webflow.io/pakalpojumi?pbc-check`: ja kādā rindā ir kļūda, virs kalkulatora parādās sarkans lodziņš ar
    rindas numuru un iemeslu, un šī rinda netiek rādīta.
-4. Jaunu darbu pievieno, nokopējot rindu; jaunu darbu veidu – ar rindu `--- Nosaukums`. Pakalpojumu saraksta
-   pogas atver kalkulatoru pie darbu veida pēc nosaukuma (lapas kods, `services`), tāpēc, pārdēvējot darbu
+4. Jaunu darbu pievieno, nokopējot rindu; jaunu darbu veidu – ar rindu `--- Nosaukums`. Pakalpojumu lapu
+   pogas (Aprēķināt…) atver kalkulatoru pie darbu veida pēc nosaukuma (lapas kods, `services`), tāpēc, pārdēvējot darbu
    veidu, nomainiet nosaukumu arī tur.
 5. Tekstus (virsrakstus, pogu tekstus, piezīmes) un mērvienības var labot lapas iestatījumos: Pakalpojumi →
    Page settings → Custom code → Before `</body>`, daļā `PBC_SETTINGS`. Zem tās esošo kodu labot nevajag.

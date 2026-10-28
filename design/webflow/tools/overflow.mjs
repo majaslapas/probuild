@@ -2,7 +2,7 @@ import { createRequire } from 'module';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const b = await chromium.launch();
 const p = await b.newPage({ viewport: { width: 390, height: 844 } });
-for (const u of ['', 'pakalpojumi', 'noma', 'projekti', 'par-mums', 'kontakti', 'style-guide', 'nomas-produkts/ekskavators-iekravejs', 'projekts/koka-karkasa-privatmaja', 'pakalpojums/pamatu-buvnieciba']) {
+for (const u of ['', 'pakalpojumi', 'cenas', 'noma', 'projekti', 'par-mums', 'kontakti', 'nomas-produkts/ekskavators-iekravejs', 'projekts/koka-karkasa-privatmaja', 'pakalpojums/pamatu-buvnieciba']) {
   await p.goto('https://probuild-group.webflow.io/' + u, { waitUntil: 'load' }); await p.waitForTimeout(600);
   const r = await p.evaluate(() => {
     const W = document.documentElement.clientWidth;

@@ -11,7 +11,8 @@ The Claude Design canvas pages, rebuilt in Webflow with Finsweet Client-First cl
 | Page | Slug | Canvas source | Notes |
 |---|---|---|---|
 | Sākums | `/` | `site-01-sakums` | Rental cards are a Nomas produkti Collection List (3 items, sorted by `seciba`) |
-| Pakalpojumi | `/pakalpojumi` | `site-02-pakalpojumi` | Price calculator from the client's price lists ([calculator/](calculator/README.md)) and request form; the services accordion is a Pakalpojumi Collection List with group tabs |
+| Pakalpojumi | `/pakalpojumi` | `site-02-pakalpojumi` | Opens with the price calculator ([calculator/](calculator/README.md)) under a short header (`services-calc_head`, in the calculator section), then "Kas notiek pēc aprēķina" (4 steps), benefits, reviews and contacts. New pieces: `pages/services.sections.html` |
+| Cenas | `/cenas` | none (2026-10-28) | Services and prices: the Pakalpojumi Collection List accordion with group tabs (moved here from Pakalpojumi, without per-service buttons) under a header whose call to action goes to the calculator; then "Kā veidojas cena", questions (details/summary) and an orange call to action. Markup and CSS: `pages/prices.sections.*`, page head: `page-code/prices.head.html` |
 | Noma | `/noma` | `site-03-noma` | Nomas produkti list with Tehnika / Instrumenti tabs |
 | Projekti | `/projekti` | `site-05-portfolio` | Projekti list; filter buttons are a Darba veidi Collection List |
 | Par mums | `/par-mums` | `site-07-par-mums` | Team from the Komanda collection |
@@ -50,7 +51,7 @@ Every list sorts by `seciba` (lowest first). Empty optional fields hide their bl
 
 - **Filters:** `[data-filter-group][data-filter]` tabs filter `[data-filter-value]` items inside `[data-filter-list]`, and `[data-filter-count]` shows the counts.
 - **Accordion:** `[data-accordion-trigger]` opens its `.services-list_item`, one at a time.
-- **Calculator:** its own section under the Pakalpojumi hero: one Code Embed with the price table plus page custom code (see [calculator/README.md](calculator/README.md)). Service buttons (`[data-service]`) open it at that service's works (`pbCalc.show`) or open its plain request form (`pbCalc.request`); the button on service pages links to `/pakalpojumi?pakalpojums=<name>#kalkulators`. Webflow's default placeholder text ("Example text") is removed from all inputs.
+- **Calculator:** the first section of Pakalpojumi: the page's own header, one Code Embed with the price table and page custom code (see [calculator/README.md](calculator/README.md)). Links with `data-pbc-ask` (the header's "Pieteikums bez aprēķina", the contacts card "Pieteikums") open its plain request form. `[data-service]` buttons, if a page has them again, open it at that service's works (`pbCalc.show`) or its request form (`pbCalc.request`); the button on service pages links to `/pakalpojumi?pakalpojums=<name>#kalkulators`, and the Cenas page's calls to action to `/pakalpojumi#kalkulators`. Webflow's default placeholder text ("Example text") is removed from all inputs.
 - **CMS card links:** `a[data-cms-slug]` becomes `data-cms-base + slug`, for example `/projekts/koka-karkasa-privatmaja`. The static href is the listing page.
 - **Galleries:** product thumbnails, the project photo lightbox (arrows, ←/→, Esc) and the YouTube modal.
 - **Forms:** removes Webflow's "Example Text" placeholders. Groups radio buttons by their Group Name and selects the first choice. Fills hidden `[data-product-name]` inputs from the page's h1.
@@ -76,7 +77,7 @@ The site head CSS only keeps the hosts clipping and stacking, plus the list mark
 
 **Motion** (all in `site.js` and the site head, nothing in Webflow Interactions):
 
-- **Intro (2026-10-28):** plays on the first page of a visit only, never with reduced motion. Black fades to dark grey (`--neutral--darker`), thick bars in 10% white (`--opacity--white-10`, the brand bars' `skewY(-19deg)`) rise through the whole screen from left to right, the logo (the navbar's) rises in, and everything fades out. That's 2.55 s from when the page's script runs, about 2.9 s after the page opens. Any click, key or scroll skips it. `site-head.js` decides (sessionStorage `pb-intro`) and keeps the page black from the first paint; `site.js` builds `.pb-intro`, removes it, and only then starts the counters. If the script never runs, the black cover fades by itself after 3 s; a page that took over 2.5 s to load or opened in a background tab skips it. Add `?intro` to any URL to see it again.
+- **Intro (2026-10-28):** plays on the first page of a visit only, never with reduced motion. Black fades to dark grey (`--neutral--darker`), thick bars in 15% white (about 12% of the screen width each, half a bar apart; the brand bars' `skewY(-19deg)`) rise through the whole screen from left to right, the logo (the navbar's) rises in, and everything fades out. That's 2.55 s from when the page's script runs, about 2.9 s after the page opens. Any click, key or scroll skips it. `site-head.js` decides (sessionStorage `pb-intro`) and keeps the page black from the first paint; `site.js` builds `.pb-intro`, removes it, and only then starts the counters. If the script never runs, the black cover fades by itself after 3 s; a page that took over 2.5 s to load or opened in a background tab skips it. Add `?intro` to any URL to see it again.
 - Sections, cards and footer columns below the first screen rise in as they enter, staggered in reading order. Content already on screen at load is never hidden, and nothing is hidden when the script doesn't run.
 - Pattern bars slide up from their edge when seen (bars already on screen at load are shown as they are); `data-bars-scrub` bars follow the scroll.
 - Whole numbers ("17+", "100+", "14") count up once when seen.
@@ -118,3 +119,5 @@ The pipeline, run from a working folder that holds the canvas export (`canvas/pr
 - Radio inputs need the Radio field wrapper (the builder's `FormRadioInput` creates it). Their `name` stays `radio-N`, so the script regroups them.
 - Webflow's `.w-richtext::before/::after` clearfix becomes a grid or flex item. It is removed for every rich text that has a Client-First class.
 - Reusing another page's class names with different styles silently keeps the first style. Pakalpojumi reviews therefore use `services-reviews_*`.
+- The WHTML builder drops an element's whole class list when its first class has no CSS rules (a section class used only as a name): create that class first (`create_style`, plus its `color-scheme-*` combo) and apply it with `set_style`.
+- WHTML media queries must be written exactly `@media screen and (max-width: 991px)` (767px, 479px).

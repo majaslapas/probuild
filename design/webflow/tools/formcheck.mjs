@@ -60,7 +60,7 @@ for (const [name, path, open] of CASES) {
       const row = page.locator('.pbc_sets [data-id]').first();
       await row.locator('.pbc_row-main').click(); await row.locator('.pbc_in[data-k="q"]').fill('50');
       await page.click('.pbc_foot [data-cta]');
-    } else await page.click('.pbc_head [data-request]');
+    } else await page.click('[data-pbc-ask]');
   } else await page.evaluate((s) => document.querySelector(s).scrollIntoView({ block: 'center' }), sel);
   await page.waitForTimeout(6000);
   const st = await page.evaluate((s) => {

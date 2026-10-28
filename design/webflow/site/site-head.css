@@ -69,8 +69,8 @@ html.pb-intro-on::before{display:none}
 .pb-intro{position:fixed;inset:0;z-index:2147483647;overflow:hidden;background:var(--neutral--darkest,#000);animation:pb-intro-out .5s var(--pb-ease) 2.05s forwards}
 .pb-intro.is-skip{animation:pb-intro-skip .25s var(--pb-ease) forwards}
 .pb-intro_bg{position:absolute;inset:0;background:var(--neutral--darker,#191919);opacity:0;animation:pb-intro-in .6s var(--pb-ease) forwards}
-.pb-intro_bars{--pb-bw:clamp(2.5rem,6vw,6rem);position:absolute;inset:0;display:flex;justify-content:center;gap:var(--pb-bw)}
-.pb-intro_bar{flex:none;width:var(--pb-bw);height:100%;background:var(--opacity--white-10,rgba(255,255,255,.1));transform:skewY(-19deg);translate:0 115%;animation:pb-intro-rise 1s cubic-bezier(.77,0,.175,1) calc(.1s + var(--i,0) * 40ms) forwards}
+.pb-intro_bars{--pb-bw:clamp(4.5rem,12vw,11rem);position:absolute;inset:0;display:flex;justify-content:center;gap:calc(var(--pb-bw) / 2)}
+.pb-intro_bar{flex:none;width:var(--pb-bw);height:100%;background:rgba(255,255,255,.15);transform:skewY(-19deg);translate:0 115%;animation:pb-intro-rise 1s cubic-bezier(.77,0,.175,1) calc(.1s + var(--i,0) * 40ms) forwards}
 .pb-intro_logo{position:absolute;left:50%;top:50%;width:min(20rem,68vw);height:auto;translate:-50% -50%;opacity:0;transform:translateY(1rem) scale(.96);animation:pb-intro-logo .55s var(--pb-ease) 1s forwards}
 @keyframes pb-intro-in{to{opacity:1}}
 @keyframes pb-intro-out{to{opacity:0;visibility:hidden}}
