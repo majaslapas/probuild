@@ -61,3 +61,19 @@ button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 @media (pointer:coarse){.form_check.is-error{line-height:2}}
 .w-form [type=submit]:disabled{cursor:progress}
 .w-form.is-check-failed [type=submit]{opacity:.5;cursor:not-allowed}
+/* Intro (first page of a visit): black fades to dark grey, brand bars rise through the screen, the logo rises in,
+   all fades out (2.55 s). site-head.js decides (html.pb-intro-wait; never the class .pb-intro, which would style the
+   page itself), site.js builds .pb-intro and removes it. */
+html.pb-intro-wait::before{content:"";position:fixed;inset:0;z-index:2147483647;background:#000;animation:pb-intro-out .4s 3s forwards}
+html.pb-intro-on::before{display:none}
+.pb-intro{position:fixed;inset:0;z-index:2147483647;overflow:hidden;background:var(--neutral--darkest,#000);animation:pb-intro-out .5s var(--pb-ease) 2.05s forwards}
+.pb-intro.is-skip{animation:pb-intro-skip .25s var(--pb-ease) forwards}
+.pb-intro_bg{position:absolute;inset:0;background:var(--neutral--darker,#191919);opacity:0;animation:pb-intro-in .6s var(--pb-ease) forwards}
+.pb-intro_bars{--pb-bw:clamp(2.5rem,6vw,6rem);position:absolute;inset:0;display:flex;justify-content:center;gap:var(--pb-bw)}
+.pb-intro_bar{flex:none;width:var(--pb-bw);height:100%;background:var(--opacity--white-10,rgba(255,255,255,.1));transform:skewY(-19deg);translate:0 115%;animation:pb-intro-rise 1s cubic-bezier(.77,0,.175,1) calc(.1s + var(--i,0) * 40ms) forwards}
+.pb-intro_logo{position:absolute;left:50%;top:50%;width:min(20rem,68vw);height:auto;translate:-50% -50%;opacity:0;transform:translateY(1rem) scale(.96);animation:pb-intro-logo .55s var(--pb-ease) 1s forwards}
+@keyframes pb-intro-in{to{opacity:1}}
+@keyframes pb-intro-out{to{opacity:0;visibility:hidden}}
+@keyframes pb-intro-skip{to{opacity:0;visibility:hidden}}
+@keyframes pb-intro-rise{to{translate:0 -115%}}
+@keyframes pb-intro-logo{to{opacity:1;transform:none}}

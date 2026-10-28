@@ -42,7 +42,7 @@ Every list sorts by `seciba` (lowest first). Empty optional fields hide their bl
 
 | Where | File | What it does |
 |---|---|---|
-| Site head | `site/site-head.html` (built from `site-head-links.html` + `site-head.css`) | Favicon, touch icon, theme colour; base resets over Webflow defaults, focus rings, reduced motion, rich-text clearfix removal; brand pattern and motion styles (below) |
+| Site head | `site/site-head.html` (built from `site-head-links.html` + `<style>` `site-head.css` + `<script>` `site-head.js`) | Favicon, touch icon, theme colour; base resets over Webflow defaults, focus rings, reduced motion, rich-text clearfix removal; brand pattern, motion and intro styles (below); the intro's on/off switch |
 | Site footer | `site/site.js` (wrapped in `<script>`) | Filters, accordion, calculator service buttons, CMS card links, galleries, lightboxes, form fixes (below); brand bars, reveals, counters, photo drift |
 | Page head | `page-code/<page>.head.html` | Per-page CSS that Webflow classes cannot express: descendant hovers, pseudo-elements, hero entrance keyframes, `:has()` empty-state rules |
 
@@ -76,6 +76,7 @@ The site head CSS only keeps the hosts clipping and stacking, plus the list mark
 
 **Motion** (all in `site.js` and the site head, nothing in Webflow Interactions):
 
+- **Intro (2026-10-28):** plays on the first page of a visit only, never with reduced motion. Black fades to dark grey (`--neutral--darker`), thick bars in 10% white (`--opacity--white-10`, the brand bars' `skewY(-19deg)`) rise through the whole screen from left to right, the logo (the navbar's) rises in, and everything fades out. That's 2.55 s from when the page's script runs, about 2.9 s after the page opens. Any click, key or scroll skips it. `site-head.js` decides (sessionStorage `pb-intro`) and keeps the page black from the first paint; `site.js` builds `.pb-intro`, removes it, and only then starts the counters. If the script never runs, the black cover fades by itself after 3 s; a page that took over 2.5 s to load or opened in a background tab skips it. Add `?intro` to any URL to see it again.
 - Sections, cards and footer columns below the first screen rise in as they enter, staggered in reading order. Content already on screen at load is never hidden, and nothing is hidden when the script doesn't run.
 - Pattern bars slide up from their edge when seen (bars already on screen at load are shown as they are); `data-bars-scrub` bars follow the scroll.
 - Whole numbers ("17+", "100+", "14") count up once when seen.

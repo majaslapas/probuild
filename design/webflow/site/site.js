@@ -5,6 +5,48 @@
   // The site is in Latvian; until Site settings set the language, tell browsers and screen readers here.
   if (!/^lv/i.test(document.documentElement.lang)) document.documentElement.lang = 'lv';
 
+  // Intro on the first page of a visit (site-head.js decides; styles in the site head). Any click, key or
+  // scroll skips it. whenIntroDone() holds back motion that would otherwise play unseen behind it.
+  var introWaiting = [];
+  var whenIntroDone = function (fn) { if (introWaiting) introWaiting.push(fn); else fn(); };
+  (function () {
+    var root = document.documentElement;
+    var finish = function () { var fns = introWaiting; introWaiting = null; fns.forEach(function (fn) { fn(); }); };
+    if (!root.classList.contains('pb-intro-wait')) return finish();
+    // Slow page (it would cover a page already read) or a background tab (nobody would see it): no intro.
+    if (performance.now() > 2500 || document.hidden) { root.classList.remove('pb-intro-wait'); return finish(); }
+    var el = document.createElement('div'), bars = document.createElement('div'), logo = document.querySelector('.navbar_logo');
+    el.className = 'pb-intro'; el.setAttribute('aria-hidden', 'true');
+    el.innerHTML = '<div class="pb-intro_bg"></div>';
+    bars.className = 'pb-intro_bars';
+    el.appendChild(bars);
+    var addBar = function (i) {
+      var b = document.createElement('div');
+      b.className = 'pb-intro_bar'; b.style.setProperty('--i', i);
+      return bars.appendChild(b);
+    };
+    document.body.appendChild(el);
+    var w = addBar(0).offsetWidth || 64, n = Math.ceil(window.innerWidth / (2 * w)) + 1; // bar, gap, bar… edge to edge
+    for (var i = 1; i < n; i++) addBar(i);
+    if (logo) {
+      var img = document.createElement('img');
+      img.className = 'pb-intro_logo'; img.alt = ''; img.src = logo.currentSrc || logo.src;
+      el.appendChild(img);
+    }
+    root.classList.add('pb-intro-on');
+    var t0 = performance.now(), kinds = ['pointerdown', 'keydown', 'wheel', 'touchstart'];
+    var off = function () { kinds.forEach(function (k) { window.removeEventListener(k, skip, true); }); };
+    var skip = function () { off(); if (performance.now() - t0 < 2000) el.classList.add('is-skip'); }; // not once it fades out
+    kinds.forEach(function (k) { window.addEventListener(k, skip, { capture: true, passive: true }); });
+    var done = function () {
+      if (!el.parentNode) return;
+      off(); el.remove(); root.classList.remove('pb-intro-wait', 'pb-intro-on');
+      finish();
+    };
+    el.addEventListener('animationend', function (e) { if (e.target === el) done(); });
+    setTimeout(done, 4000); // in case animationend never comes
+  })();
+
   // Webflow fills empty placeholders with "Example Text"; the design has none there.
   $$('input[placeholder], textarea[placeholder]').forEach(function (i) {
     if (/^example text$/i.test(i.getAttribute('placeholder'))) i.removeAttribute('placeholder');
@@ -364,7 +406,7 @@
       if (!m || el.children.length) return;
       el.dataset.pbCount = m[1]; el.dataset.pbSuffix = m[2];
       el.classList.add('pb-count');
-      countIo.observe(el);
+      whenIntroDone(function () { countIo.observe(el); });
     });
 
     // Scroll: hero and call-to-action photos drift slower than the page; scrub bars follow the scroll.
