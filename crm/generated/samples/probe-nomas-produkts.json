@@ -8,6 +8,7 @@
       "telefons": "REPLACE-with-the-client-own-business-phone",
       "datums": "Test value",
       "ilgums": "6 h",
+      "epasts": "probe+tests@example.com",
       "produkts": "Ekskavators-iekrāvējs",
       "form_key": "nomas-produkts",
       "purpose": "Tehnikas noma",
@@ -27,7 +28,7 @@
       "channel": "probe"
     },
     "schema": [],
-    "submittedAt": "2026-10-28T08:30:58.000Z",
+    "submittedAt": "2026-10-28T13:13:35.000Z",
     "id": "000000000000000000000006",
     "formId": "000000000000000000000000",
     "formElementId": "f722b463-050e-f37c-ca3b-cbe6ed38bd20",

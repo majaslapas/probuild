@@ -8,6 +8,7 @@
       "telefons": "REPLACE-with-the-client-own-business-phone",
       "no": "Test value",
       "lidz": "Test value",
+      "epasts": "probe+tests@example.com",
       "zina": "TESTS — integration check, please ignore. ā ē ī ū č ģ ķ ļ ņ š ž",
       "form_key": "nomas-pieprasijums",
       "purpose": "Tehnikas noma",
@@ -27,7 +28,7 @@
       "channel": "probe"
     },
     "schema": [],
-    "submittedAt": "2026-10-28T08:30:58.000Z",
+    "submittedAt": "2026-10-28T13:13:35.000Z",
     "id": "000000000000000000000005",
     "formId": "000000000000000000000000",
     "formElementId": "e86c52af-94a3-9432-bf15-ea2220226664",

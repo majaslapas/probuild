@@ -1,6 +1,6 @@
 # Forms inventory
 
-12 pages read, 7 distinct forms with fields.
+11 pages read, 6 distinct forms with fields.
 
 ## Līdzīgs projekts
 
@@ -28,6 +28,7 @@ Hidden inputs already in the form: `projekts`
 | `telefons` | `telefons` | tel |  | Telefons | phone |  |
 | `datums` | `datums` | date |  | Datums |  |  |
 | `ilgums` | `ilgums` | text |  | Aptuvenais ilgums |  |  |
+| `epasts` | `epasts` | email |  | E-pasts | email |  |
 
 Hidden inputs already in the form: `produkts`
 
@@ -75,6 +76,7 @@ Hidden inputs already in the form: `produkts`
 | `telefons` | `telefons` | tel |  | Telefons | phone |  |
 | `no` | `no` | date |  | No |  |  |
 | `lidz` | `lidz` | date |  | Līdz |  |  |
+| `epasts` | `epasts` | email |  | E-pasts | email |  |
 | `zina` | `zina` | textarea |  | Ko vēlaties nomāt? | message |  |
 
 ## Pakalpojuma pieteikums
@@ -90,15 +92,3 @@ Hidden inputs already in the form: `produkts`
 | `telefons` | `telefons` | tel | yes | Telefons | phone |  |
 | `epasts` | `epasts` | email |  | E-pasts (nav obligāts) | email |  |
 | `zina` | `zina` | textarea |  | Jūsu iecere | message |  |
-
-## Stila paraugs
-
-- element ID: `d6034131-2140-1c34-0373-e5700dfad24b`
-- pages (1): `/style-guide`
-
-| name (published) | data-name | type | required | label | role guess | options |
-|---|---|---|---|---|---|---|
-| `Vards` | `Vards` | text |  | Vards | first_name |  |
-| `Pakalpojums` | `Pakalpojums` | select |  | Pakalpojums | service | Būvniecība, Remonts, Noma |
-| `Zina` | `Zina` | textarea |  | Zina | message |  |
-| `Piekrītu privātuma politikai` | `Piekrītu privātuma politikai` | checkbox |  | Piekrītu privātuma politikai | consent |  |
