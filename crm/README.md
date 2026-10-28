@@ -3,7 +3,7 @@
 Built with the webflow-ghl-integration skill: every Webflow form → one Webflow "Form submission" webhook (no form
 filter) → one GHL workflow with an Inbound Webhook trigger → contact, tags, opportunity, note, e-mail to the team.
 
-## Status (2026-10-27)
+## Status (2026-10-28)
 
 | Part | State |
 |---|---|
@@ -14,7 +14,8 @@ filter) → one GHL workflow with an Inbound Webhook trigger → contact, tags, 
 | Site script (`generated/site-footer-crm.html`) | live on staging as the **first** block of the site footer, before `design/webflow/site/site.js`; copy of the whole live footer: `design/webflow/site/site-footer.live.html` |
 | Check of every live form with `webCrm.context` (no submit) | done: keys, purpose, subject, E.164 phone, page, language, channel/UTM correct |
 | Style Guide page (sample form without phone/e-mail) | made a draft (2026-10-28), not published |
-| GHL sub-account: custom fields, pipelines, workflow, Webflow webhook, test sign-ups | **not started** — the ProBuild sub-account is not in the CRM connection yet, and the workflow needs a browser signed in to GHL (see `HANDOFF.md`) |
+| GHL custom fields (25, opportunity) and the two pipelines | done 2026-10-28 through the CRM connector (IDs below) |
+| GHL workflow, Webflow webhook, test sign-ups | **open** — ProBuild's workflow API is off (403 `WORKFLOW_API_NOT_ENABLED_FOR_LOCATION`), so the workflow is built in GHL's UI in a browser signed in as the person (see `HANDOFF.md`) |
 
 ## Forms
 
@@ -45,6 +46,50 @@ by default; `aprekins_summa` can be mapped to it if the team wants the estimate 
 - Tests are real sign-ups only, sent from the staging site through Webflow to GHL: no synthetic probes, so no test
   phone is stored (`test_phone` left out on purpose; `ghl-probe.sh` refuses the samples).
 - The Style Guide page is a draft, so its sample form cannot reach GHL.
+
+## GHL sub-account „ProBuild“ (`LkU3HqQjzSJOBE4wFaGf`)
+
+Created 2026-10-28 through the CRM connector. The fields were created with plain-letter names first and then renamed,
+so every key is ASCII (GHL drops letters like ē from keys: „Mērķis“ would have become `opportunity.mris`). The API
+cannot make folders for opportunity fields, so they sit in GHL's default opportunity folder; moving them into a folder
+„Mājaslapas pieteikums“ in the UI is optional and changes no key.
+
+| Field | Type | Key | ID |
+|---|---|---|---|
+| Forma | Single line | `opportunity.forma` | `hyt7USjWjwlUzTMBoKr1` |
+| Mērķis | Single line | `opportunity.merkis` | `UkXtLDpWkp8vrsSGj32B` |
+| Lapa | Single line | `opportunity.lapa` | `ePKwDGWfjjYtp8LFA82M` |
+| Objekta adrese vai pilsēta | Single line | `opportunity.objekta_adrese_vai_pilseta` | `CMPwoRX7XKxqwyWuFVqR` |
+| Ziņa | Multi line | `opportunity.zina` | `vm7mUPj4JBFVdujE8QIa` |
+| Kalkulatora aprēķins | Multi line | `opportunity.kalkulatora_aprekins` | `uHfhkBwW5yuS0Xa5csTX` |
+| Aprēķina jomas | Single line | `opportunity.aprekina_jomas` | `M8TFx4sjD192TY61c0qj` |
+| Aprēķina darbu skaits | Number | `opportunity.aprekina_darbu_skaits` | `nMbewaywnkc61mcrM0T9` |
+| Aprēķina summa (€) | Number | `opportunity.aprekina_summa_eur` | `0goG9zG3RXVjJnBgVK57` |
+| Aprēķins no (€) | Number | `opportunity.aprekins_no_eur` | `GbaCUhdZl2qmMGFEP1VT` |
+| Aprēķins līdz (€) | Number | `opportunity.aprekins_lidz_eur` | `7LjDcMaAyiHGGBU4CAaH` |
+| Ikmēneša maksa (€) | Number | `opportunity.ikmenesa_maksa_eur` | `94jh8uSpTGrSkhF1Sd9K` |
+| Pakalpojums | Single line | `opportunity.pakalpojums` | `nXwXvQx2jfvWErlNjXfg` |
+| Interese | Single line | `opportunity.interese` | `3IfB9rhQatgFgKFsWARo` |
+| Nomas sākums | Date | `opportunity.nomas_sakums` | `ivgiIf7aa1NxYUnxN6XB` |
+| Nomas beigas | Date | `opportunity.nomas_beigas` | `mxHNM5qXdu3jCf4d74Mk` |
+| Vēlamais datums | Date | `opportunity.velamais_datums` | `o5cufKbl34JM1h4jnVoS` |
+| Nomas ilgums | Single line | `opportunity.nomas_ilgums` | `yXf4seWefbGqnl7HXSyE` |
+| Tehnika | Single line | `opportunity.tehnika` | `NtcpTReXidzCmrDgcqho` |
+| Projekts | Single line | `opportunity.projekts` | `MrtNs6sxiVzqJJdnD6Fs` |
+| Avots | Single line | `opportunity.avots` | `Pm8Z9CMQyBoUriQb78NU` |
+| UTM source | Single line | `opportunity.utm_source` | `Xzfr03hnqofdTCAbiuUy` |
+| UTM medium | Single line | `opportunity.utm_medium` | `cJfg2XPcTDW2Xfx8XpSv` |
+| UTM campaign | Single line | `opportunity.utm_campaign` | `QzfdVa3USTS11Gri12HO` |
+| Webflow iesnieguma ID | Single line | `opportunity.webflow_iesnieguma_id` | `vdYWPyZuIhG9RoQSDPve` |
+
+| Pipeline | ID | Stages (first one is where the workflow puts new sign-ups) |
+|---|---|---|
+| Mājaslapas pieteikumi | `ksmrHKuTsnSPJ0EFzxLX` | **Jauns pieteikums** › Sazinājāmies › Objekta apskate › Piedāvājums nosūtīts › Līgums noslēgts |
+| Tehnikas noma | `IrBmf5Xe9O9BaXgWH8Uv` | **Jauns pieprasījums** › Sazinājāmies › Rezervēts › Iznomāts › Atgriezts |
+
+Only the first stages were agreed with the client; the later ones are suggestions and can be renamed, reordered or
+removed in Opportunities → Pipelines without touching the workflow (it only uses the first stage). Won and lost are
+GHL statuses, not stages.
 
 ## Known, harmless
 

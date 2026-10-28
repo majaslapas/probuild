@@ -11,9 +11,9 @@ Chrome** — a cloud session cannot use the person's signed-in browser.
   `crm/generated/ghl/custom-fields.csv`, and the skill's `references/ghl-ui.md` and `references/testing.md` §3.
   The spec still mentions `ghl-probe.sh`; skip those lines, the steps below replace them.
 - Webflow site `6adf4142414584038f9dbb34`, staging https://probuild-group.webflow.io. Publish to staging only.
-- GHL: the **ProBuild** sub-account. The CRM connector in the cloud session did not list it (only 15 other
-  sub-accounts); not needed for the UI build, but reconnect the connector with ProBuild included if API checks
-  (`ghl-readout`-style reads) are wanted.
+- GHL: the **ProBuild** sub-account (`LkU3HqQjzSJOBE4wFaGf`). The 25 opportunity custom fields and both pipelines
+  were created on 2026-10-28 through the CRM connector (IDs and keys: `crm/README.md`). ProBuild's workflow API is off
+  (403 `WORKFLOW_API_NOT_ENABLED_FOR_LOCATION`), which is why the workflow itself needs the browser.
 
 ## Before starting
 
@@ -23,10 +23,11 @@ Chrome** — a cloud session cannot use the person's signed-in browser.
 ## Build (Claude does the clicks; the person only signs in and copies the URL)
 
 1. Person signs in to GHL in the browser and opens the ProBuild sub-account.
-2. Settings → Custom Fields: create every row of `custom-fields.csv` in folder „Mājaslapas pieteikums“; open each after
-   saving and check its key is ASCII.
-3. Opportunities → Pipelines: „Mājaslapas pieteikumi“ (first stage „Jauns pieteikums“) and „Tehnikas noma“
-   (first stage „Jauns pieprasījums“).
+2. ~~Custom fields~~ — done via the API. Only check: Settings → Custom Fields → Opportunity shows the 25 fields of
+   `custom-fields.csv` (in GHL's default opportunity folder; moving them to a folder „Mājaslapas pieteikums“ is
+   optional). Do not create them again: a second „Mērķis“ would get a different key.
+3. ~~Pipelines~~ — done via the API: „Mājaslapas pieteikumi“ › „Jauns pieteikums“ and „Tehnikas noma“ ›
+   „Jauns pieprasījums“ (plus suggested later stages the team may rename).
 4. Automation → Workflows → new workflow „Mājaslapa → Pieteikumi“ → trigger **Inbound Webhook**.
    **Keep this panel open** until the trigger is saved (closing it discards the trigger and its URL).
 5. Person copies the webhook URL (copy icon) into a password manager and pastes it into Webflow: Site settings →
