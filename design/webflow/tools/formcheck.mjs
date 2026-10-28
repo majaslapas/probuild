@@ -3,7 +3,8 @@
 // Cloudflare is aborted.
 //   node tools/formcheck.mjs [pass|fail|real] [--site https://probuild-group.webflow.io]
 // Webflow's spam check (Cloudflare Turnstile) never passes in an automated browser, so the page's
-// site key is swapped for one of Cloudflare's test keys in this browser only:
+// site key is swapped for one of Cloudflare's test keys in this browser only (the first page of a visit
+// also plays the site's intro; the checks wait it out):
 //   pass  1x00000000000000000000AA — every button must turn on and its click must reach submit
 //   fail  2x00000000000000000000AB — every form must show the failure line with retry and contacts
 //   real  the site's own key — what a browser driven by a tool sees (same as fail)
@@ -30,20 +31,24 @@ const ok = (cond, msg) => { console.log((cond ? 'ok   ' : 'FAIL ') + msg); if (!
 for (const [name, path, open] of CASES) {
   const page = await (await browser.newContext({ viewport: { width: 1440, height: 900 } })).newPage();
   let posts = 0;
-  await page.route('**/*', async (r) => {
+  await page.route('**/*', (r) => {
     const q = r.request();
     if (q.method() !== 'GET' && !/challenges\.cloudflare\.com/.test(q.url())) { posts++; return r.abort(); }
-    if (KEY && q.resourceType() === 'document') {
-      const res = await r.fetch();
-      const body = (await res.text()).replace(/data-turnstile-sitekey="[^"]*"/g, 'data-turnstile-sitekey="' + KEY + '"');
-      return r.fulfill({ response: res, body, headers: { ...res.headers(), 'content-type': 'text/html; charset=utf-8' } });
-    }
     return r.continue();
   });
-  await page.addInitScript(() => {
+  // The key is swapped in the page itself as each form is parsed, before webflow.js reads it (re-fetching the
+  // page in the route can hit a different, stale copy on Webflow's CDN); every submit is cancelled first.
+  await page.addInitScript((key) => {
     window.__submits = [];
     window.addEventListener('submit', (e) => { window.__submits.push(e.target.getAttribute('data-name')); e.preventDefault(); e.stopImmediatePropagation(); }, true);
-  });
+    if (!key) return;
+    const swap = (el) => { if (el.getAttribute('data-turnstile-sitekey') !== key) el.setAttribute('data-turnstile-sitekey', key); };
+    new MutationObserver((records) => records.forEach((r) => r.addedNodes.forEach((n) => {
+      if (n.nodeType !== 1) return;
+      if (n.hasAttribute('data-turnstile-sitekey')) swap(n);
+      n.querySelectorAll('[data-turnstile-sitekey]').forEach(swap);
+    }))).observe(document, { childList: true, subtree: true });
+  }, KEY);
   const errors = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto(site + path, { waitUntil: 'networkidle' });
