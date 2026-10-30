@@ -16,6 +16,7 @@ Mājaslapa būvniecības, remonta un tehnikas nomas uzņēmumam ProBuildGroup (S
 | [docs/webflow-client-first.md](docs/webflow-client-first.md) | Client-First klases, tokeni → Webflow Variables, CMS kolekcijas |
 | [reference/](reference/) | Relume eksports: DESIGN.md (tokeni), sitemap, React komponentes, fonti, logo, bildes |
 | [design/claude-design/](design/claude-design/) | Claude Design audekla avoti (wireframe'i, stila vadlīnijas) |
+| [design/brand-kit/](design/brand-kit/) | Zīmola komplekta ģenerators: vadlīnijas (PDF), logo faili, krāsas, fonti, baneri, vizītkarte, e-pasta paraksts → zip |
 
 ## Claude Design
 
