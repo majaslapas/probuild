@@ -61,6 +61,11 @@ button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 @media (pointer:coarse){.form_check.is-error{line-height:2}}
 .w-form [type=submit]:disabled{cursor:progress}
 .w-form.is-check-failed [type=submit]{opacity:.5;cursor:not-allowed}
+/* GoHighLevel reviews widget (iframe from reputationhub.site). color-scheme matches the widget page, so the iframe stays
+   transparent: with the site's dark scheme Chrome paints it white, which showed as a line under the widget and at its
+   corners. The widget keeps a 19 px gutter on each side where the neighbouring cards peek in: the iframe is widened by
+   the gutter and the gutter clipped, so the cards line up with the section's content edges. */
+iframe.lc_reviews_widget{--pb-rw-gutter:19px;display:block;color-scheme:normal;width:calc(100% + 2 * var(--pb-rw-gutter))!important;min-width:calc(100% + 2 * var(--pb-rw-gutter))!important;margin:0 calc(-1 * var(--pb-rw-gutter));clip-path:inset(0 var(--pb-rw-gutter))}
 /* Intro (first page of a visit): black fades to dark grey, brand bars rise through the screen, the logo rises in,
    all fades out (2.55 s). site-head.js decides (html.pb-intro-wait; never the class .pb-intro, which would style the
    page itself), site.js builds .pb-intro and removes it. */

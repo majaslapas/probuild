@@ -43,7 +43,7 @@ Every list sorts by `seciba` (lowest first). Empty optional fields hide their bl
 
 | Where | File | What it does |
 |---|---|---|
-| Site head | `site/site-head.html` (built from `site-head-links.html` + `<style>` `site-head.css` + `<script>` `site-head.js`) | Favicon, touch icon, theme colour; base resets over Webflow defaults, focus rings, reduced motion, rich-text clearfix removal; brand pattern, motion and intro styles (below); the intro's on/off switch |
+| Site head | `site/site-head.html` (built from `site-head-links.html` + `<style>` `site-head.css` + `<script>` `site-head.js`) | Favicon, touch icon, theme colour; base resets over Webflow defaults, focus rings, reduced motion, rich-text clearfix removal; brand pattern, motion and intro styles (below); the intro's on/off switch; the GoHighLevel reviews widget fix (no white edge, no neighbouring cards peeking in at the sides) |
 | Site footer | `site/site.js` (wrapped in `<script>`) | Filters, accordion, calculator service buttons, CMS card links, galleries, lightboxes, form fixes (below); brand bars, reveals, counters, photo drift |
 | Page head | `page-code/<page>.head.html` | Per-page CSS that Webflow classes cannot express: descendant hovers, pseudo-elements, hero entrance keyframes, `:has()` empty-state rules |
 
