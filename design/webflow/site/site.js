@@ -331,6 +331,85 @@
     });
   });
 
+  // Reviews: the GoHighLevel reviews widget (iframe.lc_reviews_widget in a Code Embed) shows its button and dates in
+  // English, and the CRM cannot translate them. When the widget is set to the grid layout, the site reads the same
+  // reviews from the widget's public data API (no key, open to any site) and shows them as the design's review cards,
+  // in Latvian, with an „Ielādēt vairāk“ button. The CRM's settings still apply (minimum rating, text-only reviews,
+  // date, avatar, maximum count). Any other layout, or no answer from the API, leaves the widget as it is.
+  $$('iframe.lc_reviews_widget').forEach(function (frame) {
+    var loc = (frame.src.match(/review_widget\/([^/?#]+)/) || [])[1], id = (frame.src.match(/[?&]widgetId=([^&#]+)/) || [])[1];
+    if (!loc || !id || !window.fetch) return;
+    var api = 'https://services.leadconnectorhq.com/reputation/widgets/data?locationId=' + loc + '&widgetId=' + id + '&projection=';
+    var get = function (p) { return fetch(api + p).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }); };
+    get('widget_config').then(function (d) {
+      var cfg = d.widgetConfig || {};
+      if (cfg.type !== 'grid' || cfg.reviewType === 'video') return;
+      return get('reviews&page=1&size=' + Math.min(cfg.maxReviews || 100, 100)).then(function (d) { showReviews(frame, cfg, d.reviews || []); });
+    }).catch(function () {});
+  });
+  function showReviews(frame, cfg, reviews) {
+    var min = +((cfg.minRatings || '').match(/\d/) || [0])[0];
+    reviews = reviews.filter(function (r) { return r.starRating >= min && (!cfg.isDescriptionOnlyEnabled || (r.comment || '').trim()); });
+    if (!reviews.length) return;
+    var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+    var date = new Intl.DateTimeFormat('lv-LV', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    var cards = reviews.map(function (r) {
+      var n = Math.max(0, Math.min(5, Math.round(r.starRating))), name = (r.reviewerName || '').trim() || 'Klients';
+      var card = el('figure', 'home-reviews_card pb-reviews_card'), top = el('div', 'pb-reviews_top');
+      var stars = el('span', 'stars', new Array(n + 1).join('★'));
+      if (n < 5) stars.appendChild(el('span', 'pb-reviews_star-off', new Array(6 - n).join('★')));
+      stars.setAttribute('aria-label', n + (n === 1 ? ' zvaigzne' : ' zvaigznes'));
+      top.appendChild(stars);
+      if (cfg.isDateEnabled !== false && r.dateAdded) {
+        var t = el('time', 'text-size-small text-color-muted', date.format(new Date(r.dateAdded)));
+        t.dateTime = r.dateAdded.slice(0, 10);
+        top.appendChild(t);
+      }
+      card.appendChild(top);
+      if ((r.comment || '').trim()) card.appendChild(el('blockquote', 'home-reviews_quote', r.comment.trim()));
+      var cap = el('figcaption', 'home-reviews_caption'), who = el('span', 'home-reviews_text-2');
+      if (cfg.isReviewerIconEnabled !== false) {
+        var initials = name.split(/\s+/).slice(0, 2).map(function (w) { return Array.from(w)[0] || ''; }).join('').toUpperCase();
+        var av = el('span', 'home-reviews_text', initials);
+        av.setAttribute('aria-hidden', 'true');
+        cap.appendChild(av);
+      }
+      who.appendChild(el('span', 'home-reviews_text-3', name));
+      who.appendChild(el('span', 'text-size-small text-color-muted', /google/i.test(r.iconUrl || '') ? 'Google atsauksme' : 'Atsauksme'));
+      cap.appendChild(who);
+      card.appendChild(cap);
+      card.tabIndex = -1; // „Ielādēt vairāk“ moves focus to the first new card
+      return card;
+    });
+    var box = el('div', 'pb-reviews'), grid = el('div', 'pb-reviews_grid'), more = el('button', 'button is-secondary pb-reviews_more', 'Ielādēt vairāk');
+    more.type = 'button';
+    box.appendChild(grid); box.appendChild(more);
+    frame.parentNode.insertBefore(box, frame);
+    frame.parentNode.removeChild(frame);
+    var shown = 0;
+    var show = function (focus) {
+      var cols = getComputedStyle(grid).gridTemplateColumns.split(' ').length, end = Math.min(cards.length, shown + Math.max(4, cols * 2));
+      var added = cards.slice(shown, end);
+      added.forEach(function (c) { grid.appendChild(c); });
+      added.forEach(function (c) { // long texts: 6 lines and „Lasīt vairāk“
+        var q = c.querySelector('.home-reviews_quote');
+        if (!q || q.scrollHeight <= q.clientHeight + 2) return;
+        var b = el('button', 'pb-reviews_toggle', 'Lasīt vairāk');
+        b.type = 'button'; b.setAttribute('aria-expanded', 'false');
+        b.addEventListener('click', function () {
+          var open = q.classList.toggle('is-open');
+          b.textContent = open ? 'Rādīt mazāk' : 'Lasīt vairāk'; b.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        q.parentNode.insertBefore(b, q.nextSibling);
+      });
+      if (focus && added[0]) added[0].focus({ preventScroll: true });
+      shown = end;
+      more.hidden = shown >= cards.length;
+    };
+    more.addEventListener('click', function () { show(true); });
+    show(false);
+  }
+
   // Motion. Brand pattern: .pattern-bars elements (two bars, built and styled in the Designer) slide up
   // from their edge when they come into view; with data-bars-scrub they follow the scroll instead.
   (function () {
