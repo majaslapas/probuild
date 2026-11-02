@@ -1,9 +1,10 @@
 import { createRequire } from 'module';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const base = 'https://probuild-group.webflow.io';
-const pages = ['/', '/pakalpojumi', '/cenas', '/noma', '/projekti', '/par-mums', '/kontakti',
+const pages = ['/', '/kalkulators', '/pakalpojumi', '/noma', '/projekti', '/par-mums', '/kontakti',
   '/nomas-produkts/ekskavators-iekravejs', '/nomas-produkts/pasizgazejs', '/nomas-produkts/grodu-satverejs', '/nomas-produkts/regipsa-pacelajs',
-  '/projekts/koka-karkasa-privatmaja', '/projekts/moderna-gimenes-maja', '/pakalpojums/pamatu-buvnieciba', '/pakalpojums/koku-zagesana-un-apauguma-novaksana'];
+  '/projekts/jumts-tukuma', '/projekts/saimniecibas-eka-vidrizi', '/projekts/jaunbuve-doles-sala', '/projekts/jaunbuve-ikskile',
+  '/projekts/fasade-vidrizi', '/projekts/garkalnu-pirts', '/pakalpojums/pamatu-buvnieciba', '/pakalpojums/koku-zagesana-un-apauguma-novaksana'];
 const b = await chromium.launch();
 const p = await b.newPage();
 const links = new Set();

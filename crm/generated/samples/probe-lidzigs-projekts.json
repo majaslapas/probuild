@@ -8,11 +8,11 @@
       "telefons": "REPLACE-with-the-client-own-business-phone",
       "epasts": "probe+tests@example.com",
       "zina": "TESTS — integration check, please ignore. ā ē ī ū č ģ ķ ļ ņ š ž",
-      "projekts": "Fasādes atjaunošana",
+      "projekts": "Fasāde Vidriži",
       "form_key": "lidzigs-projekts",
       "purpose": "Līdzīgs projekts",
-      "subject": "Līdzīgs projekts: Fasādes atjaunošana",
-      "page_path": "/projekts/fasades-atjaunosana",
+      "subject": "Līdzīgs projekts: Fasāde Vidriži",
+      "page_path": "/projekts/fasade-vidrizi",
       "prev_path": "",
       "site_host": "probuild-group.webflow.io",
       "page_lang": "lv",
@@ -27,11 +27,11 @@
       "channel": "probe"
     },
     "schema": [],
-    "submittedAt": "2026-10-28T13:13:35.000Z",
+    "submittedAt": "2026-11-02T12:20:20.000Z",
     "id": "000000000000000000000007",
     "formId": "000000000000000000000000",
     "formElementId": "b8fd0538-e508-3c03-e0ae-0791d216d596",
     "pageId": "000000000000000000000000",
-    "publishedPath": "/projekts/fasades-atjaunosana"
+    "publishedPath": "/projekts/fasade-vidrizi"
   }
 }

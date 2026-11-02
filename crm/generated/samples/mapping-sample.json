@@ -23,11 +23,11 @@
       "datums": "Sample",
       "ilgums": "6 h",
       "produkts": "Ekskavators-iekrāvējs",
-      "projekts": "Fasādes atjaunošana",
+      "projekts": "Fasāde Vidriži",
       "form_key": "kalkulators",
       "purpose": "Cenas piedāvājums (kalkulators)",
       "subject": "Cenas piedāvājums: Būvniecība, ≈ 12 €",
-      "page_path": "/pakalpojumi",
+      "page_path": "/kalkulators",
       "prev_path": "/",
       "site_host": "probuild-group.webflow.io",
       "page_lang": "lv",
@@ -42,11 +42,11 @@
       "channel": "sample"
     },
     "schema": [],
-    "submittedAt": "2026-10-28T13:13:35.000Z",
+    "submittedAt": "2026-11-02T12:20:20.000Z",
     "id": "000000000000000000000001",
     "formId": "000000000000000000000000",
     "formElementId": "dd2304bf-c927-eda7-8438-babe29a04994",
     "pageId": "000000000000000000000000",
-    "publishedPath": "/pakalpojumi"
+    "publishedPath": "/kalkulators"
   }
 }

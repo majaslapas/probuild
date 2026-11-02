@@ -2,7 +2,7 @@
   {
     "form": "Kalkulators",
     "element_id": "dd2304bf-c927-eda7-8438-babe29a04994",
-    "url": "https://probuild-group.webflow.io/pakalpojumi?utm_source=check&utm_campaign=scaffold",
+    "url": "https://probuild-group.webflow.io/kalkulators?utm_source=check&utm_campaign=scaffold",
     "referrer": "",
     "values": {
       "vards": "Test Person (TESTS)",
@@ -72,7 +72,7 @@
       "form_key": "kalkulators",
       "purpose": "Cenas piedāvājums (kalkulators)",
       "subject": "Cenas piedāvājums: Būvniecība, ≈ 12 €",
-      "page_path": "/pakalpojumi",
+      "page_path": "/kalkulators",
       "site_host": "probuild-group.webflow.io",
       "utm_source": "check",
       "channel": "check",
@@ -84,7 +84,7 @@
   {
     "form": "Pakalpojuma pieteikums",
     "element_id": "dd2304bf-c927-eda7-8438-babe29a049e5",
-    "url": "https://probuild-group.webflow.io/pakalpojumi?utm_source=check&utm_campaign=scaffold",
+    "url": "https://probuild-group.webflow.io/kalkulators?utm_source=check&utm_campaign=scaffold",
     "referrer": "",
     "values": {
       "pakalpojums": "Pamatu būvniecība",
@@ -134,7 +134,7 @@
       "form_key": "pakalpojuma-pieteikums",
       "purpose": "Pamatu būvniecība",
       "subject": "Pieteikums: Pamatu būvniecība",
-      "page_path": "/pakalpojumi",
+      "page_path": "/kalkulators",
       "site_host": "probuild-group.webflow.io",
       "utm_source": "check",
       "channel": "check",
@@ -304,14 +304,14 @@
   {
     "form": "Līdzīgs projekts",
     "element_id": "b8fd0538-e508-3c03-e0ae-0791d216d596",
-    "url": "https://probuild-group.webflow.io/projekts/fasades-atjaunosana?utm_source=check&utm_campaign=scaffold",
+    "url": "https://probuild-group.webflow.io/projekts/fasade-vidrizi?utm_source=check&utm_campaign=scaffold",
     "referrer": "",
     "values": {
       "vards": "Test Person (TESTS)",
       "telefons": "",
       "epasts": "probe+tests@example.com",
       "zina": "TESTS — integration check, please ignore. ā ē ī ū č ģ ķ ļ ņ š ž",
-      "projekts": "Fasādes atjaunošana"
+      "projekts": "Fasāde Vidriži"
     },
     "fields": {
       "vards": {
@@ -338,8 +338,8 @@
     "expect": {
       "form_key": "lidzigs-projekts",
       "purpose": "Līdzīgs projekts",
-      "subject": "Līdzīgs projekts: Fasādes atjaunošana",
-      "page_path": "/projekts/fasades-atjaunosana",
+      "subject": "Līdzīgs projekts: Fasāde Vidriži",
+      "page_path": "/projekts/fasade-vidrizi",
       "site_host": "probuild-group.webflow.io",
       "utm_source": "check",
       "channel": "check",

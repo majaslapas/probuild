@@ -15,4 +15,4 @@ Needs Node 18+, Playwright with Chromium, `curl` and `zip`. The fonts (Google Fo
 | `banners.mjs` | Banner copy, layouts and CSS; the calculator banners show how the calculator works and what it gives (no amounts). `layoutCheck` runs in each banner and fails the build if key blocks overlap, leave the safe area or overflow |
 | `guide.mjs` | Brand guide pages, business card, e-mail signature and the kit's README (`LASIMANI.md`) |
 
-Copy and prices come from the site (Cenas, Noma and the calculator section, 30 October 2026). When they change, change `COPY`, `UI` and `BEN` in `banners.mjs`, then rebuild.
+Copy and prices come from the site (30 October 2026: the pages now called Pakalpojumi, Noma and Kalkulators). The services banners print `probuildgroup.lv/pakalpojumi` (until 2 November 2026 `/cenas`). When they change, change `COPY`, `UI` and `BEN` in `banners.mjs`, then rebuild.

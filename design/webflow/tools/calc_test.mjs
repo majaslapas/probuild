@@ -1,5 +1,5 @@
 // Browser test of the price calculator on the Pakalpojumi page. Never submits a form.
-//   node tools/calc_test.mjs https://probuild-group.webflow.io/pakalpojumi [--html local.html]
+//   node tools/calc_test.mjs https://probuild-group.webflow.io/kalkulators [--html local.html]
 // --html serves a local copy of the page at that URL (to test before publishing).
 // Expected values come from calculator/prices.json (the client's workbooks), computed here
 // independently of the engine.

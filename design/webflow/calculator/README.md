@@ -1,6 +1,6 @@
-# Price calculator (Pakalpojumi)
+# Price calculator (Kalkulators)
 
-The calculator is the first section of Pakalpojumi (`#kalkulators`), under the page's own short header (`services-calc_head`: heading, one line, "Pieteikums bez aprēķina" and "Pakalpojumu cenas" links). Visitors pick works in five
+The calculator is the first section of Kalkulators (`/kalkulators#kalkulators`; the page was called Pakalpojumi, `/pakalpojumi`, until 2 November 2026), under the page's own short header (`services-calc_head`: heading, one line, "Pieteikums bez aprēķina" and "Visi pakalpojumi" links). Visitors pick works in five
 areas, enter amounts and see an approximate total with its range. To get a precise price offer they open the
 offer form, which sends their contact details together with the calculation.
 
@@ -105,7 +105,7 @@ The plain request form sends `Pakalpojums`, `vards`, `telefons`, `epasts`, `zina
 python3 -I tools/calc_data.py      # rebuild cenas.html and prices.json from source/*.xlsx (overwrites edits made in Webflow)
 python3 -I tools/calc_verify.py    # every price in cenas.html against the workbooks, cell by cell
 node tools/calc_build.mjs          # dist/page-head.html and dist/page-footer.html, with the size of every block
-node tools/calc_test.mjs https://probuild-group.webflow.io/pakalpojumi   # browser test (never submits)
+node tools/calc_test.mjs https://probuild-group.webflow.io/kalkulators   # browser test (never submits)
 ```
 
 `calc_test.mjs --html page.html` tests a local copy of the page served at that URL, before publishing.
@@ -113,16 +113,16 @@ After editing prices in Webflow, copy the embed's code back into `cenas.html` (a
 
 ## Admin: cenu labošana (LV)
 
-1. Webflow Designer → lapa **Pakalpojumi** → Navigator: sadaļa **Cenu kalkulators** → Code Embed
+1. Webflow Designer → lapa **Kalkulators** → Navigator: sadaļa **Cenu kalkulators** → Code Embed
    **„Kalkulators · CENAS (labot šeit)”**. Atveriet to ar dubultklikšķi.
 2. Bloka augšā ir instrukcija. Katra rinda ir viens darbs:
    `NO | CENA | LĪDZ | MĒRV. | DARBS`. Mainiet tikai skaitļus pirmajās trīs kolonnās: zemāko cenu, ieteicamo
    cenu (to kalkulators rāda kā galveno) un augstāko cenu. Decimāldaļu var rakstīt ar punktu vai komatu.
 3. Spiediet **Save & Close**, tad **Publish**. Pārbaudiet lapu adresē
-   `…webflow.io/pakalpojumi?pbc-check`: ja kādā rindā ir kļūda, virs kalkulatora parādās sarkans lodziņš ar
+   `…webflow.io/kalkulators?pbc-check`: ja kādā rindā ir kļūda, virs kalkulatora parādās sarkans lodziņš ar
    rindas numuru un iemeslu, un šī rinda netiek rādīta.
 4. Jaunu darbu pievieno, nokopējot rindu; jaunu darbu veidu – ar rindu `--- Nosaukums`. Pakalpojumu lapu
    pogas (Aprēķināt…) atver kalkulatoru pie darbu veida pēc nosaukuma (lapas kods, `services`), tāpēc, pārdēvējot darbu
    veidu, nomainiet nosaukumu arī tur.
-5. Tekstus (virsrakstus, pogu tekstus, piezīmes) un mērvienības var labot lapas iestatījumos: Pakalpojumi →
+5. Tekstus (virsrakstus, pogu tekstus, piezīmes) un mērvienības var labot lapas iestatījumos: Kalkulators →
    Page settings → Custom code → Before `</body>`, daļā `PBC_SETTINGS`. Zem tās esošo kodu labot nevajag.

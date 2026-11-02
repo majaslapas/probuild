@@ -24,7 +24,7 @@ MEDIA = {
     "screen and (max-width: 479px)": "@media screen and (max-width: 479px)",
 }
 LINKS = {
-    "site-01-sakums.dc.html": "/", "site-02-pakalpojumi.dc.html": "/pakalpojumi",
+    "site-01-sakums.dc.html": "/", "site-02-pakalpojumi.dc.html": "/kalkulators",
     "site-03-noma.dc.html": "/noma", "site-05-portfolio.dc.html": "/projekti",
     "site-07-par-mums.dc.html": "/par-mums", "site-08-kontakti.dc.html": "/kontakti",
 }

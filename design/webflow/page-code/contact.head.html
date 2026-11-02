@@ -7,6 +7,10 @@ textarea.form_input{padding:.875rem 1rem;min-height:9rem;resize:vertical}
 .contact_stat strong{font-family:var(--font--heading),monospace;font-weight:500;font-size:1.75rem;line-height:1;letter-spacing:-0.02em;color:var(--christine--light);font-variant-numeric:tabular-nums}
 .contact-partners img{height:1.75rem;width:auto;opacity:.65;transition:opacity .2s}
 .contact-partners img:hover{opacity:1}
+/* Rating card: the home page hero's block (classes home-hero_*), placed at the end of the header's right column.
+   On the home page it is glass over the photo; here, on black, it gets the contact cards' colour so its padding reads as a card */
+.contact-hero_top .home-hero_proof{justify-self:end;width:100%;max-width:26rem;background-color:var(--neutral--darker)}
+@media (max-width:991px){.contact-hero_top .home-hero_proof{justify-self:start}}
 @media (prefers-reduced-motion:no-preference){.contact-hero_top>*{animation:rise .8s cubic-bezier(.23,1,.32,1) both}.contact-channel{animation:rise .8s cubic-bezier(.23,1,.32,1) both}.contact_form{animation:rise .8s cubic-bezier(.23,1,.32,1) both}.contact_card{animation:rise .8s cubic-bezier(.23,1,.32,1) both}.contact-hero_top>*:nth-child(2){animation-delay:.08s}.contact-channel:nth-child(1){animation-delay:.12s}.contact-channel:nth-child(2){animation-delay:.18s}.contact-channel:nth-child(3){animation-delay:.24s}.contact_form{animation-delay:.3s}.contact_card:nth-child(1){animation-delay:.36s}.contact_card:nth-child(2){animation-delay:.42s}.contact_card:nth-child(3){animation-delay:.48s}}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .contact-partners img.contact-partners_image{height:1.5rem}

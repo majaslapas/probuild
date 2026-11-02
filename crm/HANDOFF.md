@@ -48,7 +48,7 @@ Chrome** — a cloud session cannot use the person's signed-in browser.
    Apps & integrations → Webhooks → Form submission → **no form filter**. The URL is a secret: never in chat, files,
    commands or screenshots.
 6. **Mapping reference:** the person sends one real sign-up through the **calculator** on
-   https://probuild-group.webflow.io/pakalpojumi (it carries the most keys): tick 2 works in 2 areas, enter amounts,
+   https://probuild-group.webflow.io/kalkulators (it carries the most keys): tick 2 works in 2 areas, enter amounts,
    „Saņemt precīzu cenas piedāvājumu“, fill name, phone, e-mail, address and a comment. In the trigger panel:
    Mapping reference → Fetch sample requests / Check for new requests → pick it → **Save trigger**. A draft workflow
    only records this request; it creates nothing.
@@ -67,12 +67,12 @@ Chrome** — a cloud session cannot use the person's signed-in browser.
 
    | Case | Page | Expect |
    |---|---|---|
-   | Kalkulators | /pakalpojumi → calculator → offer form | „Mājaslapas pieteikumi“; name „Cenas piedāvājums: … ≈ … €“; `aprekins` text and numbers filled |
-   | Pakalpojuma pieteikums | /pakalpojumi → „Pieteikums bez aprēķina“, pick a service | „Mājaslapas pieteikumi“; Source = the service |
+   | Kalkulators | /kalkulators → calculator → offer form | „Mājaslapas pieteikumi“; name „Cenas piedāvājums: … ≈ … €“; `aprekins` text and numbers filled |
+   | Pakalpojuma pieteikums | /kalkulators → „Pieteikums bez aprēķina“, pick a service | „Mājaslapas pieteikumi“; Source = the service |
    | Kontaktforma | /kontakti, pick „Remonts un apdare“ (not the first chip) | „Mājaslapas pieteikumi“; Source = Remonts un apdare |
    | Nomas pieprasījums | /noma with both dates | „Tehnikas noma“; dates not shifted |
    | Tehnikas nomas pieprasījums | /nomas-produkts/ekskavators-iekravejs | „Tehnikas noma“; Tehnika = the machine |
-   | Līdzīgs projekts | /projekts/fasades-atjaunosana | „Mājaslapas pieteikumi“; Projekts = Fasādes atjaunošana |
+   | Līdzīgs projekts | /projekts/fasade-vidrizi | „Mājaslapas pieteikumi“; Projekts = Fasāde Vidriži |
 
 9. Check each run yourself: Execution logs (every action Executed) → the contact → fields, tags `majaslapa` +
    `forma-<key>`, note without leftover `{{…}}`, opportunity in the right pipeline, e-mail arrived. `payload.id`

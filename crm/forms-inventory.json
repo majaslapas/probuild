@@ -1,16 +1,36 @@
 {
   "pages_read": [
     "/",
+    "/kalkulators",
     "/kontakti",
     "/noma",
     "/nomas-produkts/ekskavators-iekravejs",
+    "/nomas-produkts/grodu-satverejs",
     "/nomas-produkts/pasizgazejs",
+    "/nomas-produkts/regipsa-pacelajs",
     "/pakalpojumi",
+    "/pakalpojums/apzalumosana-un-labiekartosana",
+    "/pakalpojums/buvgruzu-izvesana-un-utilizacija",
+    "/pakalpojums/demontaza-un-konstrukciju-nojauksana",
+    "/pakalpojums/drenazas-un-melioracijas-darbi",
+    "/pakalpojums/eku-apsaimniekosana-un-uzturesana",
+    "/pakalpojums/eku-renovacija-un-rekonstrukcija",
+    "/pakalpojums/fasades-darbi",
+    "/pakalpojums/inzeniertiklu-un-komunikaciju-izbuve",
     "/pakalpojums/jumta-darbi",
+    "/pakalpojums/kokapstrade",
+    "/pakalpojums/koku-zagesana-un-apauguma-novaksana",
+    "/pakalpojums/metalapstrade",
+    "/pakalpojums/pamatu-buvnieciba",
+    "/pakalpojums/remonta-un-apdares-darbi",
     "/par-mums",
     "/projekti",
-    "/projekts/fasades-atjaunosana",
-    "/projekts/koka-karkasa-privatmaja"
+    "/projekts/fasade-vidrizi",
+    "/projekts/garkalnu-pirts",
+    "/projekts/jaunbuve-doles-sala",
+    "/projekts/jaunbuve-ikskile",
+    "/projekts/jumts-tukuma",
+    "/projekts/saimniecibas-eka-vidrizi"
   ],
   "langs": [
     "en"
@@ -25,8 +45,12 @@
       "crm_key": "",
       "turnstile": false,
       "pages": [
-        "/projekts/fasades-atjaunosana",
-        "/projekts/koka-karkasa-privatmaja"
+        "/projekts/fasade-vidrizi",
+        "/projekts/garkalnu-pirts",
+        "/projekts/jaunbuve-doles-sala",
+        "/projekts/jaunbuve-ikskile",
+        "/projekts/jumts-tukuma",
+        "/projekts/saimniecibas-eka-vidrizi"
       ],
       "fields": [
         {
@@ -102,7 +126,9 @@
       "turnstile": false,
       "pages": [
         "/nomas-produkts/ekskavators-iekravejs",
-        "/nomas-produkts/pasizgazejs"
+        "/nomas-produkts/grodu-satverejs",
+        "/nomas-produkts/pasizgazejs",
+        "/nomas-produkts/regipsa-pacelajs"
       ],
       "fields": [
         {
@@ -179,7 +205,9 @@
           "ref": "datums",
           "pages": [
             "/nomas-produkts/ekskavators-iekravejs",
-            "/nomas-produkts/pasizgazejs"
+            "/nomas-produkts/grodu-satverejs",
+            "/nomas-produkts/pasizgazejs",
+            "/nomas-produkts/regipsa-pacelajs"
           ]
         }
       ],
@@ -197,7 +225,7 @@
       "crm_key": "",
       "turnstile": false,
       "pages": [
-        "/pakalpojumi"
+        "/kalkulators"
       ],
       "fields": [
         {
@@ -522,7 +550,7 @@
       "crm_key": "",
       "turnstile": false,
       "pages": [
-        "/pakalpojumi"
+        "/kalkulators"
       ],
       "fields": [
         {
@@ -603,7 +631,7 @@
           "field": "pakalpojums",
           "ref": "pakalpojums",
           "pages": [
-            "/pakalpojumi"
+            "/kalkulators"
           ]
         }
       ],

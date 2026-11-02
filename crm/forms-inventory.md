@@ -1,11 +1,11 @@
 # Forms inventory
 
-11 pages read, 6 distinct forms with fields.
+31 pages read, 6 distinct forms with fields.
 
 ## Līdzīgs projekts
 
 - element ID: `b8fd0538-e508-3c03-e0ae-0791d216d596`
-- pages (2): `/projekts/fasades-atjaunosana`, `/projekts/koka-karkasa-privatmaja`
+- pages (6): `/projekts/fasade-vidrizi`, `/projekts/garkalnu-pirts`, `/projekts/jaunbuve-doles-sala`, `/projekts/jaunbuve-ikskile`, `/projekts/jumts-tukuma`, `/projekts/saimniecibas-eka-vidrizi`
 
 | name (published) | data-name | type | required | label | role guess | options |
 |---|---|---|---|---|---|---|
@@ -19,8 +19,8 @@ Hidden inputs already in the form: `projekts`
 ## Tehnikas nomas pieprasījums
 
 - element ID: `f722b463-050e-f37c-ca3b-cbe6ed38bd20`
-- pages (2): `/nomas-produkts/ekskavators-iekravejs`, `/nomas-produkts/pasizgazejs`
-- note: page code refers to field `datums` by `datums` (/nomas-produkts/ekskavators-iekravejs, /nomas-produkts/pasizgazejs) — update that code together with the rename
+- pages (4): `/nomas-produkts/ekskavators-iekravejs`, `/nomas-produkts/grodu-satverejs`, `/nomas-produkts/pasizgazejs`, `/nomas-produkts/regipsa-pacelajs`
+- note: page code refers to field `datums` by `datums` (/nomas-produkts/ekskavators-iekravejs, /nomas-produkts/grodu-satverejs, /nomas-produkts/pasizgazejs) — update that code together with the rename
 
 | name (published) | data-name | type | required | label | role guess | options |
 |---|---|---|---|---|---|---|
@@ -35,7 +35,7 @@ Hidden inputs already in the form: `produkts`
 ## Kalkulators
 
 - element ID: `dd2304bf-c927-eda7-8438-babe29a04994`
-- pages (1): `/pakalpojumi`
+- pages (1): `/kalkulators`
 
 | name (published) | data-name | type | required | label | role guess | options |
 |---|---|---|---|---|---|---|
@@ -82,8 +82,8 @@ Hidden inputs already in the form: `produkts`
 ## Pakalpojuma pieteikums
 
 - element ID: `dd2304bf-c927-eda7-8438-babe29a049e5`
-- pages (1): `/pakalpojumi`
-- note: page code refers to field `pakalpojums` by `pakalpojums` (/pakalpojumi) — update that code together with the rename
+- pages (1): `/kalkulators`
+- note: page code refers to field `pakalpojums` by `pakalpojums` (/kalkulators) — update that code together with the rename
 
 | name (published) | data-name | type | required | label | role guess | options |
 |---|---|---|---|---|---|---|

@@ -1,9 +1,18 @@
 <style>
 .home-hero_logos img{height:1.375rem;width:auto;opacity:.7;transition:opacity .2s}
 .home-hero_logos img:hover{opacity:1}
-.home-services_item::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,0) 25%,rgba(0,0,0,.88) 100%)}
+/* Service cards: the shade is measured from the card's bottom edge, so the text gets the same shade on tall and short cards */
+.home-services_item::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(0,0,0,.9) 0,rgba(0,0,0,.7) 12rem,rgba(0,0,0,0) 26rem)}
+.home-services_body h3,.home-services_text-2{text-shadow:0 1px 12px rgba(0,0,0,.5)}
 .home-services_item:hover .home-services_image{transform:scale(1.05)}
 .home-services_item:hover .home-services_go{transform:rotate(-45deg);background:var(--christine--primary)}
+/* Service cards: the heading link covers the card (stretched link); the tags link to single services above it */
+.home-services_link::after{content:"";position:absolute;inset:0;z-index:1}
+.home-services_link:focus-visible{outline:none}
+.home-services_item:has(.home-services_link:focus-visible){outline:2px solid var(--christine--primary);outline-offset:3px}
+a.home-services_chip{position:relative;z-index:2;color:inherit;text-decoration:none;transition:background-color .2s,color .2s}
+a.home-services_chip:focus-visible{outline:2px solid var(--christine--primary);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){a.home-services_chip:hover{background-color:var(--neutral--white);color:var(--neutral--darkest)}.home-services_item:has(a.home-services_chip:hover) .home-services_go{transform:none;background:var(--neutral--white)}.home-services_item:has(a.home-services_chip:hover) .home-services_image{transform:none}}
 .rental-card_image img{transition:transform .6s cubic-bezier(.23,1,.32,1)}
 .rental-card:hover .rental-card_image img{transform:scale(1.05)}
 @media (prefers-reduced-motion:no-preference){.home-hero_background-image{animation:settle 2.4s cubic-bezier(.23,1,.32,1) both}.home-hero_content>*{animation:rise .8s cubic-bezier(.23,1,.32,1) both}.home-hero_proof{animation:rise .8s cubic-bezier(.23,1,.32,1) both}.home-hero_bar{animation:rise .8s cubic-bezier(.23,1,.32,1) both}.home-hero_content>*:nth-child(2){animation-delay:.08s}.home-hero_content>*:nth-child(3){animation-delay:.16s}.home-hero_content>*:nth-child(4){animation-delay:.24s}.home-hero_proof{animation-delay:.32s}.home-hero_bar{animation-delay:.4s}}

@@ -12,7 +12,7 @@
       "form_key": "pakalpojuma-pieteikums",
       "purpose": "Pamatu būvniecība",
       "subject": "Pieteikums: Pamatu būvniecība",
-      "page_path": "/pakalpojumi",
+      "page_path": "/kalkulators",
       "prev_path": "",
       "site_host": "probuild-group.webflow.io",
       "page_lang": "lv",
@@ -27,11 +27,11 @@
       "channel": "probe"
     },
     "schema": [],
-    "submittedAt": "2026-10-28T13:13:35.000Z",
+    "submittedAt": "2026-11-02T12:20:20.000Z",
     "id": "000000000000000000000003",
     "formId": "000000000000000000000000",
     "formElementId": "dd2304bf-c927-eda7-8438-babe29a049e5",
     "pageId": "000000000000000000000000",
-    "publishedPath": "/pakalpojumi"
+    "publishedPath": "/kalkulators"
   }
 }

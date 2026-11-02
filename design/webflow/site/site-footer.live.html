@@ -352,11 +352,13 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bindServices);
   else bindServices();
 
-  // Service pages: the calculator button opens the calculator at this service's works.
+  // Service pages: the calculator button (data-calc-link, a page link to Kalkulators) opens the
+  // calculator at this service's works.
   if (/^\/pakalpojums\//.test(location.pathname)) {
     var svcName = document.querySelector('h1');
-    $$('a[href="/pakalpojumi#kalkulators"]').forEach(function (a) {
-      if (svcName) a.setAttribute('href', '/pakalpojumi?pakalpojums=' + encodeURIComponent(svcName.textContent.trim()) + '#kalkulators');
+    $$('a[data-calc-link]').forEach(function (a) {
+      var base = (a.getAttribute('href') || '/kalkulators').split(/[?#]/)[0];
+      if (svcName) a.setAttribute('href', base + '?pakalpojums=' + encodeURIComponent(svcName.textContent.trim()) + '#kalkulators');
     });
   }
 
@@ -555,6 +557,12 @@
 
   // Filter tabs: [data-filter-group][data-filter] tabs, [data-filter-list] Collection List,
   // items carry data-filter-value (CMS slug), counts [data-filter-count].
+  // ?grupa=<tab name without accents, hyphens for spaces> opens that tab (the home page service
+  // cards link to /pakalpojumi?grupa=buvnieciba#pakalpojumi); picking a tab keeps the address in step.
+  var tabSlug = function (s) {
+    return (s || '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  };
+  var wantGroup = tabSlug(new URLSearchParams(location.search).get('grupa'));
   var groups = {};
   $$('[data-filter-group]').forEach(function (t) { (groups[t.dataset.filterGroup] = groups[t.dataset.filterGroup] || []).push(t); });
   Object.keys(groups).forEach(function (g) {
@@ -574,8 +582,17 @@
         items.forEach(function (i) {
           i.style.display = t.dataset.filter === 'all' || i.dataset.filterValue === t.dataset.filter ? '' : 'none';
         });
+        if (window.history && history.replaceState) { // also for keyboard use, which clicks from code
+          try {
+            var u = new URL(location.href);
+            if (t.dataset.filter === 'all') u.searchParams.delete('grupa'); else u.searchParams.set('grupa', tabSlug(t.dataset.filter));
+            history.replaceState(history.state, '', u.pathname + u.search + u.hash);
+          } catch (err) {}
+        }
       });
     });
+    var wanted = wantGroup && tabs.filter(function (t) { return t.dataset.filter !== 'all' && tabSlug(t.dataset.filter) === wantGroup; })[0];
+    if (wanted) wanted.click();
   });
 
   // Reviews: the GoHighLevel reviews widget (iframe.lc_reviews_widget in a Code Embed) shows its button and dates in

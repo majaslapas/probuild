@@ -21,8 +21,8 @@ filter) → one GHL workflow with an Inbound Webhook trigger → contact, tags, 
 
 | Form (Webflow name) | form_key | Page | Opportunity Source (purpose) | Opportunity name (subject) |
 |---|---|---|---|---|
-| Kalkulators | `kalkulators` | /pakalpojumi (offer dialog) | Cenas piedāvājums (kalkulators) | Cenas piedāvājums: {areas}, ≈ {sum} € |
-| Pakalpojuma pieteikums | `pakalpojuma-pieteikums` | /pakalpojumi (request dialog) | the chosen service | Pieteikums: {service} |
+| Kalkulators | `kalkulators` | /kalkulators (offer dialog) | Cenas piedāvājums (kalkulators) | Cenas piedāvājums: {areas}, ≈ {sum} € |
+| Pakalpojuma pieteikums | `pakalpojuma-pieteikums` | /kalkulators (request dialog) | the chosen service | Pieteikums: {service} |
 | Kontaktforma | `kontaktforma` | /kontakti | the chosen interest | Kontaktforma: {interest} |
 | Nomas pieprasījums | `nomas-pieprasijums` | /noma | Tehnikas noma | Tehnikas noma no {date} |
 | Tehnikas nomas pieprasījums | `nomas-produkts` | /nomas-produkts/* | Tehnikas noma | Noma: {machine}, {date} |

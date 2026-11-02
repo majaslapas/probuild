@@ -10,7 +10,7 @@ console.log('after click', await p.$eval('.rental-product_main-image', i=>i.src.
 console.log('product field', await p.$eval('[data-product-name]', i=>i.name+'='+i.value), 'open', await p.$eval('.rental-product_accordion', d=>d.open), 'visible sections', await p.$$eval('.rental-product_accordion', ds=>ds.filter(d=>d.offsetParent).length), 'facts', await p.$$eval('.rental-product_wrapper-6', ds=>ds.filter(d=>d.offsetParent).length));
 await p.goto('https://probuild-group.webflow.io/nomas-produkts/regipsa-pacelajs', { waitUntil: 'load' }); await p.waitForTimeout(800);
 console.log('regipsa: thumbs visible', await p.$eval('.rental-product_thumbs', e=>getComputedStyle(e).display), 'facts', await p.$$eval('.rental-product_wrapper-6', ds=>ds.filter(d=>d.offsetParent).length), 'sections', await p.$$eval('.rental-product_accordion', ds=>ds.filter(d=>d.offsetParent).length));
-await p.goto('https://probuild-group.webflow.io/projekts/koka-karkasa-privatmaja', { waitUntil: 'load' }); await p.waitForTimeout(1200);
+await p.goto('https://probuild-group.webflow.io/projekts/jaunbuve-doles-sala', { waitUntil: 'load' }); await p.waitForTimeout(1200);
 const figs = await p.$$('.project-gallery_list figure');
 console.log('gallery', figs.length, 'play visible', await p.$eval('.project-header_play', e=>getComputedStyle(e).display));
 await figs[1].click(); await p.waitForTimeout(300);

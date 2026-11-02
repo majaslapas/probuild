@@ -199,7 +199,7 @@ TABLE_HEAD = '''<script type="text/plain" data-pbc-cenas>
 #
 #  PĒC IZMAIŅĀM
 #  · Spiediet Save & Close, tad Publish.
-#  · Pārbaudiet lapu adresē …webflow.io/pakalpojumi?pbc-check – ja kādā rindā
+#  · Pārbaudiet lapu adresē …webflow.io/kalkulators?pbc-check – ja kādā rindā
 #    ir kļūda, virs kalkulatora būs sarkans lodziņš ar rindas numuru un
 #    iemeslu. Kļūdainu rindu kalkulators nerāda, pārējās darbojas.
 #

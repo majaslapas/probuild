@@ -1,6 +1,7 @@
 // Banner layouts for the ProBuild Group brand kit. Each banner is one standalone HTML file in
 // 06-baneri/html/ (shared baneri.css), rendered by build.mjs to 06-baneri/<socialie-tikli|displeja-reklama>/ at its exact pixel size.
-// Copy is Latvian and taken from the site (Cenas and Noma pages, the calculator section on Pakalpojumi).
+// Copy is Latvian and taken from the site (Pakalpojumi and Noma pages, the calculator on Kalkulators; until 2 November 2026
+// these were Cenas, Noma and Pakalpojumi).
 // The calculator banners show what the calculator does and why it helps; they show no amounts or sums.
 // Text sits in flowing stacks (.stack / .row); build.mjs checks that the key blocks (.k) don't overlap or run off the edge.
 // Sizing: Martian Mono at the heading tracking is 0.665 em per character.
@@ -143,7 +144,7 @@ ${bars(250, 480, 'is-orange')}
 ${stack({ left: 80, top: 186, width: 920 }, `${T('p', 'kicker', 28, COPY.calc.kicker)}${T('h1', 'h', 78, COPY.calc.h, { 'margin-top': 12 })}${ui(16, 620, { extra: { 'margin-top': 32 } })}${benefits(20, { row: true, extra: { 'margin-top': 26 } })}`)}
 ${row({ left: 80, bottom: 80 }, cta(COPY.calc.cta, 26, 72, 34))}` },
   { file: 'socialie-tikli/pakalpojumi-oranzs-1080x1080', w: 1080, h: 1080, theme: 'is-orange', title: 'Pakalpojumi · ieraksts 1:1', margin: 60, body: `
-${logo(60, 80, 80, 'mono')}${urlTR(WEB + '/cenas', 22, 80, 97)}
+${logo(60, 80, 80, 'mono')}${urlTR(WEB + '/pakalpojumi', 22, 80, 97)}
 ${bars(480, 720)}
 ${stack({ left: 80, top: 186, width: 920 }, `${T('p', 'kicker', 28, COPY.svc.kicker)}${T('h1', 'h', 100, COPY.svc.h, { 'margin-top': 12 })}${T('p', 'sub', 30, COPY.svc.sub, { 'margin-top': 28, width: 600 })}<div style="margin-top:30px">${plist(COPY.svc.prices, 25, 12, 600)}</div>`)}
 ${row({ left: 80, bottom: 80, gap: 26 }, `${cta(COPY.svc.cta, 26, 72, 34)}${T('p', 'foot', 22, COPY.svc.note)}`)}` },
@@ -163,7 +164,7 @@ ${stack({ left: 80, bottom: 80, width: 920 }, `${T('p', 'kicker', 28, COPY.calc.
   { file: 'socialie-tikli/pakalpojumi-foto-1080x1350', w: 1080, h: 1350, theme: '', title: 'Pakalpojumi · ieraksts 4:5 ar foto', margin: 60, body: `
 <div class="photo" style="background-image:url('${PH('maja-ar-koka-fasadi.jpg')}');background-position:40% 50%"></div>
 <div class="shade" style="background:linear-gradient(180deg,rgba(0,0,0,.8) 0,rgba(0,0,0,.25) 14%,rgba(0,0,0,0) 32%,rgba(0,0,0,.92) 58%,#000 100%)"></div>
-${logo(60, 80, 80)}${urlTR(WEB + '/cenas', 22, 80, 97)}
+${logo(60, 80, 80)}${urlTR(WEB + '/pakalpojumi', 22, 80, 97)}
 ${bars(190, 290, 'is-orange')}
 ${stack({ left: 80, bottom: 80, width: 920 }, `${T('p', 'kicker', 28, COPY.svc.kicker)}${T('h1', 'h', 96, COPY.svc.h, { 'margin-top': 12 })}${chips(priceChips(COPY.svc.prices), 22, 50, 20, 12, { 'margin-top': 28, width: 760 })}<div class="row" style="position:static;margin-top:40px;gap:26px">${cta(COPY.svc.cta, 26, 72, 34)}${T('p', 'foot', 22, COPY.svc.note)}</div>`)}` },
   // ---------------------------------------------------------------- social: stories 9:16 (top 250 px and bottom 340 px stay free of key content)
@@ -188,7 +189,7 @@ ${row({ left: 64, bottom: 56, gap: 22 }, `${cta(COPY.calc.cta, 21, 58, 28)}${T('
 ${logo(44, 64, 56)}
 ${bars(210, 270, 'is-orange')}
 ${stack({ left: 64, top: 146, width: 600 }, `${T('p', 'kicker', 21, COPY.svc.kicker)}${T('h1', 'h', 62, COPY.svc.h, { 'margin-top': 10 })}${T('p', 'sub', 20, COPY.svc.sub, { 'margin-top': 16 })}${chips(priceChips(COPY.svc.prices.slice(0, 2)), 17, 40, 16, 10, { 'margin-top': 18 })}`)}
-${row({ left: 64, bottom: 56, gap: 22 }, `${cta(COPY.svc.cta, 21, 58, 28)}${T('p', 'foot', 17, COPY.svc.note + ' · ' + WEB + '/cenas')}`)}` },
+${row({ left: 64, bottom: 56, gap: 22 }, `${cta(COPY.svc.cta, 21, 58, 28)}${T('p', 'foot', 17, COPY.svc.note + ' · ' + WEB + '/pakalpojumi')}`)}` },
   // ---------------------------------------------------------------- Facebook page cover (phones show only the middle ~1110 × 624)
   { file: 'socialie-tikli/facebook-vaks-1640x624', w: 1640, h: 624, theme: '', title: 'Facebook vāka attēls', margin: 60, safe: [0, 0, 300, 300], body: `
 ${bars(520, 624, 'is-orange')}

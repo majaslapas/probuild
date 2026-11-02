@@ -1,4 +1,7 @@
 <style>
 .portfolio-list_item:hover .portfolio-list_image{transform:scale(1.04)}
 .portfolio-list_item:hover .portfolio-list_arrow{background:var(--christine--primary);color:var(--neutral--darkest);border-color:var(--christine--primary)}
+/* Card tags (Platība, Cena, Termiņš): an empty CMS field shows no tag */
+.portfolio-list_wrapper-7 .w-dyn-bind-empty{display:none}
+.portfolio-list_wrapper-7:not(:has(> :not(.w-dyn-bind-empty))){display:none}
 </style>

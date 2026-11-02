@@ -33,7 +33,7 @@ Notation: `D(key)` = `{{inboundWebhookRequest.payload.data.key}}`. Type the raw 
 4. Ask me to:
    - copy the URL with the copy icon into a password manager;
    - paste it in Webflow: Site settings → Apps & integrations → Webhooks → Add webhook → trigger type **Form submission** → paste the URL → **no form filter**;
-   - send **one real sign-up through the calculator** on https://probuild-group.webflow.io/pakalpojumi: tick 2 works in 2 areas, enter amounts, click „Saņemt precīzu cenas piedāvājumu“, fill in name, phone, e-mail, address and a comment, then send.
+   - send **one real sign-up through the calculator** on https://probuild-group.webflow.io/kalkulators: tick 2 works in 2 areas, enter amounts, click „Saņemt precīzu cenas piedāvājumu“, fill in name, phone, e-mail, address and a comment, then send.
 
    After that: Mapping reference → Fetch sample requests / Check for new requests → pick that request → **Save trigger**. A draft workflow only records this request; it creates nothing.
 5. Actions, in this order. Click **Save action** after each one.
@@ -112,12 +112,12 @@ I make one real sign-up per form in a normal browser, each with a **different e-
 
 | Case | Page | Expect |
 |---|---|---|
-| Kalkulators | /pakalpojumi → calculator → offer form | pipeline „Mājaslapas pieteikumi“, name „Cenas piedāvājums: … ≈ … € — <name>“, aprēķins text and numbers filled |
-| Pakalpojuma pieteikums | /pakalpojumi → „Pieteikums bez aprēķina“, pick a service | „Mājaslapas pieteikumi“, Source = the service |
+| Kalkulators | /kalkulators → calculator → offer form | pipeline „Mājaslapas pieteikumi“, name „Cenas piedāvājums: … ≈ … € — <name>“, aprēķins text and numbers filled |
+| Pakalpojuma pieteikums | /kalkulators → „Pieteikums bez aprēķina“, pick a service | „Mājaslapas pieteikumi“, Source = the service |
 | Kontaktforma | /kontakti, pick „Remonts un apdare“ | „Mājaslapas pieteikumi“, Source = Remonts un apdare |
 | Nomas pieprasījums | /noma with both dates | „Tehnikas noma“, dates not shifted |
 | Tehnikas nomas pieprasījums | /nomas-produkts/ekskavators-iekravejs | „Tehnikas noma“, Tehnika = the machine |
-| Līdzīgs projekts | /projekts/fasades-atjaunosana | „Mājaslapas pieteikumi“, Projekts = Fasādes atjaunošana |
+| Līdzīgs projekts | /projekts/fasade-vidrizi | „Mājaslapas pieteikumi“, Projekts = Fasāde Vidriži |
 
 Check each run yourself:
 - Execution logs: every action Executed.

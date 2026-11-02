@@ -77,8 +77,8 @@
                  "aprekins_summa", "aprekins_no", "aprekins_lidz", "aprekins_menesi"],
       "purpose": "Cenas piedāvājums (kalkulators)",
       "subject": "Cenas piedāvājums: {aprekins_joma}, ≈ {aprekins_summa} €|Cenas piedāvājums: {aprekins_joma}|Cenas piedāvājuma pieprasījums",
-      "check_page": "/pakalpojumi",
-      "pages": ["/pakalpojumi"],
+      "check_page": "/kalkulators",
+      "pages": ["/kalkulators"],
       "test_values": {
         "vieta": "Salaspils",
         "aprekins": "ProBuild cenu kalkulators: aptuvenais aprēķins\n\nBūvniecība › Jumts\n• Latojums: 150 m² × 7 €/m² = 1 050 € (675 – 1 650 €)\n\nKopā: ≈ 1 050 € (diapazons 675 – 1 650 €)",
@@ -98,8 +98,8 @@
       "published": {"pakalpojums": "Pakalpojums"},
       "purpose": "{service}|Pakalpojuma pieteikums",
       "subject": "Pieteikums: {service}|Pakalpojuma pieteikums",
-      "check_page": "/pakalpojumi",
-      "pages": ["/pakalpojumi"]
+      "check_page": "/kalkulators",
+      "pages": ["/kalkulators"]
     },
     {
       "element_id": "4d10121b-a9de-c7da-8368-dcad032a656a",
@@ -148,9 +148,10 @@
       "published": {"vards": "Vārds", "telefons": "Telefons", "epasts": "E-pasts", "projekts": "Projekts"},
       "purpose": "Līdzīgs projekts",
       "subject": "Līdzīgs projekts: {projekts}|Līdzīgs projekts",
-      "check_page": "/projekts/fasades-atjaunosana",
-      "pages": ["/projekts/fasades-atjaunosana", "/projekts/koka-karkasa-privatmaja"],
-      "test_values": {"projekts": "Fasādes atjaunošana"}
+      "check_page": "/projekts/fasade-vidrizi",
+      "pages": ["/projekts/jumts-tukuma", "/projekts/saimniecibas-eka-vidrizi", "/projekts/jaunbuve-doles-sala",
+                "/projekts/jaunbuve-ikskile", "/projekts/fasade-vidrizi", "/projekts/garkalnu-pirts"],
+      "test_values": {"projekts": "Fasāde Vidriži"}
     }
   ]
 }

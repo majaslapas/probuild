@@ -16,12 +16,12 @@ const mode = args.find((a) => /^(pass|fail|real)$/.test(a)) || 'pass';
 const site = (args.includes('--site') ? args[args.indexOf('--site') + 1] : 'https://probuild-group.webflow.io').replace(/\/$/, '');
 const KEY = { pass: '1x00000000000000000000AA', fail: '2x00000000000000000000AB', real: null }[mode];
 const CASES = [
-  ['Kalkulators', '/pakalpojumi', 'offer'],
-  ['Pakalpojuma pieteikums', '/pakalpojumi', 'request'],
+  ['Kalkulators', '/kalkulators', 'offer'],
+  ['Pakalpojuma pieteikums', '/kalkulators', 'request'],
   ['Kontaktforma', '/kontakti'],
   ['Nomas pieprasījums', '/noma'],
   ['Tehnikas nomas pieprasījums', '/nomas-produkts/ekskavators-iekravejs'],
-  ['Līdzīgs projekts', '/projekts/fasades-atjaunosana'],
+  ['Līdzīgs projekts', '/projekts/fasade-vidrizi'],
 ];
 
 const browser = await chromium.launch();

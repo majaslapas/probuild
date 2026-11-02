@@ -93,10 +93,11 @@ Webflow Variables kolekcijās (Client-First v2.1 pieeja):
 | Lapa | Webflow slug | Sadaļas (`section_…`, shēma) |
 |---|---|---|
 | Sākumlapa | `/` | `navbar` (2), `home-hero` (2), `home-services` (2), `home-about` (3), `home-rental` (2, jauns pēc 01.10), `home-reviews` (2), `home-cta` (1), `footer` (1) |
-| Pakalpojumi | `/pakalpojumi` | `services-hero` + kalkulators (1), `services-list` (1), `services-benefits` (1), `services-reviews` (1), `services-contact` (1) |
+| Kalkulators (līdz 02.11.2026 „Pakalpojumi“, `/pakalpojumi`) | `/kalkulators` | `services-calc` kalkulators ar galveni (1), `services-process` (2), `services-benefits` (3), `services-reviews` (1), `services-contacts` (2) |
+| Pakalpojumi (līdz 02.11.2026 „Cenas“, `/cenas`) | `/pakalpojumi` | `services-list` pakalpojumi ar grupu cilnēm (1), `prices-factors` (2), `prices-faq` (1), `prices-cta` (3) |
 | Noma | `/noma` | `rental-hero` (1), `rental-list` CMS ar kategorijām (1), `rental-contact` (1) |
 | Nomas produkts | `/nomas-produkts/[slug]` CMS template | `rental-product` (1) ar `rental-product_form` |
-| Projekti | `/projekti` | `portfolio-list` CMS ar filtriem (1) |
+| Projekti | `/projekti` | `portfolio-list` CMS, bez filtriem (1) |
 | Projekts | `/projekts/[slug]` CMS template | `project-header` (1), `project-content` (1), `project-gallery` (1), `project-contact` (1) |
 | Pakalpojums | `/pakalpojums/[slug]` CMS template | `service-detail` (1) |
 | Par mums | `/par-mums` | `about-hero`, `about-marquee`, `about-story`, `about-stats`, `about-values`, `about-team` (CMS), `about-partners`, `about-cta` (visas 1) |

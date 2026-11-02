@@ -32,4 +32,4 @@ Do not edit these files by hand: change project-config.json and re-run scaffold.
 
 ## Warnings
 
-- forms "Kalkulators" and "Pakalpojuma pieteikums" are both on /pakalpojumi and share epasts, telefons, vards, zina: an API rename sets each field's DOM id to its Name, so give one of them another ID (see webflow/renames.md)
+- forms "Kalkulators" and "Pakalpojuma pieteikums" are both on /kalkulators and share epasts, telefons, vards, zina: an API rename sets each field's DOM id to its Name, so give one of them another ID (see webflow/renames.md)
