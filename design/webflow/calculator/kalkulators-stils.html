@@ -1,5 +1,5 @@
 <style>
-/* PROBUILD CENU KALKULATORS · STILS (lapas Pakalpojumi head kods). Cenas: Code Embed „Kalkulators · CENAS”. */
+/* PROBUILD CENU KALKULATORS · STILS (lapas Kalkulators head kods). Cenas: Code Embed „Kalkulators · CENAS”. */
 :root{--pbc-top:0px}
 html{scroll-padding-top:var(--pbc-spt,8px);scroll-padding-bottom:var(--pbc-spb,0px)}
 html.w-mod-js:not(.pbc-off) :is([data-pbc-form],[data-pbc-request]):not(dialog *){display:none!important}
@@ -64,7 +64,7 @@ html:has(.pbc_dlg[open]){overflow:hidden;scrollbar-gutter:stable}
 .pbc_none p+p{margin-top:.75rem}
 .pbc_row{display:grid;grid-template-columns:minmax(0,1fr) 10rem;column-gap:.75rem;padding:.75rem 1rem;border-top:1px solid var(--pbc-rule);transition:background-color .2s var(--pbc-ease)}
 .pbc_row:first-child{border-top:0}
-.pbc_row.is-on{background:var(--pbc-tint);box-shadow:inset 3px 0 0 var(--pbc-accent)}
+.pbc_row.is-on{background:var(--pbc-tint)}
 .pbc_row.is-flash{animation:pbc-flash .8s ease-out}
 .pbc_row-main{position:relative;display:grid;grid-template-columns:1.25rem minmax(0,1fr) 6rem;align-items:start;column-gap:.75rem;cursor:pointer}
 .pbc_check{position:absolute;top:0;left:0;width:1.25rem;height:1.5rem;margin:0;opacity:0;cursor:pointer}
@@ -294,7 +294,7 @@ html:has(.w-webflow-badge) .pbc_dock{bottom:4rem}
 .pbc_dock-o .pbc_badge{background:#000;color:var(--pbc-accent-2)}
 }
 @media (max-width:22.49em){.pbc_dock-t{font-size:1rem}.pbc_dock-o{padding-inline:.75rem}.pbc_dlg .pbc_sum-n{display:none}}
-@media (forced-colors:active){.pbc_box{border-color:CanvasText}.pbc_check:checked+.pbc_box{background-color:Highlight}.pbc_area[aria-current=true],.pbc_grp[aria-current=true]{border:2px solid Highlight}.pbc_badge{border:1px solid CanvasText}.pbc_row.is-on{border-left:3px solid Highlight}}
+@media (forced-colors:active){.pbc_box{border-color:CanvasText}.pbc_check:checked+.pbc_box{background-color:Highlight}.pbc_area[aria-current=true],.pbc_grp[aria-current=true]{border:2px solid Highlight}.pbc_badge{border:1px solid CanvasText}.pbc_row.is-on{outline:2px solid Highlight;outline-offset:-2px}}
 @media (prefers-reduced-motion:reduce){.pbc *,.pbc_dlg::backdrop{transition:none!important;animation:none!important}}
 </style>
 <script>
