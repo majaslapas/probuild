@@ -1,0 +1,28 @@
+<style>
+/* Privātuma politika and Sīkdatņu politika (same code on both pages). The text is one Rich Text (.legal_rich-text),
+   so it can be edited like a document; the page's footer code builds the "Saturs" list from its h2 headings. */
+.legal_rich-text{color:var(--neutral--lighter);font-size:1.0625rem;line-height:1.75}
+.legal_rich-text h2{margin:3.5rem 0 1rem;color:var(--neutral--white);font-family:var(--font--heading),monospace;font-weight:500;font-size:1.5rem;line-height:1.35;letter-spacing:-.01em;scroll-margin-top:2rem}
+.legal_rich-text>h2:first-child{margin-top:0}
+.legal_rich-text h3{margin:2rem 0 .75rem;color:var(--neutral--white);font-family:var(--font--heading),monospace;font-weight:500;font-size:1.0625rem;line-height:1.4;overflow-wrap:anywhere}
+.legal_rich-text p{margin:0 0 1rem}
+.legal_rich-text ul,.legal_rich-text ol{margin:0 0 1.25rem;padding-left:1.25rem}
+.legal_rich-text li{margin-bottom:.625rem;padding-left:.25rem}
+.legal_rich-text li::marker{color:var(--christine--primary)}
+.legal_rich-text strong{color:var(--neutral--white);font-weight:600}
+.legal_rich-text a{color:var(--christine--light);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em;overflow-wrap:anywhere;transition:color .2s}
+.legal_rich-text a:hover{color:var(--neutral--white)}
+.legal_rich-text a[href^="tel:"]{white-space:nowrap}
+/* Cookie entries: the name as an h3, its details as the list right after it */
+.legal_rich-text h3+ul{list-style:none;padding:1.25rem 1.5rem;border:1px solid var(--opacity--white-10);border-radius:16px;background-color:var(--neutral--darkest)}
+.legal_rich-text h3+ul li{padding-left:0;margin-bottom:.5rem}
+.legal_rich-text h3+ul li:last-child{margin-bottom:0}
+/* "Saturs": hidden until the footer code has filled it */
+.legal_toc:not(.is-ready){display:none}
+.legal_toc ol{display:flex;flex-direction:column;gap:.125rem;margin:0;padding:0;list-style:none}
+.legal_toc li{margin:0}
+.legal_toc a{display:block;padding:.375rem 0;color:var(--neutral--light);font-size:.875rem;line-height:1.4;text-decoration:none;transition:color .2s}
+.legal_toc a:hover,.legal_toc a.is-current{color:var(--neutral--white)}
+.legal_toc a.is-current{font-weight:600}
+@media (max-width:767px){.legal_rich-text{font-size:1rem;line-height:1.7}.legal_rich-text h2{margin-top:2.75rem;font-size:1.25rem}.legal_rich-text h3+ul{padding:1rem 1.125rem}}
+</style>

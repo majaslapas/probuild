@@ -16,6 +16,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .button{touch-action:manipulation}
 .form_input::placeholder{color:#7f7f7f}
+/* Date fields: iOS Safari draws its own date control (no height while empty, the date centred, wider than a narrow
+   column); these rules give it the other inputs' size and alignment. Other browsers keep their calendar icon. */
+input[type="date"].form_input{-webkit-appearance:none;appearance:none;display:block;min-width:0;max-width:100%;height:3rem;line-height:3rem;padding-top:0;padding-bottom:0;text-align:left}
+input[type="date"].form_input::-webkit-date-and-time-value{min-height:1.5em;margin:0;text-align:left}
+input[type="date"].form_input::-webkit-datetime-edit{padding:0;line-height:normal}
+input[type="date"].form_input::-webkit-calendar-picker-indicator{opacity:.7;cursor:pointer}
 .w-form{margin:0}
 .w-form-done,.w-form-fail{text-align:left}
 .w-input,.w-select{margin-bottom:0}

@@ -22,6 +22,34 @@ a.home-services_chip:focus-visible{outline:2px solid var(--christine--primary);o
 .home-hero_logos img.home-hero_image-2{height:1.75rem}
 .home-hero_logos img.home-hero_image-3{height:1.25rem}
 .home-hero_logos img.home-hero_image-4{height:1.5rem}
-/* Phones: the partner logos a size smaller so three fit on a row, and 13px stat labels so the three stats fit side by side from 340px */
-@media (max-width:479px){.home-hero_logos img.home-hero_image{height:1.125rem}.home-hero_logos img.home-hero_image-2{height:1.4375rem}.home-hero_logos img.home-hero_image-3{height:1rem}.home-hero_logos img.home-hero_image-4{height:1.25rem}.home-hero_stat .home-hero_text-2{font-size:.8125rem}}
+/* Hero on tablets and phones: the photo is cropped on the worker (its left part is a blurred wall) */
+@media (max-width:991px){.home-hero_background-image.img-cover{object-position:68% 35%}}
+/* Hero on phones: shorter; the rating card is a one-line note under the buttons; the stats bar is compact and the
+   partner logos run as a single line (site.js copies the set once for the loop; a tap pauses it). The rating card's
+   classes are shared with Kontakti, so these rules stay in this page's code. */
+.pb-logos_track{display:contents}
+.pb-logos_track>[aria-hidden="true"]{display:none}
+@keyframes pb-logos{to{transform:translate3d(-50%,0,0)}}
+@media (max-width:767px){
+.home-hero_overlay{background-image:linear-gradient(180deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,.45) 42%,rgba(0,0,0,.8) 100%)}
+.home-hero_component{padding-top:2rem;row-gap:2rem}
+.home-hero_main{row-gap:1.25rem}
+.home-hero_main .home-hero_proof{flex-direction:row;align-items:center;max-width:none;padding:0;border-radius:0;background-image:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.home-hero_main .home-hero_proof-row{gap:.625rem}
+.home-hero_main .home-hero_rating{font-size:1.5rem}
+.home-hero_main .home-hero_wrapper-3{gap:0}
+.home-hero_main .home-hero_proof .stars,.home-hero_main .home-hero_proof .home-hero_text-2{font-size:.8125rem;line-height:1.3}
+.home-hero_main .home-hero_text-3,.home-hero_main .home-hero_text-4{display:none}
+.home-hero_bar{padding:1rem 1.25rem;row-gap:.875rem}
+.home-hero_stat{gap:.125rem}
+.home-hero_stat-number{font-size:1.25rem}
+.home-hero_stat .home-hero_text-2{font-size:.75rem;line-height:1.3}
+.home-hero_logos.has-track{display:block;width:100%;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.home-hero_logos.has-track .pb-logos_track{display:flex;align-items:center;width:max-content;animation:pb-logos 26s linear infinite}
+.home-hero_logos.has-track .pb-logos_track>*{display:block;flex:none;margin-right:2rem}
+.home-hero_logos.has-track:hover .pb-logos_track{animation-play-state:paused}
+}
+@media (max-width:767px) and (prefers-reduced-motion:reduce){.home-hero_logos.has-track{overflow-x:auto;-webkit-mask-image:none;mask-image:none}.home-hero_logos.has-track .pb-logos_track>[aria-hidden="true"]{display:none}}
+/* Phones: the partner logos a size smaller */
+@media (max-width:479px){.home-hero_logos img.home-hero_image{height:1.125rem}.home-hero_logos img.home-hero_image-2{height:1.4375rem}.home-hero_logos img.home-hero_image-3{height:1rem}.home-hero_logos img.home-hero_image-4{height:1.25rem}}
 </style>

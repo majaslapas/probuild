@@ -336,6 +336,23 @@
     window.addEventListener('pageshow', function () { set(false); }); // back/forward cache
   })();
 
+  // Sākums hero on phones: the partner logos run as one scrolling line (styles in the page head). The set is copied
+  // once for a seamless loop, and the copies are hidden from screen readers. Wider screens show the logos as before.
+  $$('.home-hero_logos').forEach(function (box) {
+    var imgs = $$('img', box);
+    if (imgs.length < 2 || box.querySelector('.pb-logos_track')) return;
+    var track = document.createElement('div');
+    track.className = 'pb-logos_track';
+    imgs.forEach(function (i) { track.appendChild(i); });
+    imgs.forEach(function (i) {
+      var c = i.cloneNode(true);
+      c.alt = ''; c.setAttribute('aria-hidden', 'true'); c.removeAttribute('loading');
+      track.appendChild(c);
+    });
+    box.appendChild(track);
+    box.classList.add('has-track');
+  });
+
   // Radio buttons publish name="radio-N"; group them by their Group Name (data-name)
   // and select the first choice of a group that has none selected.
   var radioGroups = {};
@@ -795,6 +812,8 @@
 
     // Scroll: hero and call-to-action photos drift slower than the page; scrub bars follow the scroll.
     var drift = $$('.home-hero_background-image, .home-cta_background-image, .about-stats_image, .about-cta_bg');
+    // Phones: less zoom and less travel, or the photos are cropped too tight on a narrow screen
+    var narrow = window.matchMedia('(max-width: 767px)').matches, zoom = narrow ? 1.06 : 1.14, travel = narrow ? 5 : 12;
     var ticking = false;
     function frame() {
       ticking = false;
@@ -803,7 +822,7 @@
         var box = (img.closest('section') || img.parentNode).getBoundingClientRect();
         if (box.bottom < 0 || box.top > h) return;
         var c = (box.top + box.height / 2 - h / 2) / (h + box.height);
-        img.style.translate = '0 ' + (c * -12).toFixed(2) + '%';
+        img.style.translate = '0 ' + (c * -travel).toFixed(2) + '%';
       });
       scrub.forEach(function (el) {
         var r = el.getBoundingClientRect(), p = (h - r.bottom) / (h * 0.4);
@@ -814,7 +833,7 @@
       });
     }
     function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
-    drift.forEach(function (img) { img.style.scale = '1.14'; });
+    drift.forEach(function (img) { img.style.scale = String(zoom); });
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
     frame();

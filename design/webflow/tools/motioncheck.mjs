@@ -2,7 +2,7 @@
 import { createRequire } from 'module';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const base = 'https://probuild-group.webflow.io';
-const paths = ['/', '/kalkulators', '/pakalpojumi', '/noma', '/projekti', '/par-mums', '/kontakti', '/nomas-produkts/ekskavators-iekravejs', '/projekts/jaunbuve-doles-sala', '/pakalpojums/pamatu-buvnieciba'];
+const paths = ['/', '/kalkulators', '/pakalpojumi', '/noma', '/projekti', '/par-mums', '/kontakti', '/privatuma-politika', '/sikdatnu-politika', '/nomas-produkts/ekskavators-iekravejs', '/projekts/jaunbuve-doles-sala', '/pakalpojums/pamatu-buvnieciba'];
 const b = await chromium.launch();
 for (const w of [1440, 390]) for (const path of paths) {
   const p = await b.newPage({ viewport: { width: w, height: w > 500 ? 900 : 844 } });
