@@ -23,6 +23,44 @@ button{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 /* Navbar + footer */
 .navbar_component a:focus-visible,.footer_component a:focus-visible{outline:2px solid #f2600c;outline-offset:3px}
 .navbar_link.w--current{color:#fff;border-bottom-color:#f2600c}
+.navbar_logo-link{min-height:2.75rem}
+/* Navigation on phones and tablets (≤991px). site.js moves the links, the phone number and the contact button into a
+   panel under the bar (.navbar_panel > .navbar_sheet) and adds the menu button; from 480px a copy of the contact button
+   (.navbar_button.is-bar) stays in the bar. Without the script nothing changes: the bar wraps and shows every link. */
+.navbar_panel,.navbar_sheet{display:contents}
+.navbar_toggle,.navbar_button.is-bar{display:none}
+@media (max-width:991px){
+.navbar_component.has-menu .navbar_container{flex-wrap:nowrap;min-height:4.5rem;padding-top:.625rem;padding-bottom:.625rem;column-gap:.75rem}
+.has-menu .navbar_logo-link{margin-right:auto}
+.has-menu .navbar_toggle{display:inline-flex;flex:none;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:2.75rem;height:2.75rem;padding:0;border:1px solid rgba(255,255,255,.24);border-radius:100px;background:none;color:#fff;cursor:pointer;transition:border-color .2s}
+.navbar_toggle-line{display:block;width:1.125rem;height:2px;border-radius:1px;background:currentColor;transition:transform .2s cubic-bezier(.77,0,.175,1)}
+.has-menu.is-open .navbar_toggle{border-color:#fff}
+.has-menu.is-open .navbar_toggle-line:first-child{transform:translateY(4px) rotate(45deg)}
+.has-menu.is-open .navbar_toggle-line:last-child{transform:translateY(-4px) rotate(-45deg)}
+.has-menu .navbar_panel{position:absolute;left:0;right:0;top:calc(100% + 1px);display:block;height:calc(100vh - 100% - 1px);height:calc(100dvh - 100% - 1px);overflow-y:auto;overscroll-behavior:contain;background:rgba(0,0,0,.6);visibility:hidden;opacity:0;transition:opacity .15s var(--pb-ease),visibility 0s linear .15s}
+.has-menu.is-open .navbar_panel{visibility:visible;opacity:1;transition:opacity .2s var(--pb-ease),visibility 0s}
+.has-menu .navbar_sheet{display:flex;flex-direction:column;gap:1.5rem;padding:.5rem 5% 2rem;background:var(--neutral--darker,#191919);transform:translate3d(0,-.5rem,0);transition:transform .15s var(--pb-ease)}
+.has-menu.is-open .navbar_sheet{transform:none;transition:transform .2s var(--pb-ease)}
+.has-menu .navbar_menu{flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:0}
+.has-menu .navbar_link{padding:.875rem 0;border-bottom:0;font-size:1.25rem;line-height:1.5rem}
+.has-menu .navbar_link.w--current{color:#fff;text-decoration:underline;text-decoration-color:#f2600c;text-decoration-thickness:2px;text-underline-offset:.5em}
+.has-menu .navbar_actions{flex-direction:column;align-items:stretch;gap:.75rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12)}
+.has-menu .navbar_phone{display:flex;align-items:center;min-height:2.75rem;font-size:1.125rem}
+.has-menu .navbar_actions .navbar_button{min-height:3rem}
+html.pb-nav-open{overflow:hidden}
+}
+@media (min-width:480px) and (max-width:991px){.has-menu .navbar_button.is-bar{display:inline-flex}.has-menu .navbar_actions .navbar_button{display:none}}
+/* 992–1279px: the bar keeps one row (smaller gaps; the phone number from 1200px) */
+@media (min-width:992px) and (max-width:1279px){.navbar_container,.navbar_menu{column-gap:1.5rem}}
+@media (min-width:992px) and (max-width:1199px){.navbar_phone{display:none}}
+/* Footer on phones: 44px link rows; Lapas and Pakalpojumi side by side, the brand and Kontakti full width */
+@media (max-width:767px){.footer_grid{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:1.5rem}.footer_brand,.footer_link-list:last-child{grid-column:1 / -1}.footer_link-list{gap:0}.footer_link{padding:.6875rem 0}.footer_link.is-alt{padding:.75rem 0}.footer_heading{margin-bottom:.25rem}}
+/* Touch screens: small links get a bigger hit area, the layout stays as it is */
+@media (pointer:coarse){
+a.home-services_chip::before{content:"";position:absolute;inset:-4px 0}
+.prices-cta_phone,.prices-faq_link,.services-calc_link,.project-header_link,.service-detail_link,.rental-product_link{position:relative}
+.prices-cta_phone::after,.prices-faq_link::after,.services-calc_link::after,.project-header_link::after,.service-detail_link::after,.rental-product_link::after{content:"";position:absolute;inset:-.625rem -.25rem}
+}
 .form_checkbox .w-checkbox-input{float:none;margin:0;width:1.125rem;height:1.125rem;flex-shrink:0;accent-color:#f2600c;cursor:pointer}
 .form_checkbox .w-form-label{cursor:pointer}
 /* Rich text used as layout (galleries, price rows): drop Webflow's clearfix grid/flex items */

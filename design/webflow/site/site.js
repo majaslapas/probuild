@@ -52,6 +52,43 @@
     if (/^example text$/i.test(i.getAttribute('placeholder'))) i.removeAttribute('placeholder');
   });
 
+  // Navigation on phones and tablets (≤991px; styles in the site head). The links, the phone number and the contact
+  // button move into a panel under the bar, opened with a menu button; from 480px a copy of the contact button stays in
+  // the bar. Escape, a tap outside the panel, a link in it or focus leaving the navigation closes it. On wider screens
+  // the panel is display: contents, so the bar looks as it always did. Without this script the bar shows every link.
+  (function () {
+    var nav = document.querySelector('.navbar_component'), bar = nav && nav.querySelector('.navbar_container');
+    var menu = bar && bar.querySelector('.navbar_menu');
+    if (!menu || menu.parentNode !== bar) return;
+    var actions = bar.querySelector('.navbar_actions'), root = document.documentElement, mq = window.matchMedia('(max-width: 991px)');
+    var panel = document.createElement('div'), sheet = document.createElement('div'), btn = document.createElement('button'), open = false;
+    panel.className = 'navbar_panel'; panel.id = 'pb-nav-panel'; sheet.className = 'navbar_sheet';
+    bar.insertBefore(panel, menu); panel.appendChild(sheet); sheet.appendChild(menu);
+    if (actions) sheet.appendChild(actions);
+    var cta = actions && actions.querySelector('.navbar_button');
+    if (cta) { var copy = cta.cloneNode(true); copy.classList.add('is-bar'); bar.insertBefore(copy, panel); }
+    btn.type = 'button'; btn.className = 'navbar_toggle';
+    btn.setAttribute('aria-label', 'Izvēlne'); btn.setAttribute('aria-controls', panel.id); btn.setAttribute('aria-expanded', 'false');
+    btn.innerHTML = '<span class="navbar_toggle-line"></span><span class="navbar_toggle-line"></span>';
+    bar.insertBefore(btn, panel);
+    nav.classList.add('has-menu');
+    var set = function (on) {
+      if (on === open) return;
+      open = on;
+      if (on && nav.getBoundingClientRect().top < 0) window.scrollTo(0, window.pageYOffset + nav.getBoundingClientRect().top);
+      nav.classList.toggle('is-open', on); root.classList.toggle('pb-nav-open', on);
+      btn.setAttribute('aria-expanded', on ? 'true' : 'false');
+    };
+    btn.addEventListener('click', function () { set(!open); });
+    panel.addEventListener('click', function (e) { if (e.target === panel || e.target.closest('a')) set(false); });
+    document.addEventListener('click', function (e) { if (open && !nav.contains(e.target)) set(false); });
+    document.addEventListener('keydown', function (e) { if (open && e.key === 'Escape') { set(false); btn.focus(); } });
+    nav.addEventListener('focusout', function (e) { if (open && e.relatedTarget && !nav.contains(e.relatedTarget)) set(false); });
+    var wide = function () { if (!mq.matches) set(false); };
+    if (mq.addEventListener) mq.addEventListener('change', wide); else if (mq.addListener) mq.addListener(wide);
+    window.addEventListener('pageshow', function () { set(false); }); // back/forward cache
+  })();
+
   // Radio buttons publish name="radio-N"; group them by their Group Name (data-name)
   // and select the first choice of a group that has none selected.
   var radioGroups = {};
@@ -368,6 +405,9 @@
     var min = +((cfg.minRatings || '').match(/\d/) || [0])[0];
     reviews = reviews.filter(function (r) { return r.starRating >= min && (!cfg.isDescriptionOnlyEnabled || (r.comment || '').trim()); });
     if (!reviews.length) return;
+    // Reviews with a text first, otherwise in the CRM's order: the first cards on a phone should say something
+    reviews = reviews.map(function (r, i) { return { r: r, i: i, t: (r.comment || '').trim() ? 0 : 1 }; })
+      .sort(function (a, b) { return a.t - b.t || a.i - b.i; }).map(function (x) { return x.r; });
     var el = function (tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
     var date = new Intl.DateTimeFormat('lv-LV', { day: '2-digit', month: '2-digit', year: 'numeric' });
     var cards = reviews.map(function (r) {

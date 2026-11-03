@@ -20,8 +20,9 @@ await p.click('[data-lightbox-next]'); console.log('next', JSON.stringify(await 
 await p.keyboard.press('ArrowLeft'); await p.keyboard.press('ArrowLeft'); console.log('left2', JSON.stringify(await st()));
 await p.keyboard.press('Escape'); console.log('esc', JSON.stringify(await st()));
 console.log('project field', await p.$eval('[data-product-name]', i=>i.name+'='+i.value));
-await p.goto('https://probuild-group.webflow.io/projekts/pamati-divstavu-majai', { waitUntil: 'load' }); await p.waitForTimeout(800);
-console.log('pamati: highlights', await p.$eval('.project-content_highlights', e=>getComputedStyle(e).display), 'content', await p.$eval('.section_project-content', e=>getComputedStyle(e).display), 'gallery', await p.$$eval('.project-gallery_list figure', f=>f.length));
+await p.goto('https://probuild-group.webflow.io/projekts/jumts-tukuma', { waitUntil: 'load' }); await p.waitForTimeout(800);
+const disp = (sel) => p.$$eval(sel, (es) => es.length ? getComputedStyle(es[0]).display : 'absent');
+console.log('jumts-tukuma: highlights', await disp('.project-content_highlights'), 'content', await disp('.section_project-content'), 'gallery', await p.$$eval('.project-gallery_list figure', f=>f.length));
 await p.goto('https://probuild-group.webflow.io/kontakti', { waitUntil: 'load' }); await p.waitForTimeout(800);
 console.log('kontakti radios', JSON.stringify(await p.$$eval('input[type=radio]', rs=>rs.map(r=>r.name+':'+r.checked))));
 console.log('errors', errs);

@@ -3,7 +3,7 @@
 Visas lapas pielāgotas telefonam un datoram, ar SEO atslēgvārdiem būvniecības un nomas nozarei. Webflow, katra sadaļa ir atsevišķa lapa.
 
 ## Visā lapā
-- Navigācija uz visām lapām
+- Navigācija uz visām lapām (telefonā un planšetē saites atveras ar izvēlnes pogu joslā)
 - Čatbots, pieejams vienmēr (apmāca ar klienta sniegto informāciju)
 
 ## 1. Sākumlapa

@@ -32,4 +32,8 @@ body:not(:has([data-lightbox="video"] iframe)) .project-header_play{display:none
 .project-gallery_list figure:nth-of-type(n+5){display:none}
 .project-gallery_more{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background-color:rgba(0,0,0,.62);color:var(--neutral--white);font-weight:600;font-size:1.0625rem;transition:background-color .2s}
 .project-gallery_list figure:hover .project-gallery_more{background:rgba(0,0,0,.5)}
+/* Phones and small tablets: the gallery is two columns, so the first photo takes the full width instead of two rows
+   (it left an empty cell beside it); the contact panel's three stats shrink with the screen so 100+ and 5,0 never touch */
+@media (max-width:767px){.project-gallery_list figure:nth-of-type(1){grid-row:auto;grid-column:1 / -1;aspect-ratio:3 / 2}}
+@media (max-width:479px){.project-contact_stat strong{font-size:min(2rem,7vw)}}
 </style>
