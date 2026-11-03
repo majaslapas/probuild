@@ -13,6 +13,7 @@
 .rental-product_spec strong{font-weight:400;color:var(--neutral--white);font-variant-numeric:tabular-nums}
 .rental-product_spec p:has(em){display:block;grid-column:1 / -1;padding-top:.625rem;font-size:.875rem;color:var(--neutral--neutral)}
 .rental-product_spec em{font-style:normal}
+@media (max-width:767px){.rental-product_spec{display:block}.rental-product_spec p{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.125rem 1rem;margin:0;padding:.625rem 0;border-top:1px solid rgba(255,255,255,.08)}.rental-product_spec p:first-child{border-top:0;padding-top:0}.rental-product_spec strong{margin-left:auto;text-align:right;max-width:100%;overflow-wrap:anywhere}.rental-product_spec p:has(em){display:block;border-top:0;padding-top:.75rem}}
 .rental-product_accordion:has(.rental-product_summary-text.w-dyn-bind-empty){display:none}
 .rental-product_wrapper-6:has(.rental-product_text-4.w-dyn-bind-empty){display:none}
 .rental-product_thumbs > :not(figure){display:none}

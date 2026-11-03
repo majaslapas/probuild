@@ -43,3 +43,6 @@ button{touch-action: manipulation; -webkit-tap-highlight-color: transparent}
 .rental-product_thumbs figure:hover{border-color: rgba(255,255,255,.5)}
 .rental-product_thumbs figure.is-active{border-color: var(--christine--primary)}
 .rental-product_thumbs figure:active{transform: scale(.97)}
+
+/* Phones: each spec row is a flex line, label left and value right; a long value wraps under its label instead of running into it */
+@media (max-width:767px){.rental-product_spec{display:block}.rental-product_spec p{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.125rem 1rem;margin:0;padding:.625rem 0;border-top:1px solid rgba(255,255,255,.08)}.rental-product_spec p:first-child{border-top:0;padding-top:0}.rental-product_spec strong{margin-left:auto;text-align:right;max-width:100%;overflow-wrap:anywhere}.rental-product_spec p:has(em){display:block;border-top:0;padding-top:.75rem}}
