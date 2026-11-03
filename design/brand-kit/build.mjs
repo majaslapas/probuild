@@ -6,7 +6,8 @@ import fs from 'fs';
 import path from 'path';
 import { createRequire } from 'module';
 import { execFileSync } from 'child_process';
-import { CSS as BANNER_CSS, BANNERS, page as bannerPage, layoutCheck } from './banners.mjs';
+import { CSS as BANNER_CSS, JS as BANNER_JS, BANNERS, page as bannerPage, layoutCheck } from './banners.mjs';
+import { ADS, GROUPS as AD_GROUPS, copyCsv, copyMd } from './fb-ads.mjs';
 import { guideHtml, cardHtml, signatureHtml, readme } from './guide.mjs';
 
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -34,36 +35,39 @@ const FONTS = {
   'NotoSans-Variable.ttf': 'https://raw.githubusercontent.com/google/fonts/main/ofl/notosans/NotoSans%5Bwdth%2Cwght%5D.ttf',
   'licence-NotoSans-OFL.txt': 'https://raw.githubusercontent.com/google/fonts/main/ofl/notosans/OFL.txt',
 };
-// The site's current photos (stock / AI placeholders until the client's own project photos arrive).
-// Left out: engineers.jpg (a US flag on a helmet), excavator.jpg (a tracked excavator, not the client's backhoe loader).
-const CDN = 'https://cdn.prod.website-files.com/6adf4142414584038f9dbb34/';
-// site file name (cache) -> name in the kit
-const PHOTO_NAMES = {
-  'hero.jpg': 'fasades-montaza.jpg', 'house-timber.jpg': 'maja-ar-koka-fasadi.jpg', 'timber-frame.jpg': 'koka-karkass.jpg',
-  'renovation.jpg': 'renovacija.jpg', 'worker-cut.jpg': 'griesana.jpg', 'rebar-workers.jpg': 'armaturas-siesana.jpg',
-  'site-team.jpg': 'komanda-objekta.jpg', 'carpenter.jpg': 'galdnieks.jpg', 'rebar-aerial.jpg': 'armatura-no-augsas.jpg',
+// The client's own photos, as published on the site's project and rental pages (CMS images, 2000 px): the kit ships these
+// only, and the banners use nothing else. Stock pictures that the site still uses elsewhere stay out of the kit.
+// photo on the site (probuild-<name>.jpeg) -> path in 07-foto/
+const OWN = {
+  ...Object.fromEntries(['jaunbuve-doles-sala-04', 'jaunbuve-doles-sala-10', 'jaunbuve-doles-sala-11', 'jaunbuve-doles-sala-12', 'jaunbuve-doles-sala-18',
+    'jaunbuve-doles-sala-25', 'jaunbuve-ikskile-01', 'jaunbuve-ikskile-16', 'jaunbuve-ikskile-21', 'jumts-tukuma-10', 'jumts-tukuma-16', 'jumts-tukuma-19', 'jumts-tukuma-20', 'jumts-tukuma-21',
+    'jumts-tukuma-22', 'fasade-vidrizi-01', 'fasade-vidrizi-02', 'fasade-vidrizi-10', 'fasade-vidrizi-18', 'fasade-vidrizi-19', 'garkalnu-pirts-02',
+    'garkalnu-pirts-03', 'garkalnu-pirts-23', 'saimniecibas-eka-vidrizi-01', 'saimniecibas-eka-vidrizi-14', 'saimniecibas-eka-vidrizi-15'].map((n) => [n, 'objekti/' + n + '.jpg'])),
+  'noma-ekskavators-02': 'tehnika/ekskavators-iekravejs-02.jpg', 'noma-ekskavators-03': 'tehnika/ekskavators-iekravejs-03.jpg',
+  'noma-ekskavators-05': 'tehnika/ekskavators-iekravejs-05.jpg', 'noma-pasizgazejs-01': 'tehnika/pasizgazejs-01.jpg', 'noma-pasizgazejs-03': 'tehnika/pasizgazejs-03.jpg',
+  'noma-grodu-satverejs-01': 'tehnika/grodu-satverejs-01.jpg', 'noma-regipsa-pacelajs-01': 'tehnika/regipsa-pacelajs-01.jpg',
 };
-const PHOTOS = Object.keys(PHOTO_NAMES);
+const OWN_CACHE = path.join(CACHE, 'own');
+const OWN_PAGES = ['projekts/jaunbuve-doles-sala', 'projekts/jaunbuve-ikskile', 'projekts/jumts-tukuma', 'projekts/fasade-vidrizi', 'projekts/garkalnu-pirts',
+  'projekts/saimniecibas-eka-vidrizi', 'nomas-produkts/ekskavators-iekravejs', 'nomas-produkts/pasizgazejs', 'nomas-produkts/grodu-satverejs', 'nomas-produkts/regipsa-pacelajs'];
 function download() {
   fs.mkdirSync(CACHE, { recursive: true });
   for (const [f, u] of Object.entries(FONTS)) {
     const dst = path.join(CACHE, f);
     if (!fs.existsSync(dst)) execFileSync('curl', ['-sSfL', '-o', dst, u]);
   }
-  const missing = PHOTOS.filter((f) => !fs.existsSync(path.join(CACHE, f)));
+  fs.mkdirSync(OWN_CACHE, { recursive: true });
+  const missing = Object.keys(OWN).filter((n) => !fs.existsSync(path.join(OWN_CACHE, `probuild-${n}.jpg`)));
   if (missing.length) {
-    // find the original (not resized) file names on the published site
+    // the original (not resized) CMS image of each photo, found on the published project and rental pages
     const found = {};
-    for (const p of ['', 'par-mums', 'noma', 'pakalpojumi', 'projekti', 'kontakti']) {
+    for (const p of OWN_PAGES) {
       const html = execFileSync('curl', ['-sSfL', 'https://probuild-group.webflow.io/' + p]).toString();
-      for (const m of html.matchAll(/https:\/\/cdn\.prod\.website-files\.com\/6adf4142414584038f9dbb34\/([0-9a-f]+_([a-z0-9-]+)\.jpe?g)/g)) {
-        if (!found[m[2] + '.jpg']) found[m[2] + '.jpg'] = m[1];
-      }
+      for (const m of html.matchAll(/https:\/\/cdn\.prod\.website-files\.com\/[0-9a-f]+\/[0-9a-f]+_[0-9a-f]+_probuild-([a-z0-9-]+)\.jpe?g/g)) found[m[1]] = found[m[1]] || m[0];
     }
-    for (const f of missing) {
-      const name = found[f];
-      if (!name) throw new Error('photo not found on the site: ' + f);
-      execFileSync('curl', ['-sSfL', '-o', path.join(CACHE, f), CDN + name]);
+    for (const n of missing) {
+      if (!found[n]) throw new Error('photo not found on the site: ' + n);
+      execFileSync('curl', ['-sSfL', '-o', path.join(OWN_CACHE, `probuild-${n}.jpg`), found[n]]);
     }
   }
 }
@@ -76,6 +80,7 @@ export const COLOURS = [
   { group: 'Zīmola', name: 'Oranžais tonis', key: 'orange-tint', hex: '#FDEFE6', use: 'Gaiši foni drukā un dokumentos' },
   { group: 'Neitrālās', name: 'Melnā', key: 'black', hex: '#000000', use: 'Galvenais fons, teksts uz oranža un balta' },
   { group: 'Neitrālās', name: 'Tumšā', key: 'dark', hex: '#191919', use: 'Otrais fons, kartītes, paneļi' },
+  { group: 'Neitrālās', name: 'Ogles', key: 'charcoal', hex: '#262626', use: 'Trešais fons: sadaļa starp melnu un #191919, melnām kartītēm' },
   { group: 'Neitrālās', name: 'Grafīta', key: 'graphite', hex: '#4C4C4C', use: 'Atdalītāji un neaktīvi elementi uz melna' },
   { group: 'Neitrālās', name: 'Pelēkā', key: 'grey', hex: '#7F7F7F', use: 'Sīkais teksts uz melna' },
   { group: 'Neitrālās', name: 'Gaiši pelēkā', key: 'light', hex: '#B2B2B2', use: 'Papildu teksts uz melna' },
@@ -177,12 +182,16 @@ async function main() {
   for (const [n, s] of Object.entries(rising)) write(k(D.pattern, n + '.svg'), s);
 
   // photos ------------------------------------------------------------
-  for (const f of PHOTOS) fs.copyFileSync(path.join(CACHE, f), k(D.photos, PHOTO_NAMES[f]));
+  for (const [n, to] of Object.entries(OWN)) { fs.mkdirSync(path.dirname(k(D.photos, to)), { recursive: true }); fs.copyFileSync(path.join(OWN_CACHE, `probuild-${n}.jpg`), k(D.photos, to)); }
 
   // banners (sources) ------------------------------------------------------------
   write(k(D.banners, 'html', 'baneri.css'), BANNER_CSS);
-  for (const b of BANNERS) write(k(D.banners, 'html', path.basename(b.file) + '.html'), bannerPage(b));
-  write(k(D.banners, 'html', 'baneri.json'), JSON.stringify(Object.fromEntries(BANNERS.map((b) => [path.basename(b.file) + '.html', path.dirname(b.file)])), null, 2) + '\n');
+  write(k(D.banners, 'html', 'baneri.js'), BANNER_JS);
+  const ALL = [...BANNERS.map((b) => ({ ...b, html: path.basename(b.file) })), ...ADS];
+  for (const b of ALL) write(k(D.banners, 'html', b.html + '.html'), bannerPage(b));
+  write(k(D.banners, 'html', 'baneri.json'), JSON.stringify(Object.fromEntries(ALL.map((b) => [b.html + '.html', path.dirname(b.file)])), null, 2) + '\n');
+  write(k(D.banners, 'facebook-reklama', 'reklamu-teksti.md'), copyMd());
+  write(k(D.banners, 'facebook-reklama', 'reklamu-teksti.csv'), copyCsv());
   write(k(D.banners, 'html', 'eksportet.mjs'), RENDER_SCRIPT);
 
   // render ------------------------------------------------------------
@@ -205,11 +214,11 @@ async function main() {
     await (await pg.$('#i')).screenshot({ path: outFile, omitBackground: !bg });
   }
   const logoSizes = { horizontals: [1800, 900, 450], vertikals: [1200, 600], zime: [1024, 512], ikona: [1024, 512] };
-  for (const n of Object.keys(svg)) {
+  if (!process.env.ADS_ONLY) for (const n of Object.keys(svg)) {
     const kind = Object.keys(logoSizes).find((s) => n.includes(s));
     for (const w of logoSizes[kind]) await svgPng(k(D.logo, 'svg', n + '.svg'), k(D.logo, 'png', `${n}-${w}px.png`), w);
   }
-  for (const [n, w] of [['favikons-32', 32], ['favikons-48', 48], ['apple-ikona-180', 180], ['android-ikona-192', 192], ['android-ikona-512', 512]]) {
+  if (!process.env.ADS_ONLY) for (const [n, w] of [['favikons-32', 32], ['favikons-48', 48], ['apple-ikona-180', 180], ['android-ikona-192', 192], ['android-ikona-512', 512]]) {
     await svgPng(k(D.logo, 'svg', 'probuild-ikona-oranza.svg'), k(D.logo, 'favikoni', `probuild-${n}.png`), w);
   }
   for (const n of Object.keys(rising)) await svgPng(k(D.pattern, n + '.svg'), k(D.pattern, n + '.png'), 1920);
@@ -222,18 +231,20 @@ async function main() {
 
   // banners
   const rendered = [], layoutProblems = [];
-  for (const b of BANNERS) {
+  for (const b of process.env.ADS_ONLY ? ADS : ALL) {
     await pg.setViewportSize({ width: b.w, height: b.h });
-    await pg.goto(url(k(D.banners, 'html', path.basename(b.file) + '.html')), { waitUntil: 'load' });
+    await pg.goto(url(k(D.banners, 'html', b.html + '.html')), { waitUntil: 'load' });
     await pg.evaluate(() => document.fonts.ready);
+    await pg.waitForFunction(() => document.documentElement.getAttribute('data-fitted') === '1');
+    if (await pg.$$eval('img', (a) => a.some((i) => !i.naturalWidth))) throw new Error('image did not load: ' + b.file);
     await pg.waitForTimeout(50);
     const el = await pg.$('#banner');
     const box = await el.boundingBox();
     if (Math.round(box.width) !== b.w || Math.round(box.height) !== b.h) throw new Error('bad size ' + b.file);
     for (const p of await pg.evaluate(layoutCheck, { margin: b.margin, safe: b.safe })) layoutProblems.push(`${b.file}: ${p}`);
-    const png = k(D.banners, b.file + '.png');
+    const png = k(D.banners, b.file + '.' + (b.ext || 'png'));
     fs.mkdirSync(path.dirname(png), { recursive: true });
-    await el.screenshot({ path: png });
+    await el.screenshot(b.ext === 'jpg' ? { path: png, type: 'jpeg', quality: 92 } : { path: png });
     const out = { ...b, png, kb: Math.round(fs.statSync(png).size / 1024) };
     if (b.display && out.kb > 140) { // Google Ads image limit is 150 KB
       const jpg = png.replace(/\.png$/, '.jpg');
@@ -242,16 +253,26 @@ async function main() {
     }
     rendered.push(out);
   }
-  write(k(D.banners, 'html', 'visi-baneri.html'), overviewHtml(rendered));
-  await pg.setViewportSize({ width: 1400, height: 900 });
-  await pg.goto(url(k(D.banners, 'html', 'visi-baneri.html')), { waitUntil: 'load' });
-  await pg.screenshot({ path: k(D.banners, 'visi-baneri.png'), fullPage: true });
+  const kitBanners = rendered.filter((b) => !b.group), ads = rendered.filter((b) => b.group);
+  if (kitBanners.length) {
+    write(k(D.banners, 'html', 'visi-baneri.html'), overviewHtml(kitBanners));
+    await pg.setViewportSize({ width: 1400, height: 900 });
+    await pg.goto(url(k(D.banners, 'html', 'visi-baneri.html')), { waitUntil: 'load' });
+    await pg.screenshot({ path: k(D.banners, 'visi-baneri.png'), fullPage: true });
+  }
+  // one overview sheet per ad group: each concept in its three sizes side by side
+  for (const g of Object.keys(AD_GROUPS)) {
+    write(k(D.banners, 'html', `parskats-${g}.html`), adsOverviewHtml(g, ads.filter((b) => b.group === g)));
+    await pg.setViewportSize({ width: 1500, height: 900 });
+    await pg.goto(url(k(D.banners, 'html', `parskats-${g}.html`)), { waitUntil: 'load' });
+    await pg.screenshot({ path: k(D.banners, 'facebook-reklama', `parskats-${g}.jpg`), fullPage: true, type: 'jpeg', quality: 85 });
+  }
   if (layoutProblems.length) {
     console.error('Banner layout problems:\n  ' + layoutProblems.join('\n  '));
     await browser.close();
     process.exit(1);
   }
-  if (process.env.BANNERS_ONLY) { await browser.close(); console.log('banners ok'); return; }
+  if (process.env.BANNERS_ONLY || process.env.ADS_ONLY) { await browser.close(); console.log('banners ok:', rendered.length); return; }
 
   // print + email ------------------------------------------------------------
   const ctxFonts = { fonts: k(D.fonts), logo: k(D.logo), pattern: k(D.pattern), url };
@@ -272,12 +293,20 @@ async function main() {
   await browser.close();
   fs.rmSync(TMP, { force: true });
 
-  write(k('LASIMANI.md'), readme({ D, banners: rendered, guidePdf: GUIDE_PDF }));
+  write(k('LASIMANI.md'), readme({ D, banners: kitBanners, ads, groups: AD_GROUPS, guidePdf: GUIDE_PDF }));
   fs.rmSync(path.join(OUT, NAME + '.zip'), { force: true });
   execFileSync('zip', ['-rqX', NAME + '.zip', NAME], { cwd: OUT });
+  // the Facebook ads on their own (PNG, texts, overview sheets), for whoever runs the ads
+  const ADS_NAME = 'ProBuild-Group-facebook-reklama';
+  fs.rmSync(path.join(OUT, ADS_NAME), { recursive: true, force: true });
+  fs.cpSync(k(D.banners, 'facebook-reklama'), path.join(OUT, ADS_NAME), { recursive: true });
+  fs.rmSync(path.join(OUT, ADS_NAME + '.zip'), { force: true });
+  execFileSync('zip', ['-rqX', ADS_NAME + '.zip', ADS_NAME], { cwd: OUT });
+  console.log('ads zip:', path.join(OUT, ADS_NAME + '.zip'), Math.round(fs.statSync(path.join(OUT, ADS_NAME + '.zip')).size / 1024) + ' KB');
   console.log('kit:', KIT);
   console.log('zip:', path.join(OUT, NAME + '.zip'), Math.round(fs.statSync(path.join(OUT, NAME + '.zip')).size / 1024) + ' KB');
-  for (const r of rendered) console.log(`${r.file}.png ${r.w}x${r.h} ${r.kb} KB${r.jpg ? ' (+ jpg)' : ''}`);
+  for (const r of kitBanners) console.log(`${r.file}.png ${r.w}x${r.h} ${r.kb} KB${r.jpg ? ' (+ jpg)' : ''}`);
+  console.log(`${ads.length} Facebook ads, ${Math.round(ads.reduce((a, b) => a + b.kb, 0) / 1024)} MB`);
 }
 
 function paletteHtml() {
@@ -297,6 +326,16 @@ ${list.map((b) => `<figure><a href="${path.basename(b.file)}.html"><img src="../
 </div></body></html>`;
 }
 
+function adsOverviewHtml(group, list) {
+  const slugs = [...new Set(list.map((b) => b.slug))];
+  return `<!doctype html><html lang="lv"><head><meta charset="utf-8"><title>ProBuild Group · Facebook reklāmas · ${AD_GROUPS[group]}</title>
+<style>body{margin:0;padding:32px;background:#2b2b2b;color:#fff;font:14px/1.4 system-ui,sans-serif}h1{font-size:22px;margin:0 0 6px}p{color:#b2b2b2;margin:0 0 22px}
+.row{display:flex;gap:18px;align-items:flex-end;margin-bottom:26px}figure{margin:0}figure img{display:block;height:auto;box-shadow:0 0 0 1px rgba(255,255,255,.15)}figcaption{margin-top:6px;color:#b2b2b2;font-size:12px}</style></head>
+<body><h1>Facebook reklāmas · ${AD_GROUPS[group]}</h1><p>Katrai reklāmai 1:1, 4:5 un 9:16 (attēli parādīti mazāki). Teksti: reklamu-teksti.md.</p>
+${slugs.map((sl) => `<div class="row">${list.filter((b) => b.slug === sl).map((b) => `<figure><img src="../${b.file}.${b.ext || 'png'}" width="${Math.round(b.w * 0.3)}"><figcaption>${path.basename(b.file)}.${b.ext || 'png'}</figcaption></figure>`).join('')}</div>`).join('\n')}
+</body></html>`;
+}
+
 const RENDER_SCRIPT = `// Baneru eksports pēc teksta labošanas HTML failos:  node eksportet.mjs [fails.html ...]
 // Vajag Node 18+ un Playwright:  npm i playwright && npx playwright install chromium
 import fs from 'fs';
@@ -312,8 +351,11 @@ for (const f of files) {
   await page.setViewportSize({ width: +m[1], height: +m[2] });
   await page.goto('file://' + path.join(here, f));
   await page.evaluate(() => document.fonts.ready);
-  const out = path.join(here, '..', where[f] || 'socialie-tikli', f.replace(/\\.html$/, '.png'));
-  await (await page.$('#banner')).screenshot({ path: out });
+  await page.waitForFunction(() => document.documentElement.getAttribute('data-fitted') === '1');
+  const jpg = (where[f] || '').startsWith('facebook-reklama/') && !!(await page.$('.photo, .tile'));
+  const out = path.join(here, '..', where[f] || 'socialie-tikli', f.replace(/\\.html$/, jpg ? '.jpg' : '.png'));
+  fs.mkdirSync(path.dirname(out), { recursive: true });
+  await (await page.$('#banner')).screenshot(jpg ? { path: out, type: 'jpeg', quality: 92 } : { path: out });
   console.log(out);
 }
 await browser.close();

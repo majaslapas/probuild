@@ -70,8 +70,8 @@ table{border-collapse:collapse;width:100%;font-size:11.5px}td,th{text-align:left
   <img src="${P('probuild-joslu-fons-caurspidigs.svg')}" style="position:absolute;left:0;bottom:0;width:100%;z-index:-1;opacity:.9">
   <img src="${L(logoH)}" style="height:80px;margin-top:8mm">
   <h1 style="font-size:60px;margin-top:30mm">Zīmola vadlīnijas</h1>
-  <p class="muted" style="margin-top:14px;font-size:16px">Logo, krāsas, fonti un zīmola joslas</p>
-  <footer class="pf is-dark"><span>ProBuild Group · ${COMPANY.web} · versija 1.1, 2026. gada novembris</span>${pageNo()}</footer>
+  <p class="muted" style="margin-top:14px;font-size:16px">Logo, krāsas, fonti, zīmola joslas un foto</p>
+  <footer class="pf is-dark"><span>ProBuild Group · ${COMPANY.web} · versija 1.2, 2026. gada novembris</span>${pageNo()}</footer>
 </section>
 
 <!-- 2 logo -->
@@ -114,7 +114,7 @@ table{border-collapse:collapse;width:100%;font-size:11.5px}td,th{text-align:left
         ${dont(`<img src="${L(logoHL)}" style="height:34px">`, 'likt krāsaino logo uz oranža: joslas pazūd', '#F2600C')}
         ${dont(`<img src="${L(logoH)}" style="height:34px;filter:drop-shadow(4px 4px 3px #F2600C)">`, 'pievienot ēnas, spīdumu vai kontūras')}
         ${dont(`<img src="${L(logoH)}" style="height:34px;transform:rotate(-12deg)">`, 'pagriezt vai pārkārtot daļas')}
-        ${dont(`<img src="${L(logoHL)}" style="height:34px">`, 'likt uz raiba foto bez tumša slāņa', `url('${PH('armatura-no-augsas.jpg')}') center/cover`)}
+        ${dont(`<img src="${L(logoHL)}" style="height:34px">`, 'likt uz raiba foto bez tumša slāņa', `url('${PH('objekti/jaunbuve-doles-sala-04.jpg')}') center/cover`)}
       </div>
     </div>
   </div>
@@ -125,10 +125,10 @@ table{border-collapse:collapse;width:100%;font-size:11.5px}td,th{text-align:left
 <section class="pg">
   ${head('Krāsas')}
   <div class="cols c4" style="gap:6mm">${['orange', 'black', 'dark', 'white'].map((x) => sw(col[x], true)).join('')}</div>
-  <div class="cols" style="grid-template-columns:repeat(8,1fr);gap:4mm;margin-top:5mm">${['orange-light', 'orange-dark', 'orange-tint', 'graphite', 'grey', 'light', 'lighter', 'off-white'].map((x) => sw(col[x])).join('')}</div>
+  <div class="cols" style="grid-template-columns:repeat(9,1fr);gap:4mm;margin-top:5mm">${['orange-light', 'orange-dark', 'orange-tint', 'charcoal', 'graphite', 'grey', 'light', 'lighter', 'off-white'].map((x) => sw(col[x])).join('')}</div>
   <div class="cols c2" style="margin-top:6mm;grid-template-columns:1fr 1.1fr">
     <div><h3>Proporcijas</h3><div style="display:flex;height:12mm;border-radius:6px;overflow:hidden"><span style="flex:60;background:#000"></span><span style="flex:25;background:#191919"></span><span style="flex:10;background:#F2600C"></span><span style="flex:5;background:#fff;box-shadow:inset 0 0 0 1px #ddd"></span></div>
-    <p class="muted" style="margin-top:6px">Melnā un tumšā – lielākā daļa virsmu, baltā – teksts, oranžā – akcents: viena poga, cenas, joslas. Pilns oranžs laukums – vienam spēcīgam vēstījumam.</p></div>
+    <p class="muted" style="margin-top:6px">Melnā un tumšā – lielākā daļa virsmu, baltā – teksts, oranžā – akcents: viena poga, cenas, joslas. Pilns oranžs laukums – vienam spēcīgam vēstījumam. Ogļu #262626 – sadaļai, kas jāatdala no melnās un #191919 (mājaslapā: atsauksmes ar melnām kartītēm).</p></div>
     <div><h3>Kontrasts</h3><table>
       <tr><td>Melns teksts uz oranža</td><td class="mono">${cr('#000000', '#F2600C')}</td><td>teksts un pogas: jā</td></tr>
       <tr><td>Oranžs uz melna</td><td class="mono">${cr('#F2600C', '#000000')}</td><td>teksts, cenas: jā</td></tr>
@@ -188,7 +188,20 @@ table{border-collapse:collapse;width:100%;font-size:11.5px}td,th{text-align:left
   ${foot(true)}
 </section>
 
-<!-- 7 rekvizīti -->
+<!-- 7 foto -->
+<section class="pg">
+  ${head('Foto')}
+  <div class="cols c3" style="gap:6mm">
+    ${[['objekti/jaunbuve-doles-sala-25.jpg', '30% 35%', 'Gatavs objekts: jaunbūve Doles salā'], ['objekti/jaunbuve-doles-sala-04.jpg', '50% 60%', 'Darbs procesā: pamati ar armatūru'], ['tehnika/ekskavators-iekravejs-03.jpg', '60% 50%', 'Sava tehnika: NEW HOLLAND B115-4PS']].map(([f, pos, t]) => `<figure><div style="height:62mm;border-radius:10px;background:url('${PH(f)}') ${pos}/cover"></div><figcaption class="muted" style="margin-top:6px;font-size:11px">${t}</figcaption></figure>`).join('')}
+  </div>
+  <div class="cols c2" style="margin-top:8mm;gap:12mm">
+    <div><h3>Kādus foto lietot</h3><p>Tikai savu objektu un savas tehnikas foto: <code>07-foto/objekti</code> un <code>07-foto/tehnika</code> (no mājaslapas projektu un nomas lapām). Tie rāda īstu darbu; svešu objektu foto neuzdodiet par savu darbu.</p><p>Labākie kadri: gatavs objekts saulainā dienā, pirms un pēc no viena skatpunkta, darbs procesā ar tīru fonu, tehnika darbā ar operatoru.</p></div>
+    <div><h3>Teksts uz foto</h3><p>Zem teksta foto aptumšojiet ar melnu pāreju (līdz 90–100 % apakšā), lai balts teksts un oranžā cena būtu skaidri salasāmi. Logo – uz tumšākās vietas, oranžās joslas – apakšējā labajā stūrī aiz teksta.</p><p>Uz foto nelieciet vairāk par virsrakstu, cenu un vienu pogu; sīkāka informācija – reklāmas tekstā vai mājaslapā.</p></div>
+  </div>
+  ${foot()}
+</section>
+
+<!-- 8 rekvizīti -->
 <section class="pg is-dark">
   ${barsBox(420, 560, 'is-orange')}
   ${head('Rekvizīti')}
@@ -268,13 +281,14 @@ export function signatureHtml() {
 }
 
 // ------------------------------------------------------------------ README (LASIMANI.md)
-export function readme({ D, banners, guidePdf }) {
+export function readme({ D, banners, ads = [], groups = {}, guidePdf }) {
   const rows = (list) => list.map((b) => `| \`${b.file}.png\` | ${b.w}×${b.h} | ${b.title} |`).join('\n');
   const social = banners.filter((b) => !b.display), display = banners.filter((b) => b.display);
+  const adGroups = Object.keys(groups).map((g) => `| \`${D.banners}/facebook-reklama/${g}/\` | ${groups[g]} | ${new Set(ads.filter((a) => a.group === g).map((a) => a.slug)).size} |`).join('\n');
   return `# ProBuild Group · zīmola komplekts (2026)
 
-Viss, kas zīmolam vajadzīgs ārpus mājaslapas: logo faili, krāsas, fonti, zīmola joslas, foto un gatavi baneri.
-Sāciet ar **\`${D.guide}/${guidePdf}\`** (7 lpp.: logo, logo lietošana, krāsas, fonti, zīmola joslas, rekvizīti).
+Viss, kas zīmolam vajadzīgs ārpus mājaslapas: logo faili, krāsas, fonti, zīmola joslas, savu objektu foto, gatavi baneri un
+Facebook reklāmas. Sāciet ar **\`${D.guide}/${guidePdf}\`** (8 lpp.: logo, logo lietošana, krāsas, fonti, zīmola joslas, foto, rekvizīti).
 
 | Mape | Saturs |
 |---|---|
@@ -283,8 +297,8 @@ Sāciet ar **\`${D.guide}/${guidePdf}\`** (7 lpp.: logo, logo lietošana, krāsa
 | \`${D.colours}\` | Krāsas: \`.css\`, \`.json\`, Adobe krāsu paraugi \`.ase\`, \`.txt\` un krāsu attēls |
 | \`${D.fonts}\` | Martian Mono un Noto Sans (TTF, SIL Open Font License, bezmaksas). Licences teksts ir oriģinālvalodā (angliski) |
 | \`${D.pattern}\` | Zīmola joslas SVG/PNG (baltas, baltas maigas, oranžas, melnas), pilnekrāna joslu fons, saraksta zīme |
-| \`${D.banners}\` | Baneri: \`socialie-tikli/\` un \`displeja-reklama/\` (PNG), \`html/\` (labojami avoti), \`visi-baneri.png\` |
-| \`${D.photos}\` | Mājaslapas un baneru foto (pagaidu stock / AI attēli) |
+| \`${D.banners}\` | Baneri: \`socialie-tikli/\` un \`displeja-reklama/\` (PNG), \`facebook-reklama/\` (reklāmas un to teksti), \`html/\` (labojami avoti), \`visi-baneri.png\` |
+| \`${D.photos}\` | Savu objektu (\`objekti/\`) un savas tehnikas (\`tehnika/\`) foto no mājaslapas, 2000 px |
 | \`${D.print}\` | Vizītkarte (90×50 mm, 3 mm pielaide, PDF drukai + priekšskatījums) un e-pasta paraksts |
 
 ## Kuru logo failu lietot
@@ -294,7 +308,29 @@ Sāciet ar **\`${D.guide}/${guidePdf}\`** (7 lpp.: logo, logo lietošana, krāsa
 - Uz oranža un vienas krāsas drukā: \`probuild-logo-horizontals-melns\` / \`-balts\`.
 - Mazi izmēri, Facebook / Instagram / Google profila attēls: \`probuild-ikona-oranza\` (1024 px PNG).
 
-## Baneri
+## Facebook un Instagram reklāmas
+
+${ads.length} attēli: ${new Set(ads.map((a) => a.slug)).size} reklāmas, katra 1080×1080 (1:1, plūsma), 1080×1350 (4:5, plūsma) un 1080×1920 (9:16, stāsti un
+reels). Ads Manager vienā reklāmā pievienojiet visus trīs izmērus, katru savam izvietojumam.
+
+| Mape | Kas | Reklāmas |
+|---|---|---|
+${adGroups}
+
+- **Teksti:** \`${D.banners}/facebook-reklama/reklamu-teksti.md\` (un \`.csv\` Excel): katrai reklāmai galvenais teksts, virsraksts, apraksts,
+  poga un saite ar UTM birkām. CRM pie pieteikuma saglabā kampaņu (iespējas laukos) un reklāmu (pieteikuma piezīmē), tāpēc
+  redzēsiet, kura reklāma atnesa pieteikumu.
+- **Pārskats:** \`parskats-<grupa>.jpg\`: katras grupas reklāmas trijos izmēros vienā attēlā.
+- **Formāts:** reklāmas ar foto ir JPG (kvalitāte 92), pārējās PNG; Facebook katru augšupielādi tik un tā pārveido JPG.
+- **9:16 drošā zona:** teksts un logo ir starp 270 px no augšas un 672 px no apakšas (Meta reels drošā zona), tāpēc stāstos un reels tos
+  neaizsedz poga un paraksts.
+- **Fakti:** cenas, skaitļi un teksti ir no mājaslapas (2026. gada 3. novembris). Pakalpojumu cenas ir orientējošas un bez PVN (ēku
+  apsaimniekošanai PVN statuss nav norādīts, tāpēc tur ir tikai „Orientējošā cena“), nomas instrumentiem – bez PVN, ekskavatoram un
+  pašizgāzējam mājaslapā PVN nav norādīts. Mainot cenas mājaslapā, mainiet tās arī reklāmās.
+- **Kalkulatora reklāmas** rāda, kā kalkulators darbojas (jomas, atzīmēti darbi, apjoms, cena uzreiz), un neviena summa tajās nav redzama.
+- **Atsauksme** („Laba komunikācija, rūpīgs darbs, augsta atbildība.“, Iveta, Rīga) ir tā pati, ko rāda mājaslapa; tā ir publiska Google atsauksme.
+
+## Citi baneri
 
 Sociālie tīkli (Facebook, Instagram, LinkedIn):
 
@@ -308,16 +344,16 @@ Displeja reklāma (Google Ads, katrs PNG mazāks par 150 KB):
 |---|---|---|
 ${rows(display)}
 
-Kalkulatora baneri rāda, kā kalkulators darbojas (joma, atzīmēti darbi, apjoms, cena uzreiz) un ko tas dod; summas un aprēķinus tie nerāda.
-
-**Teksta labošana:** uzinstalējiet fontus, atveriet banera failu mapē \`${D.banners}/html/\` pārlūkā Chrome un mainiet tekstu HTML failā (izskats ir \`baneri.css\`). PNG no jauna: \`cd ${D.banners}/html && npm i playwright && npx playwright install chromium && node eksportet.mjs\`. Dizainers maketu var pārveidot arī Canva vai Figma no PNG, fontiem un krāsām.
+**Teksta labošana:** uzinstalējiet fontus, atveriet banera failu mapē \`${D.banners}/html/\` pārlūkā Chrome un mainiet tekstu HTML failā
+(izskats ir \`baneri.css\`; garāks virsraksts pats samazinās, lai ietilptu). PNG no jauna: \`cd ${D.banners}/html && npm i playwright && npx playwright install chromium && node eksportet.mjs\`.
+Dizainers maketu var pārveidot arī Canva vai Figma no PNG, fontiem un krāsām.
 
 ## Pirms lietošanas
 
-- **Domēns:** baneros un parakstā ir **probuildgroup.lv**. Reklāmu sāciet, kad mājaslapa ir publicēta šajā domēnā (pagaidām tā ir probuild-group.webflow.io).
-- **Foto** ir pagaidu stock / AI attēli no mājaslapas. Kad būs savu objektu foto, nomainiet tos un neuzdodiet stock foto par savu darbu.
-- **Cenas** ņemtas no mājaslapas 2026. gada 30. oktobrī: pakalpojumi no lapas Cenas (bez PVN), noma no lapas Noma. Nomas cenām nav norādīts, vai PVN ir iekļauts: pārbaudiet pirms reklāmas.
-- **Vizītkarte un paraksts** kā paraugu izmanto komandas vadītāja vārdu un amatu no mājaslapas ar uzņēmuma tālruni un e-pastu. Nomainiet katram darbiniekam.
+- **Domēns:** baneros, reklāmu saitēs un parakstā ir **probuildgroup.lv**. Reklāmas sāciet, kad mājaslapa ir publicēta šajā domēnā (pagaidām tā ir probuild-group.webflow.io).
+- **Foto** ir klienta paša objektu un tehnikas foto no mājaslapas projektu un nomas lapām. Reģipša pacēlāja attēls ir neliels (447 px), tāpēc reklāmā tas ir baltā laukumā, nevis pa visu attēlu.
+- **Cenas** ņemtas no mājaslapas 2026. gada 3. novembrī: pakalpojumi no lapas Pakalpojumi (bez PVN), noma no lapas Noma.
+- **Vizītkarte un paraksts** kā paraugu izmanto kontaktpersonas vārdu un amatu no mājaslapas (Jānis Ādamsons, komandas vadītājs) ar uzņēmuma tālruni un e-pastu. Nomainiet katram darbiniekam.
 - **E-pasta paraksts:** logo failā \`e-pasta-paraksts.html\` norāda uz PNG šajā mapē, tāpēc redzams tikai šajā datorā. Augšupielādējiet \`02-logo/png/probuild-logo-horizontals-uz-gaisa-450px.png\` mājaslapā (vai citur internetā), ierakstiet adresi \`<img src>\`, tad atveriet failu pārlūkā, iezīmējiet visu, nokopējiet un ielīmējiet e-pasta programmas paraksta iestatījumos.
 - **Drukas krāsas:** CMYK ir vienkāršs pārrēķins. Lūdziet tipogrāfijai salīdzināt #F2600C provizoriskajā izdrukā.
 `;

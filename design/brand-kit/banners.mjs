@@ -1,7 +1,7 @@
 // Banner layouts for the ProBuild Group brand kit. Each banner is one standalone HTML file in
-// 06-baneri/html/ (shared baneri.css), rendered by build.mjs to 06-baneri/<socialie-tikli|displeja-reklama>/ at its exact pixel size.
-// Copy is Latvian and taken from the site (Pakalpojumi and Noma pages, the calculator on Kalkulators; until 2 November 2026
-// these were Cenas, Noma and Pakalpojumi).
+// 06-baneri/html/ (shared baneri.css and baneri.js), rendered by build.mjs to 06-baneri/<socialie-tikli|displeja-reklama>/ at its exact
+// pixel size; the Facebook ads (fb-ads.mjs) use the same CSS and helpers. Copy is Latvian and taken from the site (Pakalpojumi,
+// Noma and Kalkulators, checked 3 November 2026). Photos are the client's own (projects and machines, 07-foto/).
 // The calculator banners show what the calculator does and why it helps; they show no amounts or sums.
 // Text sits in flowing stacks (.stack / .row); build.mjs checks that the key blocks (.k) don't overlap or run off the edge.
 // Sizing: Martian Mono at the heading tracking is 0.665 em per character.
@@ -9,7 +9,7 @@
 export const CSS = `/* ProBuild Group baneri. Tekstu maina HTML failos; krāsas, fonti un zīmola joslas ir šeit. */
 @font-face{font-family:"Martian Mono";src:url("../../04-fonti/MartianMono-Variable.ttf") format("truetype");font-weight:100 800;font-stretch:75% 112.5%}
 @font-face{font-family:"Noto Sans";src:url("../../04-fonti/NotoSans-Variable.ttf") format("truetype");font-weight:100 900;font-stretch:62.5% 100%}
-:root{--orange:#F2600C;--orange-light:#F58F54;--orange-dark:#C14C09;--black:#000;--dark:#191919;--grey:#4C4C4C;--mid:#7F7F7F;--light:#B2B2B2;--lighter:#D8D8D8;--white:#FFF}
+:root{--orange:#F2600C;--orange-light:#F58F54;--orange-dark:#C14C09;--black:#000;--dark:#191919;--charcoal:#262626;--grey:#4C4C4C;--mid:#7F7F7F;--light:#B2B2B2;--lighter:#D8D8D8;--white:#FFF}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#2B2B2B}
 .bn{position:relative;overflow:hidden;isolation:isolate;background:var(--black);color:var(--white);font-family:"Noto Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -55,7 +55,7 @@ html,body{background:#2B2B2B}
 .box svg{width:78%;height:78%}
 .qty{display:inline-flex;align-items:center;justify-content:space-between;gap:1.2em;flex:none;border-radius:.45em;background:var(--black);border:1px solid rgba(255,255,255,.18);color:var(--mid);font-family:"Martian Mono",monospace}
 .qty i{display:block;width:1px;height:1.1em;background:var(--orange)}
-.res{display:flex;justify-content:space-between;align-items:center;gap:1em;background:var(--black);border-radius:14px}
+.res{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.2em 1em;background:var(--black);border-radius:14px}
 .res-l{color:var(--light);line-height:1.3;white-space:nowrap}
 .res-v{font-family:"Martian Mono",monospace;font-weight:500;color:var(--orange-light);letter-spacing:-.03em;line-height:1.1;white-space:nowrap}
 /* Ieguvumi */
@@ -80,61 +80,104 @@ html,body{background:#2B2B2B}
 .is-orange .chip{border-color:rgba(0,0,0,.45)}
 .photo{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-3}
 .shade{position:absolute;inset:0;z-index:-2}
+/* Facebook reklāmas */
+.on-photo .kicker,.on-photo .h,.on-photo .sub,.on-photo .price,.on-photo .note{text-shadow:0 1px 16px rgba(0,0,0,.55)}
+.fit{min-width:0;max-width:100%}
+.note{color:var(--light);line-height:1.35}
+.is-orange .note{color:rgba(0,0,0,.75)}
+.in-row{display:flex;align-items:center;flex-wrap:wrap}
+.tile{position:absolute;overflow:hidden;border-radius:18px;background-size:cover;background-position:center}
+.tile.is-flat{border-radius:0}
+.tag{position:absolute;display:inline-flex;align-items:center;border-radius:999px;font-weight:600;white-space:nowrap;line-height:1}
+.tag.is-dark{background:rgba(0,0,0,.78);color:var(--white)}
+.tag.is-orange{background:var(--orange);color:var(--black)}
+.stats{display:grid}
+.stats b{display:block;font-family:"Martian Mono",monospace;font-weight:500;letter-spacing:-.04em;line-height:1;color:var(--orange);white-space:nowrap}
+.stats span{display:block;color:var(--lighter);line-height:1.3;margin-top:.45em}
+.stars{color:var(--orange);letter-spacing:.06em;line-height:1;white-space:nowrap}
+.quote{font-family:"Martian Mono",monospace;font-weight:500;letter-spacing:-.03em;line-height:1.2;text-wrap:balance}
+.steps{list-style:none;display:flex;flex-direction:column}
+.steps li{display:flex;align-items:flex-start}
+.steps .n{flex:none;font-family:"Martian Mono",monospace;font-weight:500;color:var(--orange);line-height:1.1}
+.steps b{display:block;font-weight:600;line-height:1.25}
+.steps small{display:block;color:var(--light);line-height:1.35}
+.big{font-family:"Martian Mono",monospace;font-weight:500;letter-spacing:-.05em;line-height:.95;white-space:nowrap}
+.panel{position:absolute;background:var(--white);border-radius:24px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.panel img{display:block;max-width:100%;max-height:100%;object-fit:contain}
+.work{display:flex;align-items:center;border-radius:.6em;border:1px solid var(--orange);line-height:1.2}
+.work b{flex:1;font-weight:500;white-space:nowrap}
+.work em{display:block;font-style:normal;color:var(--light);white-space:nowrap}
 `;
 
-const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
-const LOGO = {
+// Fits .fit headings into their box: the font shrinks until the text takes at most data-lines lines (data-min is the floor).
+// The page sets data-fitted on <html> when done; the export waits for it.
+export const JS = `// ProBuild Group baneri: virsraksts ar klasi .fit samazinās, līdz ietilpst data-lines rindās (ne mazāk par data-min px).
+(function () {
+  function fit() {
+    document.querySelectorAll('.fit').forEach(function (e) {
+      var max = +e.dataset.lines || 2, min = +e.dataset.min || 24, size = parseFloat(getComputedStyle(e).fontSize);
+      function lines() { return Math.round(e.getBoundingClientRect().height / parseFloat(getComputedStyle(e).lineHeight)); }
+      while (size > min && (e.scrollWidth > e.clientWidth + 1 || lines() > max)) { size -= 1; e.style.fontSize = size + 'px'; }
+    });
+    document.documentElement.setAttribute('data-fitted', '1');
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit); else window.addEventListener('load', fit);
+})();
+`;
+
+export const ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+export const LOGO = {
   dark: '../../02-logo/svg/probuild-logo-horizontals-uz-tumsa.svg',
   mono: '../../02-logo/svg/probuild-logo-horizontals-melns.svg',
   markDark: '../../02-logo/svg/probuild-zime-uz-tumsa.svg',
   markMono: '../../02-logo/svg/probuild-zime-melna.svg',
 };
-const AR = 429.45 / 95.79; // horizontal logo aspect ratio
-const PH = (f) => `../../07-foto/${f}`;
-const px = (o) => Object.entries(o).filter(([, v]) => v != null).map(([k, v]) => `${k}:${typeof v === 'number' ? v + 'px' : v}`).join(';');
+export const AR = 429.45 / 95.79; // horizontal logo aspect ratio
+export const PH = (f) => `../../07-foto/${f}`;
+export const px = (o) => Object.entries(o).filter(([, v]) => v != null).map(([k, v]) => `${k}:${typeof v === 'number' ? v + 'px' : v}`).join(';');
 
-const logo = (h, x, y, kind = 'dark') => `<img class="logo abs k" src="${LOGO[kind]}" alt="ProBuild Group" style="${px({ left: x, top: y, height: h, width: +(h * AR).toFixed(1) })}">`;
-const mark = (h, x, y, kind = 'markDark') => `<img class="logo abs k" src="${LOGO[kind]}" alt="ProBuild Group" style="${px({ left: x, top: y, height: h, width: h })}">`;
-const bars = (w, h, cls = '', pos = {}) => `<div class="bars ${cls}" style="${px({ width: w, height: h, ...pos })}" aria-hidden="true"><i></i><i></i></div>`;
-const cta = (text, size, h, pad, cls = '') => `<span class="cta ${cls}" style="${px({ 'font-size': size, height: h, padding: `0 ${pad}px` })}">${text}${ARROW}</span>`;
-const stack = (pos, inner, cls = '') => `<div class="stack k ${cls}" style="${px(pos)}">${inner}</div>`;
-const row = (pos, inner) => `<div class="row k" style="${px(pos)}">${inner}</div>`;
-const T = (tag, cls, size, text, extra = {}) => `<${tag} class="${cls}" style="${px({ 'font-size': size, ...extra })}">${text}</${tag}>`;
+export const logo = (h, x, y, kind = 'dark') => `<img class="logo abs k" src="${LOGO[kind]}" alt="ProBuild Group" style="${px({ left: x, top: y, height: h, width: +(h * AR).toFixed(1) })}">`;
+export const mark = (h, x, y, kind = 'markDark') => `<img class="logo abs k" src="${LOGO[kind]}" alt="ProBuild Group" style="${px({ left: x, top: y, height: h, width: h })}">`;
+export const bars = (w, h, cls = '', pos = {}) => `<div class="bars ${cls}" style="${px({ width: w, height: h, ...pos })}" aria-hidden="true"><i></i><i></i></div>`;
+export const cta = (text, size, h, pad, cls = '') => `<span class="cta ${cls}" style="${px({ 'font-size': size, height: h, padding: `0 ${pad}px` })}">${text}${ARROW}</span>`;
+export const stack = (pos, inner, cls = '') => `<div class="stack k ${cls}" style="${px(pos)}">${inner}</div>`;
+export const row = (pos, inner) => `<div class="row k" style="${px(pos)}">${inner}</div>`;
+export const T = (tag, cls, size, text, extra = {}) => `<${tag} class="${cls}" style="${px({ 'font-size': size, ...extra })}">${text}</${tag}>`;
 const urlTR = (text, size, right, top) => `<p class="foot abs k" style="${px({ right, top, 'font-size': size })}">${text}</p>`;
 
-const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+export const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
 // The calculator as the visitor uses it: pick an area, tick the works, type the amount, the approximate price shows at once.
-// Areas and work groups are the calculator's own (prices.json: 5 areas, 384 works).
-const UI = {
+// Areas and works are the calculator's own (prices.json: 5 areas, 384 works; the rows are works of Būvniecība › Pamati).
+export const UI = {
   tabs: ['Būvniecība', 'Remontdarbi', 'Kokapstrāde'],
-  rows: [['Pamati', 'm²'], ['Jumts', 'm²'], ['Fasāde'], ['Logi un durvis', 'gab.']], // a unit = ticked
+  rows: [['Zemes darbi', 'm³'], ['Pamatu siltināšana', 'm²'], ['Pamatu bloku uzstādīšana'], ['Betona elementu griešana', 'tek. m']], // a unit = ticked
 };
-const r = (v) => Math.round(v);
+export const r = (v) => Math.round(v);
 // s: base size (row text); the rest scales from it
-const ui = (s, w, { tabs = 3, meta = true, extra = {}, cls = '' } = {}) => `<div class="card ${cls}" style="${px({ width: w, padding: r(s * 1.4), ...extra })}">
+export const ui = (s, w, { tabs = 3, meta = true, extra = {}, cls = '', rows = UI.rows } = {}) => `<div class="card ${cls}" style="${px({ width: w, padding: r(s * 1.4), ...extra })}">
   <div class="card-h" style="margin-bottom:${r(s * .8)}px"><span class="card-t" style="font-size:${r(s * 1.35)}px">Cenu kalkulators</span>${meta ? `<span class="card-m" style="font-size:${r(s * .85)}px">380+ darbu cenas</span>` : ''}</div>
   <div class="tabs" style="gap:${r(s * .45)}px;margin-bottom:${r(s * .7)}px">${UI.tabs.slice(0, tabs).map((t, i) => `<span class="tab${i ? '' : ' is-on'}" style="font-size:${r(s * .85)}px;height:${r(s * 2)}px;padding:0 ${r(s * .85)}px">${t}</span>`).join('')}</div>
-  ${UI.rows.map(([t, u]) => `<div class="opt${u ? ' is-on' : ''}" style="font-size:${s}px;padding:${r(s * .55)}px ${r(s * .7)}px;margin-top:${r(s * .4)}px"><i class="box" style="width:${r(s * 1.15)}px;height:${r(s * 1.15)}px">${u ? CHECK : ''}</i><b>${t}</b>${u ? `<span class="qty" style="font-size:${r(s * .8)}px;height:${r(s * 1.75)}px;padding:0 ${r(s * .6)}px"><i></i>${u}</span>` : ''}</div>`).join('\n  ')}
-  <div class="res" style="margin-top:${r(s * .8)}px;padding:${r(s * .85)}px ${r(s)}px"><span class="res-l" style="font-size:${r(s * .85)}px">Aptuvenā cena</span><span class="res-v" style="font-size:${r(s * 1.3)}px">redzama uzreiz</span></div>
+  ${rows.map(([t, u]) => `<div class="opt${u ? ' is-on' : ''}" style="font-size:${s}px;padding:${r(s * .55)}px ${r(s * .7)}px;margin-top:${r(s * .4)}px"><i class="box" style="width:${r(s * 1.15)}px;height:${r(s * 1.15)}px">${u ? CHECK : ''}</i><b>${t}</b>${u ? `<span class="qty" style="font-size:${r(s * .8)}px;height:${r(s * 1.75)}px;padding:0 ${r(s * .6)}px"><i></i>${u}</span>` : ''}</div>`).join('\n  ')}
+  <div class="res" style="margin-top:${r(s * .8)}px;padding:${r(s * .85)}px ${r(s)}px"><span class="res-l" style="font-size:${r(s * .85)}px">Aptuvenās izmaksas</span><span class="res-v" style="font-size:${r(s * 1.3)}px">redzamas uzreiz</span></div>
 </div>`;
-// What the calculator gives the visitor (from the site's calculator section and "Kas notiek pēc aprēķina").
-const BEN = [
-  ['Aptuvenā cena uzreiz', 'bez zvaniem un gaidīšanas'],
-  ['380+ darbu cenas', 'no pamatiem līdz apdarei'],
+// What the calculator gives the visitor, in the site's words (Kalkulators: header, form note, "Viens partneris visam procesam").
+export const BEN = [
+  ['Aptuvenā cena uzreiz', 'atzīmējiet darbus un ierakstiet apjomu'],
+  ['380+ darbu cenas', 'no zemes darbiem līdz apdarei'],
   ['Bez saistībām', 'precīzu cenu sagatavosim pēc objekta apskates'],
 ];
-const benefits = (s, { notes = true, row: inRow = false, gap = r(s * .8), extra = {} } = {}) => `<ul class="ben${inRow ? ' is-row' : ''}" style="${px({ gap: inRow ? `${r(s * .6)}px ${r(s * 1.2)}px` : gap, ...extra })}">${BEN.map(([a, b]) => `<li style="gap:${r(s * .6)}px;font-size:${s}px"><i class="tick" style="width:${r(s * 1.35)}px;height:${r(s * 1.35)}px;margin-top:${r(s * .02)}px">${CHECK}</i><span><b>${a}</b>${notes && !inRow ? `<small style="font-size:${r(s * .82)}px">${b}</small>` : ''}</span></li>`).join('')}</ul>`;
+export const benefits = (s, { notes = true, row: inRow = false, gap = r(s * .8), extra = {} } = {}) => `<ul class="ben${inRow ? ' is-row' : ''}" style="${px({ gap: inRow ? `${r(s * .6)}px ${r(s * 1.2)}px` : gap, ...extra })}">${BEN.map(([a, b]) => `<li style="gap:${r(s * .6)}px;font-size:${s}px"><i class="tick" style="width:${r(s * 1.35)}px;height:${r(s * 1.35)}px;margin-top:${r(s * .02)}px">${CHECK}</i><span><b>${a}</b>${notes && !inRow ? `<small style="font-size:${r(s * .82)}px">${b}</small>` : ''}</span></li>`).join('')}</ul>`;
 
-const COPY = {
+export const COPY = {
   calc: { kicker: 'Cenu kalkulators · 380+ darbu cenas', h: 'Cik maksās jūsu projekts?', sub: 'Atzīmējiet darbus un apjomu: aptuveno cenu redzēsiet uzreiz.', cta: 'Aprēķināt izmaksas', note: 'Bez saistībām' },
   svc: { kicker: 'Būvniecība · remonts · teritorija', h: 'No pamatiem līdz atslēgai', sub: '14 pakalpojumi vienā līgumā, ar vienu atbildīgo.', cta: 'Skatīt cenas', note: 'Cenas bez PVN',
     prices: [['Pamati', 'no 150 €/m²'], ['Jumti', 'no 110 €/m²'], ['Fasādes', 'no 45 €/m²'], ['Remonts un apdare', 'no 280 €/m²']] },
-  rent: { kicker: 'Tehnikas noma Vidzemē', h: 'Ekskavators-iekrāvējs ar operatoru', price: '55 €/h', spec: 'NEW HOLLAND B115 · 82 kW · 4×4', extra: ['Pašizgāzējs 30 €/h', 'Grodu satvērējs 25 €/diena'], cta: 'Pieprasīt nomu', phone: '+371 26 518 131' },
+  rent: { kicker: 'Tehnikas noma Vidzemē', h: 'Ekskavators-iekrāvējs ar operatoru', price: '55 €/h', spec: 'NEW HOLLAND B115-4PS · 82 kW · 4×4', extra: ['Pašizgāzējs 30 €/h', 'Grodu satvērējs 25 €/diena', 'Reģipša pacēlājs 9,50 €/diena'], cta: 'Pieprasīt nomu', phone: '+371 26 518 131' },
 };
-const WEB = 'probuildgroup.lv';
-const plist = (rows, size, pad, w) => `<ul class="plist" style="${px({ width: w })}">${rows.map(([a, p]) => `<li style="${px({ 'font-size': size, padding: `${pad}px 0` })}"><span>${a}</span><span class="p">${p}</span></li>`).join('')}</ul>`;
-const chips = (items, size, h, padX, gap, extra = {}) => `<div class="chips" style="${px({ gap, ...extra })}">${items.map((t) => `<span class="chip" style="${px({ 'font-size': size, height: h, padding: `0 ${padX}px` })}">${t}</span>`).join('')}</div>`;
-const priceChips = (rows) => rows.map(([a, p]) => `${a}<b>${p}</b>`);
+export const WEB = 'probuildgroup.lv';
+export const plist = (rows, size, pad, w) => `<ul class="plist" style="${px({ width: w })}">${rows.map(([a, p]) => `<li style="${px({ 'font-size': size, padding: `${pad}px 0` })}"><span>${a}</span><span class="p">${p}</span></li>`).join('')}</ul>`;
+export const chips = (items, size, h, padX, gap, extra = {}) => `<div class="chips" style="${px({ gap, ...extra })}">${items.map((t) => `<span class="chip" style="${px({ 'font-size': size, height: h, padding: `0 ${padX}px` })}">${t}</span>`).join('')}</div>`;
+export const priceChips = (rows) => rows.map(([a, p]) => `${a}<b>${p}</b>`);
 
 export const BANNERS = [
   // ---------------------------------------------------------------- social: square posts
@@ -155,14 +198,14 @@ ${stack({ left: 80, top: 186, width: 920 }, `${T('p', 'kicker', 28, COPY.rent.ki
 ${row({ left: 80, bottom: 80, gap: 26 }, `${cta(COPY.rent.cta, 26, 72, 34)}${T('p', 'foot mono', 22, COPY.rent.phone, { color: 'var(--white)' })}`)}` },
   // ---------------------------------------------------------------- social: 4:5 feed
   { file: 'socialie-tikli/kalkulators-foto-1080x1350', w: 1080, h: 1350, theme: '', title: 'Kalkulators · ieraksts 4:5 ar foto', margin: 60, body: `
-<div class="photo" style="background-image:url('${PH('renovacija.jpg')}');bottom:auto;height:1000px"></div>
+<div class="photo" style="background-image:url('${PH('objekti/jaunbuve-doles-sala-12.jpg')}');bottom:auto;height:1000px;background-position:50% 35%"></div>
 <div class="shade" style="background:linear-gradient(180deg,rgba(0,0,0,.82) 0,rgba(0,0,0,.35) 15%,rgba(0,0,0,.2) 40%,rgba(0,0,0,.75) 58%,#000 72%)"></div>
 ${logo(60, 80, 80)}${urlTR(WEB, 22, 80, 97)}
 ${bars(210, 330, 'is-orange')}
 ${ui(16.5, 580, { extra: { position: 'absolute', right: 80, top: 250 }, cls: 'k' })}
 ${stack({ left: 80, bottom: 80, width: 920 }, `${T('p', 'kicker', 28, COPY.calc.kicker)}${T('h1', 'h', 78, COPY.calc.h, { 'margin-top': 12 })}${benefits(22, { row: true, extra: { 'margin-top': 28, width: 800 } })}<div style="margin-top:40px">${cta(COPY.calc.cta, 26, 72, 34)}</div>`)}` },
   { file: 'socialie-tikli/pakalpojumi-foto-1080x1350', w: 1080, h: 1350, theme: '', title: 'Pakalpojumi · ieraksts 4:5 ar foto', margin: 60, body: `
-<div class="photo" style="background-image:url('${PH('maja-ar-koka-fasadi.jpg')}');background-position:40% 50%"></div>
+<div class="photo" style="background-image:url('${PH('objekti/jaunbuve-doles-sala-25.jpg')}');background-position:38% 30%"></div>
 <div class="shade" style="background:linear-gradient(180deg,rgba(0,0,0,.8) 0,rgba(0,0,0,.25) 14%,rgba(0,0,0,0) 32%,rgba(0,0,0,.92) 58%,#000 100%)"></div>
 ${logo(60, 80, 80)}${urlTR(WEB + '/pakalpojumi', 22, 80, 97)}
 ${bars(190, 290, 'is-orange')}
@@ -184,7 +227,7 @@ ${ui(14.5, 470, { extra: { position: 'absolute', right: 64, top: 56 }, cls: 'k' 
 ${stack({ left: 64, top: 146, width: 540 }, `${T('p', 'kicker', 21, COPY.calc.kicker)}${T('h1', 'h', 56, COPY.calc.h, { 'margin-top': 10 })}${benefits(18, { notes: false, gap: 10, extra: { 'margin-top': 22 } })}`)}
 ${row({ left: 64, bottom: 56, gap: 22 }, `${cta(COPY.calc.cta, 21, 58, 28)}${T('p', 'foot', 17, WEB)}`)}` },
   { file: 'socialie-tikli/pakalpojumi-foto-1200x628', w: 1200, h: 628, theme: '', title: 'Pakalpojumi · saites reklāma 1,91:1', margin: 40, body: `
-<div class="photo" style="background-image:url('${PH('fasades-montaza.jpg')}');left:400px;background-position:60% 40%"></div>
+<div class="photo" style="background-image:url('${PH('objekti/fasade-vidrizi-19.jpg')}');left:400px;background-position:62% 40%"></div>
 <div class="shade" style="background:linear-gradient(90deg,#000 0,#000 38%,rgba(0,0,0,.75) 50%,rgba(0,0,0,0) 74%)"></div>
 ${logo(44, 64, 56)}
 ${bars(210, 270, 'is-orange')}
@@ -224,7 +267,7 @@ ${row({ left: 16, bottom: 20 }, cta('Aprēķināt', 14, 38, 14))}` },
   { file: 'displeja-reklama/kalkulators-300x600', w: 300, h: 600, theme: '', title: 'Displejs 300×600', display: true, margin: 8, body: `
 ${logo(24, 22, 24)}
 ${bars(200, 340, 'is-glass')}
-${stack({ left: 22, top: 74, width: 256 }, `${T('h1', 'h', 26, COPY.calc.h)}${ui(10.5, 256, { tabs: 2, meta: false, extra: { 'margin-top': 16 } })}${benefits(12, { notes: false, gap: 9, extra: { 'margin-top': 20 } })}`)}
+${stack({ left: 22, top: 74, width: 256 }, `${T('h1', 'h', 26, COPY.calc.h)}${ui(10.5, 256, { tabs: 2, meta: false, rows: UI.rows.slice(0, 3), extra: { 'margin-top': 16 } })}${benefits(12, { notes: false, gap: 9, extra: { 'margin-top': 20 } })}`)}
 ${row({ left: 22, bottom: 22 }, cta(COPY.calc.cta, 15, 42, 18))}` },
   { file: 'displeja-reklama/kalkulators-320x100', w: 320, h: 100, theme: '', title: 'Displejs 320×100', display: true, margin: 6, body: `
 ${mark(30, 12, 35)}
@@ -238,12 +281,12 @@ ${row({ right: 8, top: 10 }, cta('Aprēķināt', 12, 30, 12))}` },
   { file: 'displeja-reklama/noma-300x250', w: 300, h: 250, theme: 'is-orange', title: 'Displejs 300×250, noma', display: true, margin: 8, body: `
 ${logo(22, 16, 16, 'mono')}
 ${bars(96, 150)}
-${stack({ left: 16, top: 52, width: 268 }, `${T('h1', 'h', 18.5, COPY.rent.h)}${T('p', 'price', 54, COPY.rent.price, { 'margin-top': 10, 'margin-left': -2 })}${T('p', 'sub', 11.5, 'NEW HOLLAND B115 · 4×4', { 'margin-top': 8 })}`)}
+${stack({ left: 16, top: 52, width: 268 }, `${T('h1', 'h', 18.5, COPY.rent.h)}${T('p', 'price', 54, COPY.rent.price, { 'margin-top': 10, 'margin-left': -2 })}${T('p', 'sub', 11.5, 'NEW HOLLAND B115-4PS · 4×4', { 'margin-top': 8 })}`)}
 ${row({ left: 16, bottom: 16 }, cta(COPY.rent.cta, 13.5, 36, 15))}` },
   { file: 'displeja-reklama/noma-728x90', w: 728, h: 90, theme: 'is-orange', title: 'Displejs 728×90, noma', display: true, margin: 6, body: `
 ${mark(46, 18, 22, 'markMono')}
 ${bars(72, 90)}
-${stack({ left: 80, top: 20, width: 256 }, `${T('h1', 'h', 18, 'Ekskavators-iekrāvējs', { 'white-space': 'nowrap' })}${T('p', 'sub', 12.5, 'ar operatoru · NEW HOLLAND B115', { 'margin-top': 6, 'white-space': 'nowrap' })}`)}
+${stack({ left: 80, top: 20, width: 256 }, `${T('h1', 'h', 18, 'Ekskavators-iekrāvējs', { 'white-space': 'nowrap' })}${T('p', 'sub', 12.5, 'ar operatoru · NEW HOLLAND B115-4PS', { 'margin-top': 6, 'white-space': 'nowrap' })}`)}
 ${T('p', 'price abs k', 34, COPY.rent.price, { left: 352, top: 28 })}
 ${row({ right: 84, top: 25 }, cta('Pieprasīt', 15, 40, 18))}` },
 ];
@@ -252,6 +295,7 @@ export function page(b) {
   return `<!doctype html>
 <html lang="lv"><head><meta charset="utf-8"><title>${b.title} · ${b.w}×${b.h}</title>
 <link rel="stylesheet" href="baneri.css">
+<script src="baneri.js" defer></script>
 </head><body>
 <div class="bn ${b.theme}" id="banner" style="width:${b.w}px;height:${b.h}px">${b.body}
 </div>
