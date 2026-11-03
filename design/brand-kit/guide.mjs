@@ -6,7 +6,7 @@ import path from 'path';
 export const COMPANY = {
   name: 'ProBuild Group', legal: 'SIA “Probuild”', reg: '54103137871', vat: 'LV54103137871',
   address: 'Limbažu nov., Vidrižu pag., “Garkalni”, LV-4013', phone: '+371 26 518 131', tel: '+37126518131',
-  email: 'probuildlatvia@gmail.com', web: 'probuildgroup.lv', region: 'Salaspils un apkārtne',
+  email: 'probuildlatvia@gmail.com', web: 'probuildgroup.lv', region: 'Vidzeme',
 };
 
 const lum = (hex) => {

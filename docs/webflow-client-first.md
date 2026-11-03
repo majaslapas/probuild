@@ -100,7 +100,7 @@ Webflow Variables kolekcijās (Client-First v2.1 pieeja):
 | Projekti | `/projekti` | `portfolio-list` CMS, bez filtriem (1) |
 | Projekts | `/projekts/[slug]` CMS template | `project-header` (1), `project-content` (1), `project-gallery` (1), `project-contact` (1) |
 | Pakalpojums | `/pakalpojums/[slug]` CMS template | `service-detail` (1) |
-| Par mums | `/par-mums` | `about-hero`, `about-marquee`, `about-story`, `about-stats`, `about-values`, `about-team` (CMS), `about-partners`, `about-cta` (visas 1) |
+| Par mums | `/par-mums` | `about-hero`, `about-marquee`, `about-story`, `about-stats`, `about-values`, `about-partners`, `about-cta` (visas 1) |
 | Kontakti | `/kontakti` | `contact` (1): kontakti + anketa blakus, bez kartes |
 
 ## CMS kolekcijas

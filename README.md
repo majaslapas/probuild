@@ -1,6 +1,6 @@
 # ProBuildGroup.lv
 
-Mājaslapa būvniecības, remonta un tehnikas nomas uzņēmumam ProBuildGroup (Salaspils puse). Izstrādātājs: Fortic. Platforma: Webflow.
+Mājaslapa būvniecības, remonta un tehnikas nomas uzņēmumam ProBuildGroup (Vidzeme). Izstrādātājs: Fortic. Platforma: Webflow.
 
 ## Saturs
 

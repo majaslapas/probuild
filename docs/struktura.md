@@ -42,5 +42,5 @@ Visas lapas pielāgotas telefonam un datoram, ar SEO atslēgvārdiem būvniecīb
 ## 6. Kontakti
 - Kontaktforma, kas nonāk CRM
 - Telefons, e-pasts
-- Atrašanās vieta (Salaspils puse)
+- Darbības reģions (Vidzeme)
 - Saites uz sociālajiem tīkliem un Google Business profilu

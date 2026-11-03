@@ -129,7 +129,7 @@ const COPY = {
   calc: { kicker: 'Cenu kalkulators · 380+ darbu cenas', h: 'Cik maksās jūsu projekts?', sub: 'Atzīmējiet darbus un apjomu: aptuveno cenu redzēsiet uzreiz.', cta: 'Aprēķināt izmaksas', note: 'Bez saistībām' },
   svc: { kicker: 'Būvniecība · remonts · teritorija', h: 'No pamatiem līdz atslēgai', sub: '14 pakalpojumi vienā līgumā, ar vienu atbildīgo.', cta: 'Skatīt cenas', note: 'Cenas bez PVN',
     prices: [['Pamati', 'no 150 €/m²'], ['Jumti', 'no 110 €/m²'], ['Fasādes', 'no 45 €/m²'], ['Remonts un apdare', 'no 280 €/m²']] },
-  rent: { kicker: 'Tehnikas noma Salaspilī', h: 'Ekskavators-iekrāvējs ar operatoru', price: '55 €/h', spec: 'NEW HOLLAND B115 · 82 kW · 4×4', extra: ['Pašizgāzējs 30 €/h', 'Grodu satvērējs 25 €/diena'], cta: 'Pieprasīt nomu', phone: '+371 26 518 131' },
+  rent: { kicker: 'Tehnikas noma Vidzemē', h: 'Ekskavators-iekrāvējs ar operatoru', price: '55 €/h', spec: 'NEW HOLLAND B115 · 82 kW · 4×4', extra: ['Pašizgāzējs 30 €/h', 'Grodu satvērējs 25 €/diena'], cta: 'Pieprasīt nomu', phone: '+371 26 518 131' },
 };
 const WEB = 'probuildgroup.lv';
 const plist = (rows, size, pad, w) => `<ul class="plist" style="${px({ width: w })}">${rows.map(([a, p]) => `<li style="${px({ 'font-size': size, padding: `${pad}px 0` })}"><span>${a}</span><span class="p">${p}</span></li>`).join('')}</ul>`;
@@ -193,7 +193,7 @@ ${row({ left: 64, bottom: 56, gap: 22 }, `${cta(COPY.svc.cta, 21, 58, 28)}${T('p
   // ---------------------------------------------------------------- Facebook page cover (phones show only the middle ~1110 × 624)
   { file: 'socialie-tikli/facebook-vaks-1640x624', w: 1640, h: 624, theme: '', title: 'Facebook vāka attēls', margin: 60, safe: [0, 0, 300, 300], body: `
 ${bars(520, 624, 'is-orange')}
-${stack({ left: 300, top: 140, width: 780 }, `<img class="logo" src="${LOGO.dark}" alt="ProBuild Group" style="height:64px;width:${(64 * AR).toFixed(1)}px">${T('h1', 'h', 58, 'No pamatiem līdz atslēgai', { 'margin-top': 40 })}${T('p', 'sub', 24, 'Būvniecība, remonts un tehnikas noma Salaspilī un apkārtnē', { 'margin-top': 18 })}${T('p', 'foot', 22, `<span class="mono" style="color:var(--white)">${COPY.rent.phone}</span>&nbsp;&nbsp;·&nbsp;&nbsp;${WEB}`, { 'margin-top': 18 })}`)}` },
+${stack({ left: 300, top: 140, width: 780 }, `<img class="logo" src="${LOGO.dark}" alt="ProBuild Group" style="height:64px;width:${(64 * AR).toFixed(1)}px">${T('h1', 'h', 58, 'No pamatiem līdz atslēgai', { 'margin-top': 40 })}${T('p', 'sub', 24, 'Būvniecība, remonts un tehnikas noma Vidzemē', { 'margin-top': 18 })}${T('p', 'foot', 22, `<span class="mono" style="color:var(--white)">${COPY.rent.phone}</span>&nbsp;&nbsp;·&nbsp;&nbsp;${WEB}`, { 'margin-top': 18 })}`)}` },
   // ---------------------------------------------------------------- Google Display (calculator)
   { file: 'displeja-reklama/kalkulators-300x250', w: 300, h: 250, theme: '', title: 'Displejs 300×250', display: true, margin: 8, body: `
 ${logo(22, 16, 16)}
