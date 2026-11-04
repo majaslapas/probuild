@@ -102,7 +102,7 @@ Two pages in Latvian, linked from the footer on every page: **Privātuma politik
 
 ## Blog and About videos (2026-11-04)
 
-Editing steps for the client, in Latvian: [`docs/instrukcija-blogs-un-video.md`](../../docs/instrukcija-blogs-un-video.md).
+Editing steps for the client, in Latvian: [`docs/instrukcija-blogs-un-video.md`](../../docs/instrukcija-blogs-un-video.md). The same text is in a Claude Docs document for the client, [Kā pievienot video un rakstus mājaslapā](https://claude.ai/artifact/TzNWggU4SY7mmTjJS4oKrY); it is private until it is shared from its Share menu. Keep the two the same when either changes.
 
 - **Blogs** (`/blogs`): header like Projekti (`section_blog-list`, `blog-list_header`) and a Collection List of the Blogs collection (`blog-list_list`, two columns, one on phones), sorted by `datums`, newest first, at most 100 items (pagination is off: switching it on through the API broke the list once; turn it on in the Designer if there are ever more). Empty state: „Raksti drīzumā būs lasāmi.“
 - **Cards** (`blog-card_*`, shared by Blogs and Sākums): photo 3:2, date, title, summary and the round arrow, like the project cards. The link gets its address from `site.js` (`data-cms-base="/raksts/"` + `data-cms-slug`, like the other CMS cards). Hover: photo zoom and orange arrow (page code, pointer devices only).
