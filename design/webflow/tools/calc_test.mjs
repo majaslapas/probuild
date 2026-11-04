@@ -214,6 +214,35 @@ const sum = (picks, k) => picks.reduce((s, [it, q, v]) => s + it[k] * q * (v || 
   await page.keyboard.press('Escape');
   await page.evaluate(() => window.pbCalc.request('Metālapstrāde'));
   ok(await page.evaluate(() => document.querySelector('.pbc_dlg.is-req select').value === 'Metālapstrāde'), 'pbCalc.request("Metālapstrāde") pre-selects it');
+  // Several services (2026-11-04): tick chips write "A, B" into the hidden select (field "pakalpojums")
+  const chip = (n) => page.locator(`.pbc_dlg.is-req .pbc_chip[data-svc="${n}"]`);
+  const reqState = () => page.evaluate(() => {
+    const f = document.querySelector('.pbc_dlg.is-req form'), sel = f.querySelector('select'), box = f.querySelector('.pbc_chips');
+    // what Webflow sends: jQuery ':input' (input, textarea, select, button) minus submit and file
+    const names = [...f.querySelectorAll('input, textarea, select, button')].filter((e) => e.type !== 'submit' && e.type !== 'file').map((e) => e.getAttribute('data-name') || e.getAttribute('name'));
+    return { v: sel.value, hidden: sel.hidden, names, on: [...box.querySelectorAll('[aria-checked="true"]')].map((c) => c.dataset.svc), label: document.getElementById(box.getAttribute('aria-labelledby')).textContent, focus: document.activeElement.className };
+  });
+  let rs = await reqState();
+  ok(rs.hidden && rs.on.join() === 'Metālapstrāde' && /vairākus/.test(rs.label), `request form: services are tick chips under „${rs.label}“, the asked one ticked`);
+  await chip('Jumta darbi').click();
+  await chip('Kokapstrāde').focus(); await page.keyboard.press('Space');
+  rs = await reqState();
+  ok(rs.v === 'Jumta darbi, Kokapstrāde, Metālapstrāde', `click and Space tick more chips; the form sends pakalpojums = "${rs.v}"`);
+  ok(rs.names.every(Boolean) && rs.names.filter((n) => n === 'pakalpojums').length === 1 && !rs.names.some((n) => /^Field /.test(n)), `the chips add no form fields (${rs.names.join(', ')})`);
+  await page.keyboard.press('Escape');
+  await page.evaluate(() => window.pbCalc.request('Fasādes darbi'));
+  rs = await reqState();
+  ok(rs.v === 'Jumta darbi, Fasādes darbi, Kokapstrāde, Metālapstrāde', 'after the visitor\'s own picks, a named service is added, nothing removed');
+  await page.keyboard.press('Escape');
+  await page.click('[data-pbc-ask]');
+  rs = await reqState();
+  ok(rs.on.length === 4, 'the header link keeps the visitor\'s picks');
+  for (const n of rs.on) await chip(n).click();
+  rs = await reqState();
+  ok(rs.v === '' && rs.on.length === 0, 'unticking all leaves the field empty');
+  await page.keyboard.press('Escape');
+  await page.click('[data-pbc-ask]');
+  ok(/pbc_chip/.test((await reqState()).focus), 'with nothing ticked, the form opens on the first chip');
   await page.keyboard.press('Escape');
   ok(await page.evaluate(() => [...document.querySelectorAll('dialog [data-pbc-form], dialog [data-pbc-request]')].length === 2), 'both Webflow forms live in the dialogs');
   await page.context().close();

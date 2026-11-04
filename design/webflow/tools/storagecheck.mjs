@@ -9,7 +9,7 @@ const { chromium } = createRequire(import.meta.url)('playwright');
 const base = 'https://probuild-group.webflow.io';
 const paths = process.argv.slice(2).length ? process.argv.slice(2) : ['/', '/kalkulators', '/pakalpojumi', '/pakalpojums/jumta-darbi',
   '/noma', '/nomas-produkts/ekskavators-iekravejs', '/projekti', '/projekts/garkalnu-pirts', '/par-mums', '/kontakti',
-  '/privatuma-politika', '/sikdatnu-politika'];
+  '/privatuma-politika', '/sikdatnu-politika', '/blogs', '/raksts/ka-veidojas-buvdarbu-cena'];
 
 const browser = await chromium.launch();
 const all = { hosts: new Set(), cookies: new Map(), storage: new Map() };

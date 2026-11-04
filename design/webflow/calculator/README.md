@@ -70,7 +70,9 @@ Webflow field names (the keys a CRM maps):
 | `aprekins_menesi` | monthly fees total, if any |
 
 The calculator creates the `aprekins*` fields inside the form and fills them on every change and on submit.
-The plain request form sends `Pakalpojums`, `vards`, `telefons`, `epasts`, `zina`.
+The plain request form sends `pakalpojums`, `vards`, `telefons`, `epasts`, `zina`.
+
+**Several services (2026-11-04).** In „Pieteikums bez aprēķina“ the services are tick chips („Pakalpojumi (var izvēlēties vairākus)“, `PBC_SETTINGS.requestServices`), built from the Webflow select's options, so the list is still edited in the Designer. The select stays in the form, hidden, and carries the picks as one value under its own name: `pakalpojums` = „Jumta darbi, Fasādes darbi“ (in the order of the list). The CRM mapping did not change: GoHighLevel's „Pakalpojums“ field (single line), the purpose („Mērķis“, opportunity source) and the opportunity name „Pieteikums: …“ simply get the list. The chips are `span role="checkbox"` (Space/Enter toggle), not inputs or buttons, because Webflow sends every input, select and button of a form. Until the visitor ticks something, the pick follows the service of the type of work on screen; after that their picks stay, and a link naming a service (`data-pbc-ask="…"`, `pbCalc.request('…')`) only adds it. Without the calculator script the select is a plain single choice again. `calc_test.mjs` checks all of this (and that the chips add no form field).
 
 ## Links into the calculator
 

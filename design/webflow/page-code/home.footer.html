@@ -1,0 +1,21 @@
+<style>
+/* Sākums: latest articles (Blogs CMS). No article, no section. */
+.section_home-blog:not(:has(.w-dyn-item)){display:none}
+/* Blog cards (Blogs, Sākums): photo zoom and orange arrow on hover, as on the project cards */
+.blog-card_component:focus-visible{outline:2px solid var(--christine--light);outline-offset:4px;border-radius:16px}
+@media (hover:hover) and (pointer:fine){.blog-card_component:hover .blog-card_image{transform:scale(1.04)}.blog-card_component:hover .blog-card_arrow{background-color:var(--christine--primary);border-color:var(--christine--primary);color:var(--neutral--darkest)}}
+@media (prefers-reduced-motion:reduce){.blog-card_image{transition:none}}
+</style>
+<script>
+// Blog dates (CMS „Datums“) in Latvian. Webflow writes the date in English ("November 4, 2026"); this turns it into
+// "2026. gada 4. novembris". Used on Blogs, Sākums and the article template (the same code on each page).
+(function () {
+  var M = ['janvāris', 'februāris', 'marts', 'aprīlis', 'maijs', 'jūnijs', 'jūlijs', 'augusts', 'septembris', 'oktobris', 'novembris', 'decembris'];
+  [].forEach.call(document.querySelectorAll('.blog-card_date, .blog-post_date'), function (el) {
+    var t = el.textContent.trim(), m = t.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);
+    var d = m ? new Date(+m[3], m[2] - 1, +m[1]) : new Date(t);
+    if (!t || isNaN(d)) return;
+    el.textContent = d.getFullYear() + '. gada ' + d.getDate() + '. ' + M[d.getMonth()];
+  });
+})();
+</script>

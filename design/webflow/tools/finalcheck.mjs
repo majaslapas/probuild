@@ -1,7 +1,7 @@
 import { createRequire } from 'module';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const base = 'https://probuild-group.webflow.io';
-const pages = ['/', '/kalkulators', '/pakalpojumi', '/noma', '/projekti', '/par-mums', '/kontakti', '/privatuma-politika', '/sikdatnu-politika',
+const pages = ['/', '/kalkulators', '/pakalpojumi', '/noma', '/projekti', '/par-mums', '/kontakti', '/privatuma-politika', '/sikdatnu-politika', '/blogs', '/raksts/ka-veidojas-buvdarbu-cena', '/raksts/jumta-nomaina-tukuma',
   '/nomas-produkts/ekskavators-iekravejs', '/nomas-produkts/pasizgazejs', '/nomas-produkts/grodu-satverejs', '/nomas-produkts/regipsa-pacelajs',
   '/projekts/jumts-tukuma', '/projekts/saimniecibas-eka-vidrizi', '/projekts/jaunbuve-doles-sala', '/projekts/jaunbuve-ikskile',
   '/projekts/fasade-vidrizi', '/projekts/garkalnu-pirts', '/pakalpojums/pamatu-buvnieciba', '/pakalpojums/koku-zagesana-un-apauguma-novaksana'];

@@ -63,6 +63,8 @@ window.PBC_SETTINGS = {
   worksFold: 'Izvēlētie darbi ({n})',
   requestIntro: 'Aprakstiet, kas jādara. Sazināsimies, precizēsim apjomus un sagatavosim cenas piedāvājumu.',
   requestPick: 'Izvēlieties pakalpojumu',
+  // Pieteikumā var atzīmēt vairākus pakalpojumus; tie nonāk CRM vienā laukā, atdalīti ar komatu.
+  requestServices: 'Pakalpojumi (var izvēlēties vairākus)',
   unavailable: 'Kalkulators šobrīd nav pieejams. Precīzu cenas piedāvājumu var pieprasīt pa tālruni +371 26 518 131.',
   // Ja lapā nav formas ar atribūtu data-pbc-form, poga ved uz šo adresi.
   fallbackUrl: '/kontakti',
@@ -71,7 +73,7 @@ window.PBC_SETTINGS = {
   // daudzuma (viens vārds vai [vienskaitlis, daudzskaitlis]); hint: paskaidrojums pie
   // atzīmēta darba; visits: cenu reizina arī ar reižu skaitu; monthly: ikmēneša maksa.
   units: {
-    'm2':         { price: '€/m²', qty: 'm²', hint: 'm² ir platība: garums × platums, piem. 4 m × 5 m = 20 m².' },
+    'm2':         { price: '€/m²', qty: 'm²', hint: 'm² ir platība: garums × platums, piem. 4 m × 5 m = 20 m².' },
     'm3':         { price: '€/m³', qty: 'm³', hint: 'm³ ir tilpums: garums × platums × augstums vai dziļums.' },
     'm3 izejm.':  { price: '€/m³ izejmateriāla', qty: 'm³', hint: 'Izejmateriāla tilpums kubikmetros.' },
     'm':          { price: '€/tek. m', qty: 'tek. m', hint: 'Tekošie metri: garums metros, piem. žoga vai notekas garums.' },
@@ -351,6 +353,43 @@ window.PBC_SETTINGS = {
     if (reqSel && ![].some.call(reqSel.options, function (o) { return !o.value; })) {
       reqSel.insertBefore(new Option(S.requestPick || '—', ''), reqSel.firstChild);
       reqSel.value = '';
+    }
+    // Several services: the select's options become tick chips. The select stays in the form, hidden, and
+    // carries the picks as one value ("Jumta darbi, Fasādes darbi") under its own field name, so the CRM
+    // mapping does not change. Chips are spans: Webflow sends every input, select and button of a form.
+    var chips = [], reqOwn = false, multi = null;
+    if (reqSel) {
+      var lbl = reqSel.id && reqBlock.querySelector('label[for="' + reqSel.id + '"]');
+      var box = document.createElement('div');
+      box.className = 'pbc_chips'; box.setAttribute('role', 'group');
+      box.innerHTML = [].filter.call(reqSel.options, function (o) { return o.value; }).map(function (o) {
+        return '<span class="pbc_chip" role="checkbox" tabindex="0" aria-checked="false" data-svc="' + esc(o.value) + '"><span class="pbc_chip-box" aria-hidden="true"></span>' + esc(o.text) + '</span>';
+      }).join('');
+      chips = [].slice.call(box.children);
+      if (chips.length) {
+        if (lbl) {
+          lbl.id = lbl.id || 'pbc-req-svc'; lbl.removeAttribute('for');
+          if (S.requestServices) lbl.textContent = S.requestServices;
+          box.setAttribute('aria-labelledby', lbl.id);
+        }
+        reqSel.parentNode.insertBefore(box, reqSel.nextSibling);
+        reqSel.hidden = true; reqSel.tabIndex = -1; reqSel.setAttribute('aria-hidden', 'true');
+        multi = new Option('', ''); multi.hidden = true; reqSel.appendChild(multi);
+        var flip = function (c) { tick(c, c.getAttribute('aria-checked') !== 'true'); reqOwn = true; writeSvc(); };
+        box.addEventListener('click', function (e) { var c = e.target.closest('.pbc_chip'); if (c) flip(c); });
+        box.addEventListener('keydown', function (e) {
+          var c = e.target.closest('.pbc_chip');
+          if (c && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); flip(c); }
+        });
+      }
+    }
+    function tick(c, on) { c.setAttribute('aria-checked', on ? 'true' : 'false'); }
+    function picks() { return chips.filter(function (c) { return c.getAttribute('aria-checked') === 'true'; }).map(function (c) { return c.getAttribute('data-svc'); }); }
+    function writeSvc() {
+      var v = picks().join(', ');
+      multi.value = multi.text = v;
+      reqSel.value = v;
+      reqSel.dispatchEvent(new Event('change', { bubbles: true }));
     }
 
     // Totals
@@ -822,15 +861,25 @@ window.PBC_SETTINGS = {
     }
     function openRequest(name, opener) {
       if (!reqBlock) { location.href = S.fallbackUrl; return; }
-      var sel = reqBlock.querySelector('select');
+      var sel = reqBlock.querySelector('select'), asked = name;
       name = name || svcFor(st.a, st.g);
-      if (sel) {
+      var hit = function (v, t) { return !!name && (fold(v) === fold(name) || fold(t) === fold(name)); };
+      if (chips.length) {
+        // Until the visitor ticks something themselves, the pick follows the service on screen.
+        // After that their picks stay; a link naming a service only adds it.
+        chips.forEach(function (c) {
+          var on = hit(c.getAttribute('data-svc'), c.textContent);
+          if (!reqOwn) tick(c, on); else if (asked && on) tick(c, true);
+        });
+        writeSvc();
+      } else if (sel) {
         if (sel._auto != null && sel.value === sel._auto) sel.value = '';
-        if (name) [].some.call(sel.options, function (o) {
-          if (o.value && (fold(o.value) === fold(name) || fold(o.text) === fold(name))) { sel.value = sel._auto = o.value; return true; }
+        [].some.call(sel.options, function (o) {
+          if (o.value && hit(o.value, o.text)) { sel.value = sel._auto = o.value; return true; }
         });
       }
-      openDlg(el.dReq, opener, doneMsg(reqBlock) || (sel && !sel.value ? sel : $('input:not([type=hidden]):not([type=submit]), textarea', reqBlock)));
+      var empty = chips.length ? !picks().length && chips[0] : sel && !sel.value && sel;
+      openDlg(el.dReq, opener, doneMsg(reqBlock) || empty || $('input:not([type=hidden]):not([type=submit]), textarea', reqBlock));
     }
     function svcFor(ai, gi) {
       var best = null;

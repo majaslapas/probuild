@@ -16,4 +16,14 @@
 .about-partners_logo img.about-partners_image{max-height:2rem}
 .about-partners_logo img.about-partners_image-2{max-height:3rem}
 .about-partners_logo img.about-partners_image-3{max-height:2.25rem}
+/* Video par uzņēmumu (CMS, 2026-11-04): under Mērķis and Vīzija. No item, no section: the page looks as before. */
+.about-video_list-wrapper:not(:has(.w-dyn-item)){display:none}
+.about-video_list:has(>.about-video_item:only-child){grid-template-columns:minmax(0,1fr)}
+@media (min-width:768px){.about-video_list:has(>.about-video_item:only-child) .about-video_card{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:center}.about-video_list:has(>.about-video_item:only-child) .about-video_content{padding:2rem 2.5rem}}
+.about-video_card .w-dyn-bind-empty{display:none}
+.about-video_thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9;transition:transform .6s cubic-bezier(.23,1,.32,1),opacity .2s}
+.about-video_media iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.about-video_media:focus-visible{outline:2px solid var(--christine--light);outline-offset:-2px}
+@media (hover:hover) and (pointer:fine){.about-video_media:hover .about-video_thumb{transform:scale(1.04);opacity:1}.about-video_media:hover .about-video_play{transform:scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.about-video_thumb,.about-video_play{transition:none}}
 </style>

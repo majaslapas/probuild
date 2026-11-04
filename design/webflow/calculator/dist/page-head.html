@@ -185,7 +185,7 @@ html:has(.w-webflow-badge) .pbc_dock{bottom:4rem}
 .pbc_dlg .pbc_sum-h h3{min-width:0}
 .pbc_dlg .calc_text{color:var(--pbc-faint)}
 .pbc_dlg.is-offer,.pbc_dlg.is-req{width:min(58rem,100vw - 2rem);max-height:calc(100vh - 2rem);max-height:calc(100dvh - 2rem);border-radius:16px}
-.pbc_dlg.is-req{width:min(36rem,100vw - 2rem);overflow-y:auto}
+.pbc_dlg.is-req{width:min(40rem,100vw - 2rem);overflow-y:auto}
 .pbc_dlg.is-offer .pbc_dlg-in{display:grid;grid-template-columns:20rem minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr);grid-template-areas:"r h" "r i" "r f";overflow:hidden}
 .pbc_dlg.is-offer .pbc_dlg-h{grid-area:h}
 .pbc_dlg.is-offer .pbc_dlg-i{grid-area:i}
@@ -306,6 +306,17 @@ html:has(.w-webflow-badge) .pbc_dock{bottom:4rem}
 .pbc_dock-o .pbc_badge{background:#000;color:var(--pbc-accent-2)}
 }
 @media (max-width:22.49em){.pbc_dock-t{font-size:1rem}.pbc_dock-o{padding-inline:.75rem}.pbc_dlg .pbc_sum-n{display:none}}
+/* „Pieteikums bez aprēķina“: services as tick chips (several may be picked); look of the Kontakti topic chips */
+.pbc_chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.pbc_chip{display:inline-flex;align-items:center;gap:.375rem;min-height:2.75rem;padding:.375rem 1rem;border:1px solid var(--pbc-line);border-radius:100px;background:transparent;color:var(--pbc-text);font-size:.875rem;font-weight:600;line-height:1.25;cursor:pointer;-webkit-user-select:none;user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:background-color .2s,border-color .2s,color .2s,transform .16s var(--pbc-ease)}
+.pbc_chip-box{display:none;flex:none;width:1rem;height:1rem;margin-left:-.25rem;background:center/contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m2.5 7.5 3 3 6-7'/%3E%3C/svg%3E")}
+.pbc_chip[aria-checked=true]{border-color:var(--pbc-text);background:var(--pbc-text);color:#000}
+.pbc_chip[aria-checked=true] .pbc_chip-box{display:block}
+.pbc_chip:focus-visible{outline:2px solid var(--pbc-accent-2);outline-offset:2px}
+.pbc_chip:active{transform:scale(.97)}
+@media (pointer:fine){.pbc_chip{min-height:2.5rem}}
+@media (hover:hover) and (pointer:fine){.pbc_chip:hover{border-color:rgba(255,255,255,.55)}}
+@media (forced-colors:active){.pbc_chip[aria-checked=true]{outline:2px solid Highlight;outline-offset:-2px}.pbc_chip[aria-checked=true] .pbc_chip-box{forced-color-adjust:none;background-color:Canvas}}
 @media (forced-colors:active){.pbc_box{border-color:CanvasText}.pbc_check:checked+.pbc_box{background-color:Highlight}.pbc_area[aria-current=true],.pbc_grp[aria-current=true]{border:2px solid Highlight}.pbc_badge{border:1px solid CanvasText}.pbc_row.is-on{outline:2px solid Highlight;outline-offset:-2px}}
 @media (prefers-reduced-motion:reduce){.pbc *,.pbc_dlg::backdrop{transition:none!important;animation:none!important}}
 </style>

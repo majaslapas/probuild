@@ -1,0 +1,23 @@
+<style>
+/* Blog article (CMS template „Raksts“). The text is one Rich Text field („Saturs“), edited like a document. */
+.blog-post_rich-text{color:var(--neutral--lighter);font-size:1.0625rem;line-height:1.75}
+.blog-post_rich-text>:first-child{margin-top:0}
+.blog-post_rich-text h2{margin:3rem 0 1rem;color:var(--neutral--white);font-family:var(--font--heading),monospace;font-weight:500;font-size:1.5rem;line-height:1.35;letter-spacing:-.01em}
+.blog-post_rich-text h3{margin:2rem 0 .75rem;color:var(--neutral--white);font-family:var(--font--heading),monospace;font-weight:500;font-size:1.125rem;line-height:1.4}
+.blog-post_rich-text p{margin:0 0 1.25rem}
+.blog-post_rich-text ul,.blog-post_rich-text ol{margin:0 0 1.5rem;padding-left:1.25rem}
+.blog-post_rich-text li{margin-bottom:.625rem;padding-left:.25rem}
+.blog-post_rich-text li::marker{color:var(--christine--primary)}
+.blog-post_rich-text ol>li::marker{font-weight:600}
+.blog-post_rich-text strong{color:var(--neutral--white);font-weight:600}
+.blog-post_rich-text a{color:var(--christine--light);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em;overflow-wrap:anywhere;transition:color .2s}
+.blog-post_rich-text a:hover{color:var(--neutral--white)}
+.blog-post_rich-text blockquote{margin:2rem 0;padding:1.25rem 1.5rem;border:0;border-radius:16px;background-color:var(--neutral--darker);color:var(--neutral--white);font-size:1.125rem}
+.blog-post_rich-text figure{margin:2rem 0}
+.blog-post_rich-text figure img{border-radius:12px}
+.blog-post_rich-text figcaption{margin-top:.5rem;color:var(--neutral--light);font-size:.875rem;text-align:left}
+.blog-post_current:empty,.blog-post_date:empty{display:none}
+/* Touch screens: the breadcrumb and „Visi raksti“ links get a larger invisible hit area, as on the other templates */
+@media (pointer:coarse){.blog-post_link,.blog-post_back{position:relative}.blog-post_link::after,.blog-post_back::after{content:"";position:absolute;inset:-.625rem -.25rem}}
+@media (max-width:767px){.blog-post_rich-text{font-size:1rem;line-height:1.7}.blog-post_rich-text h2{margin-top:2.25rem;font-size:1.25rem}}
+</style>

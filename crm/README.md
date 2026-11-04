@@ -103,3 +103,7 @@ GHL statuses, not stages.
 Edit `project-config.json` → `python3 scripts/scaffold.py crm/project-config.json` → `scripts/run_tests.sh crm/generated`
 (skill scripts) → paste the new `generated/site-footer-crm.html` as the first block of the site footer (keep site.js
 after it), publish staging, `check_forms.py`. A new field or form also needs the GHL side (new mapping sample).
+
+## 2026-11-04: several services in „Pieteikums bez aprēķina“
+
+The calculator's plain request form (`pakalpojuma-pieteikums`) now lets the visitor tick several services. They arrive in the same key, `pakalpojums`, as one text: „Jumta darbi, Fasādes darbi“. Nothing changed in GoHighLevel: „Pakalpojums“ is a single-line field, and the purpose („Mērķis“, opportunity source) and the opportunity name („Pieteikums: Jumta darbi, Fasādes darbi“) take the whole list. The site script computes them as before (`webCrm.context(form)` checked on staging). Details: `design/webflow/calculator/README.md`.

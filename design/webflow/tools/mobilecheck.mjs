@@ -11,7 +11,7 @@ const B = 'https://probuild-group.webflow.io';
 const args = process.argv.slice(2);
 const mode = /^(audit|taps)$/.test(args[0] || '') ? args.shift() : 'all';
 const widths = args.length ? args.map(Number) : [320, 360, 390];
-const PAGES = ['/', '/kalkulators', '/pakalpojumi', '/noma', '/projekti', '/par-mums', '/kontakti', '/privatuma-politika', '/sikdatnu-politika',
+const PAGES = ['/', '/kalkulators', '/pakalpojumi', '/noma', '/projekti', '/par-mums', '/kontakti', '/privatuma-politika', '/sikdatnu-politika', '/blogs', '/raksts/ka-veidojas-buvdarbu-cena', '/raksts/jumta-nomaina-tukuma',
   '/pakalpojums/pamatu-buvnieciba', '/pakalpojums/koku-zagesana-un-apauguma-novaksana',
   '/nomas-produkts/ekskavators-iekravejs', '/nomas-produkts/pasizgazejs', '/nomas-produkts/grodu-satverejs', '/nomas-produkts/regipsa-pacelajs',
   '/projekts/jumts-tukuma', '/projekts/saimniecibas-eka-vidrizi', '/projekts/jaunbuve-doles-sala', '/projekts/jaunbuve-ikskile',
